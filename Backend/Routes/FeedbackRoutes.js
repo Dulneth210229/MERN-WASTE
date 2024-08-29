@@ -8,6 +8,7 @@ const FeedbackController = require("../Controllers/FeedbackControllers");
 
 //creatr routes path
 feedbackRouter.get("/", FeedbackController.getAllFeedback);
+feedbackRouter.post("/", FeedbackController.addFeedback);
 
 //export
 module.exports = feedbackRouter;
