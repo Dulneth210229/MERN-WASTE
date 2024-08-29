@@ -1,12 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const inventoryrouter = require("./Routes/InventoryRoute");
+const requestRouter = require("./Routes/RequestRoute");
 
 const app = express();
 
 //middleware
-app.use("/", (req, res, next) => {
-  res.send("It is working");
-});
+app.use(express.json());
+app.use("/request", requestRouter);
+app.use("/inventory", inventoryrouter);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
