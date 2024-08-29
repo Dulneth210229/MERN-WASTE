@@ -1,12 +1,12 @@
 const express = require("express");
-const router = express.Router();
+const inventoryrouter = express.Router();
 //Install model
 const Inventory = require("../Model/InventoryModel");
 //Insert Inventory Controller
 const InventoryController = require("../Controllers/InventoryControll");
 
 //creatr routes path
-router.get("/", InventoryController.getInventory);
+inventoryrouter.get("/", InventoryController.getInventory);
 
 //export
-module.exports = router;
+module.exports = inventoryrouter;
