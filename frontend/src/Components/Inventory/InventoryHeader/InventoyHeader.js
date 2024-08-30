@@ -14,7 +14,7 @@ function InventoyHeader() {
         </Link>
 
         <ul className="flex gap-5 font-bold">
-          <Link to="./">
+          <Link to="/">
             <li className="hover:underline text-2xl gap-6">Home</li>
           </Link>
           <li className="hover:underline text-2xl">Inventory</li>
