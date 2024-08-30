@@ -10,6 +10,7 @@ const RequestController = require('../Controllers/RequestController');
 requestRouter.get('/', RequestController.getAllRequests);
 requestRouter.post('/', RequestController.addRequests);
 requestRouter.get('/:id', RequestController.getRequestById);
+requestRouter.put('/:id', RequestController.updateRequest);
 
 //export
 module.exports = requestRouter;

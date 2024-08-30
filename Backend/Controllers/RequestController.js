@@ -59,6 +59,29 @@ const getRequestById = async (req, res, next) => {
   return res.status(200).json({ request });
 };
 
+//Update request details
+const updateRequest = async (req, res, next) => {
+  const id = req.params.id;
+  const { service, name, address, phoneNumber, date, time } = req.body;
+
+  let requests;
+
+  try {
+    requests = await Request.findByIdAndUpdate(id,
+      { service: service, name: name, address: address, phoneNumber: phoneNumber, date: date, time: time });
+      requests = await requests.save();
+  }catch (err) {
+    console.log(err);
+  }
+
+  //not updated
+  if (!requests) {
+    return res.status(404).json({ message: "Unable to update request details" });
+  }
+  return res.status(200).json({ requests });
+};
+
 exports.getAllRequests = getAllRequests;
 exports.addRequests = addRequests;
 exports.getRequestById = getRequestById;
+exports.updateRequest = updateRequest;
