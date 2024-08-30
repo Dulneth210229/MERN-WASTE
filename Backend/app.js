@@ -2,9 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const inventoryrouter = require("./Routes/InventoryRoute");
 const requestRouter = require("./Routes/RequestRoute");
+<<<<<<< HEAD
 const paymentplanrouter=require("./Routes/PaymentPlanRoute");
 
 
+=======
+const feedbackRouter = require("./Routes/FeedbackRoutes");
+>>>>>>> main
 
 const app = express();
 
@@ -12,7 +16,11 @@ const app = express();
 app.use(express.json());
 app.use("/request", requestRouter);
 app.use("/inventory", inventoryrouter);
+<<<<<<< HEAD
 app.use("/paymentplan",paymentplanrouter);
+=======
+app.use("/feedback", feedbackRouter);
+>>>>>>> main
 
 
 mongoose
