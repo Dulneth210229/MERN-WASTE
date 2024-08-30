@@ -81,7 +81,27 @@ const updateRequest = async (req, res, next) => {
   return res.status(200).json({ requests });
 };
 
+//Delete request
+const deleteRequest = async (req, res, next) => {
+  const id = req.params.id;
+
+  let request;
+
+  try {
+    request = await Request.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+  }
+
+  //not deleted
+  if (!request) {
+    return res.status(404).json({ message: "Unable to delete request details" });
+  }
+  return res.status(200).json({ request });
+};
+
 exports.getAllRequests = getAllRequests;
 exports.addRequests = addRequests;
 exports.getRequestById = getRequestById;
 exports.updateRequest = updateRequest;
+exports.deleteRequest = deleteRequest;

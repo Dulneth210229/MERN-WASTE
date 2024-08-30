@@ -11,6 +11,7 @@ requestRouter.get('/', RequestController.getAllRequests);
 requestRouter.post('/', RequestController.addRequests);
 requestRouter.get('/:id', RequestController.getRequestById);
 requestRouter.put('/:id', RequestController.updateRequest);
+requestRouter.delete('/:id', RequestController.deleteRequest);
 
 //export
 module.exports = requestRouter;
