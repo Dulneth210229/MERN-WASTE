@@ -80,8 +80,28 @@ const updateFeedback = async (req, res, next) => {
 
 };
 
+//Delete feedback details
+const deleteFeedback = async (req, res, next) => {
+    
+        const id = req.params.id;
+    
+        let feedback;
+    
+        try{
+            feedback = await Feedback.findByIdAndDelete(id);
+        }catch(err){
+            console.log(err);
+        }
+        if(!feedback){
+            return res.status(404).send({message:"Unable to delete feedback"});
+        }
+        return res.status(200).json({ feedback });
+};
+
+
         
 exports.getAllFeedback = getAllFeedback;
 exports.addFeedback = addFeedback;
 exports.getById = getById;
 exports.updateFeedback = updateFeedback;
+exports.deleteFeedback = deleteFeedback;
