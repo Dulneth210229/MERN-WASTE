@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>
-      <Nav />
+      <Nav className="fixed" />
       <h1 className="text-3xl text-center font-semibold my-7">Admin Home</h1>
       <div className="flex flex-col gap-5 p-5 m-10 w-72 mx-auto">
         <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
@@ -34,6 +34,7 @@ function Home() {
         <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
           Pay-Roll Management
         </button>
+
       </div>
     </div>
   );
