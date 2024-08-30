@@ -1,12 +1,11 @@
-import { FaSearch } from 'react-icons/fa';
-import React from 'react';
-import './AdminNav.css';
-import { Link } from 'react-router-dom';
+import { FaSearch } from "react-icons/fa";
+import React from "react";
+import "./AdminNav.css";
+import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-
-    <header className="bg-slate-300  ">
+    <header className="bg-slate-300 static-fixed">
       <div className="flex justify-between items-center max-w-8xl p-2">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
@@ -48,57 +47,54 @@ function Nav() {
         </div>
       </div>
     </header>
-
-    
-  )
+  );
 }
 
-export default Nav
-
+export default Nav;
 
 //previous nav bar
 // <div>
-        
-    //   <ul className='home-ui'>
-    //     <li className='home-li'>
-    //         <Link to='/inventory' className='active home-a'>
-    //             <h1>Invetory</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/requestservice' className='active home-a'>
-    //             <h1>Request service</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/customerrelationship' className='active home-a'>
-    //             <h1>Coutomer relationship</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/recyclingguide' className='active home-a'>
-    //             <h1>Account management</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/wastecollection' className='active home-a'>
-    //             <h1>Waste collection</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/paymentplan' className='active home-a'>
-    //             <h1>Payment plan</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/employeemgt' className='active home-a'>
-    //             <h1>Employee magt</h1>
-    //         </Link>
-    //     </li>
-    //     <li className='home-li'>
-    //         <Link to='/wastecategory' className='active home-a'>
-    //             <h1>Waste category</h1>
-    //         </Link>
-    //     </li>
-    //   </ul>
-    // </div>
+
+//   <ul className='home-ui'>
+//     <li className='home-li'>
+//         <Link to='/inventory' className='active home-a'>
+//             <h1>Invetory</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/requestservice' className='active home-a'>
+//             <h1>Request service</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/customerrelationship' className='active home-a'>
+//             <h1>Coutomer relationship</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/recyclingguide' className='active home-a'>
+//             <h1>Account management</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/wastecollection' className='active home-a'>
+//             <h1>Waste collection</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/paymentplan' className='active home-a'>
+//             <h1>Payment plan</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/employeemgt' className='active home-a'>
+//             <h1>Employee magt</h1>
+//         </Link>
+//     </li>
+//     <li className='home-li'>
+//         <Link to='/wastecategory' className='active home-a'>
+//             <h1>Waste category</h1>
+//         </Link>
+//     </li>
+//   </ul>
+// </div>
