@@ -37,6 +37,26 @@ const addFeedback = async (req, res, next) => {
     return res.status(200).json({ feedback });
 };
 
+//Get by Id
+const getById = async (req, res, next) => {
 
+    const id = req.params.id;
+
+    let feedback;
+
+    try {
+        feedback = await Feedback.findById(id);
+    }catch(err){
+        console.log(err);
+    }
+
+    //not availabel feedback
+    if(!feedback){
+        return res.status(404).send({message:"feedback not found"});
+    }
+    return res.status(200).json({ feedback });
+}
+        
 exports.getAllFeedback = getAllFeedback;
 exports.addFeedback = addFeedback;
+exports.getById = getById;
