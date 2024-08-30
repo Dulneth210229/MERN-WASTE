@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "../AdminNav/AdminNav";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -13,9 +14,11 @@ function Home() {
         <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
           Waste Category
         </button>
-        <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
-          Request Service
-        </button>
+        <Link to="/viewrequests">
+          <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
+            Request Service
+          </button>
+        </Link>
         <button className="bg-lime-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
           Inventory Management
         </button>

@@ -14,7 +14,6 @@ function App() {
         <React.Fragment>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/mainhome" element={<Home />} />
             <Route path="/requestservice" element={<AddRequest />} />
             <Route path="/viewrequests" element={<ViewRequests />} />
           </Routes>

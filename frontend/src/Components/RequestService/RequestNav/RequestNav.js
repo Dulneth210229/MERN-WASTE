@@ -7,7 +7,7 @@ function requestNav() {
     <div>
       <ul className='home-ui'>
         <li className='home-li'>
-            <Link to='/mainhome' className='active home-a'>
+            <Link to='/' className='active home-a'>
                 <h1>Home</h1>
             </Link>
         </li>
