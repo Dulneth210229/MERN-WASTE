@@ -56,7 +56,32 @@ const getById = async (req, res, next) => {
     }
     return res.status(200).json({ feedback });
 }
+
+//Update feedback Details
+const updateFeedback = async (req, res, next) => {
+
+    const id = req.params.id;
+
+    const {name, email, address, phone, comment, rating} = req.body;
+
+    let feedbacks;
+
+    try{
+        feedbacks = await Feedback.findByIdAndUpdate(id, 
+            {name: name, email: email, address: address, phone: phone, comment: comment, rating: rating});
+        feedbacks = await feedbacks.save();
+    }catch(err){
+        console.log(err);
+    }
+    if(!feedbacks){
+        return res.status(404).send({message:"Unable to update feedback"});
+    }
+    return res.status(200).json({ feedbacks });
+
+};
+
         
 exports.getAllFeedback = getAllFeedback;
 exports.addFeedback = addFeedback;
 exports.getById = getById;
+exports.updateFeedback = updateFeedback;
