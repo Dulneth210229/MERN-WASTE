@@ -8,17 +8,18 @@ import InventoryHome from "./Components/Inventory/InvemtoryHome/InventoryHome";
 
 function App() {
   //java scripts
-    return (
-      //html
-      <div>
-        <React.Fragment>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/requestservice" element={<AddRequest />} />
-            <Route path="/viewrequests" element={<ViewRequests />} />
-          </Routes>
-        </React.Fragment>
-      </div>
+  return (
+    //html
+    <div>
+      <React.Fragment>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/requestservice" element={<AddRequest />} />
+          <Route path="/viewrequests" element={<ViewRequests />} />
+          <Route path="/inventoryHome" element={<InventoryHome />} />
+        </Routes>
+      </React.Fragment>
+    </div>
   );
 }
 
