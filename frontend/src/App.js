@@ -5,6 +5,10 @@ import AddRequest from "./Components/RequestService/AddRequest/AddRequest";
 import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
 import InventoryHome from "./Components/Inventory/InvemtoryHome/InventoryHome";
+import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
+import Complain from "./Components/CustomerRelationship/Complain/Complain";
+import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
+import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 
 function App() {
@@ -19,6 +23,10 @@ function App() {
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
           <Route path="/addinventory" element={<AddNewInventory />} />
+          <Route path="/crmHome" element={<Crmhome />} />
+          <Route path="/complain" element={<Complain />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </React.Fragment>
     </div>
