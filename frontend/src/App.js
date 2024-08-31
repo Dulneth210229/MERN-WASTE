@@ -9,7 +9,7 @@ import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
 import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
 import Support from "./Components/CustomerRelationship/Support/Support";
-
+import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 
 function App() {
   //java scripts
@@ -22,12 +22,11 @@ function App() {
           <Route path="/requestservice" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
+          <Route path="/addinventory" element={<AddNewInventory />} />
           <Route path="/crmHome" element={<Crmhome />} />
           <Route path="/complain" element={<Complain />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/support" element={<Support />} />
-          
-
         </Routes>
       </React.Fragment>
     </div>
