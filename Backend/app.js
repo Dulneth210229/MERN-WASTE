@@ -6,9 +6,11 @@ const paymentplanrouter = require("./Routes/PaymentPlanRoute");
 const feedbackRouter = require("./Routes/FeedbackRoutes");
 
 const app = express();
+const cors = require("cors");
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use("/request", requestRouter);
 app.use("/inventory", inventoryrouter);
 app.use("/paymentplan", paymentplanrouter);
