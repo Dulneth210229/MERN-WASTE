@@ -5,7 +5,6 @@ import AddRequest from "./Components/RequestService/AddRequest/AddRequest";
 import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
 import InventoryHome from "./Components/Inventory/InvemtoryHome/InventoryHome";
-import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
 import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
