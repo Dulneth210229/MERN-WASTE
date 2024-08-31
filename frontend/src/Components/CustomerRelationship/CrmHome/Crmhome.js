@@ -1,10 +1,14 @@
 import React from 'react'
+import './CrmHome.css'
+
 
 function Crmhome() {
     return (
-        <div>
-            <h1>Customer Relationship Management</h1>
-        </div>
+        <div className="main-buttons">
+        <button>Add feedback</button>
+        <button>Request support</button>
+        <button>Make complain</button>
+      </div>
     )
 }
 
