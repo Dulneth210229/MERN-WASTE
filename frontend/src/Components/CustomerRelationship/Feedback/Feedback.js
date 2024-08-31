@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Feedback.css'
 import CrmNav from '../CrmNav/CrmNav'
+import axios from 'axios'
+//import React, {  useState } from 'react';
+
+const URL = "http://localhost:5001/feedback"
+
+const fetchHandler = async () => {
+  return await axios.get(URL).then((res) => res.data);
+}
 
 function Feedback() {
+
+  const [feedback, setFeedback] = React.useState();
+  useEffect(() => {
+    fetchHandler().then((data) => setFeedback(data.feedback));
+    
+  },[])
+
   return (
     <div className="form-container">
       <CrmNav/>
