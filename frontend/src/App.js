@@ -10,6 +10,7 @@ import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
 import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
 import Support from "./Components/CustomerRelationship/Support/Support";
+import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 
 function App() {
   //java scripts
