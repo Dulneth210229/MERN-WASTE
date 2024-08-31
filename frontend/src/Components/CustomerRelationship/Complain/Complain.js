@@ -1,10 +1,11 @@
 import React from 'react'
 import './Complain.css'
+import CrmNav from '../CrmNav/CrmNav'
 
 function Complain() {
   return (
-    <div>
-      
+    <div className="form-container">
+      <CrmNav />
       <h1>Make complain</h1> 
       <div className="input-group">
         <input type="text" placeholder="Full Name *" required />

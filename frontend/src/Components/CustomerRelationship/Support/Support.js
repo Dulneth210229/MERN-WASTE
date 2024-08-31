@@ -1,9 +1,11 @@
 import React from 'react'
 import './Support.css'
+import CrmNav from '../CrmNav/CrmNav'
 
 function Support() {
   return (
     <div className="form-container">
+          <CrmNav/>
           <h1>Request Support</h1>
           <p>HOW CAN WE HELP YOU?</p>
           <p>CHOOSE FROM THE OPTION BELOW :</p>

@@ -1,9 +1,11 @@
 import React from 'react'
 import './Feedback.css'
+import CrmNav from '../CrmNav/CrmNav'
 
 function Feedback() {
   return (
-    <div>
+    <div className="form-container">
+      <CrmNav/>
           <h1>Add Feedback</h1> 
           <div className="input-group">
             <input type="text" placeholder="Full Name *" required />
