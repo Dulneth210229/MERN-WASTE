@@ -12,7 +12,7 @@ import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 <<<<<<< HEAD
 import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
-import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
+import CategoryM from "./Components/Category/CategoryM/CategoryM";
 import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
 =======
 import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetails";
@@ -39,7 +39,7 @@ function App() {
           <Route path="/support" element={<Support />} />
 <<<<<<< HEAD
           <Route path="/categoryhome" element={<CategoryHome/>}/>
-          <Route path="/categoryadd" element={<CategoryAdd/>}/>
+          <Route path="/categorym" element={<CategoryM/>}/>
           <Route path="/categorydetails" element={<CategoryDetails/>}/>
 
 =======
