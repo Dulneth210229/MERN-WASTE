@@ -10,17 +10,13 @@ import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import FeedbackDisplay from "./Components/CustomerRelationship/FeedbackDisplay_01/FeedbackDisplay_01";
 import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
-<<<<<<< HEAD
-import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
-import CategoryM from "./Components/Category/CategoryM/CategoryM";
-import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
-=======
 import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetails";
 import Inventory from "./Components/Inventory/InventoryList/Inventory";
 import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/AddFeedbackForm";
->>>>>>> main
-
+import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
+import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
+import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
 function App() {
   //java scripts
   return (
@@ -37,18 +33,13 @@ function App() {
           <Route path="/complain" element={<Complain />} />
           <Route path="/feedbackdisplay" element={<FeedbackDisplay />} />
           <Route path="/support" element={<Support />} />
-<<<<<<< HEAD
-          <Route path="/categoryhome" element={<CategoryHome/>}/>
-          <Route path="/categorym" element={<CategoryM/>}/>
-          <Route path="/categorydetails" element={<CategoryDetails/>}/>
-
-=======
           <Route path="/inventoryDeatails" element={<InventoryDetails />} />
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
->>>>>>> main
-
+          <Route path="/categoryhome" element={<CategoryHome/>}/>
+          <Route path="/categoryadd" element={<CategoryAdd/>}/>
+          <Route path="/categorydetails" element={<CategoryDetails/>}/>
         </Routes>
       </React.Fragment>
     </div>

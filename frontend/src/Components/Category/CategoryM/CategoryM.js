@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function CategoryM(props) {
-  const {_id ,WasteType,Quantity,DateOfCollection ,Location ,TransportMethod ,Notes } = props.category;
+  const {_id ,WasteType,Quantity,DateOfCollection ,Location ,TransportMethod ,Notes } = props.catego;
   return (
     <div>
       

@@ -17,7 +17,7 @@ function CategoryNav() {
           <Link to="/">
             <li className="hover:underline text-2xl gap-6">Home</li>
           </Link>
-          <Link to="/CategoryM">
+          <Link to="/CategoryAdd">
           <li className="hover:underline text-2xl">Add Category</li>
           </Link>
           <Link to="/CategoryDetails">
