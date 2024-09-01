@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
 
 function InventoyHeader() {
   return (
@@ -37,7 +36,7 @@ function InventoyHeader() {
             </Link>
           </ul>
 
-          <form className="bg-slate-100 p-2 rounded-lg flex items-center ">
+          {/*<form className="bg-slate-100 p-2 rounded-lg flex items-center ">
             <input
               type="text"
               placeholder="Search..."
@@ -47,7 +46,7 @@ function InventoyHeader() {
               className="bg-transparent focus:outline-none w-24 sm:w-64"
             />
             <FaSearch className="text-slate-600" />
-          </form>
+          </form>*/}
         </div>
       </div>
     </header>
