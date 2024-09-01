@@ -4,6 +4,7 @@ const inventoryrouter = require("./Routes/InventoryRoute");
 const requestRouter = require("./Routes/RequestRoute");
 const paymentplanrouter=require("./Routes/PaymentPlanRoute");
 const categoryrouter = require("./Routes/CategoryRoutes");
+const accountrouter = require("./Routes/AccountRoutes");
 
 
 const feedbackRouter = require("./Routes/FeedbackRoutes");
@@ -19,6 +20,9 @@ app.use("/inventory", inventoryrouter);
 app.use("/paymentplan", paymentplanrouter);
 app.use("/feedback", feedbackRouter);
 app.use("/category",categoryrouter);
+app.use("/account",accountrouter);
+
+
 
 
 
