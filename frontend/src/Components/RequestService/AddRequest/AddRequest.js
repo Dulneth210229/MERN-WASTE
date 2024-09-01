@@ -4,7 +4,7 @@ import RequestNav from '../RequestNav/RequestNav'
 function AddRequest() {
   return (
     <div>
-      <RequestNav />
+        <RequestNav />
       <h1>Add Request</h1>
     </div>
   )

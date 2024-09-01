@@ -12,8 +12,8 @@ function requestNav() {
           </Link>
         </li>
         <li className="home-li">
-          <Link to="/requestservice" className="active home-a">
-            <h1>Request service</h1>
+          <Link to="/addrequest" className="active home-a">
+            <h1>Add Request</h1>
           </Link>
         </li>
         <li className="home-li">
