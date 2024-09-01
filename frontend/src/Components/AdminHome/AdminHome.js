@@ -18,7 +18,7 @@ function Home() {
             Waste Category
           </button>
         </Link>
-        <Link to="/viewrequests">
+        <Link to="/requestservicemain">
           <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 hover:opacity-95">
             Request Service
           </button>

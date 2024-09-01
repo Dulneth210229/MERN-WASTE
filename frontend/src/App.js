@@ -12,6 +12,7 @@ import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetails";
 import Inventory from "./Components/Inventory/InventoryList/Inventory";
+import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 
 function App() {
   //java scripts
@@ -21,7 +22,7 @@ function App() {
       <React.Fragment>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/requestservice" element={<AddRequest />} />
+          <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
           <Route path="/addinventory" element={<AddNewInventory />} />
@@ -31,6 +32,7 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/inventoryDeatails" element={<InventoryDetails />} />
           <Route path="/inventoryList" element={<Inventory />} />
+          <Route path="/requestservicemain" element={<RequestServiceMain />} />
         </Routes>
       </React.Fragment>
     </div>
