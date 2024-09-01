@@ -10,6 +10,9 @@ import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
 import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
+import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
+import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
+import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
 
 function App() {
   //java scripts
@@ -27,6 +30,11 @@ function App() {
           <Route path="/complain" element={<Complain />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/categoryhome" element={<CategoryHome/>}/>
+          <Route path="/categoryadd" element={<CategoryAdd/>}/>
+          <Route path="/categorydetails" element={<CategoryDetails/>}/>
+
+
         </Routes>
       </React.Fragment>
     </div>
