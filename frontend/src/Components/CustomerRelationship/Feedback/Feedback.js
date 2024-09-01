@@ -1,8 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
   
 
 function FeedbackDisplay(props) {
   const {_id, name, email, address, phone, comment, rating} = props.feedback;
+
+const history = useNavigate();
+
+const deleteHandler = async () => {
+  await axios.delete(`http://localhost:5001/feedback/${_id}`)
+  .then(res => res.data)
+  .then(()=>history("/"))
+  .then(()=>history("/FeedbackDisplay"))
+}
+
   return (
     <div>
       <h1>FeedbackDisplay</h1>
@@ -14,8 +27,8 @@ function FeedbackDisplay(props) {
       <h1>Phone:{phone}</h1>
       <h1>Comment:{comment}</h1>
       <h1>Rating:{rating}</h1>
-      <button>Update</button>
-      <button>Delete</button>
+      <Link to={`/feedbackdisplay/${_id}`}>Update</Link>
+      <button onClick={deleteHandler}>Delete</button>
 
     </div>
   )

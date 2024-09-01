@@ -1,51 +1,56 @@
-import React, {useState} from 'react'
-import CrmNav from '../CrmNav/CrmNav'
-import { useNavigate } from 'react-router-dom'
+import React, {useEffect,useState} from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function AddFeedbackForm() {
+
+function UpdateFeedback() {
+
+    const[inputs, setInputs] = useState({});
     const history = useNavigate();
-    const [inputs, setInputs] = useState({
-        name: "",
-        email: "",
-        address: "",
-        phone: "",
-        comment: "",
-        rating: "",
-        
-    });
-    
-    const handleChange = (e) => {
-        setInputs((prevState)=>({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }));
+    const id = useParams().id;
+
+    useEffect(() =>{
+        const fetchHandler = async ()=>{
+            await axios
+            .get(`http://localhost:5001/feedback/${id}`)
+            .then((res)=> res.data)
+            .then((data)=> setInputs(data.feedback))
+        };
+        fetchHandler();
+    },[id]);
+
+    const sendRequest = async () => {
+        await axios
+        .put(`http://localhost:5001/feedback/${id}`,{
+            name: String(inputs.name),
+            email: String(inputs.email),
+            address: String(inputs.address),
+            phone: Number(inputs.phone),
+            comment: String(inputs.comment),
+            rating: Number(inputs.rating), 
+        })
+        .then(res =>res.data);
         };
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            console.log(inputs);
-            sendRequest().then(()=>history('FeedbackDisplay'));
-        }
-
-        const sendRequest = async () => {
-            await axios.post('http://localhost:5001/feedback',{
-                name: String(inputs.name),
-                email: String(inputs.email),
-                address: String(inputs.address),
-                phone: Number(inputs.phone),
-                comment: String(inputs.comment),
-                rating: Number(inputs.rating), 
-            }).then(res =>res.data);
-            }
+        const handleChange = (e) => {
+            setInputs((prevState)=>({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }));
+            };
+    
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                console.log(inputs);
+                sendRequest().then(()=>
+                history("/FeedbackDisplay"));
+            };   
 
   return (
-  <div className="form-container">
-    
     <div>
-      <CrmNav/>
-      <h1>Add Feedback</h1>
-        <form onSubmit={handleSubmit}>
+      <h1>Update feedback</h1>
+      <form onSubmit={handleSubmit}>
       <div className="input-group">
             <input type="text" name="name" placeholder="Full Name *" onChange={handleChange} value={inputs.name} required />
             <input type="email" name="email" placeholder="Email *" onChange={handleChange} value={inputs.email} required />
@@ -65,10 +70,7 @@ function AddFeedbackForm() {
           <button type="submit">Submit</button>
           </form>
     </div>
-    </div>
-    
   )
 }
 
-
-export default AddFeedbackForm
+export default UpdateFeedback
