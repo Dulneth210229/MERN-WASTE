@@ -11,6 +11,11 @@ function InventoryHome() {
             + Add New Inventory
           </button>
         </Link>
+        <Link to="/inventoryDeatails">
+          <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95">
+            Inventory Details
+          </button>
+        </Link>
       </div>
     </div>
   );
