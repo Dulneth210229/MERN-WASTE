@@ -33,7 +33,7 @@ function Home() {
             Payment Plan
           </button>
         </Link>
-        <Link to="">
+        <Link to="CrmHome">
           <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 hover:opacity-95">
             Customer Realation Ship
           </button>
