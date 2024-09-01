@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import InventoyHeader from "../InventoryHeader/InventoyHeader.js";
 
@@ -10,6 +9,11 @@ function InventoryHome() {
         <Link to="/addinventory">
           <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95">
             + Add New Inventory
+          </button>
+        </Link>
+        <Link to="/inventoryDeatails">
+          <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95">
+            Inventory Details
           </button>
         </Link>
       </div>

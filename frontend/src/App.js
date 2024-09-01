@@ -10,6 +10,8 @@ import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import Feedback from "./Components/CustomerRelationship/Feedback/Feedback";
 import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
+import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetails";
+import Inventory from "./Components/Inventory/InventoryList/Inventory";
 
 function App() {
   //java scripts
@@ -27,6 +29,8 @@ function App() {
           <Route path="/complain" element={<Complain />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/inventoryDeatails" element={<InventoryDetails />} />
+          <Route path="/inventoryList" element={<Inventory />} />
         </Routes>
       </React.Fragment>
     </div>
