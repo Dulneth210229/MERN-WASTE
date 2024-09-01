@@ -15,6 +15,9 @@ import Inventory from "./Components/Inventory/InventoryList/Inventory";
 import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/AddFeedbackForm";
 import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/UpdateFeedback";
+import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
+import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
+import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
 
 
 function App() {
@@ -37,8 +40,12 @@ function App() {
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
+
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
-          
+          <Route path="/categoryhome" element={<CategoryHome/>}/>
+          <Route path="/categoryadd" element={<CategoryAdd/>}/>
+          <Route path="/categorydetails" element={<CategoryDetails/>}/>
+
 
         </Routes>
       </React.Fragment>
