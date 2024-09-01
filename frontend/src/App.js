@@ -14,6 +14,8 @@ import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetail
 import Inventory from "./Components/Inventory/InventoryList/Inventory";
 import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/AddFeedbackForm";
+import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/UpdateFeedback";
+
 
 function App() {
   //java scripts
@@ -35,6 +37,8 @@ function App() {
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
+          <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
+          
 
         </Routes>
       </React.Fragment>
