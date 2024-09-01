@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
 
 function InventoyHeader() {
   return (
-    <header className="bg-slate-300 static-fixed">
-      <div className="flex justify-between items-center max-w-8xl p-2">
+    <header className="bg-slate-300 ">
+      <div className="flex justify-between items-center max-w-8xl p-2 ">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
             <span className="font-boldt text-3xl">Fresh</span>
@@ -17,7 +16,9 @@ function InventoyHeader() {
           <Link to="/">
             <li className="hover:underline text-2xl gap-6">Home</li>
           </Link>
-          <li className="hover:underline text-2xl">Inventory</li>
+          <Link to="/inventoryHome">
+            <li className="hover:underline text-2xl">Inventory</li>
+          </Link>
           <Link to="about">
             <li className="hover:underline text-2xl">Orders</li>
           </Link>
@@ -35,7 +36,7 @@ function InventoyHeader() {
             </Link>
           </ul>
 
-          <form className="bg-slate-100 p-2 rounded-lg flex items-center ">
+          {/*<form className="bg-slate-100 p-2 rounded-lg flex items-center ">
             <input
               type="text"
               placeholder="Search..."
@@ -45,7 +46,7 @@ function InventoyHeader() {
               className="bg-transparent focus:outline-none w-24 sm:w-64"
             />
             <FaSearch className="text-slate-600" />
-          </form>
+          </form>*/}
         </div>
       </div>
     </header>
