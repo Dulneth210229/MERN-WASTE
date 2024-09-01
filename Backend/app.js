@@ -2,17 +2,25 @@ const express = require("express");
 const mongoose = require("mongoose");
 const inventoryrouter = require("./Routes/InventoryRoute");
 const requestRouter = require("./Routes/RequestRoute");
-const paymentplanrouter = require("./Routes/PaymentPlanRoute");
+const paymentplanrouter=require("./Routes/PaymentPlanRoute");
+const categoryrouter = require("./Routes/CategoryRoutes");
+
+
 const feedbackRouter = require("./Routes/FeedbackRoutes");
 
 const app = express();
+const cors = require("cors");
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use("/request", requestRouter);
 app.use("/inventory", inventoryrouter);
 app.use("/paymentplan", paymentplanrouter);
 app.use("/feedback", feedbackRouter);
+app.use("/category",categoryrouter);
+
+
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
