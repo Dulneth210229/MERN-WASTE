@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <header className="bg-slate-300 static-fixed">
-      <div className="flex justify-between items-center max-w-8xl p-2">
+    <header className="bg-slate-300 ">
+      <div className="flex justify-between items-center max-w-8xl p-2 ">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
             <span className="font-boldt text-3xl">Fresh</span>
