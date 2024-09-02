@@ -1,49 +1,57 @@
-import React, { useState } from 'react';
-import CategoryNav from "../CategoryNav/CategoryNav";
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect,useState} from 'react';
 import axios from 'axios';
+import {useParams} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function CategoryAdd() {
 
+function CategoryUpdate() {
+
+    const [inputs, setInputs] = useState({});
     const history = useNavigate();
-    const [inputs,setInputs] = useState({
-        WasteType:"",
-        Quantity:"",
-        DateOfCollection:"",
-        Location:"",
-        TransportMethod:"",
-        Notes:"",
-    });
+    const id = useParams().id;
+
+    useEffect(() => {
+        const fetchHandler = async ()=> {
+            await axios
+            .get(`http://Localhost:5001/category/${id}`)
+            .then((res) => res.data)
+            .then((data)=> setInputs(data.category));
+        };
+        fetchHandler();
+    },[id]);
+
+    const sendRequest = async () => {
+        await axios.put(`http://Localhost:5001/category/${id}`, {
+            WasteType: String (inputs.WasteType),
+            Quantity: Number (inputs.Quantity),
+            DateOfCollection: Number (inputs.DateOfCollection),
+            Location: String (inputs.Location),
+            TransportMethod: String (inputs.TransportMethod),
+            Notes: String (inputs.Notes),
+
+        })
+            .then((res) => res.data);
+
+    };
 
     const handleChange =(e)=>{
-      setInputs((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value,
-      }));
-    };
+        setInputs((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }));
+      };
+  
+      const handleSubmit =(e)=>{
+        e.preventDefault();
+        console.log(inputs);
+        sendRequest().then(()=> history('/categorydetails'));
+      };
 
-    const handleSubmit =(e)=>{
-      e.preventDefault();
-      console.log(inputs);
-      sendRequest().then(()=> history('/categorydetails'));
-    };
-
-    const sendRequest = async() => {
-      await axios.post("http://Localhost:5001/category",{
-        WasteType: String (inputs.WasteType),
-        Quantity: Number (inputs.Quantity),
-        DateOfCollection: Number (inputs.DateOfCollection),
-        Location: String (inputs.Location),
-        TransportMethod: String (inputs.TransportMethod),
-        Notes: String (inputs.Notes),
-
-      }).then(res => res.data);
-    };
 
   return (
     <div>
-      <CategoryNav />
-      <h1>Add Category</h1>
+      <h1>Update Category</h1>
+
       <form onSubmit={handleSubmit}>
         <lable>WasteType</lable>
         <br />
@@ -78,7 +86,7 @@ function CategoryAdd() {
         <button>Submit</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default CategoryAdd
+export default CategoryUpdate

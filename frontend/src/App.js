@@ -18,6 +18,8 @@ import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/Upd
 import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
 import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
 import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
+import CategoryUpdate from "./Components/Category/CategoryUpdate/CategoryUpdate";
+
 
 
 function App() {
@@ -45,6 +47,7 @@ function App() {
           <Route path="/categoryhome" element={<CategoryHome/>}/>
           <Route path="/categoryadd" element={<CategoryAdd/>}/>
           <Route path="/categorydetails" element={<CategoryDetails/>}/>
+          <Route path="/categorydetails/:id" element={<CategoryUpdate/>}/>
 
 
         </Routes>
