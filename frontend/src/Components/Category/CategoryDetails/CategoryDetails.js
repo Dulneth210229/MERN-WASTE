@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 //import React from "react";
 import CategoryNav from "../CategoryNav/CategoryNav";
 import axios from "axios";
-import CategoryM from '../CategoryM/CategoryM'
+import CategoryM from '../CategoryM/CategoryM';
 import {useReactToPrint} from "react-to-print";
 
 const URL = "http://Localhost:5001/category";
