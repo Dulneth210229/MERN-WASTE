@@ -20,9 +20,8 @@ app.use("/feedback", feedbackRouter);
 app.use("/category", categoryrouter);
 app.use("/category", categoryrouter);
 app.use("/account", accountrouter);
-app.use("/category",categoryrouter);
-app.use("/account",accountrouter);
-
+app.use("/category", categoryrouter);
+app.use("/account", accountrouter);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
