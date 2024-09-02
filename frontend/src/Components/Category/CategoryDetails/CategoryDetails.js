@@ -5,6 +5,7 @@ import axios from "axios";
 import CategoryM from "../CategoryM/CategoryM";
 import { useReactToPrint } from "react-to-print";
 
+
 const URL = "http://Localhost:5001/category";
 
 const fetchHandler = async () => {
