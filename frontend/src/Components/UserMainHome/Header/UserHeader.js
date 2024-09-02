@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function InventoyHeader() {
+function userHeader() {
   return (
     <header className="bg-slate-300 ">
       <div className="flex justify-between items-center max-w-8xl p-2 ">
@@ -52,4 +52,4 @@ function InventoyHeader() {
     </header>
   );
 }
-export default InventoyHeader;
+export default userHeader;
