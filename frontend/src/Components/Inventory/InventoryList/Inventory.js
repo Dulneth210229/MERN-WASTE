@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Inventory(props) {
   const {
@@ -10,6 +12,17 @@ function Inventory(props) {
     quantity,
     productDescription,
   } = props.inventory;
+
+  const history = useNavigate();
+
+  const deleteHandler = async () => {
+    await axios
+      .delete(`http://localhost:5001/inventory/${_id}`)
+      .then((res) => res.data)
+      .then(() => history("/"))
+      .then(() => history("/inventoryDeatails"));
+  };
+
   return (
     <div>
       {/*<div>
@@ -49,7 +62,10 @@ function Inventory(props) {
                   Update
                 </button>
               </Link>
-              <button className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700">
+              <button
+                className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700"
+                onClick={deleteHandler}
+              >
                 Remove
               </button>
             </td>
