@@ -19,8 +19,7 @@ import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
 import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
 import CategoryDetails from "./Components/Category/CategoryDetails/CategoryDetails";
 import CategoryUpdate from "./Components/Category/CategoryUpdate/CategoryUpdate";
-
-
+import InventoryUpdate from "./Components/Inventory/UpdateInventory/UpdateInventory";
 
 function App() {
   //java scripts
@@ -42,14 +41,12 @@ function App() {
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
-
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
-          <Route path="/categoryhome" element={<CategoryHome/>}/>
-          <Route path="/categoryadd" element={<CategoryAdd/>}/>
-          <Route path="/categorydetails" element={<CategoryDetails/>}/>
-          <Route path="/categorydetails/:id" element={<CategoryUpdate/>}/>
-
-
+          <Route path="/categoryhome" element={<CategoryHome />} />
+          <Route path="/categoryadd" element={<CategoryAdd />} />
+          <Route path="/categorydetails" element={<CategoryDetails />} />
+          <Route path="/categorydetails/:id" element={<CategoryUpdate />} />
+          <Route path="/inventoryDeatails/:Iid" element={<InventoryUpdate />} />
         </Routes>
       </React.Fragment>
     </div>
