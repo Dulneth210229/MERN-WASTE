@@ -24,7 +24,7 @@ function Support() {
               <input type="text" placeholder="Email *" />
               <input type="text" placeholder="Address *" />
               <input type="text" placeholder="City *" />
-              <input type="text" placeholder="Account ID *" />
+              {/* <input type="text" placeholder="Account ID *" /> */}
               <input type="text" placeholder="Subject *" />
             </div>
             <textarea placeholder="Message" rows="4"></textarea>
