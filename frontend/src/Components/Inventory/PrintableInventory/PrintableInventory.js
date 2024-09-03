@@ -17,32 +17,23 @@ const PrintableInventory = React.forwardRef((props, ref) => {
 
   return (
     <div ref={ref}>
-      <h1 className="text-center font-semibold m-1 ml-5 text-4xl">
-        Inventory Details Display
+      <h1 className="text-center font-semibold m-5 text-4xl">
+        Inventory Details Report
       </h1>
-      <div className="mt-10">
-        <table className=" mx-auto w-auto m-1">
-          <tr className="bg-green-200 p-3 ">
-            <th className="border-2 p-2 w-60 text-center border-green-500">
-              Product ID
-            </th>
-            <th className="border-2 pt-1 w-48 border-green-500">
-              Product Name
-            </th>
-            <th className="border-2 pt-1 w-48  border-green-500">
-              Product Category
-            </th>
-            <th className="border-2 pt-1 w-48 border-green-500">
-              Material Type
-            </th>
-            <th className="border-2 pt-1 w-24 border-green-500">Quantity</th>
-            <th className="border-2 pt-1 w-48 border-green-500">
-              Product Description
-            </th>
+      <hr className="border-2 border-slate-200 mt-3 n mb-7" />
+      <div className="mt-3">
+        <table className=" mx-auto w-auto m-1 p-2">
+          <tr className="bg-green-200 m-2 border-b-2 ">
+            <th className="p-1 w-80 px-14 ">Product ID</th>
+            <th className=" p-1 w-56 px-5 ">Product Name</th>
+            <th className=" p-1 w-48 px-2 0">Product Category</th>
+            <th className=" p-1 w-48  ">Material Type</th>
+            <th className=" p-1 w-36 text-center ">Quantity</th>
+            <th className=" p-1 w-52 text-center">Product Description</th>
           </tr>
         </table>
       </div>
-      <div className="mt-10">
+      <div className="mx-auto w-auto m-2">
         {/* Render inventory details relevent to the report*/}
         {inventory &&
           inventory.map((item, i) => (
