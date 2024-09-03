@@ -13,6 +13,7 @@ function Inventory(props) {
     productDescription,
   } = props.inventory;
 
+  //delete inventory
   const history = useNavigate();
 
   const deleteHandler = async () => {
