@@ -1,37 +1,38 @@
 import React from 'react'
-import './Support.css'
-import CrmNav from '../CrmNav/CrmNav'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+  
 
-function Support() {
+function SupportDisplay(props) {
+  const {_id, additonalServices, name, email, address, city, subject, message } = props.support;
+
+const history = useNavigate();
+
+const deleteHandler = async () => {
+  await axios.delete(`http://localhost:5001/support/${_id}`)
+  .then(res => res.data)
+  .then(()=>history("/"))
+  .then(()=>history("/SupportDisplay"))
+}
+
   return (
-    <div className="form-container">
-          <CrmNav/>
-          <h1>Request Support</h1>
-          <p>HOW CAN WE HELP YOU?</p>
-          <p>CHOOSE FROM THE OPTION BELOW :</p>
-          <h2>Additional Services</h2>
-          <form>
-            <div className="checkbox-group">
-              <label><input type="checkbox" /> Start New Account</label>
-              <label><input type="checkbox" /> Bulky Item Pickup</label>
-              <label><input type="checkbox" /> Request Extra Pickup</label>
-              <label><input type="checkbox" /> Update Your Information</label>
-              <label><input type="checkbox" /> Replace Container</label>
-              <label><input type="checkbox" /> Other</label>
-            </div>
-            <div className="input-group">
-              <input type="text" placeholder="Full Name *" />
-              <input type="text" placeholder="Email *" />
-              <input type="text" placeholder="Address *" />
-              <input type="text" placeholder="City *" />
-              {/* <input type="text" placeholder="Account ID *" /> */}
-              <input type="text" placeholder="Subject *" />
-            </div>
-            <textarea placeholder="Message" rows="4"></textarea>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+    <div>
+      <h1>SupportDisplay</h1>
+      <br></br>
+      <h1>ID:{_id}</h1>
+      <h1>additonalServices:{additonalServices}</h1>
+      <h1>name:{name}</h1>
+      <h1>email:{email}</h1>
+      <h1>address:{address}</h1>
+      <h1>city:{city}</h1>
+      <h1>subject:{subject}</h1>
+      <h1>message:{message}</h1>
+      <Link to={`/supportdisplay/${_id}`}>Update</Link>
+      <button onClick={deleteHandler}>Delete</button>
+
+    </div>
   )
 }
 
-export default Support
+export default SupportDisplay
