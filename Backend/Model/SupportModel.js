@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const supportSchema = new Schema({
     additonalServices: {
         type: String,
-        required: true,
+        required: false,
     },
     name: {
         type: String,
