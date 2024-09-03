@@ -17,6 +17,7 @@ function InventoryDetails() {
   useEffect(() => {
     fetchInventory().then((data) => setInventory(data.inventory));
   }, []);
+
   return (
     <div>
       <InventoyHeader />
