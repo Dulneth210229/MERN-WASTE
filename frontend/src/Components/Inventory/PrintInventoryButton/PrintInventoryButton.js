@@ -1,6 +1,7 @@
 // PrintInventory.js
 import React from "react";
 import { useReactToPrint } from "react-to-print";
+import downlodImage from "./img/download.png";
 
 const PrintInventory = ({ contentRef }) => {
   const handlePrint = useReactToPrint({
@@ -12,8 +13,9 @@ const PrintInventory = ({ contentRef }) => {
   return (
     <button
       onClick={handlePrint}
-      className="bg-lime-500 w-48 rounded-lg text-center"
+      className="bg-lime-500 w-52 rounded-lg text-center flex flex-row justify-between"
     >
+      <img src={downlodImage} alt="download logo" className="" />
       Generate Report
     </button>
   );
