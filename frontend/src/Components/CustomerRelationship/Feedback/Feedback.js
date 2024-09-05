@@ -1,45 +1,37 @@
-import React, { useEffect } from 'react'
-import './Feedback.css'
-import CrmNav from '../CrmNav/CrmNav'
-import axios from 'axios'
-//import React, {  useState } from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+  
 
-const URL = "http://localhost:5001/feedback"
+function FeedbackDisplay(props) {
+  const {_id, name, email, address, phone, comment, rating} = props.feedback;
 
-const fetchHandler = async () => {
-  return await axios.get(URL).then((res) => res.data);
+const history = useNavigate();
+
+const deleteHandler = async () => {
+  await axios.delete(`http://localhost:5001/feedback/${_id}`)
+  .then(res => res.data)
+  .then(()=>history("/"))
+  .then(()=>history("/FeedbackDisplay"))
 }
 
-function Feedback() {
-
-  const [feedback, setFeedback] = React.useState();
-  useEffect(() => {
-    fetchHandler().then((data) => setFeedback(data.feedback));
-    
-  },[])
-
   return (
-    <div className="form-container">
-      <CrmNav/>
-          <h1>Add Feedback</h1> 
-          <div className="input-group">
-            <input type="text" placeholder="Full Name *" required />
-            <input type="email" placeholder="Email *" required />
-            <input type="text" placeholder="Address *" required />
-            <input type="tel" placeholder="Phone No *" required />
-          </div>        
-          <div className="feedback-category">
-            <p>Feedback Category</p>
-            <label><input type="radio" name="category" value="Service Quality" required /> Service Quality</label>
-            <label><input type="radio" name="category" value="Timeliness of Waste Collections" required /> Timeliness of Waste Collections</label>
-            <label><input type="radio" name="category" value="Staff Behavior" required /> Staff Behavior</label>
-            <label><input type="radio" name="category" value="Pricing" required /> Pricing</label>
-            <label><input type="radio" name="category" value="Environmental Impact" required /> Environmental Impact</label>
-          </div>
-          <textarea placeholder="Comment" rows="4" required></textarea>
-          <button type="submit">Submit</button>
-        </div>
+    <div>
+      <h1>FeedbackDisplay</h1>
+      <br></br>
+      <h1>ID:{_id}</h1>
+      <h1>Name:{name}</h1>
+      <h1>Email:{email}</h1>
+      <h1>Address:{address}</h1>
+      <h1>Phone:{phone}</h1>
+      <h1>Comment:{comment}</h1>
+      <h1>Rating:{rating}</h1>
+      <Link to={`/feedbackdisplay/${_id}`}>Update</Link>
+      <button onClick={deleteHandler}>Delete</button>
+
+    </div>
   )
 }
 
-export default Feedback
+export default FeedbackDisplay
