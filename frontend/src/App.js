@@ -43,8 +43,8 @@ function App() {
           <Route path="/addinventory" element={<AddNewInventory />} />
           <Route path="/crmHome" element={<Crmhome />} />
           <Route path="/complain" element={<Complain />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/support" element={<Support />} />
+          {/* <Route path="/feedback" element={<Feedback />} />
+          <Route path="/support" element={<Support />} /> */}
           <Route path="/annualpaymentplan" element={<AnnualPaymentPlan />} />
           <Route path="/momthlypaymentplan" element={<MomthlyPaymentPlan />} />
           <Route path="/weeklypaymentplan" element={<WeeklyPaymentPlan />} />
