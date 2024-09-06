@@ -5,7 +5,7 @@ import account from "./admin-icon.png";
 
 function UserHomeHeader() {
   return (
-    <div className=" flex flex-col">
+    <div className=" flex flex-col ">
       <div className="flex flex-row justify-between">
         <Link to="/">
           <div className="ml-3">
@@ -16,7 +16,7 @@ function UserHomeHeader() {
           <img
             src={account}
             alt="Account-logo"
-            className="w-16 h-16 m-2 mt-2 mr-3"
+            className="w-16 h-16 m-2 mt-2 mr-10"
           />
         </div>
       </div>
@@ -51,13 +51,17 @@ function UserHomeHeader() {
               </Link>
             </ul>
           </div>
-          <div className="flex p-1">
-            <ul className="flex gap-5 font-bold pr-2 pt-1">
+          <div className="flex ">
+            <ul className="flex gap-5 font-bold pr-2 ">
               <Link to="./sign-in">
-                <li className="hover:underline text-2xl">SignIn</li>
+                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-28 rounded-lg text-center">
+                  SignIn
+                </li>
               </Link>
               <Link to="./sign-up">
-                <li className="hover:underline text-2xl">SignUp</li>
+                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-28 rounded-lg text-center">
+                  SignUp
+                </li>
               </Link>
             </ul>
 
