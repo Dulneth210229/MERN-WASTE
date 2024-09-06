@@ -3,9 +3,9 @@ import UserHomeHeader from "./UserHomeHeader";
 import ImageCarousel from "./ImgTransform/ImgTransform";
 function UserHome() {
   return (
-    <div>
+    <div className="">
       <UserHomeHeader />
-      <div className="">
+      <div>
         <ImageCarousel />
       </div>
     </div>
