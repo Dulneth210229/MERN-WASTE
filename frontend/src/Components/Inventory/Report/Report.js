@@ -3,6 +3,7 @@ import InventoyHeader from "../InventoryHeader/InventoyHeader";
 import PrintInventory from "../PrintInventoryButton/PrintInventoryButton";
 import PrintableInventory from "../PrintableInventory/PrintableInventory";
 import { useRef } from "react";
+
 // Import the new component
 
 function Report() {
