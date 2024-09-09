@@ -36,6 +36,11 @@ function CrmNav() {
                 <h1>Request Support Form</h1>
             </Link>
             </li>
+            <li className="home-li">
+            <Link to="/CrmReport" className="active home-a">
+                <h1>Report</h1>
+            </Link>
+            </li>
         </ul>
     </div>
   )

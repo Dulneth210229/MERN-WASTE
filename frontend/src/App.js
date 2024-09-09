@@ -24,6 +24,7 @@ import InventoryReport from "./Components/Inventory/Report/Report";
 import SupportDisplay from "./Components/CustomerRelationship/SupportDisplay_01/SupportDisplay_01";
 import RequestSupportForm from "./Components/CustomerRelationship/RequestSupportForm/RequestSupportForm";
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
+import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/supportdisplay" element={<SupportDisplay />} />
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
           <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
+          <Route path="/crmreport" element={<CrmReport />} /> 
           
           
 
