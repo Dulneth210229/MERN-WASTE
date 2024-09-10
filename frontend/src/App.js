@@ -14,7 +14,10 @@ import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetail
 import Inventory from "./Components/Inventory/InventoryList/Inventory";
 import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/AddFeedbackForm";
-
+import AccountHome from "./Components/Account/AccountHome/AccountHome";
+import AddSalary from "./Components/Account/AddSalary/AddSalary";
+import ViewSalary from "./Components/Account/ViewSalary/ViewSalary";
+import GenerateSalary from "./Components/Account/GenerateSalary/GenerateSalary";
 function App() {
   //java scripts
   return (
@@ -35,6 +38,12 @@ function App() {
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
+          <Route path="/AccountHome" element={<AccountHome />} />
+          <Route path="/AddSalary" element={<AddSalary />} />
+          <Route path="/ViewSalary" element={<ViewSalary />} />
+          <Route path="/GenerateSalary" element={<GenerateSalary />} />
+        
+          
 
         </Routes>
       </React.Fragment>
