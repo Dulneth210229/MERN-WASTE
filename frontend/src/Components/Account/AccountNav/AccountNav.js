@@ -4,49 +4,50 @@ import {Link} from "react-router-dom";
 
 function AccountNav() {
   return (
-    <header className="bg-slate-300 ">
+    <header className="bg-slate-000 ">
     <div className="flex justify-between items-center max-w-8xl p-2 ">
     <Link to="/">
     <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
       <span className="font-boldt text-3xl">Fresh</span>
       <span className="text-emerald-500 font-bold text-3xl">Colombo</span>
     </h1>
-  </Link>    
+  </Link>   
+  </div> 
 
   <div>
-     <ul className="home-ui">
+     <ul className="acchome">
         
-     <li className="home-li">
-    <Link to="/AccountHome" className="active home-a">
+     <li className="accli">
+    <Link to="/AccountHome" >
       <h1>Home</h1>
     </Link>
      </li>
 
-     <li className="home-li">
-            <Link to="/AddSalary" className="active home-a">
+     <li className="accli">
+            <Link to="/AddSalary" >
                 <h1>Add Salary</h1>
             </Link>
             </li>
 
-    <li className="home-li">
-            <Link to="/ViewSalary" className="active home-a">
+    <li className="accli">
+            <Link to="/ViewSalary" >
                 <h1>View Salary</h1>
             </Link>
             </li>
 
-    <li className="home-li">
-            <Link to="/GenerateSalary" className="active home-a">
+    <li className="accli">
+            <Link to="/GenerateSalary" >
                <h1>Generate Salary</h1>
                </Link>
             </li>
 
-     <li className="home-li">
+     <li className="accli">
             <Link to="./sign-in">
                 <h1>Sign In</h1>
              </Link>
                
            </li>
-    <li className="home-li">
+    <li className="accli">
            <Link to="./sign-up">
                 <h1>Sign Up</h1>
             </Link>    
@@ -57,7 +58,7 @@ function AccountNav() {
     </div>        
 
       
-    </div>
+    
     </header>
   )
 }
