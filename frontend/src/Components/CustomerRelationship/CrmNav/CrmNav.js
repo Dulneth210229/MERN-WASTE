@@ -1,9 +1,10 @@
 import React from 'react'
 import './CrmNav.css'
 import { Link } from "react-router-dom";
+// import logo from "./LOGO.png";
 
 function CrmNav() {
-  return (
+    return (
     <div>
         <ul className="home-ui">
             <li className="home-li">
@@ -22,7 +23,7 @@ function CrmNav() {
             </Link>
             </li>
             <li className="home-li">
-            <Link to="/complain" className="active home-a">
+            <Link to="/AddComplain" className="active home-a">
                 <h1>Complain</h1>
             </Link>
             </li>
@@ -47,3 +48,5 @@ function CrmNav() {
 }
 
 export default CrmNav;
+
+   

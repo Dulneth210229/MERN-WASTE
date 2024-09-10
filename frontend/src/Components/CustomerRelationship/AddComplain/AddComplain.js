@@ -1,8 +1,8 @@
 import React from 'react'
-import './Complain.css'
+import './AddComplain.css'
 import CrmNav from '../CrmNav/CrmNav'
 
-function Complain() {
+function AddComplain() {
   return (
     <div className="form-container">
       <CrmNav />
@@ -28,4 +28,4 @@ function Complain() {
   )
 }
 
-export default Complain
+export default AddComplain
