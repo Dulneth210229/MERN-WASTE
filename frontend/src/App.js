@@ -25,6 +25,7 @@ import SupportDisplay from "./Components/CustomerRelationship/SupportDisplay_01/
 import RequestSupportForm from "./Components/CustomerRelationship/RequestSupportForm/RequestSupportForm";
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
 import UserHome from "./Components/UserHomePage/UserHome";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   //java scripts

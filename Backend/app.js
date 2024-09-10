@@ -8,6 +8,9 @@ const feedbackRouter = require("./Routes/FeedbackRoutes");
 const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 
+const dotenv = require("dotenv");
+
+dotenv.config();
 const app = express();
 const cors = require("cors");
 
