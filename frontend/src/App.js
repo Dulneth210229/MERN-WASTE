@@ -55,10 +55,7 @@ function App() {
           <Route path="/inventoryReport" element={<InventoryReport />} />
           <Route path="/supportdisplay" element={<SupportDisplay />} />
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
-          <Route
-            path="/supportdisplay/:id"
-            element={<UpdateRequestSupport />}
-          />
+          <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
           <Route path="/userHomePage" element={<UserHome />} />
         </Routes>
       </React.Fragment>
