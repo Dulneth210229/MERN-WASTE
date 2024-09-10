@@ -14,6 +14,10 @@ import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetail
 import Inventory from "./Components/Inventory/InventoryList/Inventory";
 import RequestServiceMain from "./Components/RequestService/RequestServiceMain/RequestServiceMain";
 import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/AddFeedbackForm";
+import AccountHome from "./Components/Account/AccountHome/AccountHome";
+import AddSalary from "./Components/Account/AddSalary/AddSalary";
+import ViewSalary from "./Components/Account/ViewSalary/ViewSalary";
+import GenerateSalary from "./Components/Account/GenerateSalary/GenerateSalary";
 import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/UpdateFeedback";
 import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
 import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
@@ -47,6 +51,10 @@ function App() {
           <Route path="/inventoryList" element={<Inventory />} />
           <Route path="/requestservicemain" element={<RequestServiceMain />} />
           <Route path="/AddFeedbackForm" element={<AddFeedbackForm />} />
+          <Route path="/AccountHome" element={<AccountHome />} />
+          <Route path="/AddSalary" element={<AddSalary />} />
+          <Route path="/ViewSalary" element={<ViewSalary />} />
+          <Route path="/GenerateSalary" element={<GenerateSalary />} />
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
           <Route path="/categoryhome" element={<CategoryHome />} />
           <Route path="/categoryadd" element={<CategoryAdd />} />
@@ -56,10 +64,7 @@ function App() {
           <Route path="/inventoryReport" element={<InventoryReport />} />
           <Route path="/supportdisplay" element={<SupportDisplay />} />
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
-          <Route
-            path="/supportdisplay/:id"
-            element={<UpdateRequestSupport />}
-          />
+          <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
           <Route path="/userHomePage" element={<UserHome />} />
         </Routes>
       </React.Fragment>
