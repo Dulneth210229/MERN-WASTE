@@ -5,6 +5,8 @@ import CrmNav from '../CrmNav/CrmNav'
 import axios from 'axios'
 //import Feedback from '../Feedback/Feedback'
 import Feedback from '../Feedback/Feedback'
+import {useReactToPrint} from 'react-to-print'
+import { useRef } from 'react'
 
 
 
@@ -22,12 +24,19 @@ function FeedbackDisplay_01() {
     
   },[])
 
+  const ComponentsRef = useRef();
+  const handlePrint = useReactToPrint({
+        content: () => ComponentsRef.current,
+        DocumentTitle: "Feedback Report",
+        onafterPrint:() =>alert("Feedback Report Printed"),
+  })
+
   return (
     
     <div className="form-container">
       <CrmNav/>
           <h1>Add Feedback</h1>
-           <div>
+           <div ref={ComponentsRef}>
           {feedback && feedback.map((feedback, i) => (
             <div key={i}>
               <Feedback feedback={feedback}/>
@@ -50,7 +59,9 @@ function FeedbackDisplay_01() {
           </div>
           <textarea placeholder="Comment" rows="4" required></textarea>
           <button type="submit">Submit</button> */}
+          <button onClick={handlePrint}>Download Feedback Report</button>
         </div>
+        
         
   )
 }

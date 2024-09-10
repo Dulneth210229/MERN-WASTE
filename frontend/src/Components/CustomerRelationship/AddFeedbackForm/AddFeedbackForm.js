@@ -25,7 +25,7 @@ function AddFeedbackForm() {
         const handleSubmit = (e) => {
             e.preventDefault();
             console.log(inputs);
-            sendRequest().then(()=>history('FeedbackDisplay_01'));
+            sendRequest().then(()=>history('FeedbackDisplay'));
         }
 
         const sendRequest = async () => {
