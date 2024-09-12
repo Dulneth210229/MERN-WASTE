@@ -1,97 +1,121 @@
 const Employee = require("../Model/EmployeeModel");
 
 
-const getEmployee = async (req, res, next)=>{
-    let Employee;
-//get all employees
-    try{
-        Employee = await employee.find();
-    }catch(err){
+const getEmployee = async (req, res, next) => {
+    let employees;
+    try {
+        employees = await Employee.find();
+    } catch (err) {
         console.log(err);
+        return res.status(500).json({ message: "Internal server error" });
     }
-//not found
-    if(!Employee){
-        return res.status(404).json({message:"Employee not found"});
+
+    // Check if employees array is empty
+    if (employees.length === 0) {
+        return res.status(404).json({ message: "No employees found" });
     }
-//display all employees
-    return res.status(200).json({Employee});
+
+    return res.status(200).json({ employees });
 };
 
 //data Insert
 const addEmployee = async (req, res, next)=>{
     const {employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone}=req.body;
-    let Employee;
+    let employee;
     try{
-        Employee = new Employees({employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone});
-        await Employee.save();
+        employee = new Employee({employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone});
+        await employee.save();
 }catch (err){
     console.log(err);
 }
 
 //not insert Employee
-if(!Employee )
+if(!employee )
 {
     return res.status(404).json({message:"unable to add Employee"});
 }
-return res.status(200).json({Employee});
+return res.status(200).json({employee});
 };
 
 //Get by Id
-const getById = async (req, res, next)=>{
-    const id = req.params.id;
-    let Employee;
-    try{
-        Employee = await employee.findById(id);
-    }catch (err){
+const getById = async (req, res, next) => {
+    let employees;
+    const employeeId = req.params.id;
+
+    try {
+        employees = await Employee.find();
+    } catch (err) {
         console.log(err);
+        return res.status(500).json({ message: "Internal server error" });
     }
-//not available Employee
-if(!Employee )
-    {
-        return res.status(404).json({message:"Employee not found"});
+
+    if (employees.length === 0) {
+        return res.status(404).json({ message: "No employees found" });
     }
-    return res.status(200).json({Employee});
 
+    const employee = employees.find(emp => emp.employeeId === employeeId);
 
-
+    if (!employee) {
+        return res.status(404).json({ message: "Employee not found" });
+    }
+    return res.status(200).json({ employee });
 };
 
 //update employee details
-const updateEmployee = async (req, res, next)=>{
-    const id = req.params.id;
-    const {employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone}=req.body;
+const updateEmployee = async (req, res, next) => {
+    const employeeId = req.params.id;
+    const {
+        employeeFirstName,
+        employeeLastName,
+        employeeCategory,
+        employeeAddress,
+        employeeEmail,
+        employeePhone
+    } = req.body;
 
-    let Employee;
-    try{
-        Employee = await employee.findByIdAndUpdate(id, 
-            {employeeId: employeeId,employeeFirstName: employeeFirstName, employeeLastName: employeeLastName, employeeCatogory:employeeCatogory, employeeAddress:employeeAddress, employeeEmail: employeeEmail, employeePhone:employeePhone });
-            Employee = await Employee.save();
-    }catch(err){
-        console.log(err);
-    }
+    try {
 
-    
-if(!Employee )
-    {
-        return res.status(404).json({message:"Unable to update Employee Details "});
+        const updatedEmployee = await Employee.findOneAndUpdate(
+            { employeeId },
+            {
+                employeeFirstName,
+                employeeLastName,
+                employeeCategory,
+                employeeAddress,
+                employeeEmail,
+                employeePhone
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedEmployee) {
+            return res.status(404).json({ message: "Employee not found" });
+        }
+
+        return res.status(200).json({ employee: updatedEmployee });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Internal server error" });
     }
-    return res.status(200).json({Employee});
 };
 
 //delete Employee
-const deleteEmployee = async (req, res, next)=>{
-    const id = req.params.id;
-    let Employee;
-    try{
-        Employee= await employee.findByIdAndDelete(id)
-    }catch(err){
-        console.log(err);
+const deleteEmployee = async (req, res, next) => {
+    const employeeId = req.params.id;
+    let deletedEmployee;
+
+    try {
+        deletedEmployee = await Employee.findOneAndDelete({ employeeId });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Internal server error" });
     }
-    if(!Employee )
-        {
-            return res.status(404).json({message:"Unable to Delete Employee Details "});
-        }
-        return res.status(200).json({Employee});
+
+    if (!deletedEmployee) {
+        return res.status(404).json({ message: "Employee not found" });
+    }
+
+    return res.status(200).json({ message: "Employee deleted successfully", employee: deletedEmployee });
 };
 
 exports.getEmployee = getEmployee;
