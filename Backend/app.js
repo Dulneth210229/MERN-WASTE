@@ -8,6 +8,7 @@ const feedbackRouter = require("./Routes/FeedbackRoutes");
 const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
+const employeerouter = require("./Routes/EmployeeRoutes");
 
 const app = express();
 const cors = require("cors");
@@ -26,6 +27,7 @@ app.use("/category", categoryrouter);
 app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
+app.use("/employee", employeerouter);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
