@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 function Salary(props) {
-  if (!props.account) {
-    return <div className="text-center p-12 bg-gray-100 border border-gray-300 rounded-lg max-w-md mx-auto text-lg text-gray-700">Salary Details</div>;
-  }
- 
+  //if (!props.account) {
+    //return <div className="text-center p-12 bg-gray-100 border border-gray-300 rounded-lg max-w-md mx-auto text-lg text-gray-700">Salary Details</div>;
+//}
+
+  
   const {
     _id,
     First_Name,
@@ -19,6 +23,16 @@ function Salary(props) {
     EPF, 
     Total_Salary
   } = props.account;
+
+  //delete
+  const history = useNavigate();
+  const deleteHandler = async()=>{
+    await axios.delete(`http://localhost:5001/account/${ _id}`)
+    .then(res=>res.data)
+    .then(() =>history("/"))
+    .then(() =>history("/ViewSalary"))
+    
+  }
 
   return (
     <div className="bg-gray-50 p-6 rounded-lg max-w-4xl mx-auto shadow-md text-center">
@@ -76,7 +90,7 @@ function Salary(props) {
               <Link to={`/ViewSalary/${_id}`} >
                 <button className="inline-block bg-green-500 text-white py-1 px-3 rounded-md hover:bg-green-600"> Update</button>
                </Link>
-              <button className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 ml-2">Delete</button>
+              <button onClick={deleteHandler}className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 ml-2">Delete</button>
             </td>
           </tr>
         </tbody>
