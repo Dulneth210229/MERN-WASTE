@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import RequestNav from "../RequestNav/RequestNav";
 
 function UpdateRequest() {
   const [inputs, setInputs] = useState({});
@@ -46,6 +47,7 @@ function UpdateRequest() {
 
   return (
     <div>
+      <RequestNav />
       <h1>Update Request</h1>
 
       <body class="flex items-center justify-center min-h-screen bg-gray-100">
