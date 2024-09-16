@@ -29,6 +29,7 @@ import SupportDisplay from "./Components/CustomerRelationship/SupportDisplay_01/
 import RequestSupportForm from "./Components/CustomerRelationship/RequestSupportForm/RequestSupportForm";
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
 import UserHome from "./Components/UserHomePage/UserHome";
+import UpdateRequests from "./Components/RequestService/UpdateRequest/UpdateRequest";
 
 function App() {
   //java scripts
@@ -65,6 +66,7 @@ function App() {
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
           <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
           <Route path="/userHomePage" element={<UserHome />} />
+          <Route path="/viewrequests/:id" element={<UpdateRequests />} />
         </Routes>
       </React.Fragment>
     </div>

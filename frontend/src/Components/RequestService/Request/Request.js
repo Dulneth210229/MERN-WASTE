@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import RequestNav from '../RequestNav/RequestNav'
 
 function Request(props) {
@@ -14,7 +15,7 @@ function Request(props) {
       <h1>Phone Number:{phoneNumber}</h1>
       <h1>Date:{date}</h1>
       <h1>Time:{time}</h1>
-      <button>Update</button>
+      <Link to={`/viewrequests/${_id}`}>Update</Link>
       <button>Delete</button>
       <br></br><br></br><br></br><br></br>
     </div>
