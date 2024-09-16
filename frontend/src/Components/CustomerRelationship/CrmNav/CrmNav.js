@@ -1,9 +1,10 @@
 import React from 'react'
-import './CrmNav.css'
+// import './CrmNav.css'
 import { Link } from "react-router-dom";
 
+
 function CrmNav() {
-  return (
+    return (
     <div>
         <ul className="home-ui">
             <li className="home-li">
@@ -22,18 +23,23 @@ function CrmNav() {
             </Link>
             </li>
             <li className="home-li">
-            <Link to="/complain" className="active home-a">
-                <h1>Complain</h1>
+            <Link to="/complaindisplay" className="active home-a">
+                <h1>Complain Display</h1>
+            </Link>
+            </li>
+            <li className="home-li">
+            <Link to="/AddComplainForm" className="active home-a">
+                <h1>Make Complain</h1>
             </Link>
             </li>
             <li className="home-li">
             <Link to="/AddFeedbackForm" className="active home-a">
-                <h1>Add feedback form</h1>
+                <h1>Add Feedback</h1>
             </Link>
             </li>
             <li className="home-li">
             <Link to="/RequestSupportForm" className="active home-a">
-                <h1>Request Support Form</h1>
+                <h1>Request Support</h1>
             </Link>
             </li>
             <li className="home-li">
@@ -47,3 +53,5 @@ function CrmNav() {
 }
 
 export default CrmNav;
+
+   
