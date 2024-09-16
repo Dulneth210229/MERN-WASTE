@@ -29,7 +29,9 @@ import SupportDisplay from "./Components/CustomerRelationship/SupportDisplay_01/
 import RequestSupportForm from "./Components/CustomerRelationship/RequestSupportForm/RequestSupportForm";
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
 import UserHome from "./Components/UserHomePage/UserHome";
-import AddComplain from "./Components/CustomerRelationship/AddComplain/AddComplain";
+import ComplainDisplay from "./Components/CustomerRelationship/ComplainDisplay_01/ComplainDisplay_01";
+import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/AddComplainForm";
+import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 
 
 
@@ -69,7 +71,9 @@ function App() {
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
           <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
           <Route path="/userHomePage" element={<UserHome />} />
-          <Route path="/AddComplain" element={<AddComplain />} />
+          <Route path="/complaindisplay" element={<ComplainDisplay />} />
+          <Route path="/AddComplainForm" element={<AddComplainForm />} />
+          <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           
 
           
