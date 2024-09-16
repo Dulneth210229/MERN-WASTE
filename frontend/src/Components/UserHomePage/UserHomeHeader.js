@@ -2,10 +2,15 @@ import React from "react";
 import logo from "./LOGO.png";
 import { Link } from "react-router-dom";
 import account from "./admin-icon.png";
+import customerServices from "./ImgTransform/img/cusromerServices.png";
+import paymentPlan from "./ImgTransform/img/payment.png";
+import requestServices from "./ImgTransform/img/requestServices.png";
+import home from "./ImgTransform/img/home.png";
+import recycleGuid from "./ImgTransform/img/guid.png";
 
 function UserHomeHeader() {
   return (
-    <div className=" flex flex-col">
+    <div className=" flex flex-col ">
       <div className="flex flex-row justify-between">
         <Link to="/">
           <div className="ml-3">
@@ -16,7 +21,7 @@ function UserHomeHeader() {
           <img
             src={account}
             alt="Account-logo"
-            className="w-16 h-16 m-2 mt-2 mr-3"
+            className="w-16 h-16 m-2 mt-2 mr-10"
           />
         </div>
       </div>
@@ -25,39 +30,68 @@ function UserHomeHeader() {
           <div className="mx-auto ml-3">
             <ul className="flex gap-4 font-bold ">
               <Link to="">
-                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-28 rounded-lg text-center">
+                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-32 flex  flex-row rounded-lg text-center">
+                  <img
+                    src={home}
+                    alt="customerServices"
+                    className="w-9 h-9 mr-2 ml-1 "
+                  />
                   Home
                 </li>
               </Link>
               <Link to="">
-                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-56 rounded-lg text-center">
+                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-72 flex  flex-row rounded-lg text-center">
+                  <img
+                    src={customerServices}
+                    alt="customerServices"
+                    className="w-10 h-10 mr-2 ml-1 "
+                  />
                   Customer Services
                 </li>
               </Link>
               <Link to="">
-                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-56 rounded-lg text-center">
+                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-64  flex  flex-row rounded-lg text-center">
+                  <img
+                    src={requestServices}
+                    alt="customerServices"
+                    className="w-10 h-10 mr-2 ml-1 "
+                  />
                   Request Services
                 </li>
               </Link>
               <Link to="">
-                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-28 rounded-lg text-center">
+                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-36 flex  flex-row rounded-lg text-center">
+                  <img
+                    src={paymentPlan}
+                    alt="customerServices"
+                    className="w-10 h-10 mr-2 ml-1 "
+                  />
                   Pay Bill
                 </li>
               </Link>
               <Link to="">
-                <li className="hover:bg-slate-500 text-2xl  bg-slate-400 h-12 pt-1 w-44 rounded-lg text-center">
+                <li className="hover:bg-slate-400 text-2xl  h-12 pt-1 w-52 flex  flex-row rounded-lg text-center">
+                  <img
+                    src={recycleGuid}
+                    alt="customerServices"
+                    className="w-9 h-9 mr-2 ml-1 "
+                  />
                   Recycle Guid
                 </li>
               </Link>
             </ul>
           </div>
-          <div className="flex p-1">
-            <ul className="flex gap-5 font-bold pr-2 pt-1">
+          <div className="flex ">
+            <ul className="flex gap-5 font-bold pr-2 ">
               <Link to="./sign-in">
-                <li className="hover:underline text-2xl">SignIn</li>
+                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-28 rounded-lg text-center">
+                  SignIn
+                </li>
               </Link>
               <Link to="./sign-up">
-                <li className="hover:underline text-2xl">SignUp</li>
+                <li className="hover:bg-slate-400 text-2xl  h-12 pt-1 w-28 rounded-lg text-center">
+                  SignUp
+                </li>
               </Link>
             </ul>
 

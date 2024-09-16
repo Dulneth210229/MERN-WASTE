@@ -20,16 +20,18 @@ const ImageCarousel = () => {
   }, [images.length]); // Include images.length as a dependency
 
   return (
-    <div className="mt-16">
+    <div className="mt-10 p-10  ">
       {images.map((image, index) => (
-        <img
-          key={index}
-          src={require(`${image}`)} // Corrected image path
-          alt={`Slide ${index + 1}`}
-          className={`absolute w-fit h-fit transition-opacity  duration-1000 ${
-            index === currentImage ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <div>
+          <img
+            key={index}
+            src={require(`${image}`)} // Corrected image path
+            alt={`Slide ${index + 1}`}
+            className={`absolute right-0 w-full h-full transition-opacity py-10 px-2 rounded-lg duration-1000 ease-in ${
+              index === currentImage ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        </div>
       ))}
     </div>
   );
