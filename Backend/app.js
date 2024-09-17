@@ -9,6 +9,7 @@ const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
+const { loginAdmin } = require("./ErrorHandler/Loginhandler");
 
 const dotenv = require("dotenv");
 
@@ -31,6 +32,7 @@ app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
+app.post("/loginAdmin", loginAdmin);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
@@ -39,16 +41,3 @@ mongoose
     app.listen(5001, () => console.log("Server is running on port 5001"));
   })
   .catch((err) => console.log(err));
-
-// //call register model
-// require("./Model/InventoryRegister");
-// const User = mongoose.model("InventoryRegister");
-// app.post("/register", async (req, res) => {
-//   const { fname, sname, email, password } = req.body;
-//   try {
-//     await User.create({ fname, sname, email, password });
-//     res.send({ status: "ok" });
-//   } catch (err) {
-//     res.send({ status: "error" });
-//   }
-// });

@@ -14,8 +14,6 @@ function Nav() {
       </Link>
       <header className="bg-slate-300 ">
         <div className="flex justify-between items-center max-w-8xl p-2 ">
-          <div></div>
-
           <ul className="flex gap-9 font-bold">
             <Link to="./">
               <li className="hover:underline text-2xl">Home</li>
@@ -27,10 +25,10 @@ function Nav() {
           </ul>
           <div className="flex p-1 mr-5">
             <ul className="flex gap-5 font-bold pr-2 pt-1">
-              <Link to="./sign-in">
+              <Link to="/login">
                 <li className="hover:underline text-2xl">SignIn</li>
               </Link>
-              <Link to="./sign-up">
+              <Link to="/AdminRegister">
                 <li className="hover:underline text-2xl">SignUp</li>
               </Link>
             </ul>
