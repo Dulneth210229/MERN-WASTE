@@ -36,8 +36,8 @@ import SalaryDetails from "./Components/Account/SalaryDetails/SalaryDetails";
 import ComplainDisplay from "./Components/CustomerRelationship/ComplainDisplay_01/ComplainDisplay_01";
 import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/AddComplainForm";
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
-
-
+import "react-toastify/dist/ReactToastify.css";
+import Register from "./Components/InventoryReg/Register";
 
 function App() {
   //java scripts
@@ -74,7 +74,10 @@ function App() {
           <Route path="/inventoryReport" element={<InventoryReport />} />
           <Route path="/supportdisplay" element={<SupportDisplay />} />
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
-          <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
+          <Route
+            path="/supportdisplay/:id"
+            element={<UpdateRequestSupport />}
+          />
           <Route path="/userHomePage" element={<UserHome />} />
           <Route path="/viewrequests/:id" element={<UpdateRequests />} />
           <Route path="/ViewSalary/:id" element={<UpdateSalary />} />
@@ -82,10 +85,7 @@ function App() {
           <Route path="/complaindisplay" element={<ComplainDisplay />} />
           <Route path="/AddComplainForm" element={<AddComplainForm />} />
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
-          
-
-          
-
+          <Route path="/AdminRegister" element={<Register />} />
         </Routes>
       </React.Fragment>
     </div>
