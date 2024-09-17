@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
-import AccountNav from '../AccountNav/AccountNav';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+import AccountNav from '../AccountNav/AccountNav';
 
-function AddSalary() {
-  const EPF = 500;
-  const ETF = 500;
-  const history = useNavigate();// Creating a function to navigate to different routes after form submission
-  const [inputs, setinputs] = useState({
-    First_Name: "",
-    Last_Name: "",
-    NIC: "",
-    Employee_ID: "",
-    Designation: "",
-    Basic_Salary: "",
-    Allowance: "", 
-    ETF: "",
-    EPF: "", 
-    Total_Salary: 0,
-  });
+function UpdateSalary() {
+  const [inputs, setinputs] = useState({});
+  const navigate = useNavigate();
+  const {id } = useParams(); // Destructure the account ID from params
 
-// Function to handle changes in form inputss.
+  // Fetch data on mount
+  useEffect(() => {
+    const fetchHandler = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5001/account/${id}`);
+        setinputs(response.data.account); // Set the fetched account data into state
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchHandler();
+  }, [id]); 
+
+  // Update salary information
+  const sendRequest = async () => {
+    try {
+      await axios.put(`http://localhost:5001/account/${id}`, {
+        ...inputs,
+        Basic_Salary: Number(inputs.Basic_Salary),
+        Allowance: Number(inputs.Allowance),
+        ETF: Number(inputs.ETF),
+        EPF: Number(inputs.EPF),
+        Total_Salary: Number(inputs.Total_Salary),
+      });
+    } catch (error) {
+      console.error("Error updating data", error);
+    }
+  };
+
+  // Handle form inputs change
   const handleChange = (e) => {
     setinputs({
       ...inputs,
@@ -28,47 +45,17 @@ function AddSalary() {
     });
   };
 
-  const totalSalary =(basic, allowance)=> {
-    
-    return(EPF + ETF +Number(basic)  + Number(allowance))
-    
-  }
-// Function to handle form submission.
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
-    //alert (totalSalary(inputs.Basic_Salary,inputs.Allowance))
-    setinputs(()=>({
-      ...inputs,
-      Total_Salary
-    }));
-   
-    
-    sendRequest(Total_Salary).then(() => history('/ViewSalary')); // Fixing the route path
-  };
-// Function to send HTTP POST request with form data to the server.
-  const sendRequest = async (Total_Salary) => {
-    //alert(inputs.Total_Salary)
-    await axios.post("http://localhost:5001/account", {
-      First_Name: String(inputs.First_Name),
-      Last_Name: String(inputs.Last_Name),
-      NIC: String(inputs.NIC),
-      Employee_ID: String(inputs.Employee_ID),
-      Designation: String(inputs.Designation),
-      Basic_Salary: Number(inputs.Basic_Salary),
-      Allowance: Number(inputs.Allowance),
-      ETF: Number(ETF),
-      EPF: Number(EPF),
-      Total_Salary: Number(Total_Salary),
-    }).then(res => res.data);
+    sendRequest().then(() => navigate('/ViewSalary')); // Navigate after submission
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
       <AccountNav />
       <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Add Salary</h1>
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Update Salary</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700">First Name:</label>
@@ -154,7 +141,41 @@ function AddSalary() {
             />
           </div>
 
-          
+          <div>
+            <label className="block text-gray-700">ETF:</label>
+            <input
+              type="number"
+              name="ETF"
+              onChange={handleChange}
+              value={inputs.ETF}
+              required
+              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700">EPF:</label>
+            <input
+              type="number"
+              name="EPF"
+              onChange={handleChange}
+              value={inputs.EPF}
+              required
+              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700">Total Salary:</label>
+            <input
+              type="number"
+              name="Total_Salary"
+              onChange={handleChange}
+              value={inputs.Total_Salary}
+              required
+              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
           <div className="text-center">
             <button
@@ -169,5 +190,4 @@ function AddSalary() {
     </div>
   );
 }
-
-export default AddSalary;
+export default UpdateSalary;
