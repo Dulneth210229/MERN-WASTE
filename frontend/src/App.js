@@ -6,7 +6,7 @@ import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
 import InventoryHome from "./Components/Inventory/InvemtoryHome/InventoryHome";
 import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
-import Complain from "./Components/CustomerRelationship/Complain/Complain";
+// import Complain from "./Components/CustomerRelationship/Complain/ComplainDetails";
 import FeedbackDisplay from "./Components/CustomerRelationship/FeedbackDisplay_01/FeedbackDisplay_01";
 // import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
@@ -32,6 +32,12 @@ import UserHome from "./Components/UserHomePage/UserHome";
 import UpdateSalary from "./Components/Account/UpdateSalary/UpdateSalary";
 import AddSalary from "./Components/Account/AddSalary/AddSalary";
 import SalaryDetails from "./Components/Account/SalaryDetails/SalaryDetails";
+import ComplainDisplay from "./Components/CustomerRelationship/ComplainDisplay_01/ComplainDisplay_01";
+import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/AddComplainForm";
+import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
+
+
+
 
 function App() {
   //java scripts
@@ -46,7 +52,7 @@ function App() {
           <Route path="/inventoryHome" element={<InventoryHome />} />
           <Route path="/addinventory" element={<AddNewInventory />} />
           <Route path="/crmHome" element={<Crmhome />} />
-          <Route path="/complain" element={<Complain />} />
+          {/* <Route path="/complain" element={<Complain />} /> */}
           <Route path="/feedbackdisplay" element={<FeedbackDisplay />} />
           {/* <Route path="/support" element={<Support />} /> */}
           <Route path="/inventoryDeatails" element={<InventoryDetails />} />
@@ -72,8 +78,12 @@ function App() {
           <Route path="/userHomePage" element={<UserHome />} />
           <Route path="/ViewSalary/:id" element={<UpdateSalary />} />
           <Route path="/SalaryDetails" element={<SalaryDetails />} />
-         
+          <Route path="/complaindisplay" element={<ComplainDisplay />} />
+          <Route path="/AddComplainForm" element={<AddComplainForm />} />
+          <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
+          
 
+          
 
         </Routes>
       </React.Fragment>

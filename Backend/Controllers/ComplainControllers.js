@@ -19,12 +19,12 @@ const getAllComplain = async (req, res, next) => {
 //data insert
 const addComplain = async (req, res, next) => {
 
-    const {name, email, address, complainCategory, description, attachments} = req.body;
+    const {fullName, email, address, complainCategory, description, attachements} = req.body;
 
     let complain;
 
     try{
-        complain = new Complain({name, email, address, complainCategory, description, attachments});
+        complain = new Complain({fullName, email, address, complainCategory, description, attachements});
         await complain.save();
     }catch(err){
         console.log(err);
@@ -62,13 +62,13 @@ const updateComplain = async (req, res, next) => {
 
     const id = req.params.id;
 
-    const {name, email, address, complainCategory, description, attachments} = req.body;
+    const {fullName, email, address, complainCategory, description, attachements} = req.body;
 
     let complains;
 
     try{
       complains = await Complain.findByIdAndUpdate(id, 
-            {name: name, email: email, address: address, complainCategory: complainCategory, description: description, attachments: attachments});
+            {fullName: fullName, email: email, address: address, complainCategory: complainCategory, description: description, attachements: attachements});
             complains = await complains.save();
     }catch(err){
         console.log(err);
