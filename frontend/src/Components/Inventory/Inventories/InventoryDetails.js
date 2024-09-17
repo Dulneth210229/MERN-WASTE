@@ -69,11 +69,12 @@ function InventoryDetails() {
         </div>
       </div>
       <hr className="border-2" />
-
       <div className="mt-10">
         <table className="border-2 mx-auto">
           <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-48 border-green-500">Product Name</th>
+            <th className="border-2 p-2 w-48 border-green-500 rounded-lg">
+              Product Name
+            </th>
             <th className="border-2 p-2 w-48  border-green-500">
               Product Category
             </th>
