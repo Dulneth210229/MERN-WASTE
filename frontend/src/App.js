@@ -38,6 +38,8 @@ import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/A
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
+import FirstHome from "./Components/FirstHome/FirstHome";
+import Login from "./Components/Login/Login";
 
 function App() {
   //java scripts
@@ -47,6 +49,7 @@ function App() {
       <React.Fragment>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/firstPage" element={<FirstHome />} />
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
@@ -86,6 +89,7 @@ function App() {
           <Route path="/AddComplainForm" element={<AddComplainForm />} />
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </React.Fragment>
     </div>
