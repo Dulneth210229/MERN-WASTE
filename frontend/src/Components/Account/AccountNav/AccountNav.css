@@ -1,0 +1,84 @@
+/* Basic styling for the header */
+header {
+  background-color: #f0f4f8; /* Light grey background */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e0e0e0; /* Adds a subtle bottom border */
+}
+
+/* Logo styling */
+header h1 {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+header h1 span:first-child {
+  color: #000; /* Black for "Fresh" */
+}
+
+header h1 span:last-child {
+  color: #2f9e44; /* Green color matching the logo */
+}
+
+
+/* Navigation list */
+.acchome {
+  display: flex;
+  gap: 20px; /* Spacing between nav items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List items */
+.accli h1 {
+  font-size: 16px;
+  color: #000; /* Black text color */
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accli h1:hover {
+  color: #2f9e44; /* Hover effect color change to match the logo */
+  transition: color 0.3s;
+}
+
+/* SignIn and SignUp */
+.accli:last-child h1, 
+.accli:nth-last-child(2) h1 {
+  margin-left: 20px; /* Additional spacing for SignIn and SignUp */
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.acchome{
+  overflow: hidden;
+  background-color:#d3dfea;
+}
+
+.accli{
+  font-size: 50px;
+  color:black;
+
+}*/
+
+
