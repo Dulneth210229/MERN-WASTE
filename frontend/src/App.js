@@ -30,6 +30,7 @@ import RequestSupportForm from "./Components/CustomerRelationship/RequestSupport
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
 import UserHome from "./Components/UserHomePage/UserHome";
 import "react-toastify/dist/ReactToastify.css";
+import Register from "./Components/InventoryReg/Register";
 
 function App() {
   //java scripts
@@ -64,8 +65,12 @@ function App() {
           <Route path="/inventoryReport" element={<InventoryReport />} />
           <Route path="/supportdisplay" element={<SupportDisplay />} />
           <Route path="/RequestSupportForm" element={<RequestSupportForm />} />
-          <Route path="/supportdisplay/:id" element={<UpdateRequestSupport />} />
+          <Route
+            path="/supportdisplay/:id"
+            element={<UpdateRequestSupport />}
+          />
           <Route path="/userHomePage" element={<UserHome />} />
+          <Route path="/AdminRegister" element={<Register />} />
         </Routes>
       </React.Fragment>
     </div>
