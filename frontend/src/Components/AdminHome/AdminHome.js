@@ -46,7 +46,7 @@ function Home() {
               Employee Management
             </button>
           </Link>
-          <Link to="">
+          <Link to="/AccountHome">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-72 hover:opacity-95">
               Pay-Roll Management
             </button>
