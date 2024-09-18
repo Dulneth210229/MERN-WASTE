@@ -33,6 +33,7 @@ app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
 app.post("/loginAdmin", loginAdmin);
+app.use("/files", express.static("files"));
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
@@ -41,3 +42,44 @@ mongoose
     app.listen(5001, () => console.log("Server is running on port 5001"));
   })
   .catch((err) => console.log(err));
+
+//Pdf_________
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./file");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+//Insert Model part
+require("./Model/PdfModel");
+const pdfSchema = mongoose.model("PdfDetails");
+const upload = multer({ storage });
+
+app.post("/uploadfile", upload.single("file"), async (req, res) => {
+  console.log(res.file);
+  const title = req.body.title;
+  const pdf = req.file.filename;
+  try {
+    await pdfSchema.create({ title: title, pdf: pdf });
+    console.log("File uploaded successfully");
+    res.send({ status: 200 });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error" });
+  }
+});
+
+app.get("/getFile", async (req, res) => {
+  try {
+    const data = await pdfSchema.find({});
+    res.send({ status: 200, data: data });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error" });
+  }
+});

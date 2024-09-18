@@ -3,6 +3,7 @@ import InventoyHeader from "../InventoryHeader/InventoyHeader";
 import PrintInventory from "../PrintInventoryButton/PrintInventoryButton";
 import PrintableInventory from "../PrintableInventory/PrintableInventory";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 // Import the new component
 
@@ -41,10 +42,16 @@ function Report() {
           </button>
         </div>
         <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 ">
-          <div className=" w-auto h-12 bg-green-200 rounded-lg "></div>
-          <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
-            Generate Report
-          </button>
+          <div className=" w-auto h-12 bg-green-200 rounded-lg ">
+            <div className="text-center font-medium text-2xl text-slate-900 p-1">
+              Upload Report
+            </div>
+          </div>
+          <Link to="/sendReport">
+            <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
+              Upload Report
+            </button>
+          </Link>
         </div>
       </div>
       {/* Hidden Printable Inventory */}

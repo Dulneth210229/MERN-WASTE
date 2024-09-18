@@ -40,6 +40,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
+import SendReport from "./Components/Inventory/SendReport/SendReport";
 
 function App() {
   //java scripts
@@ -90,6 +91,7 @@ function App() {
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sendreport" element={<SendReport />} />
         </Routes>
       </React.Fragment>
     </div>
