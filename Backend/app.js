@@ -10,6 +10,11 @@ const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
 const { loginAdmin } = require("./ErrorHandler/Loginhandler");
+const userRouter = require("./Routes/userRoute");
+const adminRouter = require("./Routes/adminRoute");
+const driverRouter = require("./Routes/driverRoute");
+const binRouter = require("./Routes/binRoute");
+
 
 const dotenv = require("dotenv");
 
@@ -33,6 +38,10 @@ app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
 app.post("/loginAdmin", loginAdmin);
+app.use("/users", userRouter);
+app.use("/drivers", driverRouter);
+app.use("/bins", binRouter);
+app.use("/admins", adminRouter);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
