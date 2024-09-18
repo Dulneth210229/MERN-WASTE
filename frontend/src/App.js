@@ -41,6 +41,7 @@ import Register from "./Components/InventoryReg/Register";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
 import SendReport from "./Components/Inventory/SendReport/SendReport";
+import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 
 function App() {
   //java scripts
@@ -92,6 +93,7 @@ function App() {
           <Route path="/AdminRegister" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sendreport" element={<SendReport />} />
+          <Route path="/addorder" element={<AddNewOrder />} />
         </Routes>
       </React.Fragment>
     </div>

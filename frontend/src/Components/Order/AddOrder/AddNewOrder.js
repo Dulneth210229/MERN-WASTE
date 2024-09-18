@@ -1,0 +1,291 @@
+import React from "react";
+import { useState } from "react";
+import Header from "../../Inventory/InventoryHeader/InventoyHeader";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+function AddNewOrder() {
+  const history = useNavigate();
+  const [input, setInput] = useState({
+    productName: "",
+    productCategory: "",
+    seller: "",
+    deliveryType: "",
+    trakingID: "",
+    orderDescription: "",
+    unitPrice: "",
+    quantity: "",
+    orderTotal: "",
+    paymentType: "",
+  });
+
+  //   const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setInput((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+    sendRequest().then(() => history("/inventoryDeatails"));
+  };
+
+  const sendRequest = async () => {
+    await axios
+      .post("http://Localhost:5001/order", {
+        productName: String(input.productName),
+        productCategory: String(input.productCategory),
+        seller: String(input.seller),
+        deliveryType: String(input.deliveryType),
+        trakingID: String(input.trakingID),
+        orderDescription: String(input.orderDescription),
+        unitPrice: Number(input.unitPrice),
+        quantity: Number(input.quantity),
+        orderTotal: Number(input.orderTotal),
+        paymentType: String(input.paymentType),
+      })
+      .then((res) => res.data);
+  };
+
+  return (
+    <div>
+      <Header />
+      <div>
+        <h1 className="text-5xl font-semibold text-slate-700 text-center my-5">
+          Add New Order
+        </h1>
+        <hr />
+      </div>
+      <div>
+        <form
+          className=" w-4/5 mx-auto mt-5 p-5 rounded-lg flex flex-row"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex flex-row bg-green-100 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
+            <div>
+              <div className="ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Product Name
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.productName}
+                  name="productName"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Product Name"
+                />
+              </div>
+              <div className="mt-3 ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Product Category
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.productCategory}
+                  name="productCategory"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Product Category"
+                />
+              </div>
+              <div className="mt-3 ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Sellar
+                </label>
+                <br />
+                <select
+                  name="seller"
+                  onChange={handleChange}
+                  value={input.seller}
+                  class="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                >
+                  <option value="" disabled selected className="text-slate-700">
+                    Select the seller
+                  </option>
+                  <option>EcoWaste Supplies Ltd</option>
+                  <option>GreenTech Waste Solutions</option>
+                  <option>Urban CleanTech Suppliers</option>
+                  <option>SustainWaste Industries</option>
+                  <option>EnviroPro Waste Solutions</option>
+                </select>
+              </div>
+              <div className="mt-3 ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Delivery Type
+                </label>
+                <br />
+                <select
+                  name="deliveryType"
+                  onChange={handleChange}
+                  value={input.deliveryType}
+                  class="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                >
+                  <option value="" disabled selected className="text-slate-700">
+                    Select the delivery type
+                  </option>
+                  <option>Standard Delivery</option>
+                  <option>Express Delivery</option>
+                  <option>Scheduled Delivery</option>
+                  <option>Same-Day Delivery</option>
+                  <option>Next-Day Delivery</option>
+                </select>
+              </div>
+              <div className="mt-3 ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Traking ID
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.trakingID}
+                  name="trakingID"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Traking ID"
+                />
+              </div>
+              <div className="mt-3 ml-8">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Payment Type
+                </label>
+                <br />
+                <select
+                  name="paymentType"
+                  onChange={handleChange}
+                  value={input.paymentType}
+                  class="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                >
+                  <option value="" disabled selected className="text-slate-700">
+                    Select the payment type
+                  </option>
+                  <option>Credit/Debit Card</option>
+                  <option>Bank Transfer</option>
+                  <option>Cash on Delivery (COD)</option>
+                  <option>Mobile Payment (e.g., PayPal, Apple Pay)</option>
+                  <option>Purchase Order (PO)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div className="ml-10">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Order Description
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.orderDescription}
+                  name="orderDescription"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-32 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Description"
+                />
+              </div>
+              <div className="mt-4 ml-10">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Unit Price
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.unitPrice}
+                  name="unitPrice"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Unit Price"
+                />
+              </div>
+              <div className="mt-3 ml-10">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Quantity
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.quantity}
+                  name="quantity"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Quantity"
+                />
+              </div>
+              <div className="mt-3 ml-10">
+                <label className="font-bold text-slate-700 text-2xl ">
+                  Order Total
+                </label>
+                <br />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={input.orderTotal}
+                  name="orderTotal"
+                  className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
+                  placeholder="Auto-calculated...."
+                />
+              </div>
+              <div className="mt-10 ml-10 ">
+                <button className="w-72  rounded-lg font-bold">
+                  Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+export default AddNewOrder;
+
+//   const history = useNavigate();
+//   const [input, setInput] = useState({
+//     productName: "",
+//     ProductCategory: "",
+//     materialType: "",
+//     quantity: "",
+//     productDescription: "",
+//   });
+
+//   const [error, setError] = useState("");
+
+//   const handleChange = (e) => {
+//     setInput((prevState) => ({
+//       ...prevState,
+//       [e.target.name]: e.target.value,
+//     }));
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     // Validation: Check if quantity is a non-negative integer
+//     const quantity = Number(input.quantity);
+//     if (isNaN(quantity) || quantity < 0 || !Number.isInteger(quantity)) {
+//       setError("Quantity must be an integer.");
+//       return;
+//     } else {
+//       setError(""); // Clear any previous error
+//     }
+
+//     console.log(input);
+//     sendRequest().then(() => history("/inventoryDeatails"));
+//   };
+
+//   const sendRequest = async () => {
+//     await axios
+//       .post("http://Localhost:5001/inventory", {
+//         productName: String(input.productName),
+//         ProductCategory: String(input.ProductCategory),
+//         materialType: String(input.materialType),
+//         quantity: Number(input.quantity),
+//         productDescription: String(input.productDescription),
+//       })
+//       .then((res) => res.data);
+//   };
