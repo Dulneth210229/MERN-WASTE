@@ -19,64 +19,37 @@ function AccountNav() {
             <li>
               <Link 
                 to="/" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
+                className="text-white hover:text-gray-300 transition duration-300">
                 Home
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/Salary" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                Salary
-              </Link>
-            </li>
+           
             <li>
               <Link 
                 to="/ViewSalary" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
+                className="text-white hover:text-gray-300 transition duration-300">
                 View Salary
               </Link>
             </li>
             <li>
               <Link 
                 to="/AddSalary" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
+                className="text-white hover:text-gray-300 transition duration-300">
                 Add Salary
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/SalaryDetails" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                Salary Details
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/GenerateSalary" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
-                Generate Salary
-              </Link>
-            </li>
+  
             <li>
               <Link 
                 to="/sign-in" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
+                className="text-white hover:text-gray-300 transition duration-300">
                 Sign In
               </Link>
             </li>
             <li>
               <Link 
                 to="/sign-up" 
-                className="text-white hover:text-gray-300 transition duration-300"
-              >
+                className="text-white hover:text-gray-300 transition duration-300">
                 Sign Up
               </Link>
             </li>
