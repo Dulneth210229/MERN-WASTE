@@ -4,8 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AccountNav from '../AccountNav/AccountNav';
 
 function UpdateSalary() {
+  const EPF = 500;
+  const ETF = 500;
   const [inputs, setinputs] = useState({});
-  const navigate = useNavigate();
+  const history = useNavigate();
   const {id } = useParams(); // Destructure the account ID from params
 
   // Fetch data on mount
@@ -21,8 +23,10 @@ function UpdateSalary() {
     fetchHandler();
   }, [id]); 
 
+ 
   // Update salary information
-  const sendRequest = async () => {
+  const sendRequest = async (Total_Salary) => {
+    console.log(inputs)
     try {
       await axios.put(`http://localhost:5001/account/${id}`, {
         ...inputs,
@@ -30,7 +34,7 @@ function UpdateSalary() {
         Allowance: Number(inputs.Allowance),
         ETF: Number(inputs.ETF),
         EPF: Number(inputs.EPF),
-        Total_Salary: Number(inputs.Total_Salary),
+        Total_Salary: Number(Total_Salary),
       });
     } catch (error) {
       console.error("Error updating data", error);
@@ -45,11 +49,39 @@ function UpdateSalary() {
     });
   };
 
-  // Handle form submit
+  const totalSalary =(basic, allowance)=> {
+    
+    return(EPF + ETF +Number(basic)  + Number(allowance))
+    
+  }
+// Function to handle form submission.
+
   const handleSubmit = (e) => {
+
     e.preventDefault();
-    sendRequest().then(() => navigate('/ViewSalary')); // Navigate after submission
+    let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
+    setinputs(()=>({
+      ...inputs,
+      
+    }));
+    console.log(inputs.Total_Salary)
+    console.log(Total_Salary)
+   
+    //alert (totalSalary(inputs.Basic_Salary,inputs.Allowance))
+   
+   
+    
+    sendRequest(Total_Salary).then(() => history('/ViewSalary'));
+
   };
+
+  // Handle form submit
+  //const handleSubmit = (e) => {
+   // e.preventDefault();
+   // sendRequest().then(() => navigate('/ViewSalary')); // Navigate after submission
+  //};
+
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
@@ -189,5 +221,6 @@ function UpdateSalary() {
       </div>
     </div>
   );
+
 }
 export default UpdateSalary;
