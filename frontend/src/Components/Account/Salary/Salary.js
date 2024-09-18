@@ -19,6 +19,7 @@ function Salary(props) {
     Designation,
     Basic_Salary,
     Allowance, 
+    
     ETF,
     EPF, 
     Total_Salary

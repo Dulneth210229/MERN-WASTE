@@ -14,13 +14,13 @@ function AccountHome() {
           <h1 className="text-3xl font-bold text-gray-700 mb-6">Manage Salary</h1>
         </div>
 
-        {/* Button Section */}
+        /*{/* Button Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-          <Link to="/Salary">
+          
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
               Salary
             </button>
-          </Link>
+          
 
           <Link to="/ViewSalary">
             <button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">

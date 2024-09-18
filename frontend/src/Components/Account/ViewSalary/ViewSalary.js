@@ -18,6 +18,10 @@ const [account,setSalary] = useState();
 
  },[])
 
+ //create pdf function
+ const ComponentsRef = useRef();
+ const handlePrint = 
+
   return (
     <div>
       <AccountNav/>
