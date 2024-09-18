@@ -14,7 +14,7 @@ const fetchSalary = async () =>{
 }
 function ViewSalary() {
 
-  <AccountNav/>
+
 
 const [account,setSalary] = useState();
  useEffect(() => {
@@ -36,6 +36,8 @@ const [account,setSalary] = useState();
   return (
 
     <div>
+
+<AccountNav/>
    
       {/*<h1>View Salary</h1>*/}
        {/*get the salary details repetitively from the View salary.js*/}
