@@ -37,7 +37,7 @@ app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
 app.post("/loginAdmin", loginAdmin);
-app.use("/files", express.static("files"));
+app.use("/file", express.static("file"));
 app.use("/users", userRouter);
 app.use("/drivers", driverRouter);
 app.use("/bins", binRouter);
@@ -82,6 +82,7 @@ app.post("/uploadfile", upload.single("file"), async (req, res) => {
   }
 });
 
+//retrieve model part
 app.get("/getFile", async (req, res) => {
   try {
     const data = await pdfSchema.find({});
