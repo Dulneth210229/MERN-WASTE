@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 // import './RequestSupportForm.css'
 import CrmNav from '../CrmNav/CrmNav'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function RequestSupportForm() {
@@ -46,7 +46,10 @@ function RequestSupportForm() {
       return (
         <div>
           <CrmNav />
-          <h1>Request Support</h1>
+          <h1 className="text-center mt-5 font-semibold text-slate-800 ">
+                Request Support
+                </h1>
+                <hr className="border-2" />
     
           <body class="flex items-center justify-center min-h-screen bg-gray-100">
             <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
@@ -171,50 +174,19 @@ function RequestSupportForm() {
                   </div>
                   
                 </div>
-                <Link to="/SupportDisplay">
-                <button
+              <button
                   type="submit"
                   class="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                 >
                   Submit
                 </button>
-                </Link>
+                
               </form>
             </div>
           </body>
 
           </div>
   );
-
-  // return (
-  //   <div className="form-container">
-  //         <CrmNav/>
-  //         <h1>Request Support</h1>
-  //         <form onSubmit={handleSubmit}>
-  //         <p>HOW CAN WE HELP YOU?</p>
-  //         <p>CHOOSE FROM THE OPTION BELOW :</p>
-  //         <h2>Additional Services</h2>
-  //           <div className="checkbox-group">
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Start New Account</label>
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Bulky Item Pickup</label>
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Request Extra Pickup</label>
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Update Your Information</label>
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Replace Container</label>
-  //             <label><input type="checkbox" name="additonalServices" onChange={handleChange} value={inputs.additonalServices}/> Other</label>
-  //           </div>
-  //           <div className="input-group">
-  //             <input type="text" name="name" placeholder="Full Name *" onChange={handleChange} value={inputs.name} required/>
-  //             <input type="text" name="email" placeholder="Email *" onChange={handleChange} value={inputs.email} required/>
-  //             <input type="text" name="address" placeholder="Address *" onChange={handleChange} value={inputs.address} required/>
-  //             <input type="text" name="city" placeholder="City *" onChange={handleChange} value={inputs.city} required/>
-  //             {/* <input type="text" placeholder="Account ID *" /> */}
-  //             <input type="text" name="subject" placeholder="Subject *"  onChange={handleChange} value={inputs.subject} />
-  //           </div>
-  //           <textarea placeholder="message" name="message" rows="4" onChange={handleChange} value={inputs.message} required></textarea>
-  //           <button type="submit">Submit</button>
-  //         </form>
-  //       </div>
-  // )
 }
 
 export default RequestSupportForm
