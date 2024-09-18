@@ -22,7 +22,7 @@ function Salary(props) {
     ETF,
     EPF, 
     Total_Salary
-  } = props.account;
+  } = props.account || {};
 
   //delete
   const history = useNavigate();
