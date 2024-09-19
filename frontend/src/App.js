@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+
 import AddRequest from "./Components/RequestService/AddRequest/AddRequest";
 import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
@@ -38,6 +39,9 @@ import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/A
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
+import PackageManagement  from "./Components/PlanManegment/PackageManagement";
+
+
 
 function App() {
   //java scripts
@@ -86,6 +90,19 @@ function App() {
           <Route path="/AddComplainForm" element={<AddComplainForm />} />
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
+
+
+          <Route path="/PlanManegment" element={<PackageManagement />} />
+
+
+
+
+
+
+
+
+          
+
         </Routes>
       </React.Fragment>
     </div>
