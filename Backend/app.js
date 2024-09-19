@@ -9,6 +9,7 @@ const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
+const categoryrouterOr = require("./Routes/CategoryRoutesOr");
 
 const dotenv = require("dotenv");
 
@@ -31,6 +32,7 @@ app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
+app.use("/categoryOr", categoryrouterOr);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")

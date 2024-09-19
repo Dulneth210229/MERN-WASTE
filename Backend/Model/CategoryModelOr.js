@@ -30,6 +30,6 @@ const categorySchema = new Schema({
 });
 
 module.exports = mongoose.model(
-    "CategoryModel", //file name
+    "CategoryModelOr", //file name
     categorySchema  //function name
 )
