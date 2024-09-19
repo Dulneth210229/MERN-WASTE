@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import UserHomeHeader from "./UserHomeHeader";
 import homeimg01 from "./ImgTransform/img/home01.svg";
@@ -7,6 +8,7 @@ import Footer from "./UserFooter.js";
 
 function UserHome() {
   const [plans, setPlans] = useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Fetch subscription plans from the backend
   useEffect(() => {
@@ -20,6 +22,14 @@ function UserHome() {
     };
     fetchPlans();
   }, []);
+
+  // Handle subscribe button click
+  const handleSubscribe = (packageName, packagePrice) => {
+    // Navigate to /PlanManagementPayment and pass the selected plan details
+    navigate("/PlanManegmentPayment", {
+      state: { packageName, packagePrice },
+    });
+  };
 
   return (
     <div className="">
@@ -70,7 +80,7 @@ function UserHome() {
                   {plan.packageName}
                 </h3>
                 <p className="text-center text-lg mt-4 text-gray-600">
-                  ${plan.packagePrice}       
+                  ${plan.packagePrice}
                 </p>
                 <ul className="mt-4 text-gray-600 text-center">
                   {plan.features.map((feature, index) => (
@@ -78,11 +88,16 @@ function UserHome() {
                   ))}
                 </ul>
                 <div className="text-center mt-6">
-                  <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                  <button
+                    className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                    onClick={() =>
+                      handleSubscribe(plan.packageName, plan.packagePrice)
+                    }
+                  >
                     Subscribe
                   </button>
                 </div>
-              </div>                                                                
+              </div>
             ))
           ) : (
             <p className="text-center text-lg text-gray-600">

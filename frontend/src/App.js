@@ -43,6 +43,13 @@ import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
 
 
+
+
+
+//import AddCardDitails from "./Components/PlanManegmentPayment/AddCardDitails";
+import PlanManagementPayment from "./Components/PlanManegmentPayment/PlanManagementPayment"; 
+
+
 function App() {
   //java scripts
   return (
@@ -91,6 +98,10 @@ function App() {
           <Route path="/AdminRegister" element={<Register />} />
           <Route path="/PlanManegment" element={<PackageManagement />} />
           <Route path="/login" element={<Login />} />
+
+
+
+          <Route path="/PlanManegmentPayment" element={<PlanManagementPayment />} />
 
         </Routes>
       </React.Fragment>
