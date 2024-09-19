@@ -50,10 +50,8 @@ function UpdateComplain() {
             
             return (
                 <div>
-                  <h1 className="text-center mt-5 font-semibold text-slate-800 ">
-                Make Complain
-                </h1>
-                <hr className="border-2" />
+                  {/* <CrmNav /> */}
+                  <h1>Make Complain</h1>
             
                   <body class="flex items-center justify-center min-h-screen bg-gray-100">
                     <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
