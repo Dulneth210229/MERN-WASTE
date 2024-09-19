@@ -1,84 +1,27 @@
-import React from "react";
-import { useState } from "react";
-import Header from "../../Inventory/InventoryHeader/InventoyHeader";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Header from "../../Inventory/InventoryHeader/InventoyHeader";
 
-function AddNewOrder() {
+function UpdateOrder() {
+  const [input, setInput] = useState({});
   const history = useNavigate();
-  const [input, setInput] = useState({
-    productName: "",
-    productCategory: "",
-    seller: "",
-    deliveryType: "",
-    trakingID: "",
-    orderDescription: "",
-    unitPrice: "",
-    quantity: "",
-    orderTotal: "",
-    paymentType: "",
-  });
+  const orderId = useParams().Oid;
 
-  const [errors, setErrors] = useState({
-    unitPrice: "",
-    quantity: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    // Validate unitPrice and quantity fields to accept only numbers
-    if (name === "unitPrice" || name === "quantity") {
-      if (!/^\d*\.?\d*$/.test(value)) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          [name]: "Please enter a valid number",
-        }));
-        return;
-      } else {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          [name]: "",
-        }));
-      }
-    }
-
-    setInput((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-
-    // Auto-calculate orderTotal when quantity and unitPrice are provided
-    if (name === "unitPrice" || name === "quantity") {
-      const unitPrice =
-        name === "unitPrice" ? parseFloat(value) : parseFloat(input.unitPrice);
-      const quantity =
-        name === "quantity" ? parseFloat(value) : parseFloat(input.quantity);
-
-      if (!isNaN(unitPrice) && !isNaN(quantity)) {
-        const total = (unitPrice * quantity).toFixed(2); // Calculate and format the total
-        setInput((prevState) => ({
-          ...prevState,
-          orderTotal: total,
-        }));
-      } else {
-        setInput((prevState) => ({
-          ...prevState,
-          orderTotal: "", // Clear total if invalid input
-        }));
-      }
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(input);
-    sendRequest().then(() => history("/orderDetails"));
-  };
+  useEffect(() => {
+    const fetchHandler = async () => {
+      await axios
+        .get(`http://localhost:5001/order/${orderId}`)
+        .then((res) => res.data)
+        .then((data) => setInput(data.order));
+    };
+    fetchHandler();
+  }, [orderId]);
 
   const sendRequest = async () => {
     await axios
-      .post("http://Localhost:5001/order", {
+      .put(`http://localhost:5001/order/${orderId}`, {
         productName: String(input.productName),
         productCategory: String(input.productCategory),
         seller: String(input.seller),
@@ -91,6 +34,37 @@ function AddNewOrder() {
         paymentType: String(input.paymentType),
       })
       .then((res) => res.data);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Validate numeric fields
+    if (name === "unitPrice" || name === "quantity") {
+      if (isNaN(value)) return;
+    }
+
+    setInput((prevState) => {
+      const updatedInput = {
+        ...prevState,
+        [name]: value,
+      };
+
+      // Auto-calculate orderTotal if unitPrice and quantity are provided
+      if (name === "unitPrice" || name === "quantity") {
+        const unitPrice = parseFloat(updatedInput.unitPrice) || 0;
+        const quantity = parseFloat(updatedInput.quantity) || 0;
+        updatedInput.orderTotal = (unitPrice * quantity).toFixed(2);
+      }
+
+      return updatedInput;
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+    sendRequest().then(() => history("/orderDetails"));
   };
 
   return (
@@ -107,7 +81,7 @@ function AddNewOrder() {
           className=" w-4/5 mx-auto mt-5 p-5 rounded-lg flex flex-row"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-row bg-green-300 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
+          <div className="flex flex-row bg-green-100 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
             <div>
               <div className="ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -243,13 +217,8 @@ function AddNewOrder() {
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Unit Price"
                 />
-                {errors.unitPrice && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.unitPrice}
-                  </p>
-                )}
               </div>
-              <div className="mt-4 ml-10">
+              <div className="mt-3 ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
                   Quantity
                 </label>
@@ -262,31 +231,25 @@ function AddNewOrder() {
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Quantity"
                 />
-                {errors.quantity && (
-                  <p className="text-red-500 text-sm mt-1">{errors.quantity}</p>
-                )}
               </div>
-              <div className="mt-4 ml-10">
+              <div className="mt-3 ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
                   Order Total
                 </label>
                 <br />
                 <input
                   type="text"
+                  onChange={handleChange}
                   value={input.orderTotal}
-                  readOnly
                   name="orderTotal"
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
-                  placeholder="Order Total"
+                  placeholder="Auto-calculated...."
+                  readOnly
                 />
               </div>
-              {/* Place Order Button */}
-              <div className="mt-5 ml-10">
-                <button
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold mt-5 py-2 px-4 rounded-lg w-72 h-12"
-                >
-                  Place Order
+              <div className="mt-10 ml-10 ">
+                <button className="w-72  rounded-lg font-bold">
+                  Update Order
                 </button>
               </div>
             </div>
@@ -297,4 +260,4 @@ function AddNewOrder() {
   );
 }
 
-export default AddNewOrder;
+export default UpdateOrder;
