@@ -41,6 +41,10 @@ import Register from "./Components/InventoryReg/Register";
 import PackageManagement  from "./Components/PlanManegment/PackageManagement";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
+import SendReport from "./Components/Inventory/SendReport/SendReport";
+import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
+import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
+import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
 
 
 
@@ -76,6 +80,7 @@ function App() {
           <Route path="/ViewSalary" element={<ViewSalary />} />
           <Route path="/GenerateSalary" element={<GenerateSalary />} />
           <Route path="/AddSalary" element={<AddSalary />} />
+
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
           <Route path="/categoryhome" element={<CategoryHome />} />
           <Route path="/categoryadd" element={<CategoryAdd />} />
@@ -98,11 +103,11 @@ function App() {
           <Route path="/AdminRegister" element={<Register />} />
           <Route path="/PlanManegment" element={<PackageManagement />} />
           <Route path="/login" element={<Login />} />
-
-
-
           <Route path="/PlanManegmentPayment" element={<PlanManagementPayment />} />
-
+          <Route path="/sendreport" element={<SendReport />} />
+          <Route path="/addorder" element={<AddNewOrder />} />
+          <Route path="/orderDetails" element={<OrderDtails />} />
+          <Route path="/updateOrder/:Oid" element={<UpdateOrder />} />
         </Routes>
       </React.Fragment>
     </div>
