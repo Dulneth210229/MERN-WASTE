@@ -9,6 +9,8 @@ const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
+const categoryrouterOr = require("./Routes/CategoryRoutesOr");
+
 const { loginAdmin } = require("./ErrorHandler/Loginhandler");
 const userRouter = require("./Routes/userRoute");
 const adminRouter = require("./Routes/adminRoute");
@@ -36,6 +38,7 @@ app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
+app.use("/categoryOr", categoryrouterOr);
 app.post("/loginAdmin", loginAdmin);
 app.use("/file", express.static("file"));
 app.use("/users", userRouter);
