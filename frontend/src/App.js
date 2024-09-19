@@ -43,7 +43,6 @@ import SendReport from "./Components/Inventory/SendReport/SendReport";
 import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
-import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
 
 function App() {
   //java scripts
@@ -97,7 +96,6 @@ function App() {
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
           <Route path="/updateOrder/:Oid" element={<UpdateOrder />} />
-          <Route path="/crmReport" element={<CrmReport />} />
         </Routes>
       </React.Fragment>
     </div>
