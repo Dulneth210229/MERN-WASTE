@@ -97,7 +97,7 @@ function App() {
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
-          <Route path="/updateOrder/:Oid" element={<UpdateOrder />} /
+          <Route path="/updateOrder/:Oid" element={<UpdateOrder />} />
         </Routes>
       </React.Fragment>
     </div>
