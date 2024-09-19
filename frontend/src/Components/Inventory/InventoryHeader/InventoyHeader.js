@@ -20,7 +20,7 @@ function InventoyHeader() {
               <Link to="/inventoryDeatails">
                 <li className="hover:underline text-2xl">Inventory</li>
               </Link>
-              <Link to="/orderDetails">
+              <Link to="about">
                 <li className="hover:underline text-2xl">Orders</li>
               </Link>
               <Link to="/inventoryReport">

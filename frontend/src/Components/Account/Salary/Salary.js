@@ -19,11 +19,10 @@ function Salary(props) {
     Designation,
     Basic_Salary,
     Allowance, 
-    
     ETF,
     EPF, 
     Total_Salary
-  } = props.account || {};
+  } = props.account;
 
   //delete
   const history = useNavigate();
@@ -92,7 +91,6 @@ function Salary(props) {
                 <button className="inline-block bg-green-500 text-white py-1 px-3 rounded-md hover:bg-green-600"> Update</button>
                </Link>
               <button onClick={deleteHandler}className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 ml-2">Delete</button>
-             
             </td>
           </tr>
         </tbody>

@@ -20,7 +20,7 @@ function AddSalary() {
     Total_Salary: 0,
   });
 
-
+// Function to handle changes in form inputss.
   const handleChange = (e) => {
     setinputs({
       ...inputs,

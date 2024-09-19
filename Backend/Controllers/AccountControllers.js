@@ -119,8 +119,6 @@ const updateAccount = async(req, res, next) => {
     if(!account){
         return res.status(404).json({message:"Unable to update account details"});
     }
-
-    console.log( Total_Salary);
     return res.status(200).json({account});
    
     

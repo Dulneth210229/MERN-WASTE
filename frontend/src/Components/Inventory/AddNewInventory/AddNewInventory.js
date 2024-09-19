@@ -14,8 +14,6 @@ function AddNewInventory() {
     productDescription: "",
   });
 
-  const [error, setError] = useState("");
-
   const handleChange = (e) => {
     setInput((prevState) => ({
       ...prevState,
@@ -25,16 +23,6 @@ function AddNewInventory() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validation: Check if quantity is a non-negative integer
-    const quantity = Number(input.quantity);
-    if (isNaN(quantity) || quantity < 0 || !Number.isInteger(quantity)) {
-      setError("Quantity must be an integer.");
-      return;
-    } else {
-      setError(""); // Clear any previous error
-    }
-
     console.log(input);
     sendRequest().then(() => history("/inventoryDeatails"));
   };
@@ -50,7 +38,6 @@ function AddNewInventory() {
       })
       .then((res) => res.data);
   };
-
   return (
     <div>
       <InventoyHeader />
@@ -65,9 +52,9 @@ function AddNewInventory() {
         >
           <div className="flex flex-col w-auto mr-10 ml-10">
             <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700 ">
+              <lable className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700 ">
                 Product Name
-              </label>
+              </lable>
               <input
                 type="text"
                 name="productName"
@@ -78,9 +65,9 @@ function AddNewInventory() {
               />
             </div>
             <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+              <lable className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
                 Product Category
-              </label>
+              </lable>
               <input
                 type="text"
                 name="ProductCategory"
@@ -91,9 +78,9 @@ function AddNewInventory() {
               />
             </div>
             <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+              <lable className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
                 Material Type
-              </label>
+              </lable>
               <input
                 type="text"
                 name="materialType"
@@ -104,9 +91,9 @@ function AddNewInventory() {
               />
             </div>
             <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+              <lable className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
                 Product Quantity
-              </label>
+              </lable>
               <input
                 type="text"
                 name="quantity"
@@ -115,16 +102,11 @@ function AddNewInventory() {
                 placeholder="Quantity"
                 className="border p-3 rounded-lg  m-2 bg-lime-300 border-lime-500"
               />
-              {error && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error}
-                </div>
-              )}
             </div>
             <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+              <lable className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
                 Product Description
-              </label>
+              </lable>
               <input
                 type="text"
                 name="productDescription"
@@ -142,6 +124,23 @@ function AddNewInventory() {
               Submit
             </button>
           </div>
+
+          {/* <div className="bg-emerald-100 w-auto mt-10 ml-5 mr-5 rounded-lg mb-10 border-2">
+              <div className="flex flex-col w-auto mr-10 ml-10 mx-auto">
+                <div className="flex flex-col w-72  g-0 m-5 gap-5">
+                  <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+                    Upload an image
+                  </label>
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    name="imageUpload"
+                    accept="image/*"
+                    className="rounded-lg "
+                  />
+                </div>
+              </div>
+            </div> */}
         </form>
       </div>
     </div>
