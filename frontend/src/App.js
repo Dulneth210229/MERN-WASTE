@@ -33,14 +33,14 @@ import UserHome from "./Components/UserHomePage/UserHome";
 import UpdateRequests from "./Components/RequestService/UpdateRequest/UpdateRequest";
 import UpdateSalary from "./Components/Account/UpdateSalary/UpdateSalary";
 import AddSalary from "./Components/Account/AddSalary/AddSalary";
-import SalaryDetails from "./Components/Account/SalaryDetails/SalaryDetails";
 import ComplainDisplay from "./Components/CustomerRelationship/ComplainDisplay_01/ComplainDisplay_01";
 import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/AddComplainForm";
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
 import PackageManagement  from "./Components/PlanManegment/PackageManagement";
-
+import FirstHome from "./Components/FirstHome/FirstHome";
+import Login from "./Components/Login/Login";
 
 
 function App() {
@@ -51,6 +51,7 @@ function App() {
       <React.Fragment>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/firstPage" element={<FirstHome />} />
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
@@ -68,7 +69,6 @@ function App() {
           <Route path="/ViewSalary" element={<ViewSalary />} />
           <Route path="/GenerateSalary" element={<GenerateSalary />} />
           <Route path="/AddSalary" element={<AddSalary />} />
-          <Route path="/SalaryDetails" element={<SalaryDetails />} />
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
           <Route path="/categoryhome" element={<CategoryHome />} />
           <Route path="/categoryadd" element={<CategoryAdd />} />
@@ -85,23 +85,12 @@ function App() {
           <Route path="/userHomePage" element={<UserHome />} />
           <Route path="/viewrequests/:id" element={<UpdateRequests />} />
           <Route path="/ViewSalary/:id" element={<UpdateSalary />} />
-          <Route path="/SalaryDetails" element={<SalaryDetails />} />
           <Route path="/complaindisplay" element={<ComplainDisplay />} />
           <Route path="/AddComplainForm" element={<AddComplainForm />} />
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
-
-
           <Route path="/PlanManegment" element={<PackageManagement />} />
-
-
-
-
-
-
-
-
-          
+          <Route path="/login" element={<Login />} />
 
         </Routes>
       </React.Fragment>
