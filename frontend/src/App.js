@@ -39,6 +39,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
+import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
 import SendReport from "./Components/Inventory/SendReport/SendReport";
 import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
@@ -92,6 +93,7 @@ function App() {
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/crmReport" element={<CrmReport />} />
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
