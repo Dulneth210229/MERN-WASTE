@@ -2,12 +2,13 @@
 import React from "react";
 import { useReactToPrint } from "react-to-print";
 import downlodImage from "./img/download.png";
+//03
 
-const PrintInventory = ({ contentRef }) => {
+const PrintOrder = ({ contentRef }) => {
   const handlePrint = useReactToPrint({
     content: () => contentRef.current,
-    documentTitle: "Inventory Report",
-    onAfterPrint: () => alert("Inventory Report Download Successful!"),
+    documentTitle: "Order Report",
+    onAfterPrint: () => alert("Order Report Download Successful!"),
   });
 
   return (
@@ -21,4 +22,4 @@ const PrintInventory = ({ contentRef }) => {
   );
 };
 
-export default PrintInventory;
+export default PrintOrder;
