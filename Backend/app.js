@@ -14,8 +14,7 @@ const userRouter = require("./Routes/userRoute");
 const adminRouter = require("./Routes/adminRoute");
 const driverRouter = require("./Routes/driverRoute");
 const binRouter = require("./Routes/binRoute");
-
-
+const orderRouter = require("./Routes/OrderRoute");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -38,10 +37,12 @@ app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
 app.post("/loginAdmin", loginAdmin);
+app.use("/file", express.static("file"));
 app.use("/users", userRouter);
 app.use("/drivers", driverRouter);
 app.use("/bins", binRouter);
 app.use("/admins", adminRouter);
+app.use("/order", orderRouter);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
@@ -50,3 +51,45 @@ mongoose
     app.listen(5001, () => console.log("Server is running on port 5001"));
   })
   .catch((err) => console.log(err));
+
+//Pdf_________
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./file");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+//Insert Model part
+require("./Model/PdfModel");
+const pdfSchema = mongoose.model("PdfDetails");
+const upload = multer({ storage });
+
+app.post("/uploadfile", upload.single("file"), async (req, res) => {
+  console.log(res.file);
+  const title = req.body.title;
+  const pdf = req.file.filename;
+  try {
+    await pdfSchema.create({ title: title, pdf: pdf });
+    console.log("File uploaded successfully");
+    res.send({ status: 200 });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error" });
+  }
+});
+
+//retrieve model part
+app.get("/getFile", async (req, res) => {
+  try {
+    const data = await pdfSchema.find({});
+    res.send({ status: 200, data: data });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error" });
+  }
+});
