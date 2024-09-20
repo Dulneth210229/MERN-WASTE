@@ -40,27 +40,26 @@ function Request(props) {
         <button
           className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700"
           onClick={deleteHandler}
-          >
+        >
           Remove
         </button>
       </td>
     </tr>
 
-
-  // <div>
-  //   {/* <RequestNav /> */}
-  //   <br></br>
-  //   <h1>ID:{_id}</h1>
-  //   <h1>Service:{service}</h1>
-  //   <h1>Name:{name}</h1>
-  //   <h1>Address:{address}</h1>
-  //   <h1>Phone Number:{phoneNumber}</h1>
-  //   <h1>Date:{date}</h1>
-  //   <h1>Time:{time}</h1>
-  //   <Link to={`/viewrequests/${_id}`}>Update</Link>
-  //   <button>Delete</button>
-  //   <br></br><br></br><br></br><br></br>
-  // </div>
+    // <div>
+    //   {/* <RequestNav /> */}
+    //   <br></br>
+    //   <h1>ID:{_id}</h1>
+    //   <h1>Service:{service}</h1>
+    //   <h1>Name:{name}</h1>
+    //   <h1>Address:{address}</h1>
+    //   <h1>Phone Number:{phoneNumber}</h1>
+    //   <h1>Date:{date}</h1>
+    //   <h1>Time:{time}</h1>
+    //   <Link to={`/viewrequests/${_id}`}>Update</Link>
+    //   <button>Delete</button>
+    //   <br></br><br></br><br></br><br></br>
+    // </div>
   );
 }
 
