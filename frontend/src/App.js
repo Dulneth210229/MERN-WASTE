@@ -50,14 +50,14 @@ import CategoryDetailsHza from "./Components/Category/CategoryDetailsHza/Categor
 import CategoryUpdateHza from "./Components/Category/CategoryUpdateHza/CategoryUpdateHza";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
-<<<<<<<<< Temporary merge branch 1
+
 import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
-=========
+
 import SendReport from "./Components/Inventory/SendReport/SendReport";
 import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
->>>>>>>>> Temporary merge branch 2
+
 
 function App() {
   //java scripts
@@ -117,9 +117,9 @@ function App() {
           <Route path="/categorydetailsHza" element={<CategoryDetailsHza />} />
           <Route path="/categorydetailsHza/:id" element={<CategoryUpdateHza />} />
           <Route path="/login" element={<Login />} />
-<<<<<<<<< Temporary merge branch 1
+
           <Route path="/crmReport" element={<CrmReport />} />
-=========
+
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
