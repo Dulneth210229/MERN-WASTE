@@ -32,7 +32,15 @@ function SupportDisplay_01() {
     <div className="form-container">
       <CrmNav />
       <div className="mt-10" ref={ComponentsRef}>
-        <table className="border-2 mx-auto">
+      <div className="flex flex-col items-center bg-gray-100 min-h-screen pt-0">
+          <div className="w-full max-w-4xl p-5">
+          {support &&
+              support.map((support, i) => (
+                <Support key={i} support={support} />
+              ))} 
+          </div>
+        </div>
+        {/* <table className="border-2 mx-auto">
           <thead>
             <tr className="bg-green-200">
               <th className="border-2 p-2 w-40 border-green-500">
@@ -53,7 +61,7 @@ function SupportDisplay_01() {
                 <Support key={i} support={support} />
               ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
 
       <button onClick={handlePrint} className="mt-4 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Download Support Report</button>

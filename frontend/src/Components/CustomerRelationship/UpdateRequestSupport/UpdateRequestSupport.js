@@ -48,7 +48,7 @@ function UpdateRequestSupport() {
   return (
     <div>
       <h1 className="text-center mt-5 font-semibold text-slate-800 ">
-        Request Support
+        Update Request Support Form
       </h1>
       <hr className="border-2" />
 

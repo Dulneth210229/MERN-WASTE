@@ -47,7 +47,7 @@ function UpdateComplain() {
   return (
     <div>
       <h1 className="text-center mt-5 font-semibold text-slate-800 ">
-        Make Complain
+        Update Your Complain
       </h1>
       <hr className="border-2" />
 

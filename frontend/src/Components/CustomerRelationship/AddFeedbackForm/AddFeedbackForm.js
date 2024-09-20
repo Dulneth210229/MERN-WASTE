@@ -96,10 +96,10 @@ function AddFeedbackForm() {
   return (
     <div>
       <CrmNav />
-      <h1 className="text-center mt-5 font-semibold text-slate-800">
+      {/* <h1 className="text-center mt-5 font-semibold text-slate-800">
         Add Your Feedback
-      </h1>
-      <hr className="border-2" />
+      </h1> */}
+      {/* <hr className="border-2" /> */}
 
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
