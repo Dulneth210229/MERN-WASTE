@@ -50,17 +50,13 @@ import CategoryDetailsHza from "./Components/Category/CategoryDetailsHza/Categor
 import CategoryUpdateHza from "./Components/Category/CategoryUpdateHza/CategoryUpdateHza";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
+
+import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
+
 import SendReport from "./Components/Inventory/SendReport/SendReport";
 import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
-
-
-
-
-
-//import AddCardDitails from "./Components/PlanManegmentPayment/AddCardDitails";
-import PlanManagementPayment from "./Components/PlanManegmentPayment/PlanManagementPayment"; 
 
 
 function App() {
@@ -121,7 +117,9 @@ function App() {
           <Route path="/categorydetailsHza" element={<CategoryDetailsHza />} />
           <Route path="/categorydetailsHza/:id" element={<CategoryUpdateHza />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/PlanManegmentPayment" element={<PlanManagementPayment />} />
+
+          <Route path="/crmReport" element={<CrmReport />} />
+
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />

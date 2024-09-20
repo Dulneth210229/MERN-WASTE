@@ -1,52 +1,55 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 // import './RequestSupportForm.css'
 import CrmNav from '../CrmNav/CrmNav'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function RequestSupportForm() {
-
   const history = useNavigate();
-    const [inputs, setInputs] = useState({
-      additonalServices:"",
-      name:"",
-      email:"",
-      address:"",
-      city:"",
-      subject:"",
-      message:"",
-      
-    });
+  const [inputs, setInputs] = useState({
+    additonalServices: "",
+    name: "",
+    email: "",
+    address: "",
+    city: "",
+    subject: "",
+    message: "",
+  });
 
-    const handleChange = (e) => {
-      setInputs((prevState)=>({
-          ...prevState,
-          [e.target.name]: e.target.value
-      }));
-      };
+  const handleChange = (e) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(inputs);
-        sendRequest().then(()=>history('SupportDisplay'));
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs);
+    sendRequest().then(() => history("SupportDisplay"));
+  };
 
-    const sendRequest = async () => {
-      await axios.post('http://localhost:5001/support',{
+  const sendRequest = async () => {
+    await axios
+      .post("http://localhost:5001/support", {
         additonalServices: String(inputs.additonalServices),
         name: String(inputs.name),
         email: String(inputs.email),
         address: String(inputs.address),
         city: String(inputs.city),
         subject: String(inputs.subject),
-        message: String(inputs.message), 
-      }).then(res =>res.data);
-      }
+        message: String(inputs.message),
+      })
+      .then((res) => res.data);
+  };
 
       return (
         <div>
           <CrmNav />
-          <h1>Request Support</h1>
+          <h1 className="text-center mt-5 font-semibold text-slate-800 ">
+                Request Support
+                </h1>
+                <hr className="border-2" />
     
           <body class="flex items-center justify-center min-h-screen bg-gray-100">
             <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
@@ -137,22 +140,22 @@ function RequestSupportForm() {
                   </div>
                 </div>
 
-                <div class="flex space-x-4 mb-6">
-                  <div class="flex-1">
-                    <label for="subject" class="block text-gray-700 mb-2">
-                    subject
-                    </label>
-                    <input
-                      type="subject"
-                      name="subject"
-                      onChange={handleChange}
-                      required
-                      value={inputs.subject}
-                      placeholder="Your Subject..."
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
-                </div>
+            <div class="flex space-x-4 mb-6">
+              <div class="flex-1">
+                <label for="subject" class="block text-gray-700 mb-2">
+                  subject
+                </label>
+                <input
+                  type="subject"
+                  name="subject"
+                  onChange={handleChange}
+                  required
+                  value={inputs.subject}
+                  placeholder="Your Subject..."
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+            </div>
 
                 <div class="flex space-x-4 mb-6">
                   <div class="flex-1">
@@ -171,14 +174,13 @@ function RequestSupportForm() {
                   </div>
                   
                 </div>
-                <Link to="/SupportDisplay">
-                <button
+              <button
                   type="submit"
                   class="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                 >
                   Submit
                 </button>
-                </Link>
+                
               </form>
             </div>
           </body>
@@ -217,4 +219,4 @@ function RequestSupportForm() {
   // )
 }
 
-export default RequestSupportForm
+export default RequestSupportForm;

@@ -79,10 +79,12 @@ function Order(props) {
             </td>
             <td className=" w-56 font-medium text-center ">
               <Link to={`/updateOrder/${_id}`}>
-                <button className="p-1  m-2 hover:bg-green-700">Update</button>
+                <button className="p-1  m-2 hover:bg-green-600  bg-green-700 rounded-lg font-bold">
+                  Update
+                </button>
               </Link>
               <button
-                className="p-1  bg-red-600 hover:bg-red-700"
+                className="p-1  bg-red-600 hover:bg-red-700 rounded-lg font-bold"
                 onClick={deleteHandler}
               >
                 Remove

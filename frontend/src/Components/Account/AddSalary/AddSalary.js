@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function AddSalary() {
+
+
   const EPF = 500;
   const ETF = 500;
   const history = useNavigate();// Creating a function to navigate to different routes after form submission
@@ -20,6 +22,7 @@ function AddSalary() {
     Total_Salary: 0,
   });
 
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setinputs({
@@ -28,16 +31,46 @@ function AddSalary() {
     });
   };
 
+   // NIC validation for both new and old NIC formats
+   const validateNIC = (nic) => {
+    const oldNicPattern = /^[0-9]{9}[VXvx]$/; // Old NIC pattern (9 digits followed by V or X)
+    const newNicPattern = /^[0-9]{12}$/; // New NIC pattern (12 digits)
+
+    if (oldNicPattern.test(nic) || newNicPattern.test(nic)) {
+      return true; // Valid NIC
+    }
+    return false; // Invalid NIC
+  };
+
   const totalSalary =(basic, allowance)=> {
     
     return(EPF + ETF +Number(basic)  + Number(allowance))
     
   }
+
+  //Form validation
+  const validateForm = () => {
+    let formErrors = {};
+    let valid = true;
+
+  // Check for empty fields
+  if (!inputs.NIC) {
+    formErrors.NIC = "NIC is required";
+    valid = false;
+  } else if (!validateNIC(inputs.NIC)) {
+    formErrors.NIC = "Invalid NIC number. Please enter a valid NIC.";
+    valid = false;
+  }
+  setErrors(formErrors);
+  return valid;
+};
+
 // Function to handle form submission.
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
+    if (validateForm()) { // Only submit if form is valid
+      console.log(inputs);
+       let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
     //alert (totalSalary(inputs.Basic_Salary,inputs.Allowance))
     setinputs(()=>({
       ...inputs,
@@ -46,6 +79,9 @@ function AddSalary() {
    
     
     sendRequest(Total_Salary).then(() => history('/ViewSalary')); // Fixing the route path
+  } else {
+    console.log("Form validation failed."); // Debugging message if validation fails
+  }
   };
 // Function to send HTTP POST request with form data to the server.
   const sendRequest = async (Total_Salary) => {
@@ -65,8 +101,12 @@ function AddSalary() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <AccountNav />
+
+    <div >
+    <AccountNav/>
+     
+ <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+
       <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Add Salary</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -104,6 +144,7 @@ function AddSalary() {
               required
               className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            {errors.NIC && <p className="text-red-500">{errors.NIC}</p>}
           </div>
 
           <div>
@@ -166,6 +207,7 @@ function AddSalary() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }
