@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import InventoyHeader from "../Inventory/InventoryHeader/InventoyHeader";
+import Header from "../AdminNav/AdminNav";
 import signupimg from "./img/signup.png";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ function Register() {
     sendRequest()
       .then(() => {
         alert("User Registered Successfully");
-        history("/inventoryDeatails");
+        history("/login");
       })
       .catch((err) => {
         alert(err.message);
@@ -46,13 +46,14 @@ function Register() {
 
   return (
     <div>
-      <InventoyHeader />
+      <Header />
       <h2 className="font-bold text-4xl text-slate-700 text-center mt-6">
         Admin Register
       </h2>
-      <div className="flex flex-row mt-10 w-2/3 p-1 ml-96 rounded-lg">
+      <hr />
+      <div className="flex flex-row w-2/3 p-1 ml-96 rounded-lg">
         <form
-          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-16 ml-40 h-3/3"
+          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-10 h-3/3 bg-green-50"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col mb-8 w-max p-2">

@@ -11,7 +11,7 @@ const categorySchema = new Schema({
         required:true, // validate
     },
     DateOfCollection:{
-        type:Number, //dataType
+        type: String, //dataType
         required:true, // validate
     },
     Location:{

@@ -1,147 +1,36 @@
-const PaymentPlan = require("../Model/PaymentPlanModel");
+const PaymentPlan = require("../Model/PaymentPlanModel"); // Import the model
 
- //data displayed
+// Controller to save payment details
+const savePaymentDetails = async (req, res) => {
+  try {
+    const { packageName, packagePrice, cardHolderName } = req.body; // Extract data from request body
 
- const getAllPaymentPlans =  async (req, res, next) => {
-
-    let paymentplans;
-//get all users
-    try{
-
-        paymentplans = await PaymentPlan.find();
-
-    }catch(err){
-            console.log(err);
-
+    // Validate required fields
+    if (!packageName || !packagePrice || !cardHolderName) {
+      return res.status(400).json({ message: "All fields are required." });
     }
-    // not found
 
-    if(!paymentplans){
-        return res.status(404).json({message: "Payment not found"});
-    }
-    // Display all users
-    
-    return res.status(200).json({paymentplans});
+    // Create new payment entry
+    const newPayment = new PaymentPlan({
+      packageName,
+      packagePrice,
+      cardHolderName,
+    });
 
+    // Save payment to the database
+    await newPayment.save();
+
+    // Return success response
+    return res.status(201).json({
+      message: "Payment details saved successfully.",
+      payment: newPayment,
+    });
+  } catch (error) {
+    console.error("Error saving payment details:", error);
+    return res.status(500).json({ message: "Server error." });
+  }
 };
 
-//data inserted
-
-const addPaymentPlans = async (req, res, next) => {
-
-    const {accountName,accountNumber,bankName,date,amount} = req.body;
-
-    let paymentplans;
-    
-
-    try{
-
-        paymentplans = new PaymentPlan ({accountName,accountNumber,bankName,date,amount});
-        await paymentplans.save();
-
-
-    }catch(err){
-
-        console.log(err);
-    }
-    // not insert users
-
-    if(!paymentplans){
-        return res.status(404).json({message:"unable to add payment"});
-    }
-
-    return res.status(200).json({paymentplans});
-
-
-}
-
-//get by id
-
-
-const getPaymentPlanById = async (req, res, next) => {
-
-
-    const id = req.params.id;
-
-    let paymentplan;
-
-    try{
-
-        paymentplan = await PaymentPlan.findById(id);
-    }catch (err){
-
-        console.log(err);
-
-    }
-//not available users
-    if(!paymentplan){
-        return res.status(404).json({message:" payment Not fund"});
-    }
-
-    return res.status(200).json({paymentplan});
-
-}
-
-//update by datails
-
-const updatePaymentPlan = async (req, res, next) => {
-
-    const id =req.params.id;
-    const {accountName,accountNumber,bankName,date,amount} = req.body;
-    
-    let paymentplans;
-
-    try{
-
-        paymentplans = await PaymentPlan.findByIdAndUpdate(id, {accountName,accountNumber,bankName,date,amount});
-
-        paymentplans = await paymentplans.save();
-
-    }catch(err){
-
-
-        console.log(err);
-    }
-
-    if(!paymentplans){
-        return res.status(404).json({message:" Unable to Update payment Details"});
-    }
-
-    return res.status(200).json({paymentplans});
-
-
-
+module.exports = {
+  savePaymentDetails,
 };
-
-// delect user details
-const delectPaymentPlan= async (req, res, next) => {
-
-    const id =req.params.id;
-
-    let paymentplan;
-
-    try{
-
-        paymentplan= await PaymentPlan.findByIdAndDelete(id)
-
-    }catch(err){
-        console.log(err);
-
-
-    }
-    if(!paymentplan){
-        return res.status(404).json({message:" Unable to Delect User Details"});
-    }
-
-    return res.status(200).json({paymentplan});
-
-
-
-};
-
-
-exports. getAllPaymentPlans= getAllPaymentPlans;
-exports.addPaymentPlans= addPaymentPlans;
-exports.getPaymentPlanById= getPaymentPlanById;
-exports.updatePaymentPlan= updatePaymentPlan;
-exports.delectPaymentPlan = delectPaymentPlan;

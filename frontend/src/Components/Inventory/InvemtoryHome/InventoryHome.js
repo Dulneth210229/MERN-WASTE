@@ -6,20 +6,20 @@ function InventoryHome() {
     <div>
       <InventoyHeader />
       <div className="flex flex-row ">
-        <div className="flex flex-col gap-5 p-5 mt-10 w-1/5 bg-slate-200 rounded-xl ml-10">
+        <div className="flex flex-col gap-5 p-5 mt-16 w-2/7 bg-slate-200 rounded-xl mx-auto">
           <h1 className="text-center font-semibold">Dashboard</h1>
           <Link to="/inventoryDeatails">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-7 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-4 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
             >
               Inventory Details
             </button>
           </Link>
-          <Link to="">
+          <Link to="/orderDetails">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-7 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-4 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
             >
               Order Details
             </button>
@@ -27,7 +27,7 @@ function InventoryHome() {
           <Link to="/inventoryReport">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-7 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 ml-4 over:opacity-95 font-semibold hover:bg-lime-500 mb-2"
             >
               Report Details
             </button>
