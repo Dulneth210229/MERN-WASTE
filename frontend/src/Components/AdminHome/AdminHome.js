@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <Nav />
-      <div className="bg-blue-300 w-1/5 mx-auto rounded-lg ">
+      <div className="bg-blue-300 w-1/4 mx-auto rounded-lg">
         <h1 className="text-4xl text-center font-bold my-7 pt-5 ">
           Admin Home
         </h1>

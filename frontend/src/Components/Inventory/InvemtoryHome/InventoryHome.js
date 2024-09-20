@@ -7,7 +7,7 @@ function InventoryHome() {
       <InventoyHeader />
       <div className="flex flex-row ">
         <div className="flex flex-col gap-5 p-5 mt-16 w-2/7 bg-slate-200 rounded-xl mx-auto">
-          <h1 className="text-center font-semibold">Dashboard</h1>
+          <h1 className="text-center font-semibold text-3xl">Dashboard</h1>
           <Link to="/inventoryDeatails">
             <button
               type="submit"

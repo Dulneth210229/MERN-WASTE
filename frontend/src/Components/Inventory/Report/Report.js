@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 function Report() {
   const componentsRef = useRef(); // Shared ref for the content to print
+  const componentsRefO = useRef(); // Shared ref for the content to print
   return (
     <div>
       <InventoyHeader />
@@ -42,7 +43,7 @@ function Report() {
             </div>
             {/* Print button is outside the ref scope, which is fine */}
             <div className="absolute bottom-3 right-3">
-              <ReportButton contentRef={componentsRef} />
+              <ReportButton contentRef={componentsRefO} />
             </div>
           </div>
           <div className="relative w-1/3 h-52 bg-sky-300 rounded-lg m-3 shadow-2xl">
@@ -52,7 +53,7 @@ function Report() {
               </div>
             </div>
             <Link to="/sendReport">
-              <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
+              <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
                 Upload Report
               </button>
             </Link>
@@ -64,9 +65,9 @@ function Report() {
         </div>
 
         {/* Hidden Printable Order */}
-        {/* <div style={{ display: "none" }}>
-          <PrintableOrder ref={componentsRef} />
-        </div> */}
+        <div style={{ display: "none" }}>
+          <PrintableOrder ref={componentsRefO} />
+        </div>
         <div className="flex flex-row gap-20 mx-auto w-3/3 mt-5 mr-10 ml-10 ">
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
@@ -74,9 +75,11 @@ function Report() {
                 Generate Order Report
               </div>
             </div>
-            <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
-              Generate Report
-            </button>
+            <Link to="">
+              <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
+                Generate Report
+              </button>
+            </Link>
           </div>
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
@@ -84,9 +87,11 @@ function Report() {
                 Generate Order Report
               </div>
             </div>
-            <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
-              Generate Report
-            </button>
+            <Link to="">
+              <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
+                Generate Report
+              </button>
+            </Link>
           </div>
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
@@ -94,9 +99,11 @@ function Report() {
                 Generate Order Report
               </div>
             </div>
-            <button className="bg-lime-500 w-48 rounded-lg text-center absolute bottom-3 right-3">
-              Generate Report
-            </button>
+            <Link to="">
+              <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
+                Generate Report
+              </button>
+            </Link>
           </div>
         </div>
       </div>
