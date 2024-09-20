@@ -1,38 +1,35 @@
-import React, {useEffect,useState} from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function UpdateComplain() {
+  const [inputs, setInputs] = useState({});
+  const history = useNavigate();
+  const id = useParams().id;
 
-    const[inputs, setInputs] = useState({});
-    const history = useNavigate();
-    const id = useParams().id;
+  useEffect(() => {
+    const fetchHandler = async () => {
+      await axios
+        .get(`http://localhost:5001/complain/${id}`)
+        .then((res) => res.data)
+        .then((data) => setInputs(data.complain));
+    };
+    fetchHandler();
+  }, [id]);
 
-    useEffect(() =>{
-        const fetchHandler = async ()=>{
-            await axios
-            .get(`http://localhost:5001/complain/${id}`)
-            .then((res)=> res.data)
-            .then((data)=> setInputs(data.complain))
-        };
-        fetchHandler();
-    },[id]);
-
-    const sendRequest = async () => {
-        await axios
-        .put(`http://localhost:5001/complain/${id}`,{
-            name: String(inputs.name),
-            email: String(inputs.email),
-            address: String(inputs.address),
-            complainCategory: String(inputs.complainCategory),
-            description: String(inputs.description),
-            attachments: String(inputs.attachments),
-        
-        })
-        .then(res =>res.data);
-        };
+  const sendRequest = async () => {
+    await axios
+      .put(`http://localhost:5001/complain/${id}`, {
+        name: String(inputs.name),
+        email: String(inputs.email),
+        address: String(inputs.address),
+        complainCategory: String(inputs.complainCategory),
+        description: String(inputs.description),
+        attachments: String(inputs.attachments),
+      })
+      .then((res) => res.data);
+  };
 
         const handleChange = (e) => {
             setInputs((prevState)=>({
@@ -50,8 +47,10 @@ function UpdateComplain() {
             
             return (
                 <div>
-                  {/* <CrmNav /> */}
-                  <h1>Make Complain</h1>
+                  <h1 className="text-center mt-5 font-semibold text-slate-800 ">
+                Make Complain
+                </h1>
+                <hr className="border-2" />
             
                   <body class="flex items-center justify-center min-h-screen bg-gray-100">
                     <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
@@ -167,6 +166,4 @@ function UpdateComplain() {
 
         }
 
-        export default UpdateComplain
-
-        
+export default UpdateComplain;

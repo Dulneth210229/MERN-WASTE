@@ -69,7 +69,7 @@ function UserHomeHeader() {
                   Pay Bill
                 </li>
               </Link>
-              <Link to="">
+              <Link to="/CatHome">
                 <li className="hover:bg-slate-400 text-2xl  h-12 pt-1 w-52 flex  flex-row rounded-lg text-center">
                   <img
                     src={recycleGuid}

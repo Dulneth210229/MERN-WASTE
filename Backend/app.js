@@ -9,6 +9,8 @@ const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
+const planrouter = require("./Routes/PlanRoutes");
+const categoryrouterOr = require("./Routes/CategoryRoutesOr");
 const { loginAdmin } = require("./ErrorHandler/Loginhandler");
 const userRouter = require("./Routes/userRoute");
 const adminRouter = require("./Routes/adminRoute");
@@ -16,6 +18,9 @@ const driverRouter = require("./Routes/driverRoute");
 const binRouter = require("./Routes/binRoute");
 const orderRouter = require("./Routes/OrderRoute");
 const dotenv = require("dotenv");
+
+
+
 
 dotenv.config();
 const app = express();
@@ -36,6 +41,8 @@ app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
 app.post("/register", inventoryRegisterUser);
+app.use("/plan",planrouter);
+app.use("/categoryOr", categoryrouterOr);
 app.post("/loginAdmin", loginAdmin);
 app.use("/file", express.static("file"));
 app.use("/users", userRouter);

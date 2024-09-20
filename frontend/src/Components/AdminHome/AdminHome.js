@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <Nav />
-      <div className="bg-blue-200 w-1/5 ml-4 rounded-lg">
+      <div className="bg-blue-300 w-1/4 mx-auto rounded-lg">
         <h1 className="text-4xl text-center font-bold my-7 pt-5 ">
           Admin Home
         </h1>
@@ -16,7 +16,7 @@ function Home() {
               Waste Collcetion
             </button>
           </Link>
-          <Link to="CategoryHome">
+          <Link to="CategoryDetails">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-72 hover:opacity-95">
               Waste Category
             </button>
@@ -31,7 +31,7 @@ function Home() {
               Inventory Management
             </button>
           </Link>
-          <Link to="">
+          <Link to="/PlanManegment">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold  w-72 hover:opacity-95">
               Payment Plan
             </button>
