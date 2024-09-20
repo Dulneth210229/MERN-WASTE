@@ -16,7 +16,7 @@ function Home() {
               Waste Collcetion
             </button>
           </Link>
-          <Link to="CategoryHome">
+          <Link to="CategoryDetails">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-72 hover:opacity-95">
               Waste Category
             </button>
