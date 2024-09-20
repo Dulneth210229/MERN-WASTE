@@ -1,63 +1,52 @@
-import React from 'react';
+import React from 'react'
 import { Link } from "react-router-dom";
 
+
 function AccountNav() {
-  return (
-    <header className="bg-gray-800 shadow-md">
-      <div className="flex justify-between items-center max-w-7xl mx-auto p-4">
-        {/* Logo */}
-        <Link to="/">
-          <h1 className="text-3xl font-bold text-white flex items-center space-x-2">
-            <span className="text-emerald-400">Fresh</span>
-            <span className="text-teal-300">Colombo</span>
-          </h1>
-        </Link>
-        
-        {/* Navigation Menu */}
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <Link 
-                to="/" 
-                className="text-white hover:text-gray-300 transition duration-300">
-                Home
+
+    return (
+        <header className="bg-slate-300 static-fixed">
+          <div className="flex justify-between items-center max-w-8xl p-2">
+            <Link to="/">
+              <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
+                <span className="font-boldt text-3xl">Fresh</span>
+                <span className="text-emerald-500 font-bold text-3xl">Colombo</span>
+              </h1>
+            </Link>
+    
+            <ul className="flex gap-5 font-bold">
+              <Link to="/AccountHome">
+                <li className="hover:underline text-2xl gap-6">Home</li>
               </Link>
-            </li>
-           
-            <li>
-              <Link 
-                to="/ViewSalary" 
-                className="text-white hover:text-gray-300 transition duration-300">
-                View Salary
+              <Link to="/AddSalary">
+              <li className="hover:underline text-2xl">Add Salary</li>
               </Link>
-            </li>
-            <li>
-              <Link 
-                to="/AddSalary" 
-                className="text-white hover:text-gray-300 transition duration-300">
-                Add Salary
+              <Link to="/ViewSalary">
+                <li className="hover:underline text-2xl">View Salary</li>
               </Link>
-            </li>
-  
-            <li>
-              <Link 
-                to="/sign-in" 
-                className="text-white hover:text-gray-300 transition duration-300">
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/sign-up" 
-                className="text-white hover:text-gray-300 transition duration-300">
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
+             
+            </ul>
+            <div className="flex p-1">
+              <ul className="flex gap-5 font-bold pr-2 pt-1">
+                <Link to="/sign-in">
+                  <li className="hover:underline text-2xl">SignIn</li>
+                </Link>
+               <Link to="/sign-up">
+                 <li className="hover:underline text-2xl">SignUp</li>
+               </Link>
+              </ul>
+    
+    
+            </div>
+          </div>
+        </header>
+      );
+
+
 }
 
 export default AccountNav;
+
+
+
+   

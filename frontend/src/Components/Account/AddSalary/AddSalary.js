@@ -100,7 +100,7 @@ function AddSalary() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <AccountNav />
+      <AccountNav/>
       <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Add Salary</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
