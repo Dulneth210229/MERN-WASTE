@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function AddSalary() {
+
+
   const EPF = 500;
   const ETF = 500;
   const history = useNavigate();// Creating a function to navigate to different routes after form submission
@@ -99,8 +101,12 @@ function AddSalary() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <AccountNav/>
+
+    <div >
+    <AccountNav/>
+     
+ <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+
       <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Add Salary</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -201,6 +207,7 @@ function AddSalary() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }
