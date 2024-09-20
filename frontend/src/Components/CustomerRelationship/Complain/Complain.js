@@ -115,4 +115,5 @@ function ComplainDisplay(props) {
   );
 }
 
-export default ComplainDisplay;
+export default ComplainDisplay
+

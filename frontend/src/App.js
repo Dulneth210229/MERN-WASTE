@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+
 import AddRequest from "./Components/RequestService/AddRequest/AddRequest";
 import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
@@ -37,13 +38,26 @@ import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/A
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
+import PackageManagement  from "./Components/PlanManegment/PackageManagement";
+import CatHome from "./Components/Category/CatHome/CatHome";
+import CategoryHomeOr from "./Components/Category/CategoryHomeOr/CategoryHomeOr";
+import CategoryAddOr from "./Components/Category/CategoryAddOr/CategoryAddOr";
+import CategoryDetailsOr from "./Components/Category/CategoryDetailsOr/CategoryDetailsOr";
+import CategoryUpdateOr from "./Components/Category/CategoryUpdateOr/CategoryUpdateOr";
+import CategoryHomeHza from "./Components/Category/CategoryHomeHza/CategoryHomeHza";
+import CategoryAddHza from "./Components/Category/CategoryAddHza/CategoryAddHza";
+import CategoryDetailsHza from "./Components/Category/CategoryDetailsHza/CategoryDetailsHza";
+import CategoryUpdateHza from "./Components/Category/CategoryUpdateHza/CategoryUpdateHza";
 import FirstHome from "./Components/FirstHome/FirstHome";
 import Login from "./Components/Login/Login";
+<<<<<<<<< Temporary merge branch 1
 import CrmReport from "./Components/CustomerRelationship/CrmReport/CrmReport";
+=========
 import SendReport from "./Components/Inventory/SendReport/SendReport";
 import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
+>>>>>>>>> Temporary merge branch 2
 
 function App() {
   //java scripts
@@ -92,8 +106,20 @@ function App() {
           <Route path="/AddComplainForm" element={<AddComplainForm />} />
           <Route path="/complaindisplay/:id" element={<UpdateComplain />} />
           <Route path="/AdminRegister" element={<Register />} />
+          <Route path="/PlanManegment" element={<PackageManagement />} />
+          <Route path="/catHome" element={<CatHome />} />
+          <Route path="/categoryhomeOr" element={<CategoryHomeOr />} />
+          <Route path="/categoryaddOr" element={<CategoryAddOr />} />
+          <Route path="/categorydetailsOr" element={<CategoryDetailsOr />} />
+          <Route path="/categorydetailsOr/:id" element={<CategoryUpdateOr />} />
+          <Route path="/categoryhomeHza" element={<CategoryHomeHza />} />
+          <Route path="/categoryaddHza" element={<CategoryAddHza />} />
+          <Route path="/categorydetailsHza" element={<CategoryDetailsHza />} />
+          <Route path="/categorydetailsHza/:id" element={<CategoryUpdateHza />} />
           <Route path="/login" element={<Login />} />
+<<<<<<<<< Temporary merge branch 1
           <Route path="/crmReport" element={<CrmReport />} />
+=========
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
