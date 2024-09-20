@@ -40,31 +40,30 @@ function Inventory(props) {
       </div>*/}
       <div>
         <table className="w-auto mx-auto m-1">
-          <tr className="p-3 bg-green-100">
-            <td className="border-2 p-2 w-48 font-medium text-center ">
+          <tr className="p-3 bg-sky-200">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-500 ">
               {productName}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-500">
               {ProductCategory}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-500">
               {materialType}
             </td>
-            <td className="border-2 p-2 w-24 font-medium text-center">
+            <td className="border-2 p-2 w-24 font-medium text-center border-slate-500">
               {quantity}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-              {" "}
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-500">
               {productDescription}
             </td>
-            <td className="border-2 p-2 w-52 font-medium text-center">
+            <td className="border-2 p-2 w-52 font-medium text-center border-slate-500">
               <Link to={`/inventoryDeatails/${_id}`}>
-                <button className="p-1 pr-2 pl-2 m-2 hover:bg-green-700">
+                <button className="p-1 pr-2 pl-2 m-2 hover:bg-green-700 bg-green-600 rounded-lg">
                   Update
                 </button>
               </Link>
               <button
-                className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700"
+                className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700 rounded-lg"
                 onClick={deleteHandler}
               >
                 Remove

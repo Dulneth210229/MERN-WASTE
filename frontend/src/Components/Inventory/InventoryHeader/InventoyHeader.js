@@ -30,10 +30,7 @@ function InventoyHeader() {
           </div>
           <div className="flex p-1 mr-5">
             <ul className="flex gap-5 font-bold pr-2 pt-1">
-              <Link to="./sign-in">
-                <li className="hover:underline text-2xl"></li>
-              </Link>
-              <Link to="./sign-up">
+              <Link to="/">
                 <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>

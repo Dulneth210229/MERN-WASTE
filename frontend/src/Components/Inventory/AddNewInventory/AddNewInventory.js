@@ -55,13 +55,13 @@ function AddNewInventory() {
     <div>
       <InventoyHeader />
       <div>
-        <h1 className="text-center mt-5 font-semibold text-slate-800 ">
+        <h1 className="text-center mt-5 font-semibold text-slate-800 text-4xl mb-4">
           Add New Inventory Stock
         </h1>
         <hr className="border-2" />
         <form
           onSubmit={handleSubmit}
-          className=" w-1/4 mx-auto m-3 rounded-lg shadow-xl bg-green-50"
+          className=" w-2/6 mx-auto m-3 rounded-lg shadow-xl bg-sky-300"
         >
           <div className="flex flex-col w-auto mr-10 ml-10">
             <div className="flex flex-col w-96 mx-auto">
@@ -137,7 +137,7 @@ function AddNewInventory() {
 
             <button
               type="submit"
-              className="w-72 ml-4 mt-3 mb-5 rounded-lg font-bold"
+              className="w-72 mx-auto mt-3 mb-5 rounded-lg font-bold bg-green-700 h-10"
             >
               Submit
             </button>
