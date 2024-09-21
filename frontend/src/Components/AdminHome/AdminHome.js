@@ -41,7 +41,7 @@ function Home() {
               Customer Realation Ship
             </button>
           </Link>
-          <Link to="">
+          <Link to="EmployeeHome">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-72 hover:opacity-95">
               Employee Management
             </button>
