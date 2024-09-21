@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import RequestNav from "../RequestNav/RequestNav";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 function UpdateRequest() {
   const [inputs, setInputs] = useState({});
@@ -39,8 +40,22 @@ function UpdateRequest() {
     }));
   };
 
+  const handlePhoneInput = (e) => {
+    const value = e.target.value;
+    const numericValue = value.replace(/\D/g, "");
+    setInputs((prevState) => ({
+      ...prevState,
+      phoneNumber: numericValue,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(inputs.phoneNumber)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
     console.log(inputs);
     sendRequest().then(() => history("/viewrequests"));
   };
@@ -48,10 +63,8 @@ function UpdateRequest() {
   return (
     <div>
       <RequestNav />
-      <h1>Update Request</h1>
-
       <body class="flex items-center justify-center min-h-screen bg-gray-100">
-        <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
+        <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl mb-32">
           <h2 class="text-2xl font-semibold mb-6">Update Your Request</h2>
 
           <form onSubmit={handleSubmit}>
@@ -109,10 +122,13 @@ function UpdateRequest() {
               <input
                 type="tel"
                 name="phoneNumber"
-                onChange={handleChange}
+                onChange={handlePhoneInput}
                 required
                 value={inputs.phoneNumber}
                 placeholder="Your phone number..."
+                inputMode="numeric"
+                pattern="\d*"
+                maxLength="10"
                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
               />
             </div>
@@ -155,6 +171,7 @@ function UpdateRequest() {
           </form>
         </div>
       </body>
+      <UserFooter />
     </div>
   );
 }

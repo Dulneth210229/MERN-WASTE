@@ -62,6 +62,8 @@ import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
 import PlanManagementPayment from "./Components/PlanManegmentPayment/PlanManagementPayment";
 import InventoryReg from "./Components/InventoryReg/Register";
+import RequestDetailsUser from "./Components/RequestService/RequestDetailsUser/RequestDetailsUser";
+import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff";
 
 function App() {
   //java scripts
@@ -138,6 +140,8 @@ function App() {
             element={<PlanManagementPayment />}
           />
           <Route path="/StaffRegister" element={<InventoryReg />} />
+          <Route path="/requestDetailsUser" element={<RequestDetailsUser />} />
+          <Route path="/requestStaff" element={<RequestStaff />} />
         </Routes>
       </React.Fragment>
     </div>

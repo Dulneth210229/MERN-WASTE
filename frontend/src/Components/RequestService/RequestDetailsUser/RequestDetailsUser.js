@@ -55,23 +55,6 @@ function Requests() {
         </div>
       )}
       <UserFooter />
-      {/* <div className="mt-10">
-        <table className="border-2 mx-auto">
-          <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-25 border-green-500">Service</th>
-            <th className="border-2 p-2 w-46  border-green-500">Name</th>
-            <th className="border-2 p-2 w-51 border-green-500">Address</th>
-            <th className="border-2 p-2 w-24 border-green-500">Phone Number</th>
-            <th className="border-2 p-2 w-20 border-green-500">Date</th>
-            <th className="border-2 p-2 w-20 border-green-500">Time</th>
-            <th className="border-2 p-2 w-55 border-green-500">Actions</th>
-          </tr>
-          {requests &&
-            requests.map((request, i) => <Request request={request} />)}
-        </table>
-      </div> */}
-
-      <div></div>
     </div>
   );
 }
