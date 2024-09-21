@@ -16,7 +16,7 @@ function Request(props) {
       .delete(`http://Localhost:5001/request/${_id}`)
       .then((res) => res.data)
       .then(() => history("/"))
-      .then(() => history("/viewrequests"));
+      .then(() => history("/requestDetailsUser"));
   };
 
   return (
@@ -56,7 +56,7 @@ function Request(props) {
 
       <div className="flex space-x-4">
         <Link
-          to={`/viewrequests/${_id}`}
+          to={`/requestDetailsUser/${_id}`}
           className="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg"
         >
           Update

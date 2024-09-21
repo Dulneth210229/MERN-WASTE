@@ -3,6 +3,7 @@ import RequestNav from "../RequestNav/RequestNav";
 import axios from "axios";
 import Request from "../Request/Request";
 import UserFooter from "../../UserHomePage/UserFooter";
+import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
 
 const URL = "http://Localhost:5001/request";
 
@@ -31,8 +32,11 @@ function Requests() {
   };
   return (
     <div>
-      <RequestNav />
-      <div className="flex space-x-4 justify-end py-4 pr-96 bg-gray-100">
+      <UserHomeHeader />
+      {/* <div className="bg-gray-100 p-1">
+      </div> */}
+      <div className="flex space-x-4 justify-end py-4 pl-96 bg-gray-100">
+        <RequestNav />
         <input
           onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
@@ -40,7 +44,12 @@ function Requests() {
           placeholder="Search Request Details"
           className="px-4 py-2 border border-gray-300 rounded-lg active:border-blue-500"
         ></input>
-        <button onClick={handleSearch} className="bg-green-700 hover:bg-green-800 rounded-lg px-4 py-2 text-white font-semibold">Search</button>
+        <button
+          onClick={handleSearch}
+          className="bg-green-700 hover:bg-green-800 rounded-lg px-4 py-2 text-white font-semibold"
+        >
+          Search
+        </button>
       </div>
       {noResults ? (
         <div>
