@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RequestNav from "../RequestNav/RequestNav";
 import axios from "axios";
 import Request from "../Request/Request";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 const URL = "http://Localhost:5001/request";
 
@@ -17,9 +18,14 @@ function Requests() {
   return (
     <div>
       <RequestNav />
-      <h1>User details display page</h1>
-
-      <div className="mt-10">
+      <div className="flex flex-col items-center bg-gray-100 min-h-screen pt-0">
+        <div className="w-full max-w-4xl p-5">
+          {requests &&
+            requests.map((request, i) => <Request request={request} />)}
+        </div>
+      </div>
+      <UserFooter />
+      {/* <div className="mt-10">
         <table className="border-2 mx-auto">
           <tr className="bg-green-200 ">
             <th className="border-2 p-2 w-25 border-green-500">Service</th>
@@ -33,10 +39,11 @@ function Requests() {
           {requests &&
             requests.map((request, i) => <Request request={request} />)}
         </table>
-      </div>
+      </div> */}
 
       <div></div>
     </div>
+
   );
 }
 
