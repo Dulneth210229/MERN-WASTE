@@ -5,6 +5,7 @@ import containerImage from "../reqImages/container.jpg";
 import cleanerImage from "../reqImages/cleaner.jpg";
 import bulkyImage from "../reqImages/bulky2.jpg";
 import UserFooter from "../../UserHomePage/UserFooter";
+import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
 // import axios from 'axios'
 // import { useEffect, useState } from 'react'
 
@@ -26,15 +27,18 @@ function RequestServiceMain() {
 
   return (
     <div>
-      <RequestNav />
-      <div className="min-h-screen bg-gray-100 p-6">
+      <UserHomeHeader />
+      <div className="min-h-screen bg-gray-100 pt-1 pr-1">
         <header className="mb-10">
           <div className="flex justify-between items-center mt-2">
-            <h1 className="text-4xl font-bold pl-44 text-gray-800 flex-grow text-center">
+            <h1 className="text-4xl font-bold text-gray-800 flex-grow text-center">
               Request a Special Service
             </h1>
+            <div className="pr-96">
+              <RequestNav />
+            </div>
             <Link to="/addrequest">
-              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
+              <button className="px-6 py-2 mr-44 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
                 Add New Request
               </button>
             </Link>
@@ -122,7 +126,7 @@ function RequestServiceMain() {
           </div>
           <div className="flex justify-center mt-10">
             <Link to="/addrequest">
-              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
+              <button className="px-6 py-2 mb-8 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
                 Add New Request
               </button>
             </Link>
