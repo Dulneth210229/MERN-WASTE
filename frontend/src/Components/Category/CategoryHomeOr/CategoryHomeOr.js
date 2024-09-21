@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryNav from "../CategoryNav/CategoryNav";
-import CategoryFooter from "../CategoryFooter/CategoryFooter";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 function CategoryHomeOr() {
   return (
@@ -69,7 +69,7 @@ function CategoryHomeOr() {
         </div>
       </div>
 
-      <CategoryFooter />
+      <UserFooter />
     </div>
   );
 }
