@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const categorySchema = new Schema({
+const categorySchemaOr = new Schema({
     WasteType:{
         type:String, //dataType
         required:true, // validate
@@ -31,5 +31,5 @@ const categorySchema = new Schema({
 
 module.exports = mongoose.model(
     "CategoryModelOr", //file name
-    categorySchema  //function name
+    categorySchemaOr  //function name
 )
