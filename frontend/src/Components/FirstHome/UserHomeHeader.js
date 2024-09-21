@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./LOGO.png";
 import { Link } from "react-router-dom";
-import account from "./admin-icon.png";
 import customerServices from "./img/cusromerServices.png";
 import paymentPlan from "./img/payment.png";
 import requestServices from "./img/requestServices.png";
@@ -17,13 +16,7 @@ function UserHomeHeader() {
             <img src={logo} alt="Logo" className="h-20" />
           </div>
         </Link>
-        <div>
-          <img
-            src={account}
-            alt="Account-logo"
-            className="w-16 h-16 m-2 mt-2 mr-10"
-          />
-        </div>
+        <div></div>
       </div>
       <header>
         <div className="flex p-1 bg-slate-300">
@@ -80,32 +73,6 @@ function UserHomeHeader() {
                 </li>
               </Link>
             </ul>
-          </div>
-          <div className="flex ">
-            <ul className="flex gap-5 font-bold pr-2 ">
-              <Link to="./sign-in">
-                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-28 rounded-lg text-center">
-                  SignIn
-                </li>
-              </Link>
-              <Link to="./sign-up">
-                <li className="hover:bg-slate-400 text-2xl  h-12 pt-1 w-28 rounded-lg text-center">
-                  SignUp
-                </li>
-              </Link>
-            </ul>
-
-            {/*<form className="bg-slate-100 p-2 rounded-lg flex items-center ">
-          <input
-            type="text"
-            placeholder="Search..."
-            //Responsivness od the components
-            //w-24 --> make the size according to the mobile
-            //sm:w-64 --> above the size of the mobile
-            className="bg-transparent focus:outline-none w-24 sm:w-64"
-          />
-          <FaSearch className="text-slate-600" />
-        </form>*/}
           </div>
         </div>
       </header>

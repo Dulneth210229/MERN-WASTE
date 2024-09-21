@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../AdminNav/AdminNav";
+// import Header from "../AdminNav/AdminNav";
 import loginimg from "./img/login.png";
 import axios from "axios";
 
@@ -23,7 +23,7 @@ function Login() {
       const response = await sendRequest();
       if (response.status === "ok") {
         alert("Login Successful");
-        history("/");
+        history("/adminHome");
       } else {
         alert("Login Unsuccessful");
       }
@@ -44,14 +44,14 @@ function Login() {
 
   return (
     <div>
-      <Header />
-      <h2 className="font-bold text-4xl text-slate-700 text-center mt-6">
-        Admin Login
+      {/* <Header /> */}
+      <h2 className="font-bold text-5xl text-slate-700 text-center mt-14">
+        Staff Login
       </h2>
-      <hr />
+      <hr className="border-2 border-slate-500 mt-5" />
       <div className="flex flex-row mt-10 w-2/3 p-1 ml-96 rounded-lg">
         <form
-          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-10 h-3/3 bg-green-50"
+          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-10 h-3/3 bg-green-200"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col mb-8 w-max p-2">
@@ -90,13 +90,13 @@ function Login() {
             </div>
           </div>
 
-          <button className="w-96 bg-lime-500 font-semibold p-2 ml-7">
+          <button className="w-96 bg-lime-600 font-semibold p-2 ml-7 rounded-lg hover:bg-lime-500">
             Login
           </button>
           <p className="ml-7 mt-3">
             If you Don't have an account?
-            <Link to="/login">
-              <span className="text-lime-500 font-semibold ml-2 hover:text-lime-600">
+            <Link to="/StaffRegister">
+              <span className="text-lime-700 font-semibold ml-2 hover:text-lime-800">
                 Sign Up Here
               </span>
             </Link>
