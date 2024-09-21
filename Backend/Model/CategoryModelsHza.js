@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const categorySchema = new Schema({
+const hazardousSchema = new Schema({
     WasteType:{
         type:String, //dataType
         required:true, // validate
@@ -30,6 +30,6 @@ const categorySchema = new Schema({
 });
 
 module.exports = mongoose.model(
-    "CategoryModelHza", //file name
-    categorySchema  //function name
+    "CategoryModelsHza", //file name
+    hazardousSchema //function name
 )
