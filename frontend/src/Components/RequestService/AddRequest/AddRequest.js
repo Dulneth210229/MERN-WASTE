@@ -21,10 +21,11 @@ function AddRequest() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then(() => history('/viewrequests'))
+    await sendRequest();
+    history('/viewrequests');
   };
 
   const sendRequest = async () => {

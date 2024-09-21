@@ -13,9 +13,13 @@ const PrintInventory = ({ contentRef }) => {
   return (
     <button
       onClick={handlePrint}
-      className="bg-lime-500 w-52 rounded-lg text-center flex flex-row justify-between"
+      className="bg-lime-500 w-auto rounded-lg text-center flex flex-row p-2 justify-between font-medium"
     >
-      <img src={downlodImage} alt="download logo" className="" />
+      <img
+        src={downlodImage}
+        alt="download logo"
+        className="w-5 h-5 mt-1 mr-1"
+      />
       Generate Report
     </button>
   );

@@ -12,15 +12,15 @@ function InventoyHeader() {
       </Link>
       <header>
         <div className="flex  p-2 bg-slate-300">
-          <div className="mx-auto ml-5 ">
+          <div className="mx-auto ml-5 mt-1">
             <ul className="flex gap-8 font-bold ">
-              <Link to="/">
+              <Link to="/inventoryHome">
                 <li className="hover:underline text-2xl gap-6">Home</li>
               </Link>
-              <Link to="/inventoryHome">
+              <Link to="/inventoryDeatails">
                 <li className="hover:underline text-2xl">Inventory</li>
               </Link>
-              <Link to="about">
+              <Link to="/orderDetails">
                 <li className="hover:underline text-2xl">Orders</li>
               </Link>
               <Link to="/inventoryReport">
@@ -28,13 +28,10 @@ function InventoyHeader() {
               </Link>
             </ul>
           </div>
-          <div className="flex p-1">
+          <div className="flex p-1 mr-5">
             <ul className="flex gap-5 font-bold pr-2 pt-1">
-              <Link to="./sign-in">
-                <li className="hover:underline text-2xl">SignIn</li>
-              </Link>
-              <Link to="./sign-up">
-                <li className="hover:underline text-2xl">SignUp</li>
+              <Link to="/">
+                <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>
 

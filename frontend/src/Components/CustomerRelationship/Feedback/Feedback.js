@@ -1,37 +1,97 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-  
+import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function FeedbackDisplay(props) {
-  const {_id, name, email, address, phone, comment, rating} = props.feedback;
+  const { _id, name, email, address, phone, comment, rating } = props.feedback;
 
-const history = useNavigate();
+  const history = useNavigate();
 
-const deleteHandler = async () => {
-  await axios.delete(`http://localhost:5001/feedback/${_id}`)
-  .then(res => res.data)
-  .then(()=>history("/"))
-  .then(()=>history("/FeedbackDisplay"))
-}
+  const deleteHandler = async () => {
+    await axios
+      .delete(`http://localhost:5001/feedback/${_id}`)
+      .then((res) => res.data)
+      .then(() => history("/"))
+      .then(() => history("/FeedbackDisplay"));
+  };
 
   return (
-    <div>
-      <h1>FeedbackDisplay</h1>
-      <br></br>
-      <h1>ID:{_id}</h1>
-      <h1>Name:{name}</h1>
-      <h1>Email:{email}</h1>
-      <h1>Address:{address}</h1>
-      <h1>Phone:{phone}</h1>
-      <h1>Comment:{comment}</h1>
-      <h1>Rating:{rating}</h1>
-      <Link to={`/feedbackdisplay/${_id}`}>Update</Link>
-      <button onClick={deleteHandler}>Delete</button>
 
+    <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <h1 className="text-2xl font-bold text-gray-800 mb-4">Feedback Details</h1>
+    
+    <div className="space-y-2 mb-4">
+      {/* <div>
+        <span className="font-semibold text-gray-600">ID:</span>
+        <span className="ml-2 text-gray-800">{_id}</span>
+      </div> */}
+      <div>
+        <span className="font-semibold text-gray-600">Full Name:</span>
+        <span className="ml-2 text-gray-800">{name}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-gray-600">Email:</span>
+        <span className="ml-2 text-gray-800">{email}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-gray-600">Address:</span>
+        <span className="ml-2 text-gray-800">{address}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-gray-600">Phone:</span>
+        <span className="ml-2 text-gray-800">{phone}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-gray-600">Comment:</span>
+        <span className="ml-2 text-gray-800">{comment}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-gray-600">Rating:</span>
+        <span className="ml-2 text-gray-800">{rating}</span>
+      </div>
     </div>
-  )
+    
+    <div className="flex space-x-4">
+      <Link 
+        to={`/feedbackdisplay/${_id}`}
+        className="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg"
+      >
+        Update
+      </Link>
+      <button
+        onClick={deleteHandler}
+        className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+
+    // <tr className="p-3 bg-green-100">
+    //   <td className="border px-4 py-2 font-medium text-center ">{name}</td>
+    //   <td className="border px-4 py-2 font-medium text-center"> {email}</td>
+    //   <td className="border px-4 py-2 max-w-[250px] font-medium text-center">
+    //     {address}
+    //   </td>
+    //   <td className="border px-4 py-2 font-medium text-center">{phone}</td>
+    //   <td className="border px-4 py-2 font-medium text-center"> {comment}</td>
+    //   <td className="border px-4 py-2 font-medium text-center"> {rating}</td>
+    //   <td className="border px-4 py-2 font-medium text-center">
+    //     <Link to={`/feedbackdisplay/${_id}`}>
+    //       <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+    //         Update
+    //       </button>
+    //     </Link>
+    //     <button
+    //       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    //       onClick={deleteHandler}
+    //     >
+    //       Remove
+    //     </button>
+    //   </td>
+    // </tr>
+  );
 }
 
-export default FeedbackDisplay
+export default FeedbackDisplay;

@@ -44,7 +44,7 @@ function InventoryDetails() {
         </h1>
         <div className="flex flex-row gap-5">
           <Link to="/addinventory">
-            <button className="h-10 p-2 mt-2 font-semibold bg-green-700 mr-28">
+            <button className="h-10 p-2 mt-2 font-semibold bg-green-700 mr-28 rounded-lg text-white">
               Add New Inventory
             </button>
           </Link>
@@ -61,7 +61,7 @@ function InventoryDetails() {
             <FaSearch className="text-slate-600" />
           </form>
           <button
-            className="h-10 p-2 mt-2 mr-2 font-bold bg-green-500 px-5"
+            className="h-10 p-2 mt-2 mr-2 font-bold bg-green-500 px-5 rounded-lg text-white"
             onClick={handleSearch}
           >
             Search
@@ -69,11 +69,12 @@ function InventoryDetails() {
         </div>
       </div>
       <hr className="border-2" />
-
       <div className="mt-10">
         <table className="border-2 mx-auto">
           <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-48 border-green-500">Product Name</th>
+            <th className="border-2 p-2 w-48 border-green-500 rounded-lg">
+              Product Name
+            </th>
             <th className="border-2 p-2 w-48  border-green-500">
               Product Category
             </th>
