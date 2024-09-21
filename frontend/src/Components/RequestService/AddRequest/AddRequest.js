@@ -43,10 +43,9 @@ function AddRequest() {
   return (
     <div>
       <RequestNav />
-      <body class="flex items-center justify-center min-h-screen bg-gray-100">
-        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+      <body class="flex items-center justify-center pt-24 bg-gray-100">
+        <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl mb-32">
           <h2 class="text-2xl font-semibold mb-6">Request a Special Service</h2>
-
           <form onSubmit={handleSubmit}>
             <div class="mb-4">
               <label for="service" class="block text-gray-700 mb-2">

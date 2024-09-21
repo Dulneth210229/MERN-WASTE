@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import RequestNav from "../RequestNav/RequestNav";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 function UpdateRequest() {
   const [inputs, setInputs] = useState({});
@@ -48,10 +49,8 @@ function UpdateRequest() {
   return (
     <div>
       <RequestNav />
-      <h1>Update Request</h1>
-
       <body class="flex items-center justify-center min-h-screen bg-gray-100">
-        <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
+        <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl mb-32">
           <h2 class="text-2xl font-semibold mb-6">Update Your Request</h2>
 
           <form onSubmit={handleSubmit}>
@@ -155,6 +154,7 @@ function UpdateRequest() {
           </form>
         </div>
       </body>
+      <UserFooter />
     </div>
   );
 }

@@ -34,7 +34,7 @@ function RequestServiceMain() {
               Request a Special Service
             </h1>
             <Link to="/addrequest">
-              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-blue-500 transition duration-200">
+              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
                 Add New Request
               </button>
             </Link>
@@ -122,7 +122,7 @@ function RequestServiceMain() {
           </div>
           <div className="flex justify-center mt-10">
             <Link to="/addrequest">
-              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-blue-500 transition duration-200">
+              <button className="px-6 py-2 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
                 Add New Request
               </button>
             </Link>
