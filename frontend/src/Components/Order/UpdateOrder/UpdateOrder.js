@@ -72,7 +72,7 @@ function UpdateOrder() {
       <Header />
       <div>
         <h1 className="text-5xl font-semibold text-slate-700 text-center my-5">
-          Add New Order
+          Update Order
         </h1>
         <hr />
       </div>
@@ -81,7 +81,7 @@ function UpdateOrder() {
           className=" w-4/5 mx-auto mt-5 p-5 rounded-lg flex flex-row"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-row bg-green-100 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
+          <div className="flex flex-row bg-green-300 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
             <div>
               <div className="ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -247,8 +247,12 @@ function UpdateOrder() {
                   readOnly
                 />
               </div>
-              <div className="mt-10 ml-10 ">
-                <button className="w-72  rounded-lg font-bold">
+              {/* Place Order Button */}
+              <div className="mt-5 ml-10">
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold mt-6 py-2 px-4 rounded-lg w-72 h-12"
+                >
                   Update Order
                 </button>
               </div>

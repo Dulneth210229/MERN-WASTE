@@ -49,7 +49,7 @@ function OrderDtails() {
 
         <div className="flex flex-row gap-5">
           <Link to="/addorder">
-            <button className="h-10 p-2 mt-2 font-semibold bg-green-700 mr-28">
+            <button className="h-10 p-2 mt-2 font-semibold bg-green-700 mr-28 rounded-lg text-white hover:bg-green-600">
               Place New Order
             </button>
           </Link>
@@ -66,7 +66,7 @@ function OrderDtails() {
             <FaSearch className="text-slate-600" />
           </form>
           <button
-            className="h-10 p-2 mt-2 mr-2 font-bold bg-green-500 px-5"
+            className="h-10 p-2 mt-2 mr-2 font-bold bg-green-500 px-5 rounded-lg hover:bg-green-400 text-white"
             onClick={handleSearch}
           >
             Search
@@ -75,15 +75,17 @@ function OrderDtails() {
       </div>
       <hr className="border-2" />
       <div className="mt-2 text-center  p-3">
-        <h1 className="text-3xl font-bold mr-2">Order Summary</h1>
+        <h1 className="text-3xl font-bold mr-2 text-slate-700">
+          Order Summary
+        </h1>
         <div className="flex flex-row gap-10 mx-auto items-center w-3/5 mt-5">
-          <h4 className="font-semibold text-2xl ml-14 border-2 p-1 rounded-lg border-dashed border-slate-900">
+          <h4 className="font-semibold text-2xl ml-14 border-2 p-1 rounded-lg bg-sky-300 border-dashed border-slate-900">
             Total Orders: {totalOrders}
           </h4>
-          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900">
+          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-yellow-300">
             Quantity Less Than 20: {ordersLessThan20}
           </h4>
-          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900">
+          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-green-300">
             Total Amount : ${totalAmount.toFixed(2)}
           </h4>
         </div>

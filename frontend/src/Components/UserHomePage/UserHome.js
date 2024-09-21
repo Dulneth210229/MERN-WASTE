@@ -26,7 +26,7 @@ function UserHome() {
   // Handle subscribe button click
   const handleSubscribe = (packageName, packagePrice) => {
     // Navigate to /PlanManagementPayment and pass the selected plan details
-    navigate("/PlanManegmentPayment", {
+    navigate("/PlanManagementPayment", {
       state: { packageName, packagePrice },
     });
   };
