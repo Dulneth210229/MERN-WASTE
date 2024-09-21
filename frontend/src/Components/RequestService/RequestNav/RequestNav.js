@@ -26,7 +26,7 @@ function requestNav() {
             <li>Add Request</li>
           </NavLink>
           <NavLink 
-            to="/viewrequests" 
+            to="/requestDetailsUser" 
             className={({ isActive }) => isActive ? 'underline text-2xl' : 'hover:underline text-2xl'}>
             <li>View Requests</li>
           </NavLink>

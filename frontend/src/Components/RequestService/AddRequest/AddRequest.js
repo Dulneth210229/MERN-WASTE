@@ -22,8 +22,22 @@ function AddRequest() {
     }));
   };
 
+  const handlePhoneInput = (e) => {
+    const value = e.target.value;
+    const numericValue = value.replace(/\D/g, "");
+    setInputs((prevState) => ({
+      ...prevState,
+      phoneNumber: numericValue,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(inputs.phoneNumber)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
     console.log(inputs);
     await sendRequest();
     history('/viewrequests');
@@ -100,10 +114,13 @@ function AddRequest() {
               <input
                 type="tel"
                 name="phoneNumber"
-                onChange={handleChange}
+                onChange={handlePhoneInput}
                 required
                 value={inputs.phoneNumber}
                 placeholder="Your phone number..."
+                inputMode="numeric"
+                pattern="\d*"
+                maxLength="10"
                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
               />
             </div>
