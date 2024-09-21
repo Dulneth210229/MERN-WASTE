@@ -18,10 +18,12 @@ const driverRouter = require("./Routes/driverRoute");
 const binRouter = require("./Routes/binRoute");
 const orderRouter = require("./Routes/OrderRoute");
 const dotenv = require("dotenv");
+const categoryrouterHza = require("./Routes/CategoryRoutesHza");
 
 dotenv.config();
 const app = express();
 const cors = require("cors");
+
 
 //middleware
 app.use(express.json());
@@ -46,6 +48,7 @@ app.use("/drivers", driverRouter);
 app.use("/bins", binRouter);
 app.use("/admins", adminRouter);
 app.use("/order", orderRouter);
+app.use("/hazardous", categoryrouterHza);
 
 mongoose
   .connect("mongodb+srv://mern:mern@cluster0.icy1i.mongodb.net/")
