@@ -9,7 +9,6 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { styled } from '@mui/material/styles';
 
-// Custom icons for the rating component
 const customIcons = {
   1: { icon: <SentimentVeryDissatisfiedIcon color="error" />, label: 'Very Dissatisfied' },
   2: { icon: <SentimentDissatisfiedIcon color="error" />, label: 'Dissatisfied' },
@@ -18,7 +17,6 @@ const customIcons = {
   5: { icon: <SentimentVerySatisfiedIcon color="success" />, label: 'Very Satisfied' },
 };
 
-// Styled rating component
 const StyledRating = styled(Rating)(({ theme }) => ({
   '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
     color: theme.palette.action.disabled,
@@ -43,28 +41,64 @@ function UpdateFeedback() {
   const history = useNavigate();
   const id = useParams().id;
 
-    useEffect(() =>{
-        const fetchHandler = async ()=>{
-            await axios
-            .get(`http://localhost:5001/feedback/${id}`)
-            .then((res)=> res.data)
-            .then((data)=> setInputs(data.feedback))
-        };
-        fetchHandler();
-    },[id]);
+  useEffect(() => {
+    const fetchHandler = async () => {
+      await axios
+        .get(`http://localhost:5001/feedback/${id}`)
+        .then((res) => res.data)
+        .then((data) => setInputs(data.feedback));
+    };
+    fetchHandler();
+  }, [id]);
 
-    const sendRequest = async () => {
-        await axios
-        .put(`http://localhost:5001/feedback/${id}`,{
-            name: String(inputs.name),
-            email: String(inputs.email),
-            address: String(inputs.address),
-            phone: Number(inputs.phone),
-            comment: String(inputs.comment),
-            rating: Number(inputs.rating), 
-        })
-        .then(res =>res.data);
-        };
+  const sendRequest = async () => {
+    await axios
+      .put(`http://localhost:5001/feedback/${id}`, {
+        name: String(inputs.name),
+        email: String(inputs.email),
+        address: String(inputs.address),
+        phone: Number(inputs.phone),
+        comment: String(inputs.comment),
+        rating: Number(inputs.rating),
+      })
+      .then((res) => res.data);
+  };
+
+  const [errors, setErrors] = useState({});
+
+  const validateInputs = () => {
+    const newErrors = {};
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+    const phonePattern = /^[0-9]{10}$/;
+
+    if (!inputs.name || !namePattern.test(inputs.name)) {
+      newErrors.name = 'Name should contain only letters and spaces';
+    }
+
+    if (!inputs.email || !emailPattern.test(inputs.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+
+    if (!inputs.address || inputs.address.length < 5) {
+      newErrors.address = 'Address must be at least 5 characters long';
+    }
+
+    if (!inputs.phone || !phonePattern.test(inputs.phone)) {
+      newErrors.phone = 'Phone number must contain exactly 10 digits';
+    }
+
+    if (inputs.rating === 0) {
+      newErrors.rating = 'Please provide a rating';
+    }
+
+    if (!inputs.comment || inputs.comment.length < 10) {
+      newErrors.comment = 'Comment must be at least 10 characters long';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -82,24 +116,25 @@ function UpdateFeedback() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    sendRequest().then(() => history('/FeedbackDisplay'));
+    if (validateInputs()) {
+      sendRequest().then(() => history('/FeedbackDisplay'));
+    }
   };
 
   return (
     <div>
-      <h1 className="text-center mt-5 font-semibold text-slate-800">
+      {/* <h1 className="text-center mt-5 font-semibold text-slate-800">
         Update Your Feedback
       </h1>
-      <hr className="border-2" />
+      <hr className="border-2" /> */}
 
-      <body className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
           <h2 className="text-2xl font-semibold mb-6">Update Your Feedback</h2>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="Name" className="block text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-gray-700 mb-2">
                 Enter Your Name
               </label>
               <input
@@ -109,12 +144,13 @@ function UpdateFeedback() {
                 required
                 value={inputs.name}
                 placeholder="Your name..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
+              {errors.name && <span className="text-red-500">{errors.name}</span>}
             </div>
 
             <div className="mb-4">
-              <label htmlFor="Email" className="block text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-gray-700 mb-2">
                 Enter Email
               </label>
               <input
@@ -124,8 +160,9 @@ function UpdateFeedback() {
                 required
                 value={inputs.email}
                 placeholder="Your email..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
+              {errors.email && <span className="text-red-500">{errors.email}</span>}
             </div>
 
             <div className="mb-4">
@@ -139,8 +176,9 @@ function UpdateFeedback() {
                 required
                 value={inputs.address}
                 placeholder="Your address..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
+              {errors.address && <span className="text-red-500">{errors.address}</span>}
             </div>
 
             <div className="mb-4">
@@ -154,221 +192,75 @@ function UpdateFeedback() {
                 required
                 value={inputs.phone}
                 placeholder="Your phone number..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
+              {errors.phone && <span className="text-red-500">{errors.phone}</span>}
             </div>
 
-            {/* Rating Input */}
             <div className="mb-4">
               <label htmlFor="rating" className="block text-gray-700 mb-2">
-                Give a rating
+                Give the rating
               </label>
               <StyledRating
                 name="highlight-selected-only"
+                defaultValue={2}
                 IconContainerComponent={IconContainer}
                 getLabelText={(value) => customIcons[value].label}
                 highlightSelectedOnly
                 onChange={handleRatingChange}
-                value={inputs.rating || 0} // Default value to prevent issues when undefined
+                value={inputs.rating}
                 className="w-full"
               />
+              {errors.rating && <span className="text-red-500">{errors.rating}</span>}
             </div>
 
-                      <div class="mb-4">
-                        <label for="comment" class="block text-gray-700 mb-2">
-                          Enter your Comment
-                        </label>
-                        <input
-                          type="comment"
-                          name="comment"
-                          onChange={handleChange}
-                          required
-                          value={inputs.comment}
-                          placeholder="Your comment..."
-                          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                        />
-                      </div>
-          
-                      <button
-                        type="submit"
-                        class="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                      >
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                </body>
-                </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 mb-2">Enter your Comment</label>
+              <textarea
+                name="comment"
+                onChange={handleChange}
+                value={inputs.comment}
+                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                rows="4"
+              ></textarea>
+              {errors.comment && (
+                <span class="text-red-500">{errors.comment}</span>
+              )}
+            </div>
+
+            {/* <div className="mb-4">
+              <label htmlFor="comment" className="block text-gray-700 mb-2">
+                Enter your Comment
+              </label>
+              <input
+                type="text"
+                name="comment"
+                onChange={handleChange}
+                required
+                value={inputs.comment}
+                placeholder="Your comment..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              />
+              {errors.comment && <span className="text-red-500">{errors.comment}</span>}
+            </div> */}
+
+            <button
+              type="submit"
+              className="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default UpdateFeedback;
 
 
-// import React, {useEffect,useState} from 'react'
-// import axios from 'axios'
-// import { useParams } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
 
 
-// function UpdateFeedback() {
 
-//     const[inputs, setInputs] = useState({});
-//     const history = useNavigate();
-//     const id = useParams().id;
 
-//     useEffect(() =>{
-//         const fetchHandler = async ()=>{
-//             await axios
-//             .get(`http://localhost:5001/feedback/${id}`)
-//             .then((res)=> res.data)
-//             .then((data)=> setInputs(data.feedback))
-//         };
-//         fetchHandler();
-//     },[id]);
-
-//     const sendRequest = async () => {
-//         await axios
-//         .put(`http://localhost:5001/feedback/${id}`,{
-//             name: String(inputs.name),
-//             email: String(inputs.email),
-//             address: String(inputs.address),
-//             phone: Number(inputs.phone),
-//             comment: String(inputs.comment),
-//             rating: Number(inputs.rating), 
-//         })
-//         .then(res =>res.data);
-//         };
-
-//         const handleChange = (e) => {
-//             setInputs((prevState)=>({
-//                 ...prevState,
-//                 [e.target.name]: e.target.value,
-//             }));
-//             };
-    
-//             const handleSubmit = (e) => {
-//                 e.preventDefault();
-//                 console.log(inputs);
-//                 sendRequest().then(()=>
-//                 history("/FeedbackDisplay"));
-//             };
-            
-//             return (
-//               <div>
-//                 <h1 className="text-center mt-5 font-semibold text-slate-800">
-//         Add Your Feedback
-//       </h1>
-//       <hr className="border-2" />
-          
-//                 <body class="flex items-center justify-center min-h-screen bg-gray-100">
-//                   <div class="bg-green-200 p-8 rounded-lg shadow-md w-full max-w-lg">
-//                     <h2 class="text-2xl font-semibold mb-6">Add Your Feedback</h2>
-          
-//                     <form onSubmit={handleSubmit}>
-//                       <div class="mb-4">
-//                         <label for="Name" class="block text-gray-700 mb-2">
-//                           Enter Your Name
-//                         </label>
-//                         <input
-//                           type="text"
-//                           name="name"
-//                           onChange={handleChange}
-//                           required
-//                           value={inputs.name}
-//                           placeholder="Your name..."
-//                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                         />
-//                       </div>
-          
-//                       <div class="mb-4">
-//                         <label for="Email" class="block text-gray-700 mb-2">
-//                           Enter Email
-//                         </label>
-//                         <input
-//                           type="text"
-//                           name="email"
-//                           onChange={handleChange}
-//                           required
-//                           value={inputs.email}
-//                           placeholder="Your email..."
-//                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                         />
-//                       </div>
-          
-//                       <div class="mb-4">
-//                         <label for="address" class="block text-gray-700 mb-2">
-//                           Enter your address
-//                         </label>
-//                         <input
-//                           type="text"
-//                           name="address"
-//                           onChange={handleChange}
-//                           required
-//                           value={inputs.address}
-//                           placeholder="Your address..."
-//                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                         />
-//                       </div>
-          
-//                       <div class="mb-4">
-//                         <label for="phone" class="block text-gray-700 mb-2">
-//                           Enter your phone number
-//                         </label>
-//                         <input
-//                           type="tel"
-//                           name="phone"
-//                           onChange={handleChange}
-//                           required
-//                           value={inputs.phone}
-//                           placeholder="Your phone number..."
-//                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                         />
-//                       </div>
-          
-//                       <div class="flex space-x-4 mb-6">
-//                         <div class="flex-1">
-//                           <label for="rate" class="block text-gray-700 mb-2">
-//                             Give the rating
-//                           </label>
-//                           <input
-//                             type="rate"
-//                             name="rating"
-//                             onChange={handleChange}
-//                             required
-//                             value={inputs.rating}
-//                             placeholder="Give the rate..."
-//                             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                           />
-//                         </div>
-//                       </div>
-
-//                       <div class="mb-4">
-//                         <label for="comment" class="block text-gray-700 mb-2">
-//                           Enter your Comment
-//                         </label>
-//                         <input
-//                           type="comment"
-//                           name="comment"
-//                           onChange={handleChange}
-//                           required
-//                           value={inputs.comment}
-//                           placeholder="Your comment..."
-//                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-//                         />
-//                       </div>
-          
-//                       <button
-//                         type="submit"
-//                         class="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-//                       >
-//                         Submit
-//                       </button>
-//                     </form>
-//                   </div>
-//                 </body>
-//                 </div>
-//   );  
-// }
-
-// export default UpdateFeedback
