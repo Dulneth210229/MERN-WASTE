@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./LOGO.png";
 import { Link } from "react-router-dom";
-import account from "./admin-icon.png";
+// import account from "./admin-icon.png";
 import customerServices from "./ImgTransform/img/cusromerServices.png";
 import paymentPlan from "./ImgTransform/img/payment.png";
 import requestServices from "./ImgTransform/img/requestServices.png";
@@ -12,24 +12,17 @@ function UserHomeHeader() {
   return (
     <div className=" flex flex-col ">
       <div className="flex flex-row justify-between">
-        <Link to="/">
+        <Link to="/userHomePage">
           <div className="ml-3">
             <img src={logo} alt="Logo" className="h-20" />
           </div>
         </Link>
-        <div>
-          <img
-            src={account}
-            alt="Account-logo"
-            className="w-16 h-16 m-2 mt-2 mr-10"
-          />
-        </div>
       </div>
       <header>
         <div className="flex p-1 bg-slate-300">
           <div className="mx-auto ml-3">
             <ul className="flex gap-4 font-bold ">
-              <Link to="">
+              <Link to="/userHomePage">
                 <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-32 flex  flex-row rounded-lg text-center">
                   <img
                     src={home}
@@ -82,16 +75,9 @@ function UserHomeHeader() {
             </ul>
           </div>
           <div className="flex ">
-            <ul className="flex gap-5 font-bold pr-2 ">
-              <Link to="./sign-in">
-                <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-28 rounded-lg text-center">
-                  SignIn
-                </li>
-              </Link>
-              <Link to="./sign-up">
-                <li className="hover:bg-slate-400 text-2xl  h-12 pt-1 w-28 rounded-lg text-center">
-                  SignUp
-                </li>
+            <ul className="flex gap-5 font-bold pr-2 pt-1 mr-5">
+              <Link to="/">
+                <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>
 

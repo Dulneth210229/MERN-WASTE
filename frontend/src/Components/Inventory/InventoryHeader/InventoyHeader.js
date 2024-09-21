@@ -5,7 +5,7 @@ import logo from "./LOGO.png";
 function InventoyHeader() {
   return (
     <div className=" flex flex-col">
-      <Link to="/">
+      <Link to="/adminHome">
         <div className="ml-3">
           <img src={logo} alt="Logo" className="h-20" />
         </div>
@@ -30,10 +30,7 @@ function InventoyHeader() {
           </div>
           <div className="flex p-1 mr-5">
             <ul className="flex gap-5 font-bold pr-2 pt-1">
-              <Link to="./sign-in">
-                <li className="hover:underline text-2xl"></li>
-              </Link>
-              <Link to="./sign-up">
+              <Link to="/">
                 <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>

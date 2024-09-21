@@ -6,14 +6,14 @@ import PrintableOrder from "./PrintableOrder";
 // Import the new component
 
 function ReportOrderDetails() {
-  const componentsRef = useRef(); // Shared ref for the content to print
+  const componentsRefO = useRef(); // Shared ref for the content to print
 
   return (
     <div>
       {/* Render the PrintableInventory component and attach the ref */}
-      <PrintableOrder ref={componentsRef} />
+      <PrintableOrder ref={componentsRefO} />
       {/* Add the Print Button Component */}
-      <ReportButton contentRef={componentsRef} />
+      <ReportButton contentRef={componentsRefO} />
     </div>
   );
 }

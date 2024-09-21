@@ -66,21 +66,27 @@ function SendReport() {
   return (
     <div>
       <InventoyHeader />
-      <h1>Send Report Portal</h1>
+      <h1 className="text-4xl text-slate-800 font-bold text-center mb-5 mt-5">
+        Send Report Portal
+      </h1>
+      <hr className="mb-5 border-slate-300 border-2" />
       <div>
-        <form onSubmit={submitpdf} className="bg-slate-500 w-1/5 mx-auto p-3">
-          <label>Enter Title Here</label>
+        <form
+          onSubmit={submitpdf}
+          className="bg-sky-300 w-2/5 mx-auto p-3 rounded-lg shadow-xl"
+        >
+          <label className="text-3xl ml-48 h-10">Enter Title Here</label>
           <br />
           <input
             required
             type="text"
             onChange={(e) => setTitle(e.target.value)}
-            className="border-2 rounded-lg w-full"
+            className="border-2 rounded-lg w-full h-10"
           ></input>
           <br />
           <br />
-          <label className="">Select Document</label>
-          <div className="border-dashed w-full border-2 rounded-lg h-20 ">
+          <label className=" ml-44 text-3xl">Select Document</label>
+          <div className="border-dashed w-full border-4 rounded-lg h-20 pl-56 pt-8">
             <input
               type="file"
               accept="application/pdf"
@@ -89,20 +95,28 @@ function SendReport() {
             ></input>
           </div>
           <br />
-          <button>Submit</button>
+
+          <button className="bg-green-600 w-28 h-10 rounded-lg ml-56 font-semibold">
+            Submit
+          </button>
         </form>
       </div>
       <div>
-        <h3>Pdf Details</h3>
+        <h3 className="text-3xl font-bold">Pdf Details</h3>
         {Array.isArray(allpdfs) && allpdfs.length > 0 ? (
           allpdfs.map((data) => (
             <div key={data._id}>
-              <h1>Title: {data.title}</h1>
-              <button onClick={() => showPdf(data.pdf)}>Show Pdf</button>
+              <h1 className="font-medium text-3xl mt-3">Title: {data.title}</h1>
+              <button
+                onClick={() => showPdf(data.pdf)}
+                className="bg-green-400 p-2 rounded-lg"
+              >
+                Show Pdf
+              </button>
             </div>
           ))
         ) : (
-          <p>No PDFs found.</p>
+          <h1 className="text-2xl">No PDF found</h1>
         )}
       </div>
       <PdfDetails pdfFile={pdfFile} />

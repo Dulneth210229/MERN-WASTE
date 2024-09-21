@@ -8,9 +8,11 @@ const feedbackRouter = require("./Routes/FeedbackRoutes");
 const accountrouter = require("./Routes/AccountRoutes");
 const supportRouter = require("./Routes/SupportRoutes");
 const complainRouter = require("./Routes/ComplainRoutes");
+const employeerouter = require("./Routes/EmployeeRoutes");
+const employeeRouter = require("./Routes/EmployeeRoutes");
 const inventoryRegisterUser = require("./ErrorHandler/InventoryregisterHandler");
+const planrouter = require("./Routes/PlanRoutes");
 const categoryrouterOr = require("./Routes/CategoryRoutesOr");
-
 const { loginAdmin } = require("./ErrorHandler/Loginhandler");
 const userRouter = require("./Routes/userRoute");
 const adminRouter = require("./Routes/adminRoute");
@@ -19,6 +21,9 @@ const binRouter = require("./Routes/binRoute");
 const orderRouter = require("./Routes/OrderRoute");
 const dotenv = require("dotenv");
 const categoryrouterHza = require("./Routes/CategoryRoutesHza");
+
+
+
 
 dotenv.config();
 const app = express();
@@ -39,7 +44,10 @@ app.use("/category", categoryrouter);
 app.use("/account", accountrouter);
 app.use("/support", supportRouter);
 app.use("/complain", complainRouter);
+app.use("/employee", employeerouter);
+app.use("/employee", employeeRouter);
 app.post("/register", inventoryRegisterUser);
+app.use("/plan",planrouter);
 app.use("/categoryOr", categoryrouterOr);
 app.post("/loginAdmin", loginAdmin);
 app.use("/file", express.static("file"));

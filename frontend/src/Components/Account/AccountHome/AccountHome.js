@@ -4,34 +4,34 @@ import { Link } from "react-router-dom";
 
 function AccountHome() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      {/* Navigation */}
+    <div>
       <AccountNav />
-
-      {/* Header Section */}
-      <div className="w-full max-w-2xl mt-10 bg-white shadow-lg rounded-lg p-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-700 mb-6">Manage Salary</h1>
-        </div>
-
-        {/* Button Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-          <Link to="/ViewSalary">
-            <button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
-              View Salary
-            </button>
-          </Link>
-
+      
+      <div className="flex flex-row ">
+        <div className="flex flex-col gap-5 p-5 mt-16 w-2/7 bg-sky-200 rounded-xl mx-auto">
+          <h1 className="text-center font-semibold text-3xl">Account Home</h1>
           <Link to="/AddSalary">
-            <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+            <button
+              type="submit"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2  hover:scale-110 transition duration-300 ml-2"
+            >
               Add Salary
             </button>
           </Link>
-
+          <Link to="/ViewSalary">
+            <button
+              type="submit"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2 hover:scale-110 transition duration-300 ml-2"
+            >
+              View Salary
+            </button>
+          </Link>
+        
         </div>
       </div>
     </div>
-  );
+  );   
 }
+
 
 export default AccountHome;
