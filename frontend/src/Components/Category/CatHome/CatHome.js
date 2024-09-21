@@ -2,12 +2,15 @@ import React from "react";
 import CategoryHomeNav from "../CategoryHomeNav/CategoryHomeNav";
 import CategoryFooter from "../CategoryFooter/CategoryFooter";
 import { FaRecycle, FaTrash, FaLeaf, FaHandHoldingHeart } from "react-icons/fa";
+import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
 
 function CatHome() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation */}
+      <UserHomeHeader />
       <CategoryHomeNav />
+
 
       {/* Hero Section */}
       <section className="bg-green-100 py-12">
