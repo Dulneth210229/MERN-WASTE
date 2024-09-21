@@ -28,7 +28,7 @@ function SupportDisplay(props) {
   return (
 
     <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
-    <h1 className="text-2xl font-bold text-gray-800 mb-4">Complain Details</h1>
+    <h1 className="text-2xl font-bold text-gray-800 mb-4">Support Details</h1>
     
     <div className="space-y-2 mb-4">
       {/* <div>

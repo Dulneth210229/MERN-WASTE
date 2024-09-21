@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import RequestNav from "../RequestNav/RequestNav";
+// import RequestNav from "../RequestNav/RequestNav";
 import axios from "axios";
 import UserFooter from "../../UserHomePage/UserFooter";
+import Nav from "../../AdminNav/AdminNav";
 // import RequestStatus from "../../../../../Backend/Controllers/RequestController";
 
 const URL = "http://localhost:5001/request";
@@ -40,7 +41,7 @@ function Requests() {
         const updatedRequest = res.data;
         // Log the updated request or do something with it
         console.log("Updated request:", updatedRequest);
-  
+
         // Update local state with new status
         setRequests((prevRequests) =>
           prevRequests.map((request) =>
@@ -55,8 +56,12 @@ function Requests() {
 
   return (
     <div>
-      <RequestNav />
-      <div className="flex space-x-4 justify-end py-4 pr-96 bg-gray-100">
+      <Nav />
+      {/* <RequestNav /> */}
+      <div className="flex space-x-4 justify-end py-2 pr-12 bg-gray-100">
+        <h1 className="bg-gray-100 pr-96 font-semibold text-4xl text-slate-700">
+          Order Details Display
+        </h1>
         <input
           onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
@@ -84,7 +89,7 @@ function Requests() {
                 <div className="space-y-2 mb-4">
                   <div
                     key={request._id}
-                    className="mb-4 p-4 bg-white rounded shadow-md"
+                    className="mb-4 p-4 bg-white rounded-xl shadow-md"
                   >
                     <h3 className="text-xl font-bold pb-4">{request.name}</h3>
                     <p>ID: {request._id}</p>

@@ -1,37 +1,46 @@
 import React from "react";
 import "./RequestNav.css";
-import { Link } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+// import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function requestNav() {
   return (
-    <header className="bg-slate-300 static-fixed">
-      <div className="flex justify-between items-center max-w-8xl p-2">
-        <Link to="/">
+    <header className="bg-green-200 mt-1 mx-auto rounded-lg max-w-max">
+      <div className="flex justify-center items-center max-w-8xl p-2">
+        {/* <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap     ">
             <span className="font-boldt text-3xl">Fresh</span>
             <span className="text-emerald-500 font-bold text-3xl">Colombo</span>
           </h1>
-        </Link>
+        </Link> */}
 
         <ul className="flex gap-5 font-bold">
-        <NavLink 
-            to="/requestservicemain" 
-            className={({ isActive }) => isActive ? 'underline text-2xl' : 'hover:underline text-2xl'}>
+          <NavLink
+            to="/requestservicemain"
+            className={({ isActive }) =>
+              isActive ? "underline text-2xl" : "hover:underline text-2xl"
+            }
+          >
             <li>Home</li>
           </NavLink>
-          <NavLink 
-            to="/addrequest" 
-            className={({ isActive }) => isActive ? 'underline text-2xl' : 'hover:underline text-2xl'}>
+          <NavLink
+            to="/addrequest"
+            className={({ isActive }) =>
+              isActive ? "underline text-2xl" : "hover:underline text-2xl"
+            }
+          >
             <li>Add Request</li>
           </NavLink>
-          <NavLink 
-            to="/requestDetailsUser" 
-            className={({ isActive }) => isActive ? 'underline text-2xl' : 'hover:underline text-2xl'}>
+          <NavLink
+            to="/requestDetailsUser"
+            className={({ isActive }) =>
+              isActive ? "underline text-2xl" : "hover:underline text-2xl"
+            }
+          >
             <li>View Requests</li>
           </NavLink>
         </ul>
-        <div className="flex p-1">
+        {/* <div className="flex p-1">
           <ul className="flex gap-5 font-bold pr-2 pt-1">
             <Link to="/sign-in">
               <li className="hover:underline text-2xl">SignIn</li>
@@ -40,7 +49,7 @@ function requestNav() {
               <li className="hover:underline text-2xl">SignUp</li>
             </Link>
           </ul>
-        </div>
+        </div> */}
       </div>
     </header>
 

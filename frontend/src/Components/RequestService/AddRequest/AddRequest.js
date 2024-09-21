@@ -3,6 +3,8 @@ import RequestNav from "../RequestNav/RequestNav";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserFooter from "../../UserHomePage/UserFooter";
+import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
+// import { Link } from "react-router-dom";
 // import "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
 
 function AddRequest() {
@@ -40,23 +42,39 @@ function AddRequest() {
     }
     console.log(inputs);
     await sendRequest();
-    history('/viewrequests');
+    history("/requestDetailsUser");
   };
 
   const sendRequest = async () => {
-    await axios.post("http://Localhost:5001/request",{
-      service: String(inputs.service),
-      name: String(inputs.name),
-      address: String(inputs.address),
-      phoneNumber: String(inputs.phoneNumber),
-      date: String(inputs.date),
-      time: String(inputs.time),
-    }).then(res => res.data);
+    await axios
+      .post("http://Localhost:5001/request", {
+        service: String(inputs.service),
+        name: String(inputs.name),
+        address: String(inputs.address),
+        phoneNumber: String(inputs.phoneNumber),
+        date: String(inputs.date),
+        time: String(inputs.time),
+      })
+      .then((res) => res.data);
   };
 
   return (
     <div>
-      <RequestNav />
+      <UserHomeHeader />
+      {/* <div className="flex justify-between items-center mt-2"> */}
+      {/* <h1 className="text-4xl pr- font-bold text-gray-800 flex-grow text-center">
+              Request a Special Service
+            </h1> */}
+      <div className="bg-gray-100 p-3">
+        <RequestNav />
+      </div>
+      {/* <Link to="/addrequest">
+              <button className="px-6 py-2 mr-44 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition duration-200">
+              Add New Request
+              </button>
+              </Link> */}
+      {/* </div> */}
+      {/* <RequestNav /> */}
       <body class="flex items-center justify-center pt-24 bg-gray-100">
         <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl mb-32">
           <h2 class="text-2xl font-semibold mb-6">Request a Special Service</h2>
@@ -70,7 +88,8 @@ function AddRequest() {
                 onChange={handleChange}
                 required
                 value={inputs.service}
-                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+              >
                 <option>Bulky pickup</option>
                 <option>Rent a container</option>
                 <option>Hire a cleaner</option>
@@ -231,14 +250,12 @@ function AddRequest() {
           Add Request
         </button>
       </form> */}
-    <UserFooter />
+      <UserFooter />
     </div>
   );
 }
 
 export default AddRequest;
-
-
 
 // import React, { useState } from "react";
 // import RequestNav from "../RequestNav/RequestNav";

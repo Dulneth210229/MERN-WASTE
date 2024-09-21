@@ -32,7 +32,7 @@ function UserHomeHeader() {
                   Home
                 </li>
               </Link>
-              <Link to="">
+              <Link to="/crmHome">
                 <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-72 flex  flex-row rounded-lg text-center">
                   <img
                     src={customerServices}
@@ -42,7 +42,7 @@ function UserHomeHeader() {
                   Customer Services
                 </li>
               </Link>
-              <Link to="">
+              <Link to="/requestservicemain">
                 <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-64  flex  flex-row rounded-lg text-center">
                   <img
                     src={requestServices}
