@@ -8,6 +8,7 @@ import InventoryHome from "./Components/Inventory/InvemtoryHome/InventoryHome";
 import Crmhome from "./Components/CustomerRelationship/CrmHome/Crmhome";
 import Complain from "./Components/CustomerRelationship/Complain/Complain";
 import FeedbackDisplay from "./Components/CustomerRelationship/FeedbackDisplay_01/FeedbackDisplay_01";
+
 // import Support from "./Components/CustomerRelationship/Support/Support";
 import AddNewInventory from "./Components/Inventory/AddNewInventory/AddNewInventory";
 import InventoryDetails from "./Components/Inventory/Inventories/InventoryDetails";
@@ -29,15 +30,27 @@ import SupportDisplay from "./Components/CustomerRelationship/SupportDisplay_01/
 import RequestSupportForm from "./Components/CustomerRelationship/RequestSupportForm/RequestSupportForm";
 import UpdateRequestSupport from "./Components/CustomerRelationship/UpdateRequestSupport/UpdateRequestSupport";
 import UserHome from "./Components/UserHomePage/UserHome";
+import EmployeeHome from "./Components/Employee/EmployeeHome/EmployeeHome";
+import Employee from "./Components/Employee/Employee/Employee";
+import Employees from "./Components/Employee/EmployeeDetails/Employees";
+import AddEmployee from "./Components/Employee/AddEmployee/AddEmployee";
+import UpdateEmployee from "./Components/Employee/UpdateEmployee/UpdateEmployee";
 
 function App() {
   //java scripts
   return (
     //html
     <div>
+     
       <React.Fragment>
         <Routes>
+          
           <Route path="/" element={<Home />} />
+          <Route path="/employee" element ={<Employee/>}/>
+          <Route path="/employeehome" element={<EmployeeHome/>}/>
+          <Route path="/addemployee" element={<AddEmployee/>}/>
+          <Route path="/employeedetails" element={<Employees/>}/>
+          <Route path="/employeedetails/:id" element={<UpdateEmployee/>}/>
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />

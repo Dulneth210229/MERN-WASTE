@@ -67,7 +67,7 @@ const updateEmployee = async (req, res, next) => {
     const {
         employeeFirstName,
         employeeLastName,
-        employeeCategory,
+        employeeCatogory,
         employeeAddress,
         employeeEmail,
         employeePhone
@@ -80,7 +80,7 @@ const updateEmployee = async (req, res, next) => {
             {
                 employeeFirstName,
                 employeeLastName,
-                employeeCategory,
+                employeeCatogory,
                 employeeAddress,
                 employeeEmail,
                 employeePhone
