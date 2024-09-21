@@ -1,18 +1,18 @@
 const express = require("express");
-const categoryrouterHza = express.Router();
+const hazardousrouter = express.Router();
 
 //insert Model
-const Category = require("../Model/CategoryModelHza");
+const Hazardous = require("../Model/CategoryModelsHza");
 
 //insert category Controller
-const CategoryControllerHza = require("../Controllers/CategoryControllersHza");
+const HazardousController = require("../Controllers/CategoryControllersHza");
 
-categoryrouterHza.get("/",CategoryControllerHza.getAllCategory);
-categoryrouterHza.post("/",CategoryControllerHza.addCategory);
-categoryrouterHza.get("/:id",CategoryControllerHza.getCategoryById);
-categoryrouterHza.put("/:id",CategoryControllerHza.updateCategory);
-categoryrouterHza.delete("/:id",CategoryControllerHza.deleteCategory);
+hazardousrouter.get("/",HazardousController.getAllHazardous);
+hazardousrouter.post("/",HazardousController.addHazardous);
+hazardousrouter.get("/:id",HazardousController.getHazardousById);
+hazardousrouter.put("/:id",HazardousController.updateHazardous);
+hazardousrouter.delete("/:id",HazardousController.deleteHazardous);
 
 
 //export
-module.exports = categoryrouterHza;
+module.exports = hazardousrouter;

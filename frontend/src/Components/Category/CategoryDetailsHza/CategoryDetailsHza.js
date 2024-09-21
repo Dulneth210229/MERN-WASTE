@@ -1,79 +1,89 @@
 import React, { useEffect, useState, useRef } from "react";
-//import React from "react";
-import CategoryNav from "../CategoryNav/CategoryNav";
+import CategoryNavHza from "../CategoryNavHza/CategoryNavHza";
 import axios from "axios";
 import CategoryMHza from "../CategoryMHza/CategoryMHza";
 import { useReactToPrint } from "react-to-print";
 
-
-const URL = "http://Localhost:5001/category";
+const URL = "http://Localhost:5001/hazardous";
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
 };
 
 function CategoryDetailsHza() {
-  const [category, setCategoryDetailsHza] = useState();
+  const [hazardous, setCategoryDetailsHza] = useState();
   useEffect(() => {
-    fetchHandler().then((data) => setCategoryDetailsHza(data.category));
+    fetchHandler().then((data) => setCategoryDetailsHza(data.hazardous));
   }, []);
 
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
-
-    DocumentTitle:"Category Report",
-    onafterprint: ()=>alert("Users Report Successfully Download !"),
-
+    documentTitle: "Category Report",
+    onAfterPrint: () => alert("Users Report Successfully Downloaded!"),
   });
 
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
 
   const handleSearch = () => {
-    fetchHandler().then((data) =>{
-      const filteredCategorys = data.category.filter((category) =>
-        Object.values(category).some((field) =>
+    fetchHandler().then((data) => {
+      const filteredCategorys = data.hazardous.filter((hazardous) =>
+        Object.values(hazardous).some((field) =>
           field.toString().toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  );
+        )
+      );
       setCategoryDetailsHza(filteredCategorys);
       setNoResults(filteredCategorys.length === 0);
     });
-  }
-
+  };
 
   return (
-    <div>
-      <CategoryNav />
-      <h1>Category Details Display Page</h1>
-
-      <input
-        onChange={(e) => setSearchQuery(e.target.value)}
-        type="text"
-        name="search"
-        placeholder="Search Categoty Details"
-        ></input>
-
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handlePrint}>Download Report</button>
-
-        {noResults ? (
-          <div>
-              <p>No Category Found</p>
-          </div>
-        ): (
-
-      <div ref={ComponentsRef}>
-        {category &&
-          category.map((catego, i) => (
-            <div key={i}>
-              <CategoryMHza catego={catego} />
-            </div>
-          ))}
+    <div className="flex flex-col items-center bg-gray-100 min-h-screen pt-0">
+      {/* Header */}
+      <div className="w-full">
+        <CategoryNavHza />
       </div>
+      <h1 className="text-3xl font-bold text-gray-800 mt-0 mb-6">
+        Hazardous Category Details Display Page
+      </h1>
+
+      {/* Search and Download Buttons */}
+      <div className="mb-6 flex space-x-4">
+        <input
+          onChange={(e) => setSearchQuery(e.target.value)}
+          type="text"
+          name="search"
+          placeholder="Search Category Details"
+          className="px-4 py-2 border border-gray-300 rounded-lg"
+        />
+        <button
+          onClick={handleSearch}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+        >
+          Search
+        </button>
+        <button
+          onClick={handlePrint}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
+        >
+          Download Report
+        </button>
+      </div>
+
+      {/* Search Results */}
+      {noResults ? (
+        <p className="text-red-500">No Category Found</p>
+      ) : (
+        <div ref={ComponentsRef} className="w-full max-w-4xl">
+          {hazardous &&
+            hazardous.map((hazardo, i) => (
+              <div key={i} className="mb-4 p-4 bg-white shadow-md rounded-lg">
+                <CategoryMHza hazardo={hazardo} />
+              </div>
+            ))}
+        </div>
       )}
-     
     </div>
   );
 }
