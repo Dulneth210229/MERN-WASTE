@@ -11,7 +11,7 @@ function Home() {
           Staff Home
         </h1>
         <div className="flex flex-col gap-8 pb-5 w-80 mx-auto ">
-          <Link to="">
+          <Link to="/WCMAdmin_Home">
             <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
               Waste Collcetion
             </button>
