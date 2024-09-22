@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import RequestNav from "../RequestNav/RequestNav";
 import UserFooter from "../../UserHomePage/UserFooter";
+import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
 
 function UpdateRequest() {
   const [inputs, setInputs] = useState({});
@@ -62,7 +63,10 @@ function UpdateRequest() {
 
   return (
     <div>
-      <RequestNav />
+      <div className="bg-gray-100">
+        <UserHomeHeader />
+        <RequestNav />
+      </div>
       <body class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl mb-32">
           <h2 class="text-2xl font-semibold mb-6">Update Your Request</h2>
