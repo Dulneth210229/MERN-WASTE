@@ -57,8 +57,11 @@ function CategoryAddHza() {
             onChange={handleChange}
             value={inputs.WasteType}
             required
+            placeholder="Add Waste Type"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-          />
+          >
+         
+          </input>
         </div>
 
         <div className="mb-4">
@@ -69,6 +72,7 @@ function CategoryAddHza() {
             onChange={handleChange}
             value={inputs.Quantity}
             required
+             placeholder="Add Quantity(KG)"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -81,6 +85,7 @@ function CategoryAddHza() {
             onChange={handleChange}
             value={inputs.DateOfCollection}
             required
+            placeholder="dd/mm/yyyy"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -93,6 +98,7 @@ function CategoryAddHza() {
             onChange={handleChange}
             value={inputs.Location}
             required
+            placeholder="Add Your Adresse"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -122,6 +128,7 @@ function CategoryAddHza() {
             onChange={handleChange}
             value={inputs.Notes}
             required
+            placeholder="Add Your Special Notes"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
