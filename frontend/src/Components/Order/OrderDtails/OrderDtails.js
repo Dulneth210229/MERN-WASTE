@@ -145,7 +145,7 @@ function OrderDtails() {
         </div>
       ) : (
         <div>
-          {/*get the inventroy details repetitively from the Inventory.js*/}
+          {/*get the order details repetitively from the order.js*/}
           {order &&
             order.map((order, i) => (
               <div key={i}>

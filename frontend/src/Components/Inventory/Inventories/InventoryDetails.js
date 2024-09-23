@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InventoyHeader from "../InventoryHeader/InventoyHeader";
 import axios from "axios";
 import Inventory from "../InventoryList/Inventory";
@@ -15,23 +14,46 @@ const fetchInventory = async () => {
 
 function InventoryDetails() {
   const [inventory, setInventory] = useState();
-  useEffect(() => {
-    fetchInventory().then((data) => setInventory(data.inventory));
-  }, []);
-
-  //search function
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [lowQuantityProducts, setLowQuantityProducts] = useState(0);
+  const [highQuantityPercentage, setHighQuantityPercentage] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
 
+  useEffect(() => {
+    fetchInventory().then((data) => {
+      const inventoryData = data.inventory;
+      setInventory(inventoryData);
+
+      // Calculate the total number of products
+      const total = inventoryData.length;
+      setTotalProducts(total);
+
+      // Calculate the number of products with quantity less than 25
+      const lowQuantity = inventoryData.filter(
+        (item) => item.quantity < 25
+      ).length;
+      setLowQuantityProducts(lowQuantity);
+
+      // Calculate the percentage of products with quantity more than 25
+      const highQuantity = inventoryData.filter(
+        (item) => item.quantity > 25
+      ).length;
+      const highPercentage = (highQuantity / total) * 100;
+      setHighQuantityPercentage(highPercentage.toFixed(2)); // rounding to 2 decimal places
+    });
+  }, []);
+
+  // Search function
   const handleSearch = () => {
     fetchInventory().then((data) => {
-      const filterInventory = data.inventory.filter((inventory) =>
+      const filteredInventory = data.inventory.filter((inventory) =>
         Object.values(inventory).some((field) =>
           field.toString().toLowerCase().includes(searchQuery.toLowerCase())
         )
       );
-      setInventory(filterInventory);
-      setNoResults(filterInventory.length === 0);
+      setInventory(filteredInventory);
+      setNoResults(filteredInventory.length === 0);
     });
   };
 
@@ -53,9 +75,6 @@ function InventoryDetails() {
               onChange={(e) => setSearchQuery(e.target.value)}
               type="text"
               placeholder="Search..."
-              //Responsivness od the components
-              //w-24 --> make the size according to the mobile
-              //sm:w-64 --> above the size of the mobile
               className="bg-transparent focus:outline-none w-24 sm:w-64 "
             />
             <FaSearch className="text-slate-600" />
@@ -68,27 +87,53 @@ function InventoryDetails() {
           </button>
         </div>
       </div>
+
       <hr className="border-2" />
+
+      {/* Display calculated statistics */}
+      <div className="mx-auto bg-blue-300 w-3/5 mt-2 p-3 rounded-lg">
+        <h1 className="text-4xl text-slate-800 font-semibold text-center">
+          Inventoey Summary
+        </h1>
+        <div className="mt-5 text-center flex flex-row gap-14 ml-24 ">
+          <p className="text-xl font-semibold">
+            Total Products: <span className="font-bold ">{totalProducts}</span>
+          </p>
+          <p className="text-xl font-semibold">
+            Quantity Low than:{" "}
+            <span className="font-bold text-red-700">
+              {lowQuantityProducts}
+            </span>
+          </p>
+          <p className="text-xl font-semibold">
+            Quantity Heigh (%):
+            <span className=" font-bold"> {highQuantityPercentage}%</span>
+          </p>
+        </div>
+      </div>
       <div className="mt-10">
         <table className="border-2 mx-auto">
-          <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-48 border-green-500 rounded-lg">
-              Product Name
-            </th>
-            <th className="border-2 p-2 w-48  border-green-500">
-              Product Category
-            </th>
-            <th className="border-2 p-2 w-48 border-green-500">
-              Material Type
-            </th>
-            <th className="border-2 p-2 w-24 border-green-500">Quantity</th>
-            <th className="border-2 p-2 w-48 border-green-500">
-              Product Description
-            </th>
-            <th className="border-2 p-2 w-52 border-green-500">Actions</th>
-          </tr>
+          <thead>
+            <tr className="bg-green-200">
+              <th className="border-2 p-2 w-48 border-green-500 rounded-lg">
+                Product Name
+              </th>
+              <th className="border-2 p-2 w-48 border-green-500">
+                Product Category
+              </th>
+              <th className="border-2 p-2 w-48 border-green-500">
+                Material Type
+              </th>
+              <th className="border-2 p-2 w-24 border-green-500">Quantity</th>
+              <th className="border-2 p-2 w-48 border-green-500">
+                Product Description
+              </th>
+              <th className="border-2 p-2 w-52 border-green-500">Actions</th>
+            </tr>
+          </thead>
         </table>
       </div>
+
       {/* Search bar results display */}
       {noResults ? (
         <div className="flex flex-col">
@@ -103,7 +148,6 @@ function InventoryDetails() {
         </div>
       ) : (
         <div>
-          {/*get the inventroy details repetitively from the Inventory.js*/}
           {inventory &&
             inventory.map((inventory, i) => (
               <div key={i}>

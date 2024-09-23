@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Nav() {
   return (
     <div className=" flex flex-col">
-      <Link to="/">
+      <Link to="/adminHome">
         <div className="ml-3">
           <img src={logo} alt="Logo" className="h-20" />
         </div>
@@ -25,11 +25,8 @@ function Nav() {
           </ul>
           <div className="flex p-1 mr-5">
             <ul className="flex gap-5 font-bold pr-2 pt-1">
-              <Link to="/login">
-                <li className="hover:underline text-2xl">SignIn</li>
-              </Link>
-              <Link to="/AdminRegister">
-                <li className="hover:underline text-2xl">SignUp</li>
+              <Link to="/">
+                <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>
 

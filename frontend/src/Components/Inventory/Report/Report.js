@@ -72,7 +72,7 @@ function Report() {
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
               <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                Generate Order Report
+                {/* Generate Order Report */}
               </div>
             </div>
             <Link to="">
@@ -84,7 +84,7 @@ function Report() {
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
               <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                Generate Order Report
+                {/* Generate Order Report */}
               </div>
             </div>
             <Link to="">
@@ -96,7 +96,7 @@ function Report() {
           <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
             <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
               <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                Generate Order Report
+                {/* Generate Order Report */}
               </div>
             </div>
             <Link to="">

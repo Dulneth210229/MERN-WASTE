@@ -1,7 +1,7 @@
 const Order = require("../Model/OrderModel");
 
 //creating a function to get details
-//display all inventory
+//display all order
 const getOrder = async (req, res, next) => {
   let order;
   //get Inventory Details
@@ -14,11 +14,11 @@ const getOrder = async (req, res, next) => {
   if (!order) {
     return res.status(404).json({ message: "order not found" });
   }
-  // Display all inventory
+  // Display all order
   return res.status(200).json({ order });
 };
 
-//insert inventory data
+//insert order data
 const addOrder = async (req, res, next) => {
   const {
     productName,
@@ -119,7 +119,7 @@ const updateOrder = async (req, res, next) => {
   return res.status(200).json({ orders });
 };
 
-//delete inventory
+//delete Order
 const deleteOrder = async (req, res, next) => {
   const orderId = req.params.Oid;
   let order;
