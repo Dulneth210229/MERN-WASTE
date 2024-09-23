@@ -65,6 +65,19 @@ import InventoryReg from "./Components/InventoryReg/Register";
 import RequestDetailsUser from "./Components/RequestService/RequestDetailsUser/RequestDetailsUser";
 import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff";
 
+// Gawrawa
+import WCMHome from './Components/Home/WCMHome/WCMHome';
+import WCMAdmin_Home from './Components/Home/WCMAdmin_Home/WCMAdmin_Home';
+import WCMUser_Home from './Components/Home/WCMUser_Home/WCMUser_Home';
+import WCMDriver_Home from './Components/Home/WCMDriver_Home/WCMDriver_Home';
+import WCMUser_Details from './Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Details';
+import WCMAdmin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Admin/WCMAdmin_Details';
+import WCMDriver_Details from './Components/WCMAdmin_Comp/WCMAdmin_Driver/WCMDriver_Details';
+import WCMBin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Details';
+import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
+import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
+import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
+
 function App() {
   //java scripts
   return (
@@ -142,6 +155,20 @@ function App() {
           <Route path="/StaffRegister" element={<InventoryReg />} />
           <Route path="/requestDetailsUser" element={<RequestDetailsUser />} />
           <Route path="/requestStaff" element={<RequestStaff />} />
+
+          {/* Gawrawa */}
+          <Route path="/WCMHome" element={<WCMHome />} />
+        <Route path="/WCMAdmin_Home" element={<WCMAdmin_Home />} />
+        <Route path="/WCMUser_Home" element={<WCMUser_Home />} />
+        <Route path="/WCMDriver_Home" element={<WCMDriver_Home />} />
+        <Route path="/WCMUser_Details" element={<WCMUser_Details/>} />
+        <Route path="/WCMAdmin_Details" element={<WCMAdmin_Details/>}/>
+        <Route path="/WCMDriver_Details" element={<WCMDriver_Details/>}/>
+        <Route path="/WCMBin_Details" element={<WCMBin_Details/>}/>
+        <Route path="/WCMBin_Add" element={<WCMBin_Add/>}/>
+        <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
+        <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
+
         </Routes>
       </React.Fragment>
     </div>

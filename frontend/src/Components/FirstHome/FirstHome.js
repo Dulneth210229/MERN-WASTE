@@ -11,7 +11,7 @@ function FirstHome() {
           <h1 className="font-semibold text-4xl text-slate-700 text-center mb-2 ">
             Login As
           </h1>
-          <Link to="/userHomePage">
+          <Link to="/WCMUser_Home">
             <button className="text-3xl font-bold hover:scale-105 hover:bg-green-500 transition duration-300 w-96 bg-green-600 rounded-lg p-2">
               User
             </button>

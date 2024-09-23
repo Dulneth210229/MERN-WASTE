@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryNavHza from "../CategoryNavHza/CategoryNavHza";
-import CategoryFooter from "../CategoryFooter/CategoryFooter";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 function CategoryHomeHza() {
   return (
@@ -69,7 +69,7 @@ function CategoryHomeHza() {
         </div>
       </div>
 
-      <CategoryFooter />
+      <UserFooter />
     </div>
   );
 }
