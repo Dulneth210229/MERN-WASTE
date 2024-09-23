@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../AdminNav/AdminNav";
+// import Header from "../AdminNav/AdminNav";
 import signupimg from "./img/signup.png";
 import axios from "axios";
 
@@ -46,14 +46,14 @@ function Register() {
 
   return (
     <div>
-      <Header />
-      <h2 className="font-bold text-4xl text-slate-700 text-center mt-6">
-        Admin Register
+      {/* <Header /> */}
+      <h2 className="font-bold text-5xl text-slate-700 text-center mt-14">
+        Staff Register
       </h2>
-      <hr />
+      <hr className="border-2 border-slate-500 mt-5" />
       <div className="flex flex-row w-2/3 p-1 ml-96 rounded-lg">
         <form
-          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-10 h-3/3 bg-green-50"
+          className="border-2 w-3/5 p-5 rounded-lg shadow-lg my-10 h-3/3 bg-green-200"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col mb-8 w-max p-2">
@@ -125,13 +125,13 @@ function Register() {
             </div>
           </div>
 
-          <button className="w-96 bg-lime-500 font-semibold p-2 ml-7">
+          <button className="w-96 bg-lime-500 font-semibold p-2 ml-7 rounded-lg hover:bg-lime-400">
             Sign Up
           </button>
           <p className="ml-7 mt-3">
             Already have an account?
             <Link to="/login">
-              <span className="text-lime-500 font-semibold ml-2 hover:text-lime-600">
+              <span className="text-lime-800 font-semibold ml-2 hover:text-lime-700">
                 Login Here
               </span>
             </Link>

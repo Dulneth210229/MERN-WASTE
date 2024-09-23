@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-
 import AddRequest from "./Components/RequestService/AddRequest/AddRequest";
 import ViewRequests from "./Components/RequestService/RequestDetails/Requests";
 import Home from "./Components/AdminHome/AdminHome";
@@ -45,7 +44,7 @@ import AddComplainForm from "./Components/CustomerRelationship/AddComplainForm/A
 import UpdateComplain from "./Components/CustomerRelationship/UpdateComplain/UpdateComplain";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Components/InventoryReg/Register";
-import PackageManagement  from "./Components/PlanManegment/PackageManagement";
+import PackageManagement from "./Components/PlanManegment/PackageManagement";
 import CatHome from "./Components/Category/CatHome/CatHome";
 import CategoryHomeOr from "./Components/Category/CategoryHomeOr/CategoryHomeOr";
 import CategoryAddOr from "./Components/Category/CategoryAddOr/CategoryAddOr";
@@ -63,25 +62,37 @@ import AddNewOrder from "./Components/Order/AddOrder/AddNewOrder";
 import OrderDtails from "./Components/Order/OrderDtails/OrderDtails";
 import UpdateOrder from "./Components/Order/UpdateOrder/UpdateOrder";
 import PlanManagementPayment from "./Components/PlanManegmentPayment/PlanManagementPayment";
+import InventoryReg from "./Components/InventoryReg/Register";
+import RequestDetailsUser from "./Components/RequestService/RequestDetailsUser/RequestDetailsUser";
+import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff";
 
+// Gawrawa
+import WCMHome from './Components/Home/WCMHome/WCMHome';
+import WCMAdmin_Home from './Components/Home/WCMAdmin_Home/WCMAdmin_Home';
+import WCMUser_Home from './Components/Home/WCMUser_Home/WCMUser_Home';
+import WCMDriver_Home from './Components/Home/WCMDriver_Home/WCMDriver_Home';
+import WCMUser_Details from './Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Details';
+import WCMAdmin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Admin/WCMAdmin_Details';
+import WCMDriver_Details from './Components/WCMAdmin_Comp/WCMAdmin_Driver/WCMDriver_Details';
+import WCMBin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Details';
+import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
+import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
+import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
 
 function App() {
   //java scripts
   return (
     //html
     <div>
-     
       <React.Fragment>
         <Routes>
-          
-          <Route path="/" element={<Home />} />
-          <Route path="/employee" element ={<Employee/>}/>
-          <Route path="/employeehome" element={<EmployeeHome/>}/>
-          <Route path="/addemployee" element={<AddEmployee/>}/>
-          <Route path="/employeedetails" element={<Employees/>}/>
-          <Route path="/employeedetails/:id" element={<UpdateEmployee/>}/>
-          <Route path="/employeeschedules" element={<EmployeeSchedules/>}/>
-          <Route path="/firstPage" element={<FirstHome />} />
+          <Route path="/adminHome" element={<Home />} />
+          <Route path="/" element={<FirstHome />} />
+          <Route path="/employee" element={<Employee />} />
+          <Route path="/employeehome" element={<EmployeeHome />} />
+          <Route path="/addemployee" element={<AddEmployee />} />
+          <Route path="/employeedetails" element={<Employees />} />
+          <Route path="/employeedetails/:id" element={<UpdateEmployee />} />
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
@@ -128,16 +139,39 @@ function App() {
           <Route path="/categoryhomeHza" element={<CategoryHomeHza />} />
           <Route path="/categoryaddHza" element={<CategoryAddHza />} />
           <Route path="/categorydetailsHza" element={<CategoryDetailsHza />} />
-          <Route path="/categorydetailsHza/:id" element={<CategoryUpdateHza />} />
+          <Route
+            path="/categorydetailsHza/:id"
+            element={<CategoryUpdateHza />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/crmReport" element={<CrmReport />} />
           <Route path="/sendreport" element={<SendReport />} />
           <Route path="/addorder" element={<AddNewOrder />} />
           <Route path="/orderDetails" element={<OrderDtails />} />
           <Route path="/updateOrder/:Oid" element={<UpdateOrder />} />
-          <Route path="/PlanManagementPayment" element={<PlanManagementPayment />} />
+          <Route
+            path="/PlanManagementPayment"
+            element={<PlanManagementPayment />}
+          />
+          <Route path="/StaffRegister" element={<InventoryReg />} />
+          <Route path="/requestDetailsUser" element={<RequestDetailsUser />} />
+          <Route path="/requestStaff" element={<RequestStaff />} />
+
+          {/* Gawrawa */}
+          <Route path="/WCMHome" element={<WCMHome />} />
+        <Route path="/WCMAdmin_Home" element={<WCMAdmin_Home />} />
+        <Route path="/WCMUser_Home" element={<WCMUser_Home />} />
+        <Route path="/WCMDriver_Home" element={<WCMDriver_Home />} />
+        <Route path="/WCMUser_Details" element={<WCMUser_Details/>} />
+        <Route path="/WCMAdmin_Details" element={<WCMAdmin_Details/>}/>
+        <Route path="/WCMDriver_Details" element={<WCMDriver_Details/>}/>
+        <Route path="/WCMBin_Details" element={<WCMBin_Details/>}/>
+        <Route path="/WCMBin_Add" element={<WCMBin_Add/>}/>
+        <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
+        <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
+
         </Routes>
-      </React.Fragment>                                                                                                                                                
+      </React.Fragment>
     </div>
   );
 }

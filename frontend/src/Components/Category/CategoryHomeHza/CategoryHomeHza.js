@@ -1,11 +1,11 @@
 import React from "react";
-import CategoryNav from "../CategoryNav/CategoryNav";
-import CategoryFooter from "../CategoryFooter/CategoryFooter";
+import CategoryNavHza from "../CategoryNavHza/CategoryNavHza";
+import UserFooter from "../../UserHomePage/UserFooter";
 
 function CategoryHomeHza() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-red-50">
-      <CategoryNav />
+      <CategoryNavHza />
       <div className="flex-grow">
         <div className="container mx-auto px-4 py-12">
           <h1 className="text-4xl font-bold text-center text-red-700 mb-8">
@@ -69,7 +69,7 @@ function CategoryHomeHza() {
         </div>
       </div>
 
-      <CategoryFooter />
+      <UserFooter />
     </div>
   );
 }
