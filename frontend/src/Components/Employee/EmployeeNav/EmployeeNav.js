@@ -16,23 +16,26 @@ function EmployeeNav() {
           <div className="mx-auto ml-5 ">
             <ul className="flex gap-10 font-bold ">
               <Link to="/employeehome">
-                <li className="font-bold font-serif text-slate-1000 text-3xl">Home</li>
+                <li className="hover:underline text-2xl gap-6">Home</li>
               </Link>
               <Link to="/addemployee">
-                <li className="font-bold font-serif text-slate-1000 text-3xl">New Employee</li>
+                <li className="hover:underline text-2xl gap-6">New Employee</li>
               </Link>
               <Link to="/employeedetails">
-                <li className="font-bold font-serif text-slate-1000 text-3xl">Employee Details</li>
+                <li className="hover:underline text-2xl gap-6">Employee Details</li>
+              </Link>
+              <Link to="/employeeschedules">
+                <li className="hover:underline text-2xl gap-6">Employee Schedules</li>
               </Link>
             </ul>
           </div>
           <div className="flex p-1">
             <ul className="flex gap-10 font-bold pr-2 pt-1">
               <Link to="./sign-in">
-                <li className="font-bold font-serif text-slate-1000 text-3xl">SignIn</li>
+                <li className="hover:underline text-2xl gap-6">SignIn</li>
               </Link>
               <Link to="./sign-up">
-                <li className="font-bold font-serif text-slate-1000 text-3xl">SignUp</li>
+                <li className="hover:underline text-2xl gap-6">SignUp</li>
               </Link>
             </ul>
 
