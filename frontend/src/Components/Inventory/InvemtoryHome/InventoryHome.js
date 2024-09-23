@@ -5,8 +5,8 @@ function InventoryHome() {
   return (
     <div>
       <InventoyHeader />
-      <div className="flex flex-row ">
-        <div className="flex flex-col gap-5 p-5 mt-16 w-2/7 bg-sky-200 rounded-xl mx-auto">
+      <div className="flex flex-row mt-16 p-4 ">
+        <div className="flex flex-col gap-5 p-5  w-2/7 bg-sky-200 rounded-xl mx-auto">
           <h1 className="text-center font-semibold text-3xl">Inventory Home</h1>
           <Link to="/inventoryDeatails">
             <button

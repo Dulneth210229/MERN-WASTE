@@ -5,7 +5,7 @@ import logo from "./LOGO.png";
 function InventoyHeader() {
   return (
     <div className=" flex flex-col">
-      <Link to="/adminHome">
+      <Link to="/">
         <div className="ml-3">
           <img src={logo} alt="Logo" className="h-20" />
         </div>
@@ -34,18 +34,6 @@ function InventoyHeader() {
                 <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>
-
-            {/*<form className="bg-slate-100 p-2 rounded-lg flex items-center ">
-            <input
-              type="text"
-              placeholder="Search..."
-              //Responsivness od the components
-              //w-24 --> make the size according to the mobile
-              //sm:w-64 --> above the size of the mobile
-              className="bg-transparent focus:outline-none w-24 sm:w-64"
-            />
-            <FaSearch className="text-slate-600" />
-          </form>*/}
           </div>
         </div>
       </header>
