@@ -34,6 +34,7 @@ function UserHome() {
   return (
     <div className="">
       <UserHomeHeader />
+      <div></div>
 
       <div></div>
       {/* Image Section */}
@@ -73,7 +74,7 @@ function UserHome() {
             plans.map((plan) => (
               <div
                 key={plan._id}
-                className={`w-1/3 bg-lime-200 shadow-lg rounded-lg p-8 border ${
+                className={`w-1/3 bg-gradient-to-r from-cyan-100 to-lime-100 shadow-lg rounded-lg p-8 border ${
                   plan.packageName === "Monthly"
                     ? "border-green-500"
                     : "border-gray-300"

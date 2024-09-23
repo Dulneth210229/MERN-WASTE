@@ -1,21 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import UserHomeHeader from "../../FirstHome/UserHomeHeader"; // Import UserHomeHeader component
 
 function WCMUser_Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-      <h1 className="text-3xl font-bold mb-8">Welcome to Waste Collection Management</h1>
+    <div>
+      <UserHomeHeader />
+      <h1 className="text-3xl font-bold mb-8 text-slate-700 text-center mt-5">
+        Welcome To Waste Management
+      </h1>
+      <hr className="border-2" />
 
-      <div className="space-y-4 w-full max-w-sm">
+      <div className="space-y-4 w-full max-w-sm mx-auto bg-slate-300 mt-16 p-5 rounded-lg ">
         <Link
           to="/WCMUser_Register"
-          className="block w-full bg-blue-500 text-white text-center py-3 rounded-md shadow hover:bg-blue-600 transition duration-300"
+          className="block w-full bg-blue-500 text-white text-center py-3 rounded-md shadow hover:bg-blue-600 transition duration-300 font-bold"
         >
           New User? Register Here
         </Link>
         <Link
           to="/userHomePage"
-          className="block w-full bg-green-500 text-white text-center py-3 rounded-md shadow hover:bg-green-600 transition duration-300"
+          className="block w-full bg-green-500 text-white text-center py-3 rounded-md shadow hover:bg-green-600 transition duration-300 font-bold"
         >
           Already have an account? Login
         </Link>
