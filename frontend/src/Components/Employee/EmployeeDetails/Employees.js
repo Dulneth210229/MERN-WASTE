@@ -57,54 +57,42 @@ return (
         </p>
         <div className="text-center mt-16">
           <Link to="/addemployee">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95  ">
+            <button className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72 over:opacity-95  ">
               Add New Employee
             </button>
           </Link>
           </div>
+          <div className="mb-6 flex space-x-4">
+        <input
+          onChange={(e) => setSearchQuery(e.target.value)}
+          type="text"
+          name="search"
+          placeholder="Search Employee Details"
+          className="px-4 py-2 border border-gray-300 rounded-lg"
+        />
+        <button
+          onClick={handleSearch}
+          className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95  "
+        >
+          Search
+        </button>
+        </div>
+
 
       </div>
 
       
       <br></br>
-      <input onChange={(e)=> setSearchQuery(e.target.value)} 
-      type ="text"
-      name="search"
-      placeholder='Search Employees Details'
-      ></input>
-
-      <button onClick={handleSearch}>Search </button>
-      <hr className="border-2" />
-
-<div className="mt-10">
-  <table className="border-2 mx-auto">
-    <tr className="bg-green-200 ">
-      <th className="border-2 p-2 w-48 border-green-500">Employee Id</th>
-      <th className="border-2 p-2 w-48  border-green-500">
-        Employee First Name
-      </th>
-      <th className="border-2 p-2 w-48 border-green-500">
-        Employee Last Name
-      </th>
-      <th className="border-2 p-2 w-24 border-green-500">Employee Catogory</th>
-      <th className="border-2 p-2 w-48 border-green-500">
-      Employee Address
-      </th>
-      <th className="border-2 p-2 w-52 border-green-500">Employee Email</th>
-      <th className="border-2 p-2 w-52 border-green-500">Employee Phone</th>
-      <th className="border-2 p-2 w-52 border-green-500">Actions</th>
-    </tr>
-  </table>
-</div>
+      
       {noResults?(
         <div>
           <p>No Employee Found</p>
           </div>
       ):(
 
-      <div ref={ComponentsRef}>
+      <div ref={ComponentsRef} className='w-full max-w-4xl'>
         {employees && employees.map((employee, i)=>(
-            <div key={i}>
+            <div key={i}className="mb-4 p-4 bg-white shadow-md rounded-lg" >
                 <Employee employee={employee}/>
             </div>
         ))}
@@ -112,7 +100,7 @@ return (
       )}
       <br></br>
       <br></br>
-    <button onClick={handlePrint}>Download Report </button>
+    <button onClick={handlePrint}className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 over:opacity-95  " >Download Report </button>
     </div>
   );
 };

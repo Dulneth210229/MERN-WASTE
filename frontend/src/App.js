@@ -36,6 +36,7 @@ import Employee from "./Components/Employee/Employee/Employee";
 import Employees from "./Components/Employee/EmployeeDetails/Employees";
 import AddEmployee from "./Components/Employee/AddEmployee/AddEmployee";
 import UpdateEmployee from "./Components/Employee/UpdateEmployee/UpdateEmployee";
+import EmployeeSchedules from "./Components/Employee/Employee Schedules/EmployeeSchedules";
 import UpdateRequests from "./Components/RequestService/UpdateRequest/UpdateRequest";
 import UpdateSalary from "./Components/Account/UpdateSalary/UpdateSalary";
 import AddSalary from "./Components/Account/AddSalary/AddSalary";
@@ -79,6 +80,7 @@ function App() {
           <Route path="/addemployee" element={<AddEmployee/>}/>
           <Route path="/employeedetails" element={<Employees/>}/>
           <Route path="/employeedetails/:id" element={<UpdateEmployee/>}/>
+          <Route path="/employeeschedules" element={<EmployeeSchedules/>}/>
           <Route path="/firstPage" element={<FirstHome />} />
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
