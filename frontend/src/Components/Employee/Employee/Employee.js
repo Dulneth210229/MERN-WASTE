@@ -39,48 +39,57 @@ function Employee(props) {
         <button>Update</button>
         <button>Delete</button>
       </div>*/}
-      <div>
-        <table className="w-auto mx-auto m-1">
-          <tr className="p-3 bg-green-100">
-            <td className="border-2 p-2 w-48 font-medium text-center ">
-              {employeeId}
-            </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-              {employeeFirstName}
-            </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-              {employeeLastName}
-            </td>
-            <td className="border-2 p-2 w-24 font-medium text-center">
-              {employeeCatogory}
-            </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-             
-              {employeeAddress}
-            </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-              
-              {employeeEmail}
-            </td>
-            <td className="border-2 p-2 w-48 font-medium text-center">
-              
-              {employeePhone}
-            </td>
-            <td className="border-2 p-2 w-52 font-medium text-center">
+      <div className="bg-gray-50 p-6 rounded-lg max-w-4xl mx-auto shadow-md text-center"> 
+      <div className="bg-lime-500 text-white p-3 rounded-lg uppercase w-50 over:opacity-95  ">
+      
+      <h1 className="text-2xl font-bold mb-4">Employee Details </h1>
+      </div>
+      
+      <div className="space-y-2 mb-4">
+        <div>
+          <span className="text-2xl font-bold mb-4">Employee Id:</span>
+          <span className="text-2xl  mb-4">{employeeId}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Waste Type:</span>
+          <span className="text-2xl  mb-4">{employeeFirstName}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Quantity:</span>
+          <span className="text-2xl  mb-4">{employeeLastName}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Date Of Collection:</span>
+          <span className="text-2xl  mb-4">{employeeCatogory}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Location:</span>
+          <span className="text-2xl  mb-4">{employeeAddress}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Transport Method:</span>
+          <span className="text-2xl  mb-4">{employeeEmail}</span>
+        </div>
+        <div>
+          <span className="text-2xl font-bold mb-4">Notes:</span>
+          <span className="text-2xl  mb-4">{employeePhone}</span>
+        </div>
+      </div>
+            <div className="border-2 p-2 w-52 font-medium text-center">
               <Link to={`/employeedetails/${employeeId}`}>
-                <button className="p-1 pr-2 pl-2 m-2 hover:bg-green-700">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
                   Update
                 </button>
               </Link>
               <button
-                className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700"
+                className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg"
                 onClick={deleteHandler}
               >
                 Remove
               </button>
-            </td>
-          </tr>
-        </table>
+            </div>
+          
+        
       </div>
     </div>
   );
