@@ -43,8 +43,8 @@ const addRequests = async (req, res, next) => {
 //Get by ID
 const getRequestById = async (req, res, next) => {
   const id = req.params.id;
-  const date = req.params.date;
-  const formattedDate = date.slice(0, 10);
+  // const date = req.params.date;
+  // const formattedDate = date.slice(0, 10);
 
   let request;
 
