@@ -19,7 +19,8 @@ function Salary(props) {
     Designation,
     Basic_Salary,
     Allowance, 
-    
+    Credit,
+    Debit,
     ETF,
     EPF, 
     Total_Salary
@@ -45,6 +46,16 @@ function Salary(props) {
             <th className="p-2 border-b">Value</th>
           </tr>
         </thead>
+          {/* Displaying other details */}
+          <tr className="bg-green-100">
+            <td className="p-2 border-b font-bold">Credit</td>
+            <td className="p-2 border-b">{Credit}</td>
+          </tr>
+          <tr className="bg-green-100">
+            <td className="p-2 border-b font-bold">Debit</td>
+            <td className="p-2 border-b">{Debit}</td>
+          </tr>
+          {/* Rest of the code */}
         <tbody>
           <tr className="bg-green-100">
             <td className="p-2 border-b font-bold">First Name</td>
@@ -75,6 +86,14 @@ function Salary(props) {
             <td className="p-2 border-b">{Allowance}</td>
           </tr>
           <tr className="bg-green-50">
+            <td className="p-2 border-b font-bold">Credit</td>
+            <td className="p-2 border-b">{Credit}</td>
+          </tr>
+          <tr className="bg-green-50">
+            <td className="p-2 border-b font-bold">Debit</td>
+            <td className="p-2 border-b">{Debit}</td>
+          </tr>
+          <tr className="bg-green-50">
             <td className="p-2 border-b font-bold">ETF</td>
             <td className="p-2 border-b">{ETF}</td>
           </tr>
@@ -95,6 +114,7 @@ function Salary(props) {
              
             </td>
           </tr>
+
         </tbody>
       </table>
     </div>

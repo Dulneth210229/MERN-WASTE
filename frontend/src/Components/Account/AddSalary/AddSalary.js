@@ -17,6 +17,8 @@ function AddSalary() {
     Designation: "",
     Basic_Salary: "",
     Allowance: "", 
+    Credit:"",
+    Debit:"",
     ETF: "",
     EPF: "", 
     Total_Salary: 0,
@@ -42,9 +44,9 @@ function AddSalary() {
     return false; // Invalid NIC
   };
 
-  const totalSalary =(basic, allowance)=> {
+  const totalSalary =(basic, allowance,Credit,Debit)=> {
     
-    return(EPF + ETF +Number(basic)  + Number(allowance))
+    return(EPF + ETF +Number(basic)  + Number(allowance) + Number(Credit) -  Number(Debit))
     
   }
 
@@ -70,7 +72,7 @@ function AddSalary() {
     e.preventDefault();
     if (validateForm()) { // Only submit if form is valid
       console.log(inputs);
-       let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
+       let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance,inputs.Credit,inputs.Debit)
     //alert (totalSalary(inputs.Basic_Salary,inputs.Allowance))
     setinputs(()=>({
       ...inputs,
@@ -94,6 +96,8 @@ function AddSalary() {
       Designation: String(inputs.Designation),
       Basic_Salary: Number(inputs.Basic_Salary),
       Allowance: Number(inputs.Allowance),
+      Credit:Number(inputs.Credit),
+      Debit:Number(inputs.Debit),
       ETF: Number(ETF),
       EPF: Number(EPF),
       Total_Salary: Number(Total_Salary),
@@ -190,6 +194,30 @@ function AddSalary() {
               name="Allowance"
               onChange={handleChange}
               value={inputs.Allowance}
+              required
+              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700">Credit:</label>
+            <input
+              type="number"
+              name="Credit"
+              onChange={handleChange}
+              value={inputs.Credit}
+              required
+              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700">Debit:</label>
+            <input
+              type="number"
+              name="Debit"
+              onChange={handleChange}
+              value={inputs.Debit}
               required
               className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />

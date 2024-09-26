@@ -79,6 +79,8 @@ import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
 import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
 
+import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
+
 function App() {
   //java scripts
   return (
@@ -156,6 +158,7 @@ function App() {
           <Route path="/StaffRegister" element={<InventoryReg />} />
           <Route path="/requestDetailsUser" element={<RequestDetailsUser />} />
           <Route path="/requestStaff" element={<RequestStaff />} />
+      
 
           {/* Gawrawa */}
           <Route path="/WCMHome" element={<WCMHome />} />
@@ -169,6 +172,10 @@ function App() {
         <Route path="/WCMBin_Add" element={<WCMBin_Add/>}/>
         <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
+
+        <Route path="/CreditDebit" element={<CreditDebit />}/>
+       
+
 
         </Routes>
       </React.Fragment>
