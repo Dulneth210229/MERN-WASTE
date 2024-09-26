@@ -66,60 +66,86 @@ function SendReport() {
   return (
     <div>
       <InventoyHeader />
-      <h1 className="text-4xl text-slate-800 font-bold text-center mb-5 mt-5">
-        Send Report Portal
-      </h1>
-      <hr className="mb-5 border-slate-300 border-2" />
-      <div>
-        <form
-          onSubmit={submitpdf}
-          className="bg-sky-300 w-2/5 mx-auto p-3 rounded-lg shadow-xl"
-        >
-          <label className="text-3xl ml-48 h-10">Enter Title Here</label>
-          <br />
-          <input
-            required
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            className="border-2 rounded-lg w-full h-10"
-          ></input>
-          <br />
-          <br />
-          <label className=" ml-44 text-3xl">Select Document</label>
-          <div className="border-dashed w-full border-4 rounded-lg h-20 pl-56 pt-8">
-            <input
-              type="file"
-              accept="application/pdf"
-              required
-              onChange={(e) => saveFile(e.target.files[0])}
-            ></input>
-          </div>
-          <br />
+      <div className="min-h-screen bg-gray-100 p-5">
+        <h1 className="text-4xl text-gray-800 font-bold text-center mb-10 mt-5">
+          Send Report Portal
+        </h1>
+        <div className="max-w-2xl mx-auto bg-white p-8 shadow-lg rounded-lg">
+          <form onSubmit={submitpdf} className="space-y-6">
+            <div>
+              <label className="block text-lg font-medium text-gray-700 mb-2">
+                Enter Title
+              </label>
+              <input
+                required
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter title for the report"
+              />
+            </div>
 
-          <button className="bg-green-600 w-28 h-10 rounded-lg ml-56 font-semibold">
-            Submit
-          </button>
-        </form>
-      </div>
-      <div>
-        <h3 className="text-3xl font-bold">Pdf Details</h3>
-        {Array.isArray(allpdfs) && allpdfs.length > 0 ? (
-          allpdfs.map((data) => (
-            <div key={data._id}>
-              <h1 className="font-medium text-3xl mt-3">Title: {data.title}</h1>
+            <div>
+              <label className="block text-lg font-medium text-gray-700 mb-2">
+                Select Document
+              </label>
+              <div className="border-dashed border-4 border-gray-300 rounded-lg p-4 flex justify-center items-center">
+                <input
+                  type="file"
+                  accept="application/pdf"
+                  required
+                  onChange={(e) => saveFile(e.target.files[0])}
+                  className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
+                />
+              </div>
+            </div>
+
+            <div className="text-center">
               <button
-                onClick={() => showPdf(data.pdf)}
-                className="bg-green-400 p-2 rounded-lg"
+                type="submit"
+                className="bg-blue-600 text-white w-36 py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
               >
-                Show Pdf
+                Submit
               </button>
             </div>
-          ))
-        ) : (
-          <h1 className="text-2xl">No PDF found</h1>
-        )}
+          </form>
+        </div>
+
+        <div className="mt-12 max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold mb-6">Available Reports</h3>
+          {Array.isArray(allpdfs) && allpdfs.length > 0 ? (
+            <div className="space-y-4">
+              {allpdfs.map((data) => (
+                <div
+                  key={data._id}
+                  className="bg-white shadow-md rounded-lg p-5 flex justify-between items-center"
+                >
+                  <div>
+                    <h1 className="font-semibold text-2xl mb-2">
+                      {data.title}
+                    </h1>
+                  </div>
+                  <button
+                    onClick={() => showPdf(data.pdf)}
+                    className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
+                  >
+                    Show PDF
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <h1 className="text-2xl font-medium text-gray-500">
+              No PDFs found
+            </h1>
+          )}
+        </div>
+
+        <div className="mt-10">
+          <PdfDetails pdfFile={pdfFile} />
+        </div>
       </div>
-      <PdfDetails pdfFile={pdfFile} />
     </div>
   );
 }
