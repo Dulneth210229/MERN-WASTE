@@ -23,7 +23,7 @@ const inventorySchema = new Schema({
     required: true,
   },
   unit: {
-    type: Number,
+    type: String,
     required: true,
   },
   Date: {
