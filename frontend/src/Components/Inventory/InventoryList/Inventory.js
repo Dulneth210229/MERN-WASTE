@@ -11,6 +11,7 @@ function Inventory(props) {
     materialType,
     quantity,
     productDescription,
+    unit,
   } = props.inventory;
 
   //delete inventory
@@ -52,6 +53,9 @@ function Inventory(props) {
             </td>
             <td className="border-2 p-2 w-24 font-medium text-center border-blue-400 ">
               {quantity}
+            </td>
+            <td className="border-2 p-2 w-24 font-medium text-center border-blue-400 ">
+              {unit}
             </td>
             <td className="border-2 p-2 w-48 font-medium text-center border-blue-400 ">
               {productDescription}

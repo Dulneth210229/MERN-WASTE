@@ -124,6 +124,7 @@ function InventoryDetails() {
               <th className="border-2 p-2 w-48 border-green-500">
                 Material Type
               </th>
+              <th className="border-2 p-2 w-24 border-green-500">Unit</th>
               <th className="border-2 p-2 w-24 border-green-500">Quantity</th>
               <th className="border-2 p-2 w-48 border-green-500">
                 Product Description

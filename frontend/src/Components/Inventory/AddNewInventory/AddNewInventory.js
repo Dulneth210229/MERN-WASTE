@@ -12,6 +12,7 @@ function AddNewInventory() {
     materialType: "",
     quantity: "",
     productDescription: "",
+    unti: "",
   });
 
   const [error, setError] = useState("");
@@ -29,7 +30,7 @@ function AddNewInventory() {
     // Validation: Check if quantity is a non-negative integer
     const quantity = Number(input.quantity);
     if (isNaN(quantity) || quantity < 0 || !Number.isInteger(quantity)) {
-      setError("Quantity must be an integer.");
+      setError("must be an integer.");
       return;
     } else {
       setError(""); // Clear any previous error
@@ -47,6 +48,7 @@ function AddNewInventory() {
         materialType: String(input.materialType),
         quantity: Number(input.quantity),
         productDescription: String(input.productDescription),
+        unit: Number(input.unit),
       })
       .then((res) => res.data);
   };
@@ -133,6 +135,24 @@ function AddNewInventory() {
                 placeholder="Product Description.."
                 className="border pt-1 rounded-lg  m-2 bg-lime-300 h-32 text-justify border-lime-500"
               />
+            </div>
+            <div className="flex flex-col w-96 mx-auto">
+              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
+                Unit
+              </label>
+              <input
+                type="text"
+                name="unit"
+                onChange={handleChange}
+                value={input.unit}
+                placeholder="unit"
+                className="border pt-1 rounded-lg  m-2 bg-lime-300 h-14 text-justify border-lime-500"
+              />
+              {error && (
+                <div className="text-red-500 mt-2 ml-2 font-semibold">
+                  {error}
+                </div>
+              )}
             </div>
 
             <button

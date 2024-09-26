@@ -26,6 +26,7 @@ const addInventory = async (req, res, next) => {
     materialType,
     quantity,
     productDescription,
+    unit,
     Date,
   } = req.body;
 
@@ -37,6 +38,7 @@ const addInventory = async (req, res, next) => {
       materialType,
       quantity,
       productDescription,
+      unit,
       Date,
     });
     await inventory.save();
@@ -75,6 +77,7 @@ const updateInventory = async (req, res, next) => {
     materialType,
     quantity,
     productDescription,
+    unit,
     Date,
   } = req.body;
 
@@ -86,6 +89,7 @@ const updateInventory = async (req, res, next) => {
       materialType,
       quantity,
       productDescription,
+      unit,
       Date,
     });
     inventories = await inventories.save();
