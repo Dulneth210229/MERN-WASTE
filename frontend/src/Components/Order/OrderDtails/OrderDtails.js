@@ -79,20 +79,20 @@ function OrderDtails() {
           Order Summary
         </h1>
         <div className="flex flex-row gap-10 mx-auto items-center w-3/5 mt-5">
-          <h4 className="font-semibold text-2xl ml-14 border-2 p-1 rounded-lg bg-sky-300 border-dashed border-slate-900">
+          <h4 className="font-semibold text-2xl ml-14 border-2 p-1 rounded-lg bg-sky-50 border-dashed border-slate-900">
             Total Orders: {totalOrders}
           </h4>
-          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-yellow-300">
+          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-sky-50">
             Quantity Less Than 20: {ordersLessThan20}
           </h4>
-          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-green-300">
+          <h4 className="font-semibold text-2xl border-2 rounded-lg p-1 border-dashed border-slate-900 bg-sky-50">
             Total Amount : ${totalAmount.toFixed(2)}
           </h4>
         </div>
       </div>
       <div className="mt-10">
         <table className="border-2 mx-auto">
-          <tr className="bg-green-300 ">
+          <tr className="bg-slate-400 ">
             <td className=" p-2 font-bold text-center w-48 border-green-500">
               Product Name
             </td>
