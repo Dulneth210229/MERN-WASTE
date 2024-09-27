@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import AccountNav from '../AccountNav/AccountNav';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function AddSalary() {
   const EPF = 500;
   const ETF = 500;
-  const history = useNavigate(); // Creating a function to navigate to different routes after form submission
+  const history = useNavigate();
+
+  // Using location state to get autofill values passed from the first form
+  const location = useLocation();
+  const { credit, debit } = location.state || { credit: "", debit: "" }; // Default to empty if not provided
+
   const [inputs, setInputs] = useState({
     First_Name: "",
     Last_Name: "",
@@ -15,8 +20,8 @@ function AddSalary() {
     Designation: "",
     Basic_Salary: "",
     Allowance: "",
-    Credit: "",
-    Debit: "",
+    Credit: credit, // Autofilled value
+    Debit: debit,   // Autofilled value
     ETF: "",
     EPF: "",
     Total_Salary: 0,
@@ -73,7 +78,7 @@ function AddSalary() {
   };
 
   const totalSalary = (basic, allowance, Credit, Debit) => {
-    return (EPF + ETF + Number(basic) + Number(allowance) + Number(Credit) - Number(Debit));
+    return (EPF + ETF + Number(basic) + Number(allowance) -Number(Credit) + Number(Debit));
   };
 
   // Form validation
@@ -219,7 +224,6 @@ function AddSalary() {
               />
             </div>
 
-            {/* Moved Credit and Debit fields here */}
             <div>
               <label className="block text-gray-700">Credit:</label>
               <input
@@ -253,29 +257,6 @@ function AddSalary() {
               </button>
             </div>
           </form>
-        </div>
-
-        {/* Table to display salary records */}
-        <div className="w-full max-w-4xl mt-10 bg-white rounded-lg shadow-md">
-          <h2 className="text-xl font-bold text-center mb-4 text-gray-700">Salary Records</h2>
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="px-4 py-2 text-left text-gray-700">First Name</th>
-                <th className="px-4 py-2 text-left text-gray-700">Last Name</th>
-                <th className="px-4 py-2 text-left text-gray-700">NIC</th>
-                <th className="px-4 py-2 text-left text-gray-700">Employee ID</th>
-                <th className="px-4 py-2 text-left text-gray-700">Designation</th>
-                <th className="px-4 py-2 text-left text-gray-700">Basic Salary</th>
-                <th className="px-4 py-2 text-left text-gray-700">Allowance</th>
-                <th className="px-4 py-2 text-left text-gray-700">Credit</th>
-                <th className="px-4 py-2 text-left text-gray-700">Debit</th>
-                <th className="px-4 py-2 text-left text-gray-700">Total Salary</th>
-              </tr>
-            </thead>
-        
-            
-          </table>
         </div>
       </div>
     </div>

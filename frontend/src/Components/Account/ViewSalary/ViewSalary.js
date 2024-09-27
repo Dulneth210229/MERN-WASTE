@@ -65,7 +65,7 @@ function ViewSalary() {
       <AccountNav />
 
       {/* Search Input and Button */}
-      <div className="flex justify-end mb-6">
+      <div className="flex justify-end mb-6 bg-sla bg-gray-100">
         <input
           onChange={handleInputChange}
           value={searchQuery}
@@ -99,7 +99,13 @@ function ViewSalary() {
           </div>
         ))}
       </div>
-      <button onClick={handlePrint} className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 ml-2">Download Report</button>
+
+      {/* Download Report Button */}
+      <button
+        onClick={handlePrint}
+        className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 ml-2">
+        Download Report
+      </button>
     </div>
   );
 }
