@@ -8,6 +8,9 @@ function Request(props) {
   const { _id, service, name, address, phoneNumber, date, time } =
     props.request;
 
+  // const date = "2024-09-01T00:00:00.000Z";
+  const formattedDate = date.slice(0, 10);
+
   //delete request
   const history = useNavigate();
 
@@ -24,10 +27,10 @@ function Request(props) {
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Request Details</h1>
 
       <div className="space-y-2 mb-4">
-        <div>
+        {/* <div>
           <span className="font-bold text-gray-600">ID:</span>
           <span className="ml-2 text-gray-800">{_id}</span>
-        </div>
+        </div> */}
         <div>
           <span className="font-bold text-gray-600">Service Type:</span>
           <span className="ml-2 text-gray-800">{service}</span>
@@ -46,7 +49,7 @@ function Request(props) {
         </div>
         <div>
           <span className="font-bold text-gray-600">Date:</span>
-          <span className="ml-2 text-gray-800">{date}</span>
+          <span className="ml-2 text-gray-800">{formattedDate}</span>
         </div>
         <div>
           <span className="font-bold text-gray-600">Time:</span>
@@ -56,7 +59,7 @@ function Request(props) {
 
       <div className="flex space-x-4">
         <Link
-          to={`/requestDetailsUser/${_id}`}
+          to={`/viewrequests/${_id}`}
           className="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg"
         >
           Update

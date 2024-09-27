@@ -20,6 +20,10 @@ function AddNewOrder() {
   });
 
   const [errors, setErrors] = useState({
+    productName: "",
+    productCategory: "",
+    trakingID: "",
+    orderDescription: "",
     unitPrice: "",
     quantity: "",
   });
@@ -27,22 +31,64 @@ function AddNewOrder() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Validate unitPrice and quantity fields to accept only numbers
-    if (name === "unitPrice" || name === "quantity") {
-      if (!/^\d*\.?\d*$/.test(value)) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          [name]: "Please enter a valid number",
-        }));
-        return;
-      } else {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          [name]: "",
-        }));
-      }
+    // Validate fields based on the name of the input
+    switch (name) {
+      case "productName":
+      case "productCategory":
+        // Only allow letters and spaces
+        if (!/^[a-zA-Z\s]*$/.test(value)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "Please enter valid characters (letters only)",
+          }));
+          return;
+        } else {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "",
+          }));
+        }
+        break;
+
+      case "trakingID":
+      case "orderDescription":
+        // Allow letters, numbers, and spaces
+        if (!/^[a-zA-Z0-9\s]*$/.test(value)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "Please enter valid characters (letters and numbers only)",
+          }));
+          return;
+        } else {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "",
+          }));
+        }
+        break;
+
+      case "unitPrice":
+      case "quantity":
+        // Allow only positive numbers
+        if (!/^\d*\.?\d*$/.test(value)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "Please enter a valid positive number",
+          }));
+          return;
+        } else {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "",
+          }));
+        }
+        break;
+
+      default:
+        break;
     }
 
+    // Update the state
     setInput((prevState) => ({
       ...prevState,
       [name]: value,
@@ -107,7 +153,7 @@ function AddNewOrder() {
           className=" w-4/5 mx-auto mt-5 p-5 rounded-lg flex flex-row"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-row bg-green-300 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
+          <div className="flex flex-row bg-green-100 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
             <div>
               <div className="ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -122,6 +168,11 @@ function AddNewOrder() {
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Product Name"
                 />
+                {errors.productName && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.productName}
+                  </p>
+                )}
               </div>
               <div className="mt-3 ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -136,6 +187,11 @@ function AddNewOrder() {
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Product Category"
                 />
+                {errors.productCategory && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.productCategory}
+                  </p>
+                )}
               </div>
               <div className="mt-3 ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -192,6 +248,11 @@ function AddNewOrder() {
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Tracking ID"
                 />
+                {errors.trakingID && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.trakingID}
+                  </p>
+                )}
               </div>
               <div className="mt-3 ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -210,11 +271,12 @@ function AddNewOrder() {
                   <option>Credit/Debit Card</option>
                   <option>Bank Transfer</option>
                   <option>Cash on Delivery (COD)</option>
-                  <option>Mobile Payment (e.g., PayPal, Apple Pay)</option>
-                  <option>Purchase Order (PO)</option>
+                  <option>Mobile Payment (e.g., Apple Pay, Google Pay)</option>
+                  <option>Installment Payment</option>
                 </select>
               </div>
             </div>
+
             <div>
               <div className="ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
@@ -227,16 +289,21 @@ function AddNewOrder() {
                   value={input.orderDescription}
                   name="orderDescription"
                   className="border-2 border-slate-500 rounded-lg w-72 h-32 mt-2 placeholder-shown: placeholder-slate-500 p-1"
-                  placeholder="Description"
+                  placeholder="Order Description"
                 />
+                {errors.orderDescription && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.orderDescription}
+                  </p>
+                )}
               </div>
-              <div className="mt-4 ml-10">
+              <div className="mt-3 ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
                   Unit Price
                 </label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   onChange={handleChange}
                   value={input.unitPrice}
                   name="unitPrice"
@@ -249,13 +316,13 @@ function AddNewOrder() {
                   </p>
                 )}
               </div>
-              <div className="mt-4 ml-10">
+              <div className="mt-3 ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
                   Quantity
                 </label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   onChange={handleChange}
                   value={input.quantity}
                   name="quantity"
@@ -266,7 +333,7 @@ function AddNewOrder() {
                   <p className="text-red-500 text-sm mt-1">{errors.quantity}</p>
                 )}
               </div>
-              <div className="mt-4 ml-10">
+              <div className="mt-3 ml-10">
                 <label className="font-bold text-slate-700 text-2xl ">
                   Order Total
                 </label>
@@ -274,19 +341,19 @@ function AddNewOrder() {
                 <input
                   type="text"
                   value={input.orderTotal}
-                  readOnly
                   name="orderTotal"
+                  readOnly
                   className="border-2 border-slate-500 rounded-lg w-72 h-10 mt-2 placeholder-shown: placeholder-slate-500 p-1"
                   placeholder="Order Total"
                 />
               </div>
-              {/* Place Order Button */}
-              <div className="mt-5 ml-10">
+
+              <div className="mt-10 ml-10">
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold mt-5 py-2 px-4 rounded-lg w-72 h-12"
+                  className="bg-green-600 w-72 h-12 p-3 text-xl font-semibold text-white shadow-lg rounded-lg hover:bg-green-500"
                 >
-                  Place Order
+                  Submit Order
                 </button>
               </div>
             </div>

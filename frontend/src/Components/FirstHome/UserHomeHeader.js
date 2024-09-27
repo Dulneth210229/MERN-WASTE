@@ -11,7 +11,7 @@ function UserHomeHeader() {
   return (
     <div className=" flex flex-col ">
       <div className="flex flex-row justify-between">
-        <Link to="">
+        <Link to="/">
           <div className="ml-3">
             <img src={logo} alt="Logo" className="h-20" />
           </div>
@@ -22,7 +22,7 @@ function UserHomeHeader() {
         <div className="flex p-1 bg-slate-300">
           <div className="mx-auto ml-3">
             <ul className="flex gap-4 font-bold ">
-              <Link to="">
+              <Link to="/">
                 <li className="hover:bg-slate-400 text-2xl h-12 pt-1 w-32 flex  flex-row rounded-lg text-center">
                   <img
                     src={home}

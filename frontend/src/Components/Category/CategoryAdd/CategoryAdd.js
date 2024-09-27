@@ -3,6 +3,7 @@ import CategoryNav from "../CategoryNav/CategoryNav";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 function CategoryAdd() {
 
   const history = useNavigate();
@@ -47,22 +48,21 @@ function CategoryAdd() {
       </div>
       <br></br>
       {/* Form section */}
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Categories Your Waste</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Add Organic Waste Category</h1>
       <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">WasteType</label>
-          <select
+          <input
             type="text"
             name="WasteType"
             onChange={handleChange}
             value={inputs.WasteType}
             required
+            placeholder="Add Waste Type"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           >
-          <option>Organic</option>
-          <option>Recyclable</option>
-          <option>Hazardous</option>
-          </select>
+
+          </input>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Quantity (KG)</label>
@@ -72,6 +72,7 @@ function CategoryAdd() {
             onChange={handleChange}
             value={inputs.Quantity}
             required
+            placeholder="Add Quantity(KG)"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -83,6 +84,7 @@ function CategoryAdd() {
             onChange={handleChange}
             value={inputs.DateOfCollection}
             required
+            placeholder="dd/mm/yyyy"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -94,6 +96,7 @@ function CategoryAdd() {
             onChange={handleChange}
             value={inputs.Location}
             required
+            placeholder="Add Your Adresse"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -121,6 +124,7 @@ function CategoryAdd() {
             onChange={handleChange}
             value={inputs.Notes}
             required
+            placeholder="Add Your Special Notes"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg"
           />
         </div>
@@ -133,8 +137,11 @@ function CategoryAdd() {
           </button>
         </div>
       </form>
+      
     </div>
+    
   );
+  
 }
 
 export default CategoryAdd;

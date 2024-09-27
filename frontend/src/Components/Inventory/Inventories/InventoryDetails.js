@@ -60,6 +60,7 @@ function InventoryDetails() {
   return (
     <div>
       <InventoyHeader />
+
       <div className="flex flex-row mt-5 mb-2 justify-between">
         <h1 className="text-center font-semibold m-1 ml-5 text-4xl text-slate-700">
           Inventory Details Display
@@ -91,7 +92,7 @@ function InventoryDetails() {
       <hr className="border-2" />
 
       {/* Display calculated statistics */}
-      <div className="mx-auto bg-blue-300 w-3/5 mt-2 p-3 rounded-lg">
+      <div className="mx-auto bg-slate-200 w-3/5 mt-2 p-3 rounded-lg shadow-lg">
         <h1 className="text-4xl text-slate-800 font-semibold text-center">
           Inventoey Summary
         </h1>
@@ -124,6 +125,7 @@ function InventoryDetails() {
               <th className="border-2 p-2 w-48 border-green-500">
                 Material Type
               </th>
+              <th className="border-2 p-2 w-24 border-green-500">Unit</th>
               <th className="border-2 p-2 w-24 border-green-500">Quantity</th>
               <th className="border-2 p-2 w-48 border-green-500">
                 Product Description
