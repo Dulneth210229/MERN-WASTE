@@ -5,11 +5,10 @@ import axios from 'axios';
 function WCMUser_Register() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
+    
     email: "",
     password: "",
-    NID: "",        // Add NID state
-    address: ""     // Add address state
+ 
   });
 
   const handleInputChange = (e) => {
@@ -32,7 +31,7 @@ function WCMUser_Register() {
   };
 
   const sendRequest = async () => {
-    await axios.post("http://localhost:5002/users", {
+    await axios.post("http://localhost:5001/users", {
       name: String(user.name),
       email: String(user.email),
       password: String(user.password),

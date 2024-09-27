@@ -77,6 +77,7 @@ import WCMBin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Detai
 import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
 import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
+import WCMUser_Login from "./Components/WCMUser_Comp/WCMUser_Login";
 
 function App() {
   //java scripts
@@ -168,6 +169,7 @@ function App() {
         <Route path="/WCMBin_Add" element={<WCMBin_Add/>}/>
         <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
+        <Route path="/WCMUser_Login" element={<WCMUser_Login/>}/>
 
         </Routes>
       </React.Fragment>

@@ -14,7 +14,7 @@ function WCMUser_Home() {
           New User? Register Here
         </Link>
         <Link
-          to="/userHomePage"
+          to="/WCMUser_Login"
           className="block w-full bg-green-500 text-white text-center py-3 rounded-md shadow hover:bg-green-600 transition duration-300"
         >
           Already have an account? Login
