@@ -21,6 +21,8 @@ function WCMUser_Register() {
     }));
   };
 
+  //test
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
