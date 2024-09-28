@@ -69,7 +69,7 @@ import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff"
 // Gawrawa
 import WCMHome from './Components/Home/WCMHome/WCMHome';
 import WCMAdmin_Home from './Components/Home/WCMAdmin_Home/WCMAdmin_Home';
-import WCMUser_Home from './Components/Home/WCMUser_Home/WCMUser_Home';
+import WCMUser_OnBoarding from "./Components/Home/WCMUser_Home/WCMUser_OnBoarding";
 import WCMDriver_Home from './Components/Home/WCMDriver_Home/WCMDriver_Home';
 import WCMUser_Details from './Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Details';
 import WCMAdmin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Admin/WCMAdmin_Details';
@@ -79,6 +79,8 @@ import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
 import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
 import WCMUser_Login from "./Components/WCMUser_Comp/WCMUser_Login";
+import WCMUser_Home from "./Components/Home/WCMUser_Home";
+
 
 function App() {
   //java scripts
@@ -161,7 +163,7 @@ function App() {
           {/* Gawrawa */}
           <Route path="/WCMHome" element={<WCMHome />} />
         <Route path="/WCMAdmin_Home" element={<WCMAdmin_Home />} />
-        <Route path="/WCMUser_Home" element={<WCMUser_Home />} />
+        <Route path="WCMUser_OnBoarding" element={<WCMUser_OnBoarding/>}/>
         <Route path="/WCMDriver_Home" element={<WCMDriver_Home />} />
         <Route path="/WCMUser_Details" element={<WCMUser_Details/>} />
         <Route path="/WCMAdmin_Details" element={<WCMAdmin_Details/>}/>
@@ -171,6 +173,7 @@ function App() {
         <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
         <Route path="/WCMUser_Login" element={<WCMUser_Login/>}/>
+        <Route path="/WCMUser_Home" element={<WCMUser_Home/>} />
 
         </Routes>
       </React.Fragment>

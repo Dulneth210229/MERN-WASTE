@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // URL for fetching user data from the server
-const URL = "http://localhost:5002/admins";
+const URL = "http://localhost:5001/admins";
 
 // Function to handle fetching data from the API
 const fetchHandler = async () => {

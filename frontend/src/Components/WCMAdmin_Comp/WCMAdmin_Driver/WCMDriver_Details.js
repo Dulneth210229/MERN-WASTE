@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const URL = "http://localhost:5002/drivers";
+const URL = "http://localhost:5001/drivers";
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);

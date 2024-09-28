@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import UserHomeHeader from "../../FirstHome/UserHomeHeader"; // Import UserHomeHeader component
 
-function WCMUser_Home() {
+function WCMUser_OnBoarding() {
   return (
     <div>
       <UserHomeHeader />
@@ -19,7 +19,7 @@ function WCMUser_Home() {
           New User? Register Here
         </Link>
         <Link
-          to="/userHomePage"
+          to="/WCMUser_Login"
           className="block w-full bg-green-500 text-white text-center py-3 rounded-md shadow hover:bg-green-600 transition duration-300 font-bold"
         >
           Already have an account? Login
@@ -29,4 +29,4 @@ function WCMUser_Home() {
   );
 }
 
-export default WCMUser_Home;
+export default WCMUser_OnBoarding;
