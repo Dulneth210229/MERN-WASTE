@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -35,6 +36,8 @@ function UpdateSalary() {
         ETF: Number(inputs.ETF),
         EPF: Number(inputs.EPF),
         Total_Salary: Number(Total_Salary),
+        Credit: Number(inputs.Credit),
+        Debit: Number(inputs.Debit),
       });
     } catch (error) {
       console.error("Error updating data", error);
@@ -49,9 +52,9 @@ function UpdateSalary() {
     });
   };
 
-  const totalSalary =(basic, allowance)=> {
+  const totalSalary =(basic, allowance,Credit,Debit)=> {
     
-    return(EPF + ETF +Number(basic)  + Number(allowance))
+    return(EPF + ETF +Number(basic)  + Number(allowance) -Number(Credit) + Number(Debit))
     
   }
 // Function to handle form submission.
@@ -59,7 +62,7 @@ function UpdateSalary() {
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance)
+    let Total_Salary=totalSalary(inputs.Basic_Salary,inputs.Allowance,inputs.Credit, inputs.Debit)
     setinputs(()=>({
       ...inputs,
       
@@ -172,7 +175,29 @@ function UpdateSalary() {
               className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
+          <div>
+              <label className="block text-gray-700">Credit:</label>
+              <input
+                type="number"
+                name="Credit"
+                onChange={handleChange}
+                value={inputs.Credit}
+                required
+                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
+            <div>
+              <label className="block text-gray-700">Debit:</label>
+              <input
+                type="number"
+                name="Debit"
+                onChange={handleChange}
+                value={inputs.Debit}
+                required
+                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           <div>
             <label className="block text-gray-700">ETF:</label>
             <input

@@ -30,6 +30,14 @@ const accountSchema = new Schema({
         type:Number,//datatype
         required:true,//validate
     },
+    Credit:{
+        type:Number,
+        required:true,
+    },
+    Debit:{
+        type:Number,
+        required:true,
+    },
     ETF:{
         type:Number,//datatype
         required:true,//validate
