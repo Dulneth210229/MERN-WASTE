@@ -80,6 +80,7 @@ import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
 
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
+import generatePDF from "./Components/Account/generatePDF/generatePDF";
 
 function App() {
   //java scripts
@@ -174,6 +175,7 @@ function App() {
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>
+        <Route path="/generatePDF" element={<generatePDF />}/>
 
        
 
