@@ -18,7 +18,7 @@ import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/A
 import AccountHome from "./Components/Account/AccountHome/AccountHome";
 import Salary from "./Components/Account/Salary/Salary";
 import ViewSalary from "./Components/Account/ViewSalary/ViewSalary";
-import GenerateSalary from "./Components/Account/GenerateSalary/GenerateSalary";
+
 import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/UpdateFeedback";
 import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
 import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
@@ -80,6 +80,7 @@ import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
 
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
+import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
 
 function App() {
   //java scripts
@@ -110,7 +111,7 @@ function App() {
           <Route path="/AccountHome" element={<AccountHome />} />
           <Route path="/Salary" element={<Salary />} />
           <Route path="/ViewSalary" element={<ViewSalary />} />
-          <Route path="/GenerateSalary" element={<GenerateSalary />} />
+          
           <Route path="/AddSalary" element={<AddSalary />} />
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
           <Route path="/categoryhome" element={<CategoryHome />} />
@@ -174,6 +175,7 @@ function App() {
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>
+        <Route path="/ReportGeneration" element={<ReportGeneration />}/>
 
        
 

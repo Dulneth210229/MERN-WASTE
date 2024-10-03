@@ -35,6 +35,15 @@ function AccountHome() {
               Transaction Summary
             </button>
           </Link>
+
+          <Link to="/ReportGeneration">
+            <button
+              type="submit"
+              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2 hover:scale-110 transition duration-300 ml-2"
+            >
+             Report Generation
+            </button>
+          </Link>
         
         
         </div>

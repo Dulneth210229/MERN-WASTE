@@ -30,6 +30,9 @@ function AccountNav() {
               <Link to="/CreditDebit">
                 <li className="hover:underline text-2xl">Transaction Summary</li>
               </Link>
+              <Link to="/ReportGeneration">
+                <li className="hover:underline text-2xl">Report Generation</li>
+              </Link>
              
             </ul>
             </div>
