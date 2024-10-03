@@ -1,11 +1,11 @@
 import React from "react";
-import CategoryNav from "../CategoryNav/CategoryNav";
+import CategoryNavOr from "../CategoryNavOr/CategoryNavOr";
 import UserFooter from "../../UserHomePage/UserFooter";
 
 function CategoryHomeOr() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-blue-50">
-      <CategoryNav />
+      <CategoryNavOr />
       <div className="flex-grow">
         <div className="container mx-auto px-4 py-12">
           <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">

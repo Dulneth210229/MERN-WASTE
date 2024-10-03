@@ -1,18 +1,18 @@
 const express = require("express");
-const categoryrouterOr = express.Router();
+const recyclablerouter = express.Router();
 
 //insert Model
-const Category = require("../Model/CategoryModelOr");
+const Recyclable = require("../Model/CategoryModelOr");
 
 //insert category Controller
-const CategoryControllerOr = require("../Controllers/CategoryControllersOr");
+const RecyclableController = require("../Controllers/CategoryControllersOr");
 
-categoryrouterOr.get("/",CategoryControllerOr.getAllCategory);
-categoryrouterOr.post("/",CategoryControllerOr.addCategory);
-categoryrouterOr.get("/:id",CategoryControllerOr.getCategoryById);
-categoryrouterOr.put("/:id",CategoryControllerOr.updateCategory);
-categoryrouterOr.delete("/:id",CategoryControllerOr.deleteCategory);
+recyclablerouter.get("/",RecyclableController.getAllRecyclable);
+recyclablerouter.post("/",RecyclableController.addRecyclable);
+recyclablerouter.get("/:id",RecyclableController.getRecyclableById);
+recyclablerouter.put("/:id",RecyclableController.updateRecyclable);
+recyclablerouter.delete("/:id",RecyclableController.deleteRecyclable);
 
 
 //export
-module.exports = categoryrouterOr;
+module.exports = recyclablerouter;
