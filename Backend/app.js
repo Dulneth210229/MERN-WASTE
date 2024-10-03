@@ -25,6 +25,7 @@ const categoryrouterHza = require("./Routes/CategoryRoutesHza");
 
 
 
+
 dotenv.config();
 const app = express();
 const cors = require("cors");
@@ -48,7 +49,7 @@ app.use("/employee", employeerouter);
 app.use("/employee", employeeRouter);
 app.post("/register", inventoryRegisterUser);
 app.use("/plan",planrouter);
-app.use("/categoryOr", categoryrouterOr);
+app.use("/recyclable", categoryrouterOr);
 app.post("/loginAdmin", loginAdmin);
 app.use("/file", express.static("file"));
 app.use("/users", userRouter);
