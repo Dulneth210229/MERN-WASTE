@@ -23,7 +23,7 @@ function Report() {
           </h1>
           <hr className="border-4 mt-3 mb-2" />
         </div>
-        <div className=" flex flex-col gap-5">
+        <div className=" flex flex-col gap-5 bg-b">
           <div className="flex flex-row gap-20 mx-auto w-3/3 mt-5 mr-10 ml-10 ">
             <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
               <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
@@ -70,12 +70,13 @@ function Report() {
           <div style={{ display: "none" }}>
             <PrintableOrder ref={componentsRefO} />
           </div>
-          <div className="flex flex-row gap-20 mx-auto w-3/3 mt-5 mr-10 ml-10 ">
+          {/* Second report sector begins */}
+          {/* <div className="flex flex-row gap-20 mx-auto w-3/3 mt-5 mr-10 ml-10 ">
             <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
               <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
-                <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                  {/* Generate Order Report */}
-                </div>
+                <div className="text-center font-medium text-2xl text-slate-900 p-1"> */}
+          {/* Generate Order Report */}
+          {/* </div>
               </div>
               <Link to="">
                 <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
@@ -85,9 +86,9 @@ function Report() {
             </div>
             <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
               <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
-                <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                  {/* Generate Order Report */}
-                </div>
+                <div className="text-center font-medium text-2xl text-slate-900 p-1"> */}
+          {/* Generate Order Report */}
+          {/* </div>
               </div>
               <Link to="">
                 <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
@@ -97,9 +98,9 @@ function Report() {
             </div>
             <div className="relative w-1/3 h-52 bg-slate-100 rounded-lg m-3 shadow-2xl">
               <div className=" w-auto h-12 bg-green-200 rounded-lg  ">
-                <div className="text-center font-medium text-2xl text-slate-900 p-1">
-                  {/* Generate Order Report */}
-                </div>
+                <div className="text-center font-medium text-2xl text-slate-900 p-1"> */}
+          {/* Generate Order Report */}
+          {/* </div>
               </div>
               <Link to="">
                 <button className="bg-lime-500 p-2 font-bold rounded-lg text-center w-auto  absolute bottom-3 right-3">
@@ -107,7 +108,8 @@ function Report() {
                 </button>
               </Link>
             </div>
-          </div>
+          </div> */}
+          {/* secon report sector ends */}
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ function Inventory(props) {
       </div>*/}
       <div>
         <table className="w-auto mx-auto m-1">
-          <tr className="p-3 bg-slate-200">
+          <tr className="p-3 bg-white">
             <td className="border-2 p-2 w-48 font-medium text-center border-slate-400 ">
               {productName}
             </td>
