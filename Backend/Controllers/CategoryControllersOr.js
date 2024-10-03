@@ -1,118 +1,118 @@
-const Category = require("../Model/CategoryModelOr");
+const Recyclable = require("../Model/CategoryModelOr");
 
 //data display
-const getAllCategory = async (req, res, next) => {
+const getAllRecyclable = async (req, res, next) => {
 
-    let category;
+    let recyclable;
 
     //get all category
     try{
-        category = await Category.find();
+        recyclable = await Recyclable.find();
     }catch (err) {
         console.log(err);
     }
 
     //not found
-    if(!category){
+    if(!recyclable){
         return res.status(404).json({message:"category not found"});
     }
 
     //display all categories
-    return res.status(200).json({ category });
+    return res.status(200).json({ recyclable });
 
 
 
 };
 
 //data insert
-const addCategory = async (req, res, next) => {
+const addRecyclable = async (req, res, next) => {
 
     const {WasteType,Quantity,DateOfCollection,Location,TransportMethod,Notes} = req.body;
 
-    let category;
+    let recyclable;
 
     try{
-        category = new Category({WasteType, Quantity, DateOfCollection, Location, TransportMethod, Notes});
-        await category.save();
+        recyclable = new Recyclable({WasteType, Quantity, DateOfCollection, Location, TransportMethod, Notes});
+        await recyclable.save();
     }catch (err) {
         console.log(err);
     }
 
     //not insert category
-    if(!category){
+    if(!recyclable){
         return res.status(404).json({ message: "unable to add categories"});
     }
-    return res.status(200).json({ category });
+    return res.status(200).json({ recyclable });
 
 };
 
 //Get by Id
-const getCategoryById = async (req, res, next) => {
+const getRecyclableById = async (req, res, next) => {
 
     const id = req.params.id;
 
-    let category;
+    let recyclable;
 
 
     try{
-        category = await Category.findById(id);
+        recyclable = await Recyclable.findById(id);
     }catch (err) {
         console.log(err);
     }
 
         //not available category
-        if(!category){
+        if(!recyclable){
             return res.status(404).json({ message: "Category Not Found"});
         }
-        return res.status(200).json({ category });
+        return res.status(200).json({ recyclable });
     
 
 }
 
 //Update user details
-const updateCategory = async (req, res, next) => {
+const updateRecyclable = async (req, res, next) => {
 
     const id = req.params.id;
     const {WasteType,Quantity,DateOfCollection,Location,TransportMethod,Notes} = req.body;
 
-    let category;
+    let recyclable;
 
     try{
-        category = await Category.findByIdAndUpdate(id,
+        recyclable = await Recyclable.findByIdAndUpdate(id,
             { WasteType: WasteType, Quantity: Quantity, DateOfCollection: DateOfCollection, Location: Location, TransportMethod: TransportMethod, Notes:Notes });
-            category = await category.save();
+            recyclable = await recyclable.save();
     }catch(err) {
         console.log(err);
     }
 
-    if(!category){
+    if(!recyclable){
         return res.status(404).json({ message: "Unable to Update Category Details"});
     }
-    return res.status(200).json({ category });
+    return res.status(200).json({ recyclable });
 
 };
 
 //Delete category details
-const deleteCategory = async (req, res, next) => {
+const deleteRecyclable = async (req, res, next) => {
     const id = req.params.id;
 
-    let category;
+    let recyclable;
     
     try{
-        category = await Category.findByIdAndDelete(id)
+        recyclable = await Recyclable.findByIdAndDelete(id)
     }catch (err) {
         console.log(err);
     }
 
-    if(!category){
+    if(!recyclable){
         return res.status(404).json({ message: "Unable to Delete Category Details"});
     }
-    return res.status(200).json({ category });
+    return res.status(200).json({ recyclable });
 
 };
 
-exports.getAllCategory = getAllCategory;
-exports.addCategory = addCategory;
-exports.getCategoryById = getCategoryById;
-exports.updateCategory = updateCategory;
-exports.deleteCategory = deleteCategory;
+exports.getAllRecyclable = getAllRecyclable;
+exports.addRecyclable  = addRecyclable ;
+exports.getRecyclableById = getRecyclableById;
+exports.updateRecyclable = updateRecyclable;
+exports.deleteRecyclable = deleteRecyclable;
