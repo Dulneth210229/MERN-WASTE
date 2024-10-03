@@ -45,9 +45,46 @@ function AddFeedbackForm() {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Validate name to allow only letters and spaces
+    if (name === 'name') {
+      const namePattern = /^[A-Za-z\s]*$/;
+      if (!namePattern.test(value)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          name: 'Name should contain only letters and spaces',
+        }));
+        return;
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          name: '',
+        }));
+      }
+    }
+
+    // Validate phone number to allow only numbers and exactly 10 digits
+    if (name === 'phone') {
+      const phonePattern = /^[0-9]{0,10}$/;
+      if (!phonePattern.test(value)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          phone: 'Phone number must contain exactly 10 digits',
+        }));
+        return;
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          phone: '',
+        }));
+      }
+    }
+
+    // Update the inputs state if validation passed
     setInputs((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
@@ -60,11 +97,9 @@ function AddFeedbackForm() {
 
   const validateInputs = () => {
     const newErrors = {};
-    const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
-    const phonePattern = /^[0-9]{10}$/;
 
-    if (!inputs.name || !namePattern.test(inputs.name)) {
+    if (!inputs.name) {
       newErrors.name = 'Name should contain only letters and spaces';
     }
 
@@ -76,7 +111,7 @@ function AddFeedbackForm() {
       newErrors.address = 'Address must be at least 5 characters long';
     }
 
-    if (!inputs.phone || !phonePattern.test(inputs.phone)) {
+    if (!inputs.phone || inputs.phone.length !== 10) {
       newErrors.phone = 'Phone number must contain exactly 10 digits';
     }
 
@@ -216,8 +251,6 @@ function AddFeedbackForm() {
               )}
             </div>
 
-
-           
             <button
               type="submit"
               className="w-full bg-green-700 text-white py-2 rounded-md shadow-md hover:bg-green-800"
@@ -227,11 +260,14 @@ function AddFeedbackForm() {
           </form>
         </div>
       </div>
-      <UserFooter/>
+      <UserFooter />
     </div>
   );
 }
 
 export default AddFeedbackForm;
+
+
+
 
 
