@@ -11,7 +11,7 @@ function InventoryHome() {
           <Link to="/inventoryDeatails">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2  hover:scale-110 transition duration-300 ml-2"
+              className="bg-green-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-green-500 mb-2  hover:scale-110 transition duration-300 ml-2"
             >
               Inventory Details
             </button>
@@ -19,7 +19,7 @@ function InventoryHome() {
           <Link to="/orderDetails">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2 hover:scale-110 transition duration-300 ml-2"
+              className="bg-green-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-green-500 mb-2 hover:scale-110 transition duration-300 ml-2"
             >
               Order Details
             </button>
@@ -27,15 +27,15 @@ function InventoryHome() {
           <Link to="/inventoryReport">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2 hover:scale-110 transition duration-300 ml-2"
+              className="bg-green-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-green-500 mb-2 hover:scale-110 transition duration-300 ml-2"
             >
               Report Details
             </button>
           </Link>
-          <Link to="/inventoryReport">
+          <Link to="/sendReport">
             <button
               type="submit"
-              className="bg-lime-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-lime-500 mb-2 hover:scale-110 transition duration-300 ml-2"
+              className="bg-green-600 text-white p-3 rounded-lg uppercase w-72  over:opacity-95 font-semibold hover:bg-green-500 mb-2 hover:scale-110 transition duration-300 ml-2"
             >
               Upload Report
             </button>

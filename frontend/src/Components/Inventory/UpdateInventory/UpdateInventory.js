@@ -92,146 +92,139 @@ function UpdateInventory() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <InventoyHeader />
-      <div>
-        <h1 className="text-center mt-5 font-semibold text-slate-800 text-4xl mb-4">
-          Update Inventory Stock
-        </h1>
-        <hr className="border-2" />
-        <form
-          onSubmit={handleSubmit}
-          className=" w-2/6 mx-auto m-3 rounded-lg shadow-xl bg-blue-100"
-        >
-          <div className="flex flex-col w-auto mr-10 ml-10">
-            {/* Product Name */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700 ">
-                Product Name
-              </label>
-              <input
-                type="text"
-                name="productName"
-                onChange={handleChange}
-                value={input.productName}
-                placeholder="Product Name"
-                className="border p-3 rounded-lg  m-2 bg-lime-300 border-lime-500 "
-              />
-              {error.productName && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.productName}
-                </div>
-              )}
-            </div>
+      <div className=" bg-gray-100">
+        <div>
+          <h1 className="text-center mt-8 font-bold text-slate-900 text-3xl mb-6">
+            Update Inventory Stock
+          </h1>
+          <hr className="border border-gray-300 mb-8  mx-auto" />
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-xl mx-auto p-6 rounded-lg shadow-lg bg-white"
+          >
+            <div className="flex flex-col space-y-6">
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Product Name
+                </label>
+                <input
+                  type="text"
+                  name="productName"
+                  onChange={handleChange}
+                  value={input.productName}
+                  placeholder="Enter product name"
+                  className="border border-gray-300 rounded-lg p-3  focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.productName && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {error.productName}
+                  </div>
+                )}
+              </div>
 
-            {/* Product Category */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
-                Product Category
-              </label>
-              <input
-                type="text"
-                name="ProductCategory"
-                onChange={handleChange}
-                value={input.ProductCategory}
-                placeholder="Product Category"
-                className="border p-3 rounded-lg  m-2 bg-lime-300 border-lime-500"
-              />
-              {error.ProductCategory && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.ProductCategory}
-                </div>
-              )}
-            </div>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Product Category
+                </label>
+                <input
+                  type="text"
+                  name="ProductCategory"
+                  onChange={handleChange}
+                  value={input.ProductCategory}
+                  placeholder="Enter product category"
+                  className="border border-gray-300 rounded-lg p-3  focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.ProductCategory && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {error.ProductCategory}
+                  </div>
+                )}
+              </div>
 
-            {/* Material Type */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
-                Material Type
-              </label>
-              <input
-                type="text"
-                name="materialType"
-                onChange={handleChange}
-                value={input.materialType}
-                placeholder="Material"
-                className="border p-3 rounded-lg  m-2 bg-lime-300 border-lime-500"
-              />
-              {error.materialType && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.materialType}
-                </div>
-              )}
-            </div>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Material Type
+                </label>
+                <input
+                  type="text"
+                  name="materialType"
+                  onChange={handleChange}
+                  value={input.materialType}
+                  placeholder="Enter material type"
+                  className="border border-gray-300 rounded-lg p-3  focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.materialType && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {error.materialType}
+                  </div>
+                )}
+              </div>
 
-            {/* Unit */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
-                Unit
-              </label>
-              <input
-                type="text"
-                name="unit"
-                onChange={handleChange}
-                value={input.unit}
-                placeholder="Unit"
-                className="border pt-1 rounded-lg  m-2 bg-lime-300 h-14 text-justify border-lime-500"
-              />
-              {error.unit && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.unit}
-                </div>
-              )}
-            </div>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Unit
+                </label>
+                <input
+                  type="text"
+                  name="unit"
+                  onChange={handleChange}
+                  value={input.unit}
+                  placeholder="Enter unit"
+                  className="border border-gray-300 rounded-lg p-3  focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.unit && (
+                  <div className="text-red-500 text-sm mt-1">{error.unit}</div>
+                )}
+              </div>
 
-            {/* Quantity */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
-                Product Quantity
-              </label>
-              <input
-                type="text"
-                name="quantity"
-                onChange={handleChange}
-                value={input.quantity}
-                placeholder="Quantity"
-                className="border p-3 rounded-lg  m-2 bg-lime-300 border-lime-500"
-              />
-              {error.quantity && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.quantity}
-                </div>
-              )}
-            </div>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Product Quantity
+                </label>
+                <input
+                  type="number"
+                  name="quantity"
+                  onChange={handleChange}
+                  value={input.quantity}
+                  placeholder="Enter product quantity"
+                  className="border border-gray-300 rounded-lg p-3  focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.quantity && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {error.quantity}
+                  </div>
+                )}
+              </div>
 
-            {/* Product Description */}
-            <div className="flex flex-col w-96 mx-auto">
-              <label className="p-3 pb-0 m-0 font-bold text-2xl text-slate-700">
-                Product Description
-              </label>
-              <input
-                type="text"
-                name="productDescription"
-                onChange={handleChange}
-                value={input.productDescription}
-                placeholder="Product Description.."
-                className="border pt-1 rounded-lg  m-2 bg-lime-300 h-32 text-justify border-lime-500"
-              />
-              {error.productDescription && (
-                <div className="text-red-500 mt-2 ml-2 font-semibold">
-                  {error.productDescription}
-                </div>
-              )}
-            </div>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-lg">
+                  Product Description
+                </label>
+                <textarea
+                  name="productDescription"
+                  onChange={handleChange}
+                  value={input.productDescription}
+                  placeholder="Enter product description"
+                  className="border border-gray-300 rounded-lg p-3 h-24 resize-none focus:border-transparent transition ease-in-out duration-200"
+                />
+                {error.productDescription && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {error.productDescription}
+                  </div>
+                )}
+              </div>
 
-            <button
-              type="submit"
-              className="w-72 mx-auto mt-3 mb-5 rounded-lg font-bold bg-green-700 h-10"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                className="w-full py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition ease-in-out duration-200"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
