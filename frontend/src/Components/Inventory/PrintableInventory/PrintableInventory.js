@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReportInventoryList from "../ReportInventoryList/ReportInventoryList";
 import reportimg from "./img/LOGO.png";
-import signature from "./img/signature.png";
 
 const IURL = "http://Localhost:5001/inventory";
 
@@ -56,9 +55,11 @@ const PrintableInventory = React.forwardRef((props, ref) => {
             </div>
           ))}
       </div>
-      <div className="absolute bottom-0 right-0 ... ">
-        <h1 className="font-medium ml-20 text-slate-800 text-2xl">Signature</h1>
-        <img src={signature} alt="signature" className="h-20 " />
+      <div className="absolute bottom-0 right-1 mb-5">
+        <h1 className="font-medium ml- text-slate-800 text-2xl mb-5">
+          Signature
+        </h1>
+        <h className="mb-5 mr-5">..................................</h>
       </div>
     </div>
   );
