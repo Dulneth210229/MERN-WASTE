@@ -1,56 +1,87 @@
 import React from "react";
 import Nav from "../AdminNav/AdminNav";
 import { Link } from "react-router-dom";
+import {
+  FaTrashAlt,
+  FaTags,
+  FaHandsHelping,
+  FaBoxes,
+  FaMoneyBillAlt,
+  FaUserFriends,
+  FaUsers,
+  FaFileInvoiceDollar,
+} from "react-icons/fa";
 
 function Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Nav />
-      <div className="bg-blue-300 w-1/4 mx-auto rounded-lg">
-        <h1 className="text-4xl text-center font-bold my-7 pt-5 ">
-          Staff Home
-        </h1>
-        <div className="flex flex-col gap-8 pb-5 w-80 mx-auto ">
-          <Link to="/WCMAdmin_Home">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Waste Collcetion
-            </button>
-          </Link>
-          <Link to="/CategoryDetails">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Waste Category
-            </button>
-          </Link>
-          <Link to="/requestStaff">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Request Service
-            </button>
-          </Link>
-          <Link to="/inventoryHome">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Inventory Management
-            </button>
-          </Link>
-          <Link to="/PlanManegment">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Payment Plan
-            </button>
-          </Link>
-          <Link to="/CrmHome">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Customer Realation Ship
-            </button>
-          </Link>
-          <Link to="/EmployeeHome">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Employee Management
-            </button>
-          </Link>
-          <Link to="/AccountHome">
-            <button className="bg-lime-700 text-white p-3 rounded-lg uppercase font-bold w-80 hover:opacity-95 hover:scale-110 hover:bg-lime-600 transition duration-300">
-              Pay-Roll Management
-            </button>
-          </Link>
+
+      {/* Main Content */}
+      <div className="flex-grow flex  bg-white">
+        <div className="bg-slate- rounded-xl w-full max-w-lg mx-auto p-4 max-h-[90vh]">
+          <h1 className="text-3xl text-center font-extrabold mb-6 text-gray-900">
+            Staff Dashboard
+          </h1>
+
+          {/* Buttons */}
+          <div className="grid grid-cols-1 gap-4">
+            <Link to="/WCMAdmin_Home">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Waste Collection</span>
+                <FaTrashAlt className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/CategoryDetails">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Waste Category</span>
+                <FaTags className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/requestStaff">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Request Service</span>
+                <FaHandsHelping className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/inventoryHome">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Inventory Management</span>
+                <FaBoxes className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/PlanManegment">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Payment Plan</span>
+                <FaMoneyBillAlt className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/CrmHome">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Customer Relationship</span>
+                <FaUserFriends className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/EmployeeHome">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Employee Management</span>
+                <FaUsers className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/AccountHome">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Payroll Management</span>
+                <FaFileInvoiceDollar className="text-xl" />
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
+import AdminHomeHeader from '../WCMAdmin_Header';
 
-const URL = "http://localhost:5002/bins";
+
+const URL = "http://localhost:5001/bins";
 
 const fetchHandler = async () => {
   // Log the response to ensure correct structure
@@ -20,6 +22,9 @@ function WCMBin_Details() {
   }, []);
 
   return (
+    <div>
+      <AdminHomeHeader />
+    
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Bin Details Page</h1>
@@ -62,6 +67,7 @@ function WCMBin_Details() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

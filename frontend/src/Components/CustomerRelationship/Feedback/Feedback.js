@@ -68,29 +68,7 @@ function FeedbackDisplay(props) {
     </div>
   </div>
 
-    // <tr className="p-3 bg-green-100">
-    //   <td className="border px-4 py-2 font-medium text-center ">{name}</td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {email}</td>
-    //   <td className="border px-4 py-2 max-w-[250px] font-medium text-center">
-    //     {address}
-    //   </td>
-    //   <td className="border px-4 py-2 font-medium text-center">{phone}</td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {comment}</td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {rating}</td>
-    //   <td className="border px-4 py-2 font-medium text-center">
-    //     <Link to={`/feedbackdisplay/${_id}`}>
-    //       <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-    //         Update
-    //       </button>
-    //     </Link>
-    //     <button
-    //       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-    //       onClick={deleteHandler}
-    //     >
-    //       Remove
-    //     </button>
-    //   </td>
-    // </tr>
+    
   );
 }
 

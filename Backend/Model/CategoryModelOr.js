@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const categorySchemaOr = new Schema({
+const recyclableSchema = new Schema({
     WasteType:{
         type:String, //dataType
         required:true, // validate
@@ -31,5 +31,5 @@ const categorySchemaOr = new Schema({
 
 module.exports = mongoose.model(
     "CategoryModelOr", //file name
-    categorySchemaOr  //function name
+    recyclableSchema //function name
 )

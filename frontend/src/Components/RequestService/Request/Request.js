@@ -8,6 +8,9 @@ function Request(props) {
   const { _id, service, name, address, phoneNumber, date, time } =
     props.request;
 
+  // const date = "2024-09-01T00:00:00.000Z";
+  const formattedDate = date.slice(0, 10);
+
   //delete request
   const history = useNavigate();
 
@@ -46,7 +49,7 @@ function Request(props) {
         </div>
         <div>
           <span className="font-bold text-gray-600">Date:</span>
-          <span className="ml-2 text-gray-800">{date}</span>
+          <span className="ml-2 text-gray-800">{formattedDate}</span>
         </div>
         <div>
           <span className="font-bold text-gray-600">Time:</span>

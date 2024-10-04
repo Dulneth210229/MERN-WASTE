@@ -39,9 +39,22 @@ function UpdateOrder() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Validate numeric fields
+    // Validation patterns
+    const stringPattern = /^[A-Za-z\s]*$/;
+    const stringNumberPattern = /^[A-Za-z0-9\s]*$/;
+    const positiveNumberPattern = /^\d*\.?\d*$/;
+
+    // Real-time validation based on field type
+    if (name === "productName" || name === "productCategory") {
+      if (!stringPattern.test(value)) return; // Only strings are allowed
+    }
+
+    if (name === "trakingID" || name === "orderDescription") {
+      if (!stringNumberPattern.test(value)) return; // Strings and numbers are allowed
+    }
+
     if (name === "unitPrice" || name === "quantity") {
-      if (isNaN(value)) return;
+      if (!positiveNumberPattern.test(value)) return; // Only positive numbers are allowed
     }
 
     setInput((prevState) => {
@@ -81,7 +94,7 @@ function UpdateOrder() {
           className=" w-4/5 mx-auto mt-5 p-5 rounded-lg flex flex-row"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-row bg-green-300 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
+          <div className="flex flex-row bg-green-100 p-3 py-5 rounded-lg w-3/5 shadow-2xl mx-auto">
             <div>
               <div className="ml-8">
                 <label className="font-bold text-slate-700 text-2xl ">

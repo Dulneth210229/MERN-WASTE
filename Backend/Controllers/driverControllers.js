@@ -100,7 +100,30 @@ const deleteDriver = async (req, res, next) => {
 
     return res.status(200).json({ driver });
 
+
 }
+
+const loginDriver = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    let driver;
+    try {
+        // Find the user with the provided email and password
+        driver = await Driver.findOne({ email, password });
+    } catch (err) {
+        return res.status(500).json({ message: "Server error" });
+    }
+
+    if (!driver) {
+        return res.status(404).json({ message: "Invalid credentials" });
+    }
+
+    return res.status(200).json({ message: "Login successful", driver });
+};
+
+
+
+
 
 // Export the functions properly
 exports.getAllDrivers = getAllDrivers;
@@ -108,3 +131,4 @@ exports.addDrivers = addDrivers;
 exports.getById = getById;
 exports.updateDriver = updateDriver;
 exports.deleteDriver = deleteDriver;
+exports.loginDriver = loginDriver;

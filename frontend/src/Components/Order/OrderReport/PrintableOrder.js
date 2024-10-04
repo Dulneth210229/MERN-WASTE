@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReportOrderList from "./ReportOrderList";
 //02
+import reportimg from "./img/LOGO.png";
+import signature from "./img/signature.png";
 const IURL = "http://Localhost:5001/order";
 
 const fetchOrder = async () => {
@@ -10,14 +12,28 @@ const fetchOrder = async () => {
 
 const PrintableOrder = React.forwardRef((props, ref) => {
   const [order, setOrder] = useState([]);
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   useEffect(() => {
     fetchOrder().then((data) => setOrder(data.order));
+
+    // Get current date and time
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString(); // Format: "MM/DD/YYYY"
+    const formattedTime = date.toLocaleTimeString(); // Format: "HH:MM:SS AM/PM"
+    setCurrentDateTime(`${formattedDate} ${formattedTime}`);
   }, []);
 
   return (
-    <div ref={ref}>
-      <h1 className="text-center font-semibold m-5 text-4xl">
+    <div ref={ref} className="static">
+      <div className="flex justify-between items-center">
+        <img src={reportimg} alt="report" className="" />
+        <div className="text-right">
+          {/* Display current date and time */}
+          <p className="text-lg font-semibold mr-2">{currentDateTime}</p>
+        </div>
+      </div>
+      <h1 className="text-center font-bold m-5 text-5xl">
         Order Details Report
       </h1>
       <hr className="border-2 border-slate-200 mt-3 n mb-7" />
@@ -46,6 +62,11 @@ const PrintableOrder = React.forwardRef((props, ref) => {
               <ReportOrderList order={item} />
             </div>
           ))}
+      </div>
+
+      <div className="absolute bottom-0 right-0 ... ">
+        <h1 className="font-medium ml-20 text-slate-800 text-2xl">Signature</h1>
+        <img src={signature} alt="signature" className="h-20 " />
       </div>
     </div>
   );
