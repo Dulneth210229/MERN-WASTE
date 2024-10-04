@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccountNav from '../AccountNav/AccountNav';
 
 function FirstForm() {
   const navigate = useNavigate();
@@ -22,9 +23,12 @@ function FirstForm() {
   };
 
   return (
+    <div>
+    <AccountNav/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-700 mb-6">Add Details</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-700 mb-6">Transaction Summary</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-600 font-medium mb-1">Credit:</label>
@@ -58,6 +62,7 @@ function FirstForm() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

@@ -18,7 +18,10 @@ function PdfDetails(props) {
           className="flex justify-center"
         >
           {Array.from(new Array(numPages), (el, index) => (
-            <div key={`page_${index + 1}`} className="mb-4 shadow-lg">
+            <div
+              key={`page_${index + 1}`}
+              className="mb-4 shadow-lg bg-slate-500"
+            >
               <Page
                 pageNumber={index + 1}
                 renderTextLayer={false}
