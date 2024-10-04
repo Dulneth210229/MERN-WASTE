@@ -120,10 +120,12 @@ const loginUser = async (req, res, next) => {
 
 
 
+
+
 exports.loginUser = loginUser; 
 exports.getAllUsers = getAllUsers;
 exports.addUsers = addUsers;
 exports.getById = getById;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
-
+exports.loginUser = loginUser;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router";
 import axios from 'axios';
+import AdminHomeHeader from '../WCMAdmin_Header';
 
 function WCMBin_Add() {
     const navigate = useNavigate(); 
@@ -27,7 +28,7 @@ function WCMBin_Add() {
 
     const sendRequest = async () => {
         try {
-            await axios.post("http://localhost:5002/bins", {
+            await axios.post("http://localhost:5001/bins", {
                 ID: String(inputs.ID), 
                 latitude: String(inputs.latitude), 
                 longitude: String(inputs.longitude), 
@@ -39,6 +40,9 @@ function WCMBin_Add() {
     };
 
     return (
+        <div>
+        <AdminHomeHeader />
+        
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <form 
                 className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md" 
@@ -109,6 +113,7 @@ function WCMBin_Add() {
                     Submit
                 </button>
             </form>
+        </div>
         </div>
     );
 }

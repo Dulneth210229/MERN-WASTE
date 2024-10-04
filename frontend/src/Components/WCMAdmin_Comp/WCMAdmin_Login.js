@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import UserHomeHeader from "../FirstHome/UserHomeHeader"; // Import UserHomeHeader component
 
-function WCMUser_Login() {
+
+function WCMAdmin_Login() {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
+    const [admin, setAdmin] = useState({
         email: "",
         password: "",
     });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setUser((prevUser) => ({
-            ...prevUser,
+        setAdmin((prevAdmin) => ({
+            ...prevAdmin,
             [name]: value  
         }));
     };
@@ -24,7 +24,7 @@ function WCMUser_Login() {
             const response = await sendRequest();
             if (response && response.message === "Login successful") {
                 alert("Login successful");
-                navigate("/userHomePage");
+                navigate("/WCMAdmin_Home");
             } else {
                 alert("Login error: " + (response.message || "Unknown error"));
             }
@@ -34,19 +34,19 @@ function WCMUser_Login() {
     };
 
     const sendRequest = async () => {
-        const response = await axios.post("http://localhost:5001/users/login", {
-            email: user.email,
-            password: user.password,
+        const response = await axios.post("http://localhost:5001/admins/login", {
+            email: admin.email,
+            password: admin.password,
         });
         return response.data;
     };
 
     return (
         <div>
-            <UserHomeHeader />
+            
         
             <div className="max-w-lg mx-auto bg-green-200 p-8 shadow-md rounded-lg mt-10">
-            <h1 className="text-2xl font-semibold text-gray-700 mb-6 text-center">User Login</h1>
+            <h1 className="text-2xl font-semibold text-gray-700 mb-6 text-center">Admin Login</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -55,7 +55,7 @@ function WCMUser_Login() {
                         name="email"
                         id="email"
                         required
-                        value={user.email}
+                        value={admin.email}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
@@ -68,7 +68,7 @@ function WCMUser_Login() {
                         name="password"
                         id="password"
                         required
-                        value={user.password}
+                        value={admin.password}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
@@ -86,4 +86,4 @@ function WCMUser_Login() {
     );
 }
 
-export default WCMUser_Login;
+export default WCMAdmin_Login;
