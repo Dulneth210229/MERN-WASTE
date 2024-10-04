@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import RequestNav from '../RequestNav/RequestNav'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import { useReactToPrint } from "react-to-print";
 
 function Request(props) {
   const { _id, service, name, address, phoneNumber, date, time } =
@@ -19,8 +20,15 @@ function Request(props) {
       .delete(`http://Localhost:5001/request/${_id}`)
       .then((res) => res.data)
       .then(() => history("/"))
-      .then(() => history("/requestDetailsUser"));
+      .then(() => history("/viewrequests"));
   };
+
+  // const componentsRef = useRef();
+  // const handlePrint = useReactToPrint({
+  //   content: () => componentsRef.current,
+  //   documentTitle: "Request Details",
+  //   onAfterPrint: () => alert("Request Details Downloaded Successfully"), 
+  // });
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-lg mb-6">
@@ -70,6 +78,12 @@ function Request(props) {
         >
           Delete
         </button>
+        {/* <button
+          onClick={handlePrint}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
+        >
+          Download
+        </button> */}
       </div>
     </div>
 
