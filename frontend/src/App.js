@@ -18,7 +18,7 @@ import AddFeedbackForm from "./Components/CustomerRelationship/AddFeedbackForm/A
 import AccountHome from "./Components/Account/AccountHome/AccountHome";
 import Salary from "./Components/Account/Salary/Salary";
 import ViewSalary from "./Components/Account/ViewSalary/ViewSalary";
-import GenerateSalary from "./Components/Account/GenerateSalary/GenerateSalary";
+
 import UpdateFeedback from "./Components/CustomerRelationship/UpdateFeedback/UpdateFeedback";
 import CategoryHome from "./Components/Category/CategoryHome/CategoryHome";
 import CategoryAdd from "./Components/Category/CategoryAdd/CategoryAdd";
@@ -86,6 +86,9 @@ import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
 
 
 
+import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
+import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
+
 function App() {
   //java scripts
   return (
@@ -115,7 +118,7 @@ function App() {
           <Route path="/AccountHome" element={<AccountHome />} />
           <Route path="/Salary" element={<Salary />} />
           <Route path="/ViewSalary" element={<ViewSalary />} />
-          <Route path="/GenerateSalary" element={<GenerateSalary />} />
+          
           <Route path="/AddSalary" element={<AddSalary />} />
           <Route path="/feedbackdisplay/:id" element={<UpdateFeedback />} />
           <Route path="/categoryhome" element={<CategoryHome />} />
@@ -163,6 +166,7 @@ function App() {
           <Route path="/StaffRegister" element={<InventoryReg />} />
           <Route path="/requestDetailsUser" element={<RequestDetailsUser />} />
           <Route path="/requestStaff" element={<RequestStaff />} />
+      
 
           {/* Gawrawa */}
           <Route path="/WCMHome" element={<WCMHome />} />
@@ -183,6 +187,12 @@ function App() {
         <Route path="/WCMUser_Onboarding" element={<WCMUser_Onboarding/>}/>
         <Route path="/WCMAdmin_Login" element={<WCMAdmin_Login/>} />
         <Route path="/WCMAssign_Work" element={<WCMAssign_Work/>}/>
+
+
+        <Route path="/CreditDebit" element={<CreditDebit />}/>
+        <Route path="/ReportGeneration" element={<ReportGeneration />}/>
+
+       
 
 
         </Routes>
