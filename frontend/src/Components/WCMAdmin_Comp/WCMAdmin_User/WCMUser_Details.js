@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminHomeHeader from '../WCMAdmin_Header';
 
 // URL for fetching user data from the server
-const URL = "http://localhost:5002/users";
+const URL = "http://localhost:5001/users";
 
 // Function to handle fetching data from the API
 const fetchHandler = async () => {
@@ -22,6 +23,9 @@ function WCMUser_Details() {
   }, []);
 
   return (
+    <div>
+      <AdminHomeHeader />
+    
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Page title */}
       <h1 className="text-2xl font-bold text-center mb-6">User Details Page</h1>
@@ -63,6 +67,7 @@ function WCMUser_Details() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

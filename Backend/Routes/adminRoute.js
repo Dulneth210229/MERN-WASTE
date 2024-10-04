@@ -10,6 +10,7 @@ adminRouter.post("/",AdminController.addAdmins);
 adminRouter.get("/:aid",AdminController.getById);
 adminRouter.put("/:aid",AdminController.updateAdmin);
 adminRouter.delete("/:aid",AdminController.deleteAdmin);
+adminRouter.post("/:aid",AdminController.loginAdmin);
 
 //export
 module.exports = adminRouter;
