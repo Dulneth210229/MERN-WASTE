@@ -20,7 +20,7 @@ const PlanManagementPayment = () => {
 
     // Card Number validation (16 digits)
     const cardNumberRegex = /^\d{16}$/;
-    if (!cardNumberRegex.test(cardNumber)) {
+    if (!cardNumberRegex.test(cardNumber.replace(/\s+/g, ''))) {
       errors.cardNumber = 'Card number must be 16 digits';
     }
 
@@ -53,16 +53,45 @@ const PlanManagementPayment = () => {
     return Object.keys(errors).length === 0;
   };
 
+  // Handle changes for Card Number, Expiry Date, CVV, and Name fields
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ''); // Allow only digits
+    if (value.length <= 16) {
+      setCardNumber(value.replace(/(\d{4})/g, '$1 ').trim()); // Add spaces every 4 digits
+    }
+  };
+
+  const handleExpiryDateChange = (e) => {
+    const value = e.target.value.replace(/[^0-9/]/g, ''); // Allow only digits and slashes
+    if (value.length <= 5) {
+      setExpiryDate(value);
+    }
+  };
+
+  const handleCvvChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ''); // Allow only digits
+    if (value.length <= 3) {
+      setCvv(value);
+    }
+  };
+
+  const handleNameChange = (e) => {
+    const value = e.target.value.replace(/[^a-zA-Z\s]/g, ''); // Allow only letters and spaces
+    if (value.length <= 50) {
+      setName(value);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (validateForm()) {
       const paymentDetails = {
         packageName,
         packagePrice,
         cardHolderName: name,
       };
-  
+
       try {
         const response = await fetch("http://localhost:5001/paymentplan", {
           method: "POST",
@@ -71,10 +100,9 @@ const PlanManagementPayment = () => {
           },
           body: JSON.stringify(paymentDetails),
         });
-  
+
         const data = await response.json();
         if (response.ok) {
-          // Success handling
           alert("Payment successful!");
           navigate("/userHomePage"); // Make sure this path is correct
         } else {
@@ -110,7 +138,7 @@ const PlanManagementPayment = () => {
                 type="text"
                 id="cardNumber"
                 value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
+                onChange={handleCardNumberChange}
                 className={`w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm ${
                   errors.cardNumber ? 'border-red-500' : 'border-gray-300'
                 }`}
@@ -129,7 +157,7 @@ const PlanManagementPayment = () => {
                   type="text"
                   id="expiryDate"
                   value={expiryDate}
-                  onChange={(e) => setExpiryDate(e.target.value)}
+                  onChange={handleExpiryDateChange}
                   className={`w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm ${
                     errors.expiryDate ? 'border-red-500' : 'border-gray-300'
                   }`}
@@ -147,7 +175,7 @@ const PlanManagementPayment = () => {
                   type="text"
                   id="cvv"
                   value={cvv}
-                  onChange={(e) => setCvv(e.target.value)}
+                  onChange={handleCvvChange}
                   className={`w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm ${
                     errors.cvv ? 'border-red-500' : 'border-gray-300'
                   }`}
@@ -166,7 +194,7 @@ const PlanManagementPayment = () => {
                 type="text"
                 id="name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleNameChange}
                 className={`w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm ${
                   errors.name ? 'border-red-500' : 'border-gray-300'
                 }`}

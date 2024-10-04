@@ -5,10 +5,11 @@ import "jspdf-autotable";
 
 function PackageDashboard() {
   const [packages, setPackages] = useState([]);
-  const [newPackage, setNewPackage] = useState({ name: "", price: "", features: [] });
+  const [newPackage, setNewPackage] = useState({ name: "", price: "", features: "" });
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const [errors, setErrors] = useState({ name: "", price: "", features: "" });
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
 
   // Fetch all packages from the backend
   const fetchPackages = async () => {
@@ -30,15 +31,21 @@ function PackageDashboard() {
     const errors = { name: "", price: "", features: "" };
     let isValid = true;
 
-
-   
-
-
+    // Validate package name
     if (newPackage.name.trim() === "") {
       errors.name = "Package name is required.";
       isValid = false;
+    } else {
+      const namePattern = /^[A-Za-z\s]*$/; // Only allow letters and spaces
+      if (!namePattern.test(newPackage.name)) {
+        errors.name = "Package name must contain only letters and spaces.";
+        isValid = false;
+      } else {
+        errors.name = ""; // Clear error if valid
+      }
     }
 
+    // Validate package price
     if (String(newPackage.price).trim() === "") {
       errors.price = "Package price is required.";
       isValid = false;
@@ -47,6 +54,7 @@ function PackageDashboard() {
       isValid = false;
     }
 
+    // Validate package features
     if (newPackage.features.trim() === "") {
       errors.features = "Features are required.";
       isValid = false;
@@ -96,7 +104,7 @@ function PackageDashboard() {
       fetchPackages(); // Refresh the list of packages
       setIsEditing(false);
       setEditId(null);
-      setNewPackage({ name: "", price: "", features: [] });
+      setNewPackage({ name: "", price: "", features: "" });
       setErrors({ name: "", price: "", features: "" }); // Clear errors on success
     } catch (err) {
       console.error("Error saving package:", err);
@@ -106,15 +114,32 @@ function PackageDashboard() {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Prevent invalid input for package name (only allow letters and spaces)
+    if (name === "name" && !/^[A-Za-z\s]*$/.test(value)) {
+      return; // If value contains invalid characters, do not update the state
+    }
+
+    // Prevent invalid input for package price (only allow numbers)
+    if (name === "price" && !/^\d*\.?\d*$/.test(value)) {
+      return; // If value contains invalid characters, do not update the state
+    }
+
     setNewPackage((prevPackage) => ({ ...prevPackage, [name]: value }));
   };
+
+  // Search functionality
+  const filteredPackages = packages.filter((pkg) =>
+    pkg.packageName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Generate PDF report
   const generateReport = () => {
     const doc = new jsPDF();
     const title = "Subscription Package Report";
     const subtitle = "Comprehensive overview of current subscription packages";
-  
+    const date = new Date().toLocaleString(); // Get current date and time
+
     // Title
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
@@ -125,18 +150,23 @@ function PackageDashboard() {
     doc.setFont("helvetica", "normal");
     doc.text(subtitle, 14, 30);
     
+    // Date and Time
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Date: ${date}`, 14, 38); // Adding date and time
+  
     // Add a horizontal line under the title
     doc.setLineWidth(0.5);
-    doc.line(14, 33, 195, 33);
+    doc.line(14, 41, 195, 41);
   
     // Add some spacing before the table
-    const marginTop = 40;
+    const marginTop = 50;
   
     // AutoTable for displaying package details
     doc.autoTable({
       startY: marginTop,
       head: [['Package Name', 'Price', 'Features']],
-      body: packages.map((pkg) => [
+      body: filteredPackages.map((pkg) => [
         pkg.packageName,
         `$${pkg.packagePrice}`,
         pkg.features.join(", "),
@@ -157,6 +187,10 @@ function PackageDashboard() {
       theme: 'grid', // Use grid theme for better visual separation
     });
   
+    // Add Signature Section
+    const signatureY = doc.lastAutoTable.finalY + 10;
+    doc.text("Signature: ____________________", 14, signatureY); // Add a line for signature
+  
     // Save the PDF
     doc.save("Subscription_Package_Report.pdf");
   };
@@ -171,6 +205,17 @@ function PackageDashboard() {
         <p className="mt-4 text-gray-600 text-xl italic">
           Create, Update, and Delete your subscription packages here.
         </p>
+      </div>
+
+      {/* Search Bar */}
+      <div className="my-4 text-center">
+        <input
+          type="text"
+          placeholder="Search Packages"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border p-2 rounded-lg w-1/3"
+        />
       </div>
 
       {/* Package Management Form */}
@@ -204,72 +249,81 @@ function PackageDashboard() {
             {errors.price && <p className="text-red-500 text-sm">{errors.price}</p>}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2">Features (comma separated)</label>
-            <input
-              type="text"
+            <label className="block text-gray-700 font-bold mb-2">Features</label>
+            <textarea
               name="features"
               value={newPackage.features}
-              onChange={(e) =>
-                setNewPackage({ ...newPackage, features: e.target.value })
-              }
+              onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-lg ${errors.features ? 'border-red-500' : 'border-gray-300'}`}
-              placeholder="Enter features"
+              placeholder="Enter features separated by commas"
               required
-            />
+            ></textarea>
             {errors.features && <p className="text-red-500 text-sm">{errors.features}</p>}
           </div>
           <button
             type="submit"
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"
           >
             {isEditing ? "Update Package" : "Create Package"}
           </button>
         </form>
       </div>
 
-      {/* Generate Report Button */}
-      <div className="text-center my-6">
-        <button
-          onClick={generateReport}
-          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
-        >
-          Generate Report
-        </button>
+      {/* Package List */}
+      <div className="overflow-x-auto">
+        <table className="min-w-full border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th className="border border-gray-300 px-4 py-2">Package Name</th>
+              <th className="border border-gray-300 px-4 py-2">Price</th>
+              <th className="border border-gray-300 px-4 py-2">Features</th>
+              <th className="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredPackages.length > 0 ? (
+              filteredPackages.map((pkg) => (
+                <tr key={pkg._id}>
+                  <td className="border border-gray-300 px-4 py-2">{pkg.packageName}</td>
+                  <td className="border border-gray-300 px-4 py-2">${pkg.packagePrice}</td>
+                  <td className="border border-gray-300 px-4 py-2">{pkg.features.join(", ")}</td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    <button
+                      onClick={() => handleEdit(pkg._id)}
+                      className="bg-yellow-500 text-white font-bold py-1 px-2 rounded hover:bg-yellow-600 mr-2"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(pkg._id)}
+                      className="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="border border-gray-300 px-4 py-2 text-center">No packages found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
 
-      {/* Package List Section */}
-      <div className="container mx-auto my-10">
-        <h2 className="text-3xl font-bold mb-6 text-center text-slate-600">Manage Packages</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {packages.map((pkg) => (
-            <div key={pkg._id} className="p-6 bg-white shadow-lg rounded-lg border border-gray-300">
-              <h3 className="text-2xl font-bold text-center text-slate-700">{pkg.packageName}</h3>
-              <p className="text-center text-lg mt-2 text-gray-600">${pkg.packagePrice}</p>
-              <ul className="mt-4 text-gray-600 text-center">
-                {pkg.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-              <div className="mt-6 flex justify-around">
-                <button
-                  onClick={() => handleEdit(pkg._id)}
-                  className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(pkg._id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Generate PDF Button */}
+      <div className="mt-6 text-center">
+        <button
+          onClick={generateReport}
+          className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700"
+        >
+          Generate PDF Report
+        </button>
       </div>
     </div>
   );
 }
 
 export default PackageDashboard;
+
