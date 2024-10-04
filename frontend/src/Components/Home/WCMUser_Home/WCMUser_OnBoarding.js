@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import UserHomeHeader from "../../FirstHome/UserHomeHeader"; // Import UserHomeHeader component
 
-<<<<<<<< HEAD:frontend/src/Components/Home/WCMUser_Home/WCMUser_OnBoarding.js
-function WCMUser_OnBoarding() {
-========
 function WCMUser_Onboarding() {
->>>>>>>> Development:frontend/src/Components/Home/WCMUser_Home/WCMUser_Onboarding.js
   return (
     <div>
       <UserHomeHeader />
@@ -33,8 +29,4 @@ function WCMUser_Onboarding() {
   );
 }
 
-<<<<<<<< HEAD:frontend/src/Components/Home/WCMUser_Home/WCMUser_OnBoarding.js
-export default WCMUser_OnBoarding;
-========
 export default WCMUser_Onboarding;
->>>>>>>> Development:frontend/src/Components/Home/WCMUser_Home/WCMUser_Onboarding.js
