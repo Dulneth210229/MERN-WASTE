@@ -6,7 +6,6 @@ function AccountHome() {
   return (
     <div>
       <AccountNav />
-      
       <div className="flex flex-row ">
         <div className="flex flex-col gap-5 p-5 mt-16 w-2/7 bg-sky-200 rounded-xl mx-auto">
           <h1 className="text-center font-semibold text-3xl">Account Home</h1>
@@ -44,11 +43,10 @@ function AccountHome() {
              Report Generation
             </button>
           </Link>
-        
-        
         </div>
       </div>
     </div>
+
   );   
 }
 
