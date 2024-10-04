@@ -60,8 +60,10 @@ function ReportGeneration() {
                 <p></p>
               )}
             </div>
-          </div>
+          </div >
+          <div className="flex justify-center mt-20">
           <button onClick={handlePrint} className="mt-4 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" >Download Salary Report</button>
+        </div>
         </div>
       </div>
 
