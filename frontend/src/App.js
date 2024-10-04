@@ -69,8 +69,7 @@ import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff"
 // Gawrawa
 import WCMHome from './Components/Home/WCMHome/WCMHome';
 import WCMAdmin_Home from './Components/Home/WCMAdmin_Home/WCMAdmin_Home';
-import WCMUser_Home from './Components/Home/WCMUser_Home/WCMUser_Home';
-import WCMDriver_Home from './Components/Home/WCMDriver_Home/WCMDriver_Home';
+import WCMDriver_Onboarding from "./Components/Home/WCMDriver_Home/WCMDriver_Onboarding";
 import WCMUser_Details from './Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Details';
 import WCMAdmin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Admin/WCMAdmin_Details';
 import WCMDriver_Details from './Components/WCMAdmin_Comp/WCMAdmin_Driver/WCMDriver_Details';
@@ -78,6 +77,14 @@ import WCMBin_Details from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Detai
 import WCMBin_Add from './Components/WCMAdmin_Comp/WCMAdmin_Bin/WCMBin_Add';
 import WCMUser_Register from './Components/WCMUser_Comp/WCMUser_Register';
 import WCMDriver_Register from './Components/WCMDriver_Comp/WCMDriver_Register';
+import WCMDriver_Home from "./Components/WCMDriver_Comp/WCMDriver_Home";
+import WCMDriver_Login from "./Components/WCMDriver_Comp/WCMDriver_Login";
+import WCMUser_Login from "./Components/WCMUser_Comp/WCMUser_Login";
+import WCMUser_Onboarding from "./Components/Home/WCMUser_Home/WCMUser_Onboarding";
+import WCMAdmin_Login from "./Components/WCMAdmin_Comp/WCMAdmin_Login";
+import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
+
+
 
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
 import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
@@ -164,8 +171,8 @@ function App() {
           {/* Gawrawa */}
           <Route path="/WCMHome" element={<WCMHome />} />
         <Route path="/WCMAdmin_Home" element={<WCMAdmin_Home />} />
-        <Route path="/WCMUser_Home" element={<WCMUser_Home />} />
-        <Route path="/WCMDriver_Home" element={<WCMDriver_Home />} />
+        
+        <Route path="/WCMDriver_Onboarding" element={<WCMDriver_Onboarding />} />
         <Route path="/WCMUser_Details" element={<WCMUser_Details/>} />
         <Route path="/WCMAdmin_Details" element={<WCMAdmin_Details/>}/>
         <Route path="/WCMDriver_Details" element={<WCMDriver_Details/>}/>
@@ -173,6 +180,14 @@ function App() {
         <Route path="/WCMBin_Add" element={<WCMBin_Add/>}/>
         <Route path="/WCMUser_Register" element={<WCMUser_Register/>}/>
         <Route path="/WCMDriver_Register" element={<WCMDriver_Register/>}/>
+        <Route path="/WCMDriver_Home" element={<WCMDriver_Home/>} />
+        <Route path="/WCMDriver_Login" element={<WCMDriver_Login/> } />
+        <Route path="/WCMUser_Login" element={<WCMUser_Login/>} />
+        
+        <Route path="/WCMUser_Onboarding" element={<WCMUser_Onboarding/>}/>
+        <Route path="/WCMAdmin_Login" element={<WCMAdmin_Login/>} />
+        <Route path="/WCMAssign_Work" element={<WCMAssign_Work/>}/>
+
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>
         <Route path="/ReportGeneration" element={<ReportGeneration />}/>
