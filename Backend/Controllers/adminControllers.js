@@ -99,6 +99,23 @@ const deleteAdmin = async (req, res, next) => {
     return res.status(200).json({ admin });
 
 }
+const loginAdmin = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    let admin;
+    try {
+        // Find the user with the provided email and password
+        admin = await Admin.findOne({ email, password });
+    } catch (err) {
+        return res.status(500).json({ message: "Server error" });
+    }
+
+    if (!admin) {
+        return res.status(404).json({ message: "Invalid credentials" });
+    }
+
+    return res.status(200).json({ message: "Login successful", admin });
+};
 
 
 
@@ -107,3 +124,4 @@ exports.addAdmins = addAdmins;
 exports.getById = getById;
 exports.updateAdmin = updateAdmin;
 exports.deleteAdmin = deleteAdmin;
+exports.loginAdmin = loginAdmin;

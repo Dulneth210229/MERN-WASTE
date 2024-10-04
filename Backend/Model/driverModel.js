@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;  
 
 const driverSchema = new Schema({
      name:{
@@ -20,12 +20,13 @@ const driverSchema = new Schema({
      Dlicense:{
         type:String,
         required:true,//validate
-     }
+     },
+
+     password: {
+      type: String,
+      required: true,  
+    },
 
 });
-//fomgfm[d]
 
-module.exports = mongoose.model(
-    "driverModel" , //file name'
-    driverSchema //function name
-)
+module.exports = mongoose.model("Driver", driverSchema);

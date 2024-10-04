@@ -100,6 +100,25 @@ const deleteUser = async (req, res, next) => {
 
 }
 
+const loginUser = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    let user;
+    try {
+        // Find the user with the provided email and password
+        user = await User.findOne({ email, password });
+    } catch (err) {
+        return res.status(500).json({ message: "Server error" });
+    }
+
+    if (!user) {
+        return res.status(404).json({ message: "Invalid credentials" });
+    }
+
+    return res.status(200).json({ message: "Login successful", user });
+};
+
+
 
 
 exports.getAllUsers = getAllUsers;
@@ -107,4 +126,4 @@ exports.addUsers = addUsers;
 exports.getById = getById;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
-
+exports.loginUser = loginUser;

@@ -22,14 +22,9 @@ const orderRouter = require("./Routes/OrderRoute");
 const dotenv = require("dotenv");
 const categoryrouterHza = require("./Routes/CategoryRoutesHza");
 
-
-
-
-
 dotenv.config();
 const app = express();
 const cors = require("cors");
-
 
 //middleware
 app.use(express.json());
@@ -48,7 +43,7 @@ app.use("/complain", complainRouter);
 app.use("/employee", employeerouter);
 app.use("/employee", employeeRouter);
 app.post("/register", inventoryRegisterUser);
-app.use("/plan",planrouter);
+app.use("/plan", planrouter);
 app.use("/recyclable", categoryrouterOr);
 app.post("/loginAdmin", loginAdmin);
 app.use("/file", express.static("file"));
