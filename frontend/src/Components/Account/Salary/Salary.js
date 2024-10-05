@@ -32,12 +32,9 @@ function Salary({ account }) {
     <div className="min-h-screen bg-gray-100 p-5">
     <div className="bg-white p-6 rounded-lg max-w-4xl mx-auto shadow-lg text-center">
       <h1 className="text-4xl font-semibold text-gray-800 mb-6">Employee : {Employee_ID}</h1>
-      <table className="w-full border-collapse mb-6 text-left">
-        <thead className="bg-slate-400 text-white">
-          <tr>
-            <th className="p-2 border-b">Detail</th>
-            <th className="p-2 border-b">Value</th>
-          </tr>
+      <table className="w-full border-collapse mb-6 text-center">
+      <thead className="bg-slate-400  text-white">
+          
         </thead>
         <tbody>
           <tr className="bg-sky-100">

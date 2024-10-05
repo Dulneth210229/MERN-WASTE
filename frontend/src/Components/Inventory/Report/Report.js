@@ -16,9 +16,9 @@ function Report() {
   return (
     <div>
       <InventoyHeader />
-      <div className="min-h-screen bg-gray-100 p-5">
+      <div className="min-h-screen bg-gray-50 p-5">
         <div className="flex flex-col m-5">
-          <h1 className="text-center font-bold text-6xl text-slate-700">
+          <h1 className="text-center font-bold text-5xl text-slate-700">
             Report Section
           </h1>
           <hr className="border-4 mt-3 mb-2" />

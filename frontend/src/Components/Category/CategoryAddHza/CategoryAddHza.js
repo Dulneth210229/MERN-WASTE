@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CategoryNavHza from "../CategoryNavHza/CategoryNavHza";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UserFooter from '../../UserHomePage/UserFooter'; // Import the footer component
 
 function CategoryAddHza() {
   const history = useNavigate();
@@ -16,7 +17,6 @@ function CategoryAddHza() {
 
   const [errors, setErrors] = useState({});
 
-  // Real-time validation logic
   const validateInputs = (name, value) => {
     const newErrors = { ...errors };
 
@@ -43,7 +43,7 @@ function CategoryAddHza() {
     // Validate as the user types
     validateInputs(name, value);
 
-    // Prevent invalid typing in Quantity
+    // Prevent invalid typing in Quantity (only allow numbers)
     if (name === "Quantity" && !/^\d*$/.test(value)) return;
 
     // Prevent invalid typing in WasteType (only allow "Hazardous")
@@ -58,7 +58,7 @@ function CategoryAddHza() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Prevent submission if there are validation errors
@@ -67,7 +67,22 @@ function CategoryAddHza() {
       return;
     }
 
-    sendRequest().then(() => history('/categorydetailsHza'));
+    try {
+      await sendRequest();
+      alert("Successfully added hazardous waste category!");
+      // Reset form inputs
+      setInputs({
+        WasteType: "",
+        Quantity: "",
+        DateOfCollection: "",
+        Location: "",
+        TransportMethod: "",
+        Notes: "",
+      });
+      history('/categorydetailsHza');
+    } catch (error) {
+      alert("Error submitting data. Please try again.");
+    }
   };
 
   const sendRequest = async () => {
@@ -82,106 +97,116 @@ function CategoryAddHza() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 min-h-screen pt-0">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="w-full">
         <CategoryNavHza />
       </div>
-      <br />
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Add Hazardous Waste Category</h1>
+      <div className="flex flex-col items-center justify-center flex-grow"> {/* Centering container */}
+        <br />
+        <br />
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">Add Hazardous Waste Category</h1>
+        <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
+          {/* Waste Type Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Waste Type</label>
+            <input
+              type="text"
+              name="WasteType"
+              onChange={handleChange}
+              value={inputs.WasteType}
+              required
+              placeholder="Must be 'Hazardous'"
+              className={`w-full px-3 py-2 border rounded-lg ${errors.WasteType ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {errors.WasteType && <p className="text-red-500 text-sm">{errors.WasteType}</p>}
+          </div>
 
-      <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Waste Type</label>
-          <input
-            type="text"
-            name="WasteType"
-            onChange={handleChange}
-            value={inputs.WasteType}
-            required
-            placeholder="Must be 'Hazardous'"
-            className={`w-full px-3 py-2 border rounded-lg ${errors.WasteType ? 'border-red-500' : 'border-gray-300'}`}
-          />
-          {errors.WasteType && <p className="text-red-500 text-sm">{errors.WasteType}</p>}
-        </div>
+          {/* Quantity Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Quantity (KG)</label>
+            <input
+              type="text"
+              name="Quantity"
+              onChange={handleChange}
+              value={inputs.Quantity}
+              required
+              placeholder="Enter Quantity (KG)"
+              className={`w-full px-3 py-2 border rounded-lg ${errors.Quantity ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {errors.Quantity && <p className="text-red-500 text-sm">{errors.Quantity}</p>}
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Quantity (KG)</label>
-          <input
-            type="text"
-            name="Quantity"
-            onChange={handleChange}
-            value={inputs.Quantity}
-            required
-            placeholder="Enter Quantity (KG)"
-            className={`w-full px-3 py-2 border rounded-lg ${errors.Quantity ? 'border-red-500' : 'border-gray-300'}`}
-          />
-          {errors.Quantity && <p className="text-red-500 text-sm">{errors.Quantity}</p>}
-        </div>
+          {/* Date-Time Picker Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Date Of Collection</label>
+            <input
+              type="datetime-local"
+              name="DateOfCollection"
+              onChange={handleChange}
+              value={inputs.DateOfCollection}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Date Of Collection</label>
-          <input
-            type="datetime-local"
-            name="DateOfCollection"
-            onChange={handleChange}
-            value={inputs.DateOfCollection}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-          />
-        </div>
+          {/* Location Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Location</label>
+            <input
+              type="text"
+              name="Location"
+              onChange={handleChange}
+              value={inputs.Location}
+              required
+              placeholder="Add Your Address"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Location</label>
-          <input
-            type="text"
-            name="Location"
-            onChange={handleChange}
-            value={inputs.Location}
-            required
-            placeholder="Add Your Address"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-          />
-        </div>
+          {/* Transport Method Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Transport Method</label>
+            <select
+              name="TransportMethod"
+              onChange={handleChange}
+              value={inputs.TransportMethod}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            >
+              <option>Garbage Truck</option>
+              <option>Roll-Off Truck</option>
+              <option>Dump Trailers</option>
+              <option>Manual Collection (Bicycles, Handcarts)</option>
+              <option>Vacuum Trucks</option>
+            </select>
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Transport Method</label>
-          <select
-            name="TransportMethod"
-            onChange={handleChange}
-            value={inputs.TransportMethod}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-          >
-            <option>Garbage Truck</option>
-            <option>Roll-Off Truck</option>
-            <option>Dump Trailers</option>
-            <option>Manual Collection (Bicycles, Handcarts)</option>
-            <option>Vacuum Trucks</option>
-          </select>
-        </div>
+          {/* Notes Field */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Notes</label>
+            <input
+              type="text"
+              name="Notes"
+              onChange={handleChange}
+              value={inputs.Notes}
+              required
+              placeholder="Add Your Special Notes"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Notes</label>
-          <input
-            type="text"
-            name="Notes"
-            onChange={handleChange}
-            value={inputs.Notes}
-            required
-            placeholder="Add Your Special Notes"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-          />
-        </div>
-
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+          {/* Submit Button */}
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <UserFooter /> {/* Add the footer component to ensure it spans full width */}
     </div>
   );
 }
