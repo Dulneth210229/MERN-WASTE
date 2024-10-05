@@ -5,6 +5,7 @@ function ReportInventoryList(props) {
     productName,
     ProductCategory,
     materialType,
+    unit,
     quantity,
     productDescription,
   } = props.inventory;
@@ -23,6 +24,7 @@ function ReportInventoryList(props) {
             <td className="p-1 w-48 text-center font-medium text-slate-800">
               {materialType}
             </td>
+            <td className="p-1 w-36 text-center">{unit}</td>
             <td className="p-1 w-36 text-center">{quantity}</td>
             <td className="p-1 w-52 text-center font-medium text-slate-800">
               {productDescription}
