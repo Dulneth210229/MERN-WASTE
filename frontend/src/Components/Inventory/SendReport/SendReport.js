@@ -66,7 +66,7 @@ function SendReport() {
   return (
     <div>
       <InventoyHeader />
-      <div className="min-h-screen bg-gray-100 p-5">
+      <div className="min-h-screen bg-gray-50 p-5">
         <h1 className="text-4xl text-gray-800 font-bold text-center mb-10 mt-5">
           Send Report Portal
         </h1>
