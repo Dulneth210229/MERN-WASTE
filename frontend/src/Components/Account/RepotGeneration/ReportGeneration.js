@@ -1,8 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import AccountNav from '../AccountNav/AccountNav'
 import axios from "axios";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import logo from "./LOGO.png";
+
+
 
 
 const AURL = "http://Localhost:5001/account";
@@ -15,30 +18,40 @@ export const generateReport = (account) => {
   // Set the orientation to landscape by using 'l'
   const doc = new jsPDF('l', 'mm', 'a4'); // 'l' for landscape
 
+ // Set logo position and size
+ const logoX = 14; // X-coordinate for logo
+ const logoY = 10; // Y-coordinate for logo
+ doc.addImage(logo, 'PNG', logoX, logoY, 40, 20); // Adjust the position and size as needed
+ 
+ const titleY = 35; // Position for title
+ const subtitleY = 50; // Position for subtitle
+
+   
+ 
   const title = "Salary Report";
   const subtitle = "Comprehensive overview of Salary details";
 
   // Title
   doc.setFontSize(22);
   doc.setFont("helvetica", "bold");
-  doc.text(title, 14, 22);
+  doc.text(title, 14, titleY);
 
   // Subtitle
   doc.setFontSize(16);
   doc.setFont("helvetica", "normal");
-  doc.text(subtitle, 14, 30);
+  doc.text(subtitle, 14, subtitleY);
 
   // Add a horizontal line under the title
   doc.setLineWidth(0.5);
-  doc.line(14, 33, 280, 33); // Adjust line width to fit landscape
+  doc.line(14, 55, 280, 55); // Adjust line width to fit landscape
 
   // Set marginTop for the table
-  const marginTop = 40;
+  const marginTop = 60;
 
   // AutoTable for displaying salary details
   doc.autoTable({
     startY: marginTop,
-    head: [['First Name', 'Last Name', 'NIC', 'EID', 'Designation','Basic_Salary','Allowance', 'Credit','Debit','ETF','EPF','Total Salary']],
+    head: [['First Name', 'Last Name', 'NIC', 'EID', 'Designation','Basic Salary','Allowance', 'Credit','Debit','ETF','EPF','Total Salary']],
     body: account.map((salaryItem) => [
       salaryItem.First_Name,
       salaryItem.Last_Name,
@@ -74,12 +87,12 @@ export const generateReport = (account) => {
     },
     columnStyles: {
       0: { cellWidth: 20 }, // FName auto width
-      1: { cellWidth: 20 }, // LName auto width
-      2: { cellWidth: 20 }, // NIC column (index 2)
+      1: { cellWidth: 25 }, // LName auto width
+      2: { cellWidth: 33 }, // NIC column (index 2)
       3: { cellWidth: 20 }, // EID fixed width
-      4: { cellWidth: 20 }, // Designation auto width
-      5: { cellWidth: 25 },
-      6: { cellWidth: 20 }, 
+      4: { cellWidth: 30 }, // Designation auto width
+      5: { cellWidth: 30 },
+      6: { cellWidth: 25 }, 
       7: { cellWidth: 20 }, 
       8: { cellWidth: 20 }, 
       9: { cellWidth: 20 }, 
@@ -87,7 +100,7 @@ export const generateReport = (account) => {
       11: { cellWidth: 20 }, 
       12: { cellWidth: 20 }, 
     },
-    margin: { left: 14, right: 14 },
+    margin: { left:10, right: 14 },
     theme: 'grid', // Use grid theme for better visual separation
   });
 
@@ -95,7 +108,7 @@ export const generateReport = (account) => {
   const signatureY = doc.previousAutoTable.finalY + 20; // Position below the table
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
-  doc.text("Signature:--------------------", 14, signatureY);
+  doc.text("Signature:___________________________", 14, signatureY);
 
   // Get the current date and format it
   const currentDate = new Date().toLocaleDateString();
