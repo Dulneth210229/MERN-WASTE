@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminHomeHeader from '../WCMAdmin_Header';
 
-const URL = "http://localhost:5002/drivers";
+const URL = "http://localhost:5001/drivers";
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
@@ -23,6 +24,9 @@ function WCMDriver_Details() {
   );
 
   return (
+    <div>
+      <AdminHomeHeader />
+    
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-2xl font-bold text-center mb-6">Driver Details Page</h1>
 
@@ -80,6 +84,7 @@ function WCMDriver_Details() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

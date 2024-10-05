@@ -35,7 +35,7 @@ function WCMDriver_Register() {
 
   // Send request to server for registration
   const sendRequest = async () => {
-    await axios.post("http://localhost:5002/drivers", {
+    await axios.post("http://localhost:5001/drivers", {
       name: String(driver.name),
       email: String(driver.email),
       password: String(driver.password),
