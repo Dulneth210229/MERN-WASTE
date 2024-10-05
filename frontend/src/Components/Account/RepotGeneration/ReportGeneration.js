@@ -1,34 +1,126 @@
 import React, { useRef, useState, useEffect } from 'react'
 import AccountNav from '../AccountNav/AccountNav'
-import { useReactToPrint } from 'react-to-print';
-import Salary from '../Salary/Salary';
-import axios from 'axios';
+import axios from "axios";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+
+const AURL = "http://Localhost:5001/account";
+
+const fetchSalary = async () => {
+  return await axios.get(AURL).then((res) => res.data);
+}
+
+export const generateReport = (account) => {
+  // Set the orientation to landscape by using 'l'
+  const doc = new jsPDF('l', 'mm', 'a4'); // 'l' for landscape
+
+  const title = "Salary Report";
+  const subtitle = "Comprehensive overview of Salary details";
+
+  // Title
+  doc.setFontSize(22);
+  doc.setFont("helvetica", "bold");
+  doc.text(title, 14, 22);
+
+  // Subtitle
+  doc.setFontSize(16);
+  doc.setFont("helvetica", "normal");
+  doc.text(subtitle, 14, 30);
+
+  // Add a horizontal line under the title
+  doc.setLineWidth(0.5);
+  doc.line(14, 33, 280, 33); // Adjust line width to fit landscape
+
+  // Set marginTop for the table
+  const marginTop = 40;
+
+  // AutoTable for displaying salary details
+  doc.autoTable({
+    startY: marginTop,
+    head: [['First Name', 'Last Name', 'NIC', 'EID', 'Designation','Basic_Salary','Allowance', 'Credit','Debit','ETF','EPF','Total Salary']],
+    body: account.map((salaryItem) => [
+      salaryItem.First_Name,
+      salaryItem.Last_Name,
+      salaryItem.NIC,
+      salaryItem.Employee_ID,
+      salaryItem.Designation,
+      salaryItem.Basic_Salary,
+      salaryItem.Allowance,
+      salaryItem.Credit,
+      salaryItem.Debit,
+      salaryItem.ETF,
+      salaryItem.EPF,
+      salaryItem.Total_Salary,
+    ]),
+    headStyles: {
+      fillColor: [41, 87, 141], // Dark blue
+      textColor: [255, 255, 255], // White
+      fontSize: 12,
+      fontStyle: 'bold',
+      halign: 'center',
+    },
+    bodyStyles: {
+      fontSize: 11,
+      cellPadding: 3, // Increase cell padding for better spacing
+      halign: 'center', // Align body cells content to center
+    },
+    alternateRowStyles: {
+      fillColor: [240, 240, 240], // Light gray for alternate rows
+    },
+    styles: {
+      lineColor: [200, 200, 200], // Add table grid lines
+      lineWidth: 0.5,
+    },
+    columnStyles: {
+      0: { cellWidth: 20 }, // FName auto width
+      1: { cellWidth: 20 }, // LName auto width
+      2: { cellWidth: 20 }, // NIC column (index 2)
+      3: { cellWidth: 20 }, // EID fixed width
+      4: { cellWidth: 20 }, // Designation auto width
+      5: { cellWidth: 25 },
+      6: { cellWidth: 20 }, 
+      7: { cellWidth: 20 }, 
+      8: { cellWidth: 20 }, 
+      9: { cellWidth: 20 }, 
+      10: { cellWidth: 20 }, 
+      11: { cellWidth: 20 }, 
+      12: { cellWidth: 20 }, 
+    },
+    margin: { left: 14, right: 14 },
+    theme: 'grid', // Use grid theme for better visual separation
+  });
+
+  // Add Signature Line
+  const signatureY = doc.previousAutoTable.finalY + 20; // Position below the table
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "normal");
+  doc.text("Signature:--------------------", 14, signatureY);
+
+  // Get the current date and format it
+  const currentDate = new Date().toLocaleDateString();
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "italic");
+
+  // Adjust date to the right-hand side (pageWidth - margin)
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const dateX = pageWidth - 50; // 50 units from the right edge
+  doc.text(`Date: ${currentDate}`, dateX, signatureY);
+
+  // Save the PDF
+  doc.save("salary_Report.pdf");
+}
+
 
 
 function ReportGeneration() {
-  const componentsRef = useRef();
   const [account, setSalary] = useState([]);
 
   useEffect(() => {
-    const fetchSalary = async () => {
-      try {
-        const response = await axios.get('http://localhost:5001/account');
-        setSalary(Array.isArray(response.data) ? response.data : []);
-      } catch (error) {
-        console.error('Error fetching account:', error);
-      }
-    };
-    fetchSalary();
+    fetchSalary().then((data) => setSalary(data.account));
   }, []);
 
-  const handlePrint = useReactToPrint({
-    content: () => componentsRef.current,
-    documentTitle: "Salary Report",
-    onAfterPrint: () => alert("Salary Report Printed"),
-  });
- 
 
- 
   return (
     <div>
       <AccountNav/>
@@ -47,39 +139,15 @@ function ReportGeneration() {
             <div className="text-center font-medium text-2xl text-slate-900 p-1">
              Generate Salary Report
             </div>
-
-            
-            <div>
-              {account.length > 0 ? (
-                account.map((item, i) => (
-                  <div key={i}>
-                    <Salary account={item} />
-                  </div>
-                ))
-              ) : (
-                <p></p>
-              )}
-            </div>
           </div >
           <div className="flex justify-center mt-20">
-          <button onClick={handlePrint} className="mt-4 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" >Download Salary Report</button>
+          <button
+        onClick={() => generateReport(account)}
+        className="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+      >
+        Download Salary Report (PDF)
+      </button>
         </div>
-        </div>
-      </div>
-
-       {/* Hidden div for the printable content */}
-       <div style={{ display: "none" }}>
-        <div ref={componentsRef}>
-          <h2>Salary Report</h2>
-          {account.length > 0 ? (
-            account.map((item, i) => (
-              <div key={i}>
-                <Salary account={item} />
-              </div>
-            ))
-          ) : (
-            <p>No salary available</p>
-          )}
         </div>
       </div>
     </div>
