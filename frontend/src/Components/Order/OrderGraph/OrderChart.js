@@ -32,11 +32,11 @@ const OrderChart = () => {
   }, []);
 
   return (
-    <div className="mt-10 mb-20 w-3/5 mx-auto ">
+    <div className="bg-sky-100 rounded-lg">
       <h2 className="text-3xl font-bold text-slate-700 text-center mb-4">
         Order Summary Chart
       </h2>
-      <ResponsiveContainer width="90%" height={300}>
+      <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data}>
           <XAxis dataKey="productName" />
           <YAxis />

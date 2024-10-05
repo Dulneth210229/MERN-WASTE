@@ -41,6 +41,7 @@ const PrintableInventory = React.forwardRef((props, ref) => {
             <th className=" p-1 w-56 px-5 ">Product Name</th>
             <th className=" p-1 w-48 px-2 0">Product Category</th>
             <th className=" p-1 w-48  ">Material Type</th>
+            <th className=" p-1 w-36 text-center ">Unit</th>
             <th className=" p-1 w-36 text-center ">Quantity</th>
             <th className=" p-1 w-52 text-center">Product Description</th>
           </tr>
