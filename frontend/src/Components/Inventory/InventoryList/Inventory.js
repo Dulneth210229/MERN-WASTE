@@ -11,6 +11,7 @@ function Inventory(props) {
     materialType,
     quantity,
     productDescription,
+    unit,
   } = props.inventory;
 
   //delete inventory
@@ -40,23 +41,27 @@ function Inventory(props) {
       </div>*/}
       <div>
         <table className="w-auto mx-auto m-1">
-          <tr className="p-3 bg-sky-200">
-            <td className="border-2 p-2 w-48 font-medium text-center border-blue-400 ">
+          <tr className="p-3 bg-white">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-400 ">
               {productName}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center border-blue-400 ">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-400 ">
               {ProductCategory}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center border-blue-400 ">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-400 ">
               {materialType}
             </td>
-            <td className="border-2 p-2 w-24 font-medium text-center border-blue-400 ">
+
+            <td className="border-2 p-2 w-24 font-medium text-center border-slate-400 ">
+              {unit}
+            </td>
+            <td className="border-2 p-2 w-24 font-medium text-center border-slate-400 ">
               {quantity}
             </td>
-            <td className="border-2 p-2 w-48 font-medium text-center border-blue-400 ">
+            <td className="border-2 p-2 w-48 font-medium text-center border-slate-400 ">
               {productDescription}
             </td>
-            <td className="border-2 p-2 w-52 font-medium text-center border-blue-400 ">
+            <td className="border-2 p-2 w-52 font-medium text-center border-slate-400 ">
               <Link to={`/inventoryDeatails/${_id}`}>
                 <button className="p-1 pr-2 pl-2 m-2 hover:bg-green-700 bg-green-600 rounded-lg">
                   Update

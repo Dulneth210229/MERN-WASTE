@@ -1,12 +1,12 @@
-import React from 'react';
-import './EmployeeNav.css';
-import {Link} from "react-router-dom";
+import React from "react";
+import "./EmployeeNav.css";
+import { Link } from "react-router-dom";
 import logo from "./LOGO.png";
 
 function EmployeeNav() {
   return (
-    <div className=" flex flex-col" >
-<Link to="/">
+    <div className=" flex flex-col">
+      <Link to="/">
         <div className="ml-3">
           <img src={logo} alt="Logo" className="h-20" />
         </div>
@@ -22,7 +22,9 @@ function EmployeeNav() {
                 <li className="hover:underline text-2xl gap-6">New Employee</li>
               </Link>
               <Link to="/employeedetails">
-                <li className="hover:underline text-2xl gap-6">Employee Details</li>
+                <li className="hover:underline text-2xl gap-6">
+                  Employee Details
+                </li>
               </Link>
               <Link to="/employeereports">
                 <li className="hover:underline text-2xl gap-6">Employee Reports</li>
@@ -30,23 +32,16 @@ function EmployeeNav() {
             </ul>
           </div>
           <div className="flex p-1">
-            <ul className="flex gap-10 font-bold pr-2 pt-1">
-              <Link to="./sign-in">
-                <li className="hover:underline text-2xl gap-6">SignIn</li>
-              </Link>
-              <Link to="./sign-up">
-                <li className="hover:underline text-2xl gap-6">SignUp</li>
+            <ul className="flex gap-5 font-bold pr-2 pt-1">
+              <Link to="/">
+                <li className="hover:underline text-2xl">Log Out</li>
               </Link>
             </ul>
-
-            
           </div>
         </div>
       </header>
     </div>
-
-
   );
 }
 
-export default EmployeeNav
+export default EmployeeNav;

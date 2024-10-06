@@ -20,7 +20,7 @@ function ReportOrderList(props) {
     <div>
       <div className="">
         <table className=" mx-auto w-auto m-1 ">
-          <tr className="bg-blue-300 m-2 ">
+          <tr className="bg-blue-100 m-2 ">
             {/* <td className="p-1 w-40 text-center font-medium text-slate-800 text-nowrap">
               {_id}
             </td> */}
