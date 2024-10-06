@@ -39,8 +39,14 @@ function Requests() {
   const generateReport = () => {
     const doc = new jsPDF();
 
-    // Add the logo
-    doc.addImage(logo, "PNG", 150, 270, 50, 20);
+    // Add logo
+    const imgWidth = 50;
+    const imgHeight = 20;
+    const pageWidth = doc.internal.pageSize.width;
+    const imgX = pageWidth - imgWidth - 10;
+    const imgY = 10;
+
+    doc.addImage(logo, "PNG", imgX, imgY, imgWidth, imgHeight);
 
     // Add title and subtitle
     const title = "Request Report";
@@ -107,55 +113,6 @@ function Requests() {
     doc.save("Request_Report.pdf");
   };
 
-  // const generateReport = () => {
-  //   const doc = new jsPDF();
-  //   doc.addImage(logo, 'PNG', 150, 270, 50, 20);
-  //   const title = "Request Report";
-  //   const subtitle = "Comprehensive overview of request details";
-
-  //   doc.setFontSize(22);
-  //   doc.setFont("helvetica", "bold");
-  //   doc.text(title, 14, 22);
-
-  //   doc.setFontSize(16);
-  //   doc.setFont("helvetica", "normal");
-  //   doc.text(subtitle, 14, 30);
-
-  //   doc.setLineWidth(0.5);
-  //   doc.line(14, 33, 195, 33);
-
-  //   const marginTop = 40;
-
-  //   doc.autoTable({
-  //     startY: marginTop,
-  //     head: [["Service", "Name", "Address", "Phone", "Date", "Time"]],
-  //     body: requests.map((requestItem) => [
-  //       requestItem.service,
-  //       requestItem.name,
-  //       requestItem.address,
-  //       requestItem.phoneNumber,
-  //       requestItem.date.slice(0, 10),
-  //       requestItem.time,
-  //     ]),
-  //     headStyles: {
-  //       fillColor: [41, 87, 141],
-  //       textColor: [255, 255, 255],
-  //       fontSize: 12,
-  //       fontStyle: "bold",
-  //     },
-  //     bodyStyles: {
-  //       fontSize: 11,
-  //     },
-  //     alternateRowStyles: {
-  //       fillColor: [240, 240, 240],
-  //     },
-  //     margin: { left: 14, right: 14 },
-  //     theme: "grid",
-  //   });
-
-  //   doc.save("Request_Report.pdf");
-  // };
-
   return (
     <div>
       <UserHomeHeader />
@@ -168,7 +125,7 @@ function Requests() {
         >
           Download Requests Report
         </button>
-          <RequestNav />
+        <RequestNav />
 
         <input
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -198,22 +155,6 @@ function Requests() {
       )}
 
       <UserFooter />
-      {/* <div className="mt-10">
-        <table className="border-2 mx-auto">
-          <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-25 border-green-500">Service</th>
-            <th className="border-2 p-2 w-46  border-green-500">Name</th>
-            <th className="border-2 p-2 w-51 border-green-500">Address</th>
-            <th className="border-2 p-2 w-24 border-green-500">Phone Number</th>
-            <th className="border-2 p-2 w-20 border-green-500">Date</th>
-            <th className="border-2 p-2 w-20 border-green-500">Time</th>
-            <th className="border-2 p-2 w-55 border-green-500">Actions</th>
-          </tr>
-          {requests &&
-            requests.map((request, i) => <Request request={request} />)}
-        </table>
-      </div> */}
-
       <div></div>
     </div>
   );

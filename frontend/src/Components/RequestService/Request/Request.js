@@ -23,22 +23,11 @@ function Request(props) {
       .then(() => history("/viewrequests"));
   };
 
-  // const componentsRef = useRef();
-  // const handlePrint = useReactToPrint({
-  //   content: () => componentsRef.current,
-  //   documentTitle: "Request Details",
-  //   onAfterPrint: () => alert("Request Details Downloaded Successfully"), 
-  // });
-
   return (
     <div className="bg-white p-6 rounded-2xl shadow-lg mb-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Request Details</h1>
 
       <div className="space-y-2 mb-4">
-        {/* <div>
-          <span className="font-bold text-gray-600">ID:</span>
-          <span className="ml-2 text-gray-800">{_id}</span>
-        </div> */}
         <div>
           <span className="font-bold text-gray-600">Service Type:</span>
           <span className="ml-2 text-gray-800">{service}</span>
@@ -86,47 +75,6 @@ function Request(props) {
         </button> */}
       </div>
     </div>
-
-    // <tr className="p-3 bg-green-100">
-    //   <td className="border px-4 py-2 font-medium text-center ">{service}</td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {name}</td>
-    //   <td className="border px-4 py-2 max-w-[250px] font-medium text-center">
-    //     {address}
-    //   </td>
-    //   <td className="border px-4 py-2 font-medium text-center">
-    //     {phoneNumber}
-    //   </td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {date}</td>
-    //   <td className="border px-4 py-2 font-medium text-center"> {time}</td>
-    //   <td className="border px-4 py-2 font-medium text-center">
-    //     <Link to={`/viewrequests/${_id}`}>
-    //       <button className="p-1 pr-2 pl-2 m-2 hover:bg-green-700">
-    //         Update
-    //       </button>
-    //     </Link>
-    //     <button
-    //       className="p-1 pr-2 pl-2 m-2 bg-red-600 hover:bg-red-700"
-    //       onClick={deleteHandler}
-    //     >
-    //       Remove
-    //     </button>
-    //   </td>
-    // </tr>
-
-    // <div>
-    //   {/* <RequestNav /> */}
-    //   <br></br>
-    //   <h1>ID:{_id}</h1>
-    //   <h1>Service:{service}</h1>
-    //   <h1>Name:{name}</h1>
-    //   <h1>Address:{address}</h1>
-    //   <h1>Phone Number:{phoneNumber}</h1>
-    //   <h1>Date:{date}</h1>
-    //   <h1>Time:{time}</h1>
-    //   <Link to={`/viewrequests/${_id}`}>Update</Link>
-    //   <button>Delete</button>
-    //   <br></br><br></br><br></br><br></br>
-    // </div>
   );
 }
 
