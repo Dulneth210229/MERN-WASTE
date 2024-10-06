@@ -121,6 +121,8 @@ const loginUser = async (req, res, next) => {
 
 
 
+
+exports.loginUser = loginUser; 
 exports.getAllUsers = getAllUsers;
 exports.addUsers = addUsers;
 exports.getById = getById;

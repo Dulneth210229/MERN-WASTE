@@ -9,6 +9,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp'; // Import WhatsApp Icon
 import Tooltip from '@mui/material/Tooltip'; // Import Tooltip component
 import jsPDF from 'jspdf';
 import 'jspdf-autotable'; 
+import logo from "./img/LOGO.png"; // Import autoTable
 
 const URL = "http://localhost:5001/support";
 
@@ -55,6 +56,9 @@ function SupportDisplay_01() {
 
   const generateReport = () => {
     const doc = new jsPDF();
+
+    doc.addImage(logo, 'PNG', 9, 5, 20, 9);
+
     const title = "Request Support Report";
     const subtitle = "Comprehensive overview of support details";
 
@@ -74,6 +78,10 @@ function SupportDisplay_01() {
 
     // Set marginTop for the table
     const marginTop = 40;
+
+    // Get the current date and time
+    const currentDate = new Date();
+    const dateStr = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
 
     // AutoTable for displaying support details
     doc.autoTable({
@@ -104,6 +112,15 @@ function SupportDisplay_01() {
       theme: 'grid', // Use grid theme for better visual separation
     });
 
+    // Set date and time below the table
+    const dateY = doc.autoTable.previous.finalY + 10; // Positioning date below the table
+    doc.text(`Date & Time: ${dateStr}`, 14, dateY);
+
+    // Set signature line
+    const signatureY = dateY + 10; // Position for signature below the date
+    const signatureText = "Signature: ___________________________";
+    doc.text(signatureText, 14, signatureY);
+
     // Save the PDF
     doc.save("Support_Report.pdf");
   };
@@ -112,7 +129,30 @@ function SupportDisplay_01() {
     <div className="form-container">
       <CrmNav />
 
-      <div className="flex items-center justify-end mb-4">
+      <div className="flex items-center justify-center mt-8 mb-4">
+        <div className="relative w-1/2"> {/* Centering the search bar */}
+          <input
+            onChange={(e) => setSearchQuery(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="Search support Details"
+            className="w-full px-4 py-2 pr-10 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-green-200"
+          />
+          <SearchIcon
+            onClick={handleSearch}
+            className="absolute right-2 top-2 cursor-pointer transition-all duration-300 hover:scale-110"
+            style={{ color: 'gray', fontSize: '24px' }} // Slightly larger icon
+          />
+        </div>
+        <button
+          onClick={handleSearch}
+          className="ml-4 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        >
+          Search
+        </button>
+      </div>
+
+      {/* <div className="flex items-center justify-end mb-4">
         <div className="relative">
           <input
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -133,7 +173,7 @@ function SupportDisplay_01() {
         >
           Search
         </button>
-      </div>
+      </div> */}
 
       {noResults ? (
         <div className="text-center mt-4">

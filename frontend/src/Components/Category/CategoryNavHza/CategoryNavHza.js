@@ -3,57 +3,29 @@ import { Link } from "react-router-dom";
 
 function CategoryNavHza() {
   return (
-    <header className="bg-slate-400 text-black">
-      <div className="flex justify-between items-center max-w-7xl mx-auto p-4">
-        {/* Logo Section */}
-        <Link to="/">
-          <h1 className="text-2xl sm:text-3xl font-bold flex items-center">
-            <span className="text-black">Fresh</span>
-            <span className="text-emerald-500 ml-1">Colombo</span>
-          </h1>
-        </Link>
-
-        {/* Navigation Links */}
-        <nav>
-          <ul className="flex space-x-8">
-            <li>
-              <Link
-                to="/CatHome"
-                className="hover:text-emerald-500 transition duration-300 ease-in-out text-lg"
-              >
+    <div className="flex flex-col">
+      <header>
+        <div className="flex justify-center p-1 bg-slate-300 mt-5 mx-auto rounded-lg">
+          <ul className="flex gap-12 font-bold">
+            <Link to="/CatHome">
+              <li className="hover:bg-slate-400 text-xl h-12 flex items-center rounded-lg p-2">
                 Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/CategoryAddHza"
-                className="hover:text-emerald-500 transition duration-300 ease-in-out text-lg"
-              >
+              </li>
+            </Link>
+            <Link to="/CategoryAddHza">
+              <li className="hover:bg-slate-400 text-xl h-12 flex items-center rounded-lg p-2">
                 Add Category
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/CategoryDetailsHza"
-                className="hover:text-emerald-500 transition duration-300 ease-in-out text-lg"
-              >
+              </li>
+            </Link>
+            <Link to="/CategoryDetailsHza">
+              <li className="hover:bg-slate-400 text-xl h-12 flex items-center rounded-lg p-2">
                 Category Details
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/Report"
-                className="hover:text-emerald-500 transition duration-300 ease-in-out text-lg"
-              >
-                Report
-              </Link>
-            </li>
+              </li>
+            </Link>
           </ul>
-        </nav>
-
-
-      </div>
-    </header>
+        </div>
+      </header>
+    </div>
   );
 }
 

@@ -50,6 +50,8 @@ const accountSchema = new Schema({
         type:Number,//datatype
         required:true,//validate
     },
+    
+
 });
 
 module.exports = mongoose.model(

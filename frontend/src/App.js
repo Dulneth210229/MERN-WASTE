@@ -65,6 +65,7 @@ import PlanManagementPayment from "./Components/PlanManegmentPayment/PlanManagem
 import InventoryReg from "./Components/InventoryReg/Register";
 import RequestDetailsUser from "./Components/RequestService/RequestDetailsUser/RequestDetailsUser";
 import RequestStaff from "./Components/RequestService/RequestStaff/requestStaff";
+import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
 
 // Gawrawa
 import WCMHome from './Components/Home/WCMHome/WCMHome';
@@ -83,11 +84,11 @@ import WCMUser_Login from "./Components/WCMUser_Comp/WCMUser_Login";
 import WCMUser_Onboarding from "./Components/Home/WCMUser_Home/WCMUser_Onboarding";
 import WCMAdmin_Login from "./Components/WCMAdmin_Comp/WCMAdmin_Login";
 import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
-
-
-
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
-import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
+import WCMDriver_Task from './Components/WCMDriver_Comp/WCMDriver_Task';
+import WCMAdmin_Task from "./Components/WCMAdmin_Comp/WCMAdmin_Task";
+
+
 
 import PaymentSlip from "./Components/PlanManegmentPayment/PaymmentSlip";
 
@@ -189,6 +190,8 @@ function App() {
         <Route path="/WCMUser_Onboarding" element={<WCMUser_Onboarding/>}/>
         <Route path="/WCMAdmin_Login" element={<WCMAdmin_Login/>} />
         <Route path="/WCMAssign_Work" element={<WCMAssign_Work/>}/>
+        <Route path="/WCMDriver_Task" element={<WCMDriver_Task/>}/>
+        <Route path="/WCMAdmin_Task" element={<WCMAdmin_Task/>}/>
 
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>

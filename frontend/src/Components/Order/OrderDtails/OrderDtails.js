@@ -42,7 +42,7 @@ function OrderDtails() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <div className=" bg-gray-100">
+      <div className=" bg-gray-50">
         <div className="flex flex-row mt-5 mb-2 justify-between">
           <h1 className="text-center font-semibold m-1 ml-5 text-4xl text-slate-700">
             Order Details Display
@@ -145,7 +145,7 @@ function OrderDtails() {
             </h1>
           </div>
         ) : (
-          <div className="mb-20">
+          <div className="mb-32">
             {/*get the order details repetitively from the order.js*/}
             {order &&
               order.map((order, i) => (
