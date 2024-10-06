@@ -21,7 +21,10 @@ const PaymentSlip = () => {
     // Add Company Name and Date/Time
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
+<<<<<<< Updated upstream
     doc.text('Payment Invoice', 60, 25); // Adjust your company name here
+=======
+>>>>>>> Stashed changes
   
     // Current Date and Time
     const currentDate = new Date().toLocaleDateString();
