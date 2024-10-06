@@ -6,7 +6,7 @@ import UserHomeHeader from "../FirstHome/UserHomeHeader"; // Import UserHomeHead
 function WCMUser_Register() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
+    
     email: "",
     password: "",
     NID: "", // Add NID state
@@ -20,6 +20,8 @@ function WCMUser_Register() {
       [name]: value,
     }));
   };
+
+  //test
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -12,15 +12,25 @@ const fetchHandler = async () => {
 };
 
 function WCMUser_Details() {
-  // useState hook to manage the state for 'users', initially an empty array
+  // useState hook to manage the state for 'users' and 'searchTerm'
   const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // useEffect hook to fetch the data from the API when the component mounts
   useEffect(() => {
-    // Call the fetchHandler function and update the state with the user data
     fetchHandler().then((data) => setUsers(data.users));
-    // The empty array [] ensures the effect runs only once when the component loads
   }, []);
+
+  // Function to handle search input change
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filter users based on searchTerm
+  const filteredUsers = users.filter(user => 
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    user._id.includes(searchTerm) // To filter by ID
+  );
 
   return (
     <div>
@@ -29,6 +39,17 @@ function WCMUser_Details() {
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Page title */}
       <h1 className="text-2xl font-bold text-center mb-6">User Details Page</h1>
+
+      {/* Search Input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by name or ID"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
       {/* Table to display user details */}
       <div className="overflow-x-auto">
@@ -44,8 +65,8 @@ function WCMUser_Details() {
             </tr>
           </thead>
           <tbody>
-            {/* Map through the users array and render each user as a row in the table */}
-            {users && users.map((user, i) => (
+            {/* Map through the filtered users array and render each user as a row in the table */}
+            {filteredUsers && filteredUsers.map((user, i) => (
               <tr key={i} className="hover:bg-gray-100">
                 <td className="py-2 px-4 border-b">{user._id}</td>
                 <td className="py-2 px-4 border-b">{user.name}</td>
@@ -73,3 +94,4 @@ function WCMUser_Details() {
 }
 
 export default WCMUser_Details;
+

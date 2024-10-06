@@ -12,57 +12,58 @@ import Nav from "../../AdminNav/AdminNav";
 
 function WCMAdmin_Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Nav />
-      <div className="min-h-screen flex flex-col bg-gray-100">
-        <nav className="w-full bg-white shadow-md p-4">
-          <h1 className="text-xl font-bold text-center">
+
+      {/* Main Content */}
+      <div className="flex-grow flex bg-white">
+        <div className="bg-slate- rounded-xl w-full max-w-lg mx-auto p-4 max-h-[90vh]">
+          <h1 className="text-3xl text-center font-extrabold mb-6 text-gray-900">
             Waste Collection Management
           </h1>
-        </nav>
 
-        <div className="flex-grow flex items-center justify-center bg-slate-200">
-          <div className="grid grid-cols-2 gap-6 w-full max-w-4xl p-6">
-            <Link
-              to="/WCMUser_Details"
-              className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600"
-            >
-              <FaUser className="mr-4 text-4xl" />
-              User Details
+          {/* Buttons */}
+          <div className="grid grid-cols-1 gap-4">
+            <Link to="/WCMUser_Details">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">User Details</span>
+                <FaUser className="text-xl" />
+              </div>
             </Link>
 
-            <Link
-              to="/WCMDriver_Details"
-              className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600"
-            >
-              <FaTruck className="mr-4 text-4xl" />
-              Driver Details
+            <Link to="/WCMDriver_Details">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Driver Details</span>
+                <FaTruck className="text-xl" />
+              </div>
             </Link>
 
-            <button className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600">
-              <FaClipboardList className="mr-4 text-4xl" />
-              Assign Work
-            </button>
-
-            <button className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600">
-              <FaMapMarkerAlt className="mr-4 text-4xl" />
-              Track Driver
-            </button>
-
-            <Link
-              to="/WCMBin_Details"
-              className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600"
-            >
-              <FaTrash className="mr-4 text-4xl" />
-              Bin Details
+            <Link to="/AssignWork">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Assign Work</span>
+                <FaClipboardList className="text-xl" />
+              </div>
             </Link>
 
-            <Link
-              to="/WCMAdmin_Details"
-              className="flex items-center bg-lime-700 text-white p-6 rounded-lg hover:bg-lime-600"
-            >
-              <FaCog className="mr-4 text-4xl" />
-              Admin Details
+            <Link to="/TrackDriver">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Track Driver</span>
+                <FaMapMarkerAlt className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/WCMBin_Details">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Bin Details</span>
+                <FaTrash className="text-xl" />
+              </div>
+            </Link>
+
+            <Link to="/WCMAdmin_Details">
+              <div className="bg-green-600 hover:bg-green-500 text-white flex items-center justify-between p-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <span className="font-semibold">Admin Details</span>
+                <FaCog className="text-xl" />
+              </div>
             </Link>
           </div>
         </div>
@@ -72,3 +73,4 @@ function WCMAdmin_Home() {
 }
 
 export default WCMAdmin_Home;
+
