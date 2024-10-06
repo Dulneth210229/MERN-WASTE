@@ -40,7 +40,7 @@ function WCMBin_Details() {
           <table className="min-w-full bg-white shadow-md rounded-lg">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b text-left">ID</th>
+                
                 <th className="py-2 px-4 border-b text-left">Latitude</th>
                 <th className="py-2 px-4 border-b text-left">Longitude</th>
                 <th className="py-2 px-4 border-b text-left">Landmark</th>
@@ -49,7 +49,7 @@ function WCMBin_Details() {
             <tbody>
               {bins && bins.map((bin, i) => (
                 <tr key={i} className="hover:bg-gray-100">
-                  <td className="py-2 px-4 border-b">{bin._id}</td>
+                  
                   <td className="py-2 px-4 border-b">{bin.latitude}</td>
                   <td className="py-2 px-4 border-b">{bin.longitude}</td>
                   <td className="py-2 px-4 border-b">{bin.landmark}</td>
