@@ -19,10 +19,10 @@ function CategoryM(props) {
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Category Details</h1>
       
       <div className="space-y-2 mb-4">
-        <div>
+        {/* <div>
           <span className="font-semibold text-gray-600">ID:</span>
           <span className="ml-2 text-gray-800">{_id}</span>
-        </div>
+       </div> */}
         <div>
           <span className="font-semibold text-gray-600">Waste Type:</span>
           <span className="ml-2 text-gray-800">{WasteType}</span>

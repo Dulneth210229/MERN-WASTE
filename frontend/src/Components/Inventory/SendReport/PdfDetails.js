@@ -10,7 +10,7 @@ function PdfDetails(props) {
   }
 
   return (
-    <div className="p-5 bg-gray-100 shadow-md rounded-lg">
+    <div className="p-5 bg-gray-50 shadow-md rounded-lg">
       {props.pdfFile ? (
         <Document
           file={props.pdfFile}

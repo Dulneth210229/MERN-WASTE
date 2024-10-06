@@ -4,8 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function AddSalary() {
-  const EPF = 500;
-  const ETF = 500;
+  const EPF = 12000; //12%
+  const ETF = 8000; //3%
   const history = useNavigate();
 
   // Using location state to get autofill values passed from the first form
@@ -40,20 +40,13 @@ function AddSalary() {
       }
     }
 
-    // Validation for NIC field to check old and new formats
-    if (name === "NIC") {
-      if (!validateNIC(value)) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          NIC: "Invalid NIC number. Please enter a valid NIC.",
-        }));
-      } else {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          NIC: "",
-        }));
-      }
+    // NIC validation: Allow only digits and letters (no symbols)
+  if (name === "NIC") {
+    const regex = /^[0-9A-Za-z]*$/; // Only allow digits and letters
+    if (!regex.test(value)) {
+      return; // Prevent input if it contains invalid characters
     }
+  }
 
     // Allow only numeric input for salary, allowance, credit, and debit fields
     if (["Basic_Salary", "Allowance", "Credit", "Debit"].includes(name)) {
@@ -78,7 +71,7 @@ function AddSalary() {
   };
 
   const totalSalary = (basic, allowance, Credit, Debit) => {
-    return (EPF + ETF + Number(basic) + Number(allowance) -Number(Credit) + Number(Debit));
+    return (Number(basic) + Number(allowance) + Number(Credit) - Number(Debit) - EPF - ETF);
   };
 
   // Form validation
@@ -136,124 +129,121 @@ function AddSalary() {
     <div>
       <AccountNav />
       <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
-        <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-md">
-          <h1 className="text-2xl font-bold text-center mb-6 text-gray-700">Add Salary</h1>
+        <div className="w-full max-w-lg p-8 mt-10 bg-white rounded-lg shadow-lg border border-gray-200">
+          <h1 className="text-3xl font-semibold text-center mb-6 text-blue-600">Add Salary</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700">First Name:</label>
+              <label className="block text-gray-700 font-medium">First Name:</label>
               <input
                 type="text"
                 name="First_Name"
                 onChange={handleChange}
                 value={inputs.First_Name}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Last Name:</label>
+              <label className="block text-gray-700 font-medium">Last Name:</label>
               <input
                 type="text"
                 name="Last_Name"
                 onChange={handleChange}
                 value={inputs.Last_Name}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">NIC:</label>
+              <label className="block text-gray-700 font-medium">NIC:</label>
               <input
                 type="text"
                 name="NIC"
                 onChange={handleChange}
                 value={inputs.NIC}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              {errors.NIC && <p className="text-red-500">{errors.NIC}</p>}
+              {errors.NIC && <p className="text-red-500 text-sm">{errors.NIC}</p>}
             </div>
 
             <div>
-              <label className="block text-gray-700">Employee ID:</label>
+              <label className="block text-gray-700 font-medium">Employee ID:</label>
               <input
                 type="text"
                 name="Employee_ID"
                 onChange={handleChange}
                 value={inputs.Employee_ID}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Designation:</label>
+              <label className="block text-gray-700 font-medium">Designation:</label>
               <input
                 type="text"
                 name="Designation"
                 onChange={handleChange}
                 value={inputs.Designation}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Basic Salary:</label>
+              <label className="block text-gray-700 font-medium">Basic Salary:</label>
               <input
                 type="number"
                 name="Basic_Salary"
                 onChange={handleChange}
                 value={inputs.Basic_Salary}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Allowance:</label>
+              <label className="block text-gray-700 font-medium">Allowance:</label>
               <input
                 type="number"
                 name="Allowance"
                 onChange={handleChange}
                 value={inputs.Allowance}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Credit:</label>
+              <label className="block text-gray-700 font-medium">Credit:</label>
               <input
                 type="number"
                 name="Credit"
                 onChange={handleChange}
                 value={inputs.Credit}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700">Debit:</label>
+              <label className="block text-gray-700 font-medium">Debit:</label>
               <input
                 type="number"
                 name="Debit"
                 onChange={handleChange}
                 value={inputs.Debit}
                 required
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
-            <div className="text-center">
-              <button
-                type="submit"
-                className="w-full px-4 py-2 mt-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Submit
+            <div className="flex justify-center">
+              <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                Add Salary
               </button>
             </div>
           </form>
