@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");  // Import mongoose
-const { Schema } = mongoose;           // Destructure Schema from mongoose
+const mongoose = require("mongoose"); // Import mongoose
+const { Schema } = mongoose; // Destructure Schema from mongoose
 
 // Define the user schema
 const driverSchema = new Schema({
@@ -21,7 +21,7 @@ const driverSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,  
+    required: true,
   },
 });
 
