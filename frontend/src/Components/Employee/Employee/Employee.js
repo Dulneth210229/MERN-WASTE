@@ -8,13 +8,15 @@ function Employee(props) {
     employeeId,
     employeeFirstName,
     employeeLastName,
+    employeeNic,
     employeeCatogory,
     employeeAddress,
     employeeEmail,
     employeePhone,
+    employeeSalary,
   } = props.employee;
 
-  //delete inventory
+  // Delete inventory
   const history = useNavigate();
 
   const deleteHandler = async () => {
@@ -26,72 +28,74 @@ function Employee(props) {
   };
 
   return (
-    <div>
-      {/*<div>
-        <h1>Inventory Display</h1>
-        <hr />
-        <h1>Inventory ID : {_id}</h1>
-        <h1>Product Name : {productName}</h1>
-        <h1>Product Category : {ProductCategory}</h1>
-        <h1>MaterialType : {materialType}</h1>
-        <h1>Product Quantity : {quantity}</h1>
-        <h1>Product Dis : {productDescription}</h1>
-        <button>Update</button>
-        <button>Delete</button>
-      </div>*/}
-      <div className="bg-gray-50 p-6 rounded-lg max-w-4xl mx-auto shadow-md text-center"> 
-      <div className="bg-lime-500 text-white p-3 rounded-lg uppercase w-50 over:opacity-95  ">
-      
-      <h1 className="text-2xl font-bold mb-4">Employee Details </h1>
-      </div>
-      
-      <div className="space-y-2 mb-4">
-        <div>
-          <span className="text-2xl font-bold mb-4">Employee Id:</span>
-          <span className="text-2xl  mb-4">{employeeId}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Waste Type:</span>
-          <span className="text-2xl  mb-4">{employeeFirstName}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Quantity:</span>
-          <span className="text-2xl  mb-4">{employeeLastName}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Date Of Collection:</span>
-          <span className="text-2xl  mb-4">{employeeCatogory}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Location:</span>
-          <span className="text-2xl  mb-4">{employeeAddress}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Transport Method:</span>
-          <span className="text-2xl  mb-4">{employeeEmail}</span>
-        </div>
-        <div>
-          <span className="text-2xl font-bold mb-4">Notes:</span>
-          <span className="text-2xl  mb-4">{employeePhone}</span>
-        </div>
-      </div>
-            <div className="border-2 p-2 w-52 font-medium text-center">
+    <div className="my-10 p-6 mx-auto max-w-4xl bg-white shadow-lg rounded-lg border border-gray-300 ">
+      <h1 className="text-3xl font-bold text-black text-center hover:underline gap-6">Employee Details</h1>
+      <hr className="border-2" />
+      <br />
+      <div className="align-center">
+      <table className="w-full border-collapse mb-6 text-left align-center">
+        <tbody>
+          <tr className="bg-gray-800">
+            <td className="text-2xl font-bold text-white gap-6">Employee Id</td>
+            <td className="text-2xl font-bold text-white gap-6">{employeeId}</td>
+          </tr>
+          <tr className="bg-gray-200">
+            <td className="text-2xl font-bold text-black gap-6">Employee First Name</td>
+            <td className="text-2xl text-black gap-6">{employeeFirstName}</td>
+          </tr>
+          <tr className="bg-white">
+            <td className="text-2xl font-bold text-black gap-6">Employee Last Name</td>
+            <td className="text-2xl text-black gap-6">{employeeLastName}</td>
+          </tr>
+          <tr className="bg-gray-200">
+            <td className="text-2xl font-bold text-black gap-6">Employee NIC</td>
+            <td className="text-2xl text-black gap-6">{employeeNic}</td>
+          </tr>
+          <tr className="bg-white">
+            <td className="text-2xl font-bold text-black gap-6">Employee Designation</td>
+            <td className="text-2xl text-black gap-6">{employeeCatogory}</td>
+          </tr>
+          <tr className="bg-gray-200">
+            <td className="text-2xl font-bold text-black gap-6">Employee Address</td>
+            <td className="text-2xl text-black gap-6">{employeeAddress}</td>
+          </tr>
+          <tr className="bg-white">
+            <td className="text-2xl font-bold text-black gap-6">Employee Email</td>
+            <td className="text-2xl text-black gap-6">{employeeEmail}</td>
+          </tr>
+          <tr className="bg-gray-200">
+            <td className="text-2xl font-bold text-black gap-6">Employee Phone</td>
+            <td className="text-2xl text-black gap-6">{employeePhone}</td>
+          </tr>
+          <tr className="bg-white">
+            <td className="text-2xl font-bold text-black gap-6">Employee Salary</td>
+            <td className="text-2xl text-black gap-6">{employeeSalary}</td>
+          </tr>
+
+          {/* Buttons Row */}
+          <tr className="bg-gray-200">
+            <td className="p-2 border-b" colSpan="2" align="center">
+              {/* Update Button */}
               <Link to={`/employeedetails/${employeeId}`}>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg mr-4">
                   Update
                 </button>
               </Link>
+
+              {/* Remove Button */}
               <button
                 className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg"
                 onClick={deleteHandler}
               >
                 Remove
               </button>
-            </div>
-          
-        
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </div>
   );
 }
+
 export default Employee;

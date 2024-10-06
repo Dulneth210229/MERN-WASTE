@@ -20,10 +20,10 @@ const getEmployee = async (req, res, next) => {
 
 //data Insert
 const addEmployee = async (req, res, next)=>{
-    const {employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone}=req.body;
+    const {employeeId, employeeFirstName, employeeLastName, employeeNic, employeeCatogory, employeeAddress, employeeEmail, employeePhone,employeeSalary}=req.body;
     let employee;
     try{
-        employee = new Employee({employeeId, employeeFirstName, employeeLastName, employeeCatogory, employeeAddress, employeeEmail, employeePhone});
+        employee = new Employee({employeeId, employeeFirstName, employeeLastName,employeeNic, employeeCatogory, employeeAddress, employeeEmail, employeePhone,employeeSalary});
         await employee.save();
 }catch (err){
     console.log(err);
@@ -67,10 +67,13 @@ const updateEmployee = async (req, res, next) => {
     const {
         employeeFirstName,
         employeeLastName,
+        employeeNic,
         employeeCatogory,
         employeeAddress,
         employeeEmail,
-        employeePhone
+        employeePhone,
+        employeeSalary
+        
     } = req.body;
 
     try {
@@ -80,10 +83,13 @@ const updateEmployee = async (req, res, next) => {
             {
                 employeeFirstName,
                 employeeLastName,
+                employeeNic,
                 employeeCatogory,
                 employeeAddress,
                 employeeEmail,
-                employeePhone
+                employeePhone,
+                employeeSalary
+                
             },
             { new: true, runValidators: true }
         );

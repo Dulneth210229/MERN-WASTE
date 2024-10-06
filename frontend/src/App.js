@@ -93,6 +93,7 @@ function App() {
           <Route path="/addemployee" element={<AddEmployee />} />
           <Route path="/employeedetails" element={<Employees />} />
           <Route path="/employeedetails/:id" element={<UpdateEmployee />} />
+          <Route path="/employeereports" element={<EmployeeSchedules/>}/>
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
