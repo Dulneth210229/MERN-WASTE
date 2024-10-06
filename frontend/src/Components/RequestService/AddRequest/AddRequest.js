@@ -73,7 +73,7 @@ function AddRequest() {
     }
     console.log(inputs);
     await sendRequest();
-    history("/requestDetailsUser");
+    history("/viewrequests");
   };
 
   const sendRequest = async () => {

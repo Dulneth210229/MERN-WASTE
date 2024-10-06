@@ -9,6 +9,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp'; // Import WhatsApp Icon
 import Tooltip from '@mui/material/Tooltip'; // Import Tooltip component
 import jsPDF from 'jspdf';
 import 'jspdf-autotable'; 
+import logo from "./img/LOGO.png"; // Import autoTable
 
 const URL = "http://localhost:5001/support";
 
@@ -55,6 +56,9 @@ function SupportDisplay_01() {
 
   const generateReport = () => {
     const doc = new jsPDF();
+
+    doc.addImage(logo, 'PNG', 9, 5, 20, 9);
+
     const title = "Request Support Report";
     const subtitle = "Comprehensive overview of support details";
 
@@ -74,6 +78,10 @@ function SupportDisplay_01() {
 
     // Set marginTop for the table
     const marginTop = 40;
+
+    // Get the current date and time
+    const currentDate = new Date();
+    const dateStr = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
 
     // AutoTable for displaying support details
     doc.autoTable({
@@ -103,6 +111,15 @@ function SupportDisplay_01() {
       margin: { left: 14, right: 14 },
       theme: 'grid', // Use grid theme for better visual separation
     });
+
+    // Set date and time below the table
+    const dateY = doc.autoTable.previous.finalY + 10; // Positioning date below the table
+    doc.text(`Date & Time: ${dateStr}`, 14, dateY);
+
+    // Set signature line
+    const signatureY = dateY + 10; // Position for signature below the date
+    const signatureText = "Signature: ___________________________";
+    doc.text(signatureText, 14, signatureY);
 
     // Save the PDF
     doc.save("Support_Report.pdf");
