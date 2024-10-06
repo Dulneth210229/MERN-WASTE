@@ -5,9 +5,8 @@ import UserHomeHeader from "../FirstHome/UserHomeHeader";
 
 function WCMUser_Register() {
   const navigate = useNavigate();
-  
+
   const [user, setUser] = useState({
-    
     email: "",
     password: "",
     NID: "",
@@ -37,15 +36,13 @@ function WCMUser_Register() {
 
   const validateField = (field, value) => {
     let error = "";
-    
+
     if (field === "name") {
       error = namePattern.test(value)
         ? ""
         : "Name must not contain digits or special characters.";
     } else if (field === "email") {
-      error = emailPattern.test(value)
-        ? ""
-        : "Please enter a valid email.";
+      error = emailPattern.test(value) ? "" : "Please enter a valid email.";
     } else if (field === "NID") {
       error = NIDPattern.test(value)
         ? ""
@@ -62,12 +59,12 @@ function WCMUser_Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!errors.name && !errors.email && !errors.NID) {
       sendRequest()
         .then(() => {
           alert("Register Success");
-          navigate("/WCMUser_Home");
+          navigate("/WCMUser_Login");
         })
         .catch((err) => {
           alert(err.message);
@@ -112,10 +109,14 @@ function WCMUser_Register() {
               value={user.name}
               onChange={handleInputChange}
               className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
-                errors.name ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+                errors.name
+                  ? "border-red-500 focus:ring-red-500"
+                  : "focus:ring-blue-500"
               }`}
             />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
           </div>
 
           <div className="mb-4">
@@ -133,7 +134,9 @@ function WCMUser_Register() {
               value={user.NID}
               onChange={handleInputChange}
               className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
-                errors.NID ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+                errors.NID
+                  ? "border-red-500 focus:ring-red-500"
+                  : "focus:ring-blue-500"
               }`}
             />
             {errors.NID && <p className="text-red-500 text-sm">{errors.NID}</p>}
@@ -172,10 +175,14 @@ function WCMUser_Register() {
               value={user.email}
               onChange={handleInputChange}
               className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
-                errors.email ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+                errors.email
+                  ? "border-red-500 focus:ring-red-500"
+                  : "focus:ring-blue-500"
               }`}
             />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
           </div>
 
           <div className="mb-6">
