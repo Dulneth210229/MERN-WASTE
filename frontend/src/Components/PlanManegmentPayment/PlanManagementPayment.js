@@ -6,7 +6,7 @@ import Footer from '../UserHomePage/UserFooter';
 const PlanManagementPayment = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { packageName, packagePrice } = location.state || {};
+  const { packageName, packagePrice, username } = location.state || {};
 
   // Card details state and error handling
   const [cardNumber, setCardNumber] = useState('');
@@ -46,37 +46,36 @@ const PlanManagementPayment = () => {
 
     // Name validation (non-empty)
     if (name.trim() === '') {
-      errors.name = 'Name on card is required';
+      errors.name = 'Card Holder Name is required';
     }
 
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  // Handle changes for Card Number, Expiry Date, CVV, and Name fields
   const handleCardNumberChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ''); // Allow only digits
+    const value = e.target.value.replace(/\D/g, '');
     if (value.length <= 16) {
-      setCardNumber(value.replace(/(\d{4})/g, '$1 ').trim()); // Add spaces every 4 digits
+      setCardNumber(value.replace(/(\d{4})/g, '$1 ').trim());
     }
   };
 
   const handleExpiryDateChange = (e) => {
-    const value = e.target.value.replace(/[^0-9/]/g, ''); // Allow only digits and slashes
+    const value = e.target.value.replace(/[^0-9/]/g, '');
     if (value.length <= 5) {
       setExpiryDate(value);
     }
   };
 
   const handleCvvChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ''); // Allow only digits
+    const value = e.target.value.replace(/\D/g, '');
     if (value.length <= 3) {
       setCvv(value);
     }
   };
 
   const handleNameChange = (e) => {
-    const value = e.target.value.replace(/[^a-zA-Z\s]/g, ''); // Allow only letters and spaces
+    const value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
     if (value.length <= 50) {
       setName(value);
     }
@@ -90,27 +89,11 @@ const PlanManagementPayment = () => {
         packageName,
         packagePrice,
         cardHolderName: name,
+        username,
+        time: new Date().toLocaleString(),
       };
 
-      try {
-        const response = await fetch("http://localhost:5001/paymentplan", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(paymentDetails),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-          alert("Payment successful!");
-          navigate("/userHomePage"); // Make sure this path is correct
-        } else {
-          console.error("Payment failed:", data.message);
-        }
-      } catch (error) {
-        console.error("Error processing payment:", error);
-      }
+      navigate('/paymentSlip', { state: paymentDetails });
     }
   };
 
@@ -130,6 +113,7 @@ const PlanManagementPayment = () => {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Input fields for card details */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="cardNumber">
                 Card Number
@@ -148,7 +132,8 @@ const PlanManagementPayment = () => {
               {errors.cardNumber && <p className="text-red-500 text-sm mt-1">{errors.cardNumber}</p>}
             </div>
 
-            <div className="flex space-x-4">
+            
+<div className="flex space-x-4">
               <div className="w-1/2">
                 <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="expiryDate">
                   Expiry Date
@@ -188,7 +173,7 @@ const PlanManagementPayment = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="name">
-                Name on Card
+                Card Holder Name
               </label>
               <input
                 type="text"
@@ -203,7 +188,6 @@ const PlanManagementPayment = () => {
               />
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
-
             <button
               type="submit"
               className="w-full py-3 bg-green-600 text-white font-semibold rounded-md shadow-lg hover:bg-green-700 transition-all"
@@ -213,11 +197,14 @@ const PlanManagementPayment = () => {
           </form>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
 
 export default PlanManagementPayment;
+
+
+
+
+

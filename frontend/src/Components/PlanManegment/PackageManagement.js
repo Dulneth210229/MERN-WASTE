@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
+import logo from "./img/LOGO.png"; 
 function PackageDashboard() {
   const [packages, setPackages] = useState([]);
   const [newPackage, setNewPackage] = useState({ name: "", price: "", features: "" });
@@ -132,68 +132,77 @@ function PackageDashboard() {
   const filteredPackages = packages.filter((pkg) =>
     pkg.packageName.toLowerCase().includes(searchTerm.toLowerCase())
   );
+// Generate PDF report
+const generateReport = () => {
+  const doc = new jsPDF();
+  
+  // Place the logo in the upper right corner (adjust x and y values)
+  const pageWidth = doc.internal.pageSize.getWidth(); // Get page width
+  const logoWidth = 50; // Adjust the logo width as needed
+  const logoX = pageWidth - logoWidth - 14; // Position it with some padding from the right
+  const logoY = 9; // Y position of the logo
+  
+  doc.addImage(logo, 'PNG', logoX, logoY, logoWidth, 10); // Adjust logo height if needed
+  
+  const title = "Subscription Package Report";
+  const subtitle = "Comprehensive overview of current subscription packages";
+  const date = new Date().toLocaleString(); // Get current date and time
 
-  // Generate PDF report
-  const generateReport = () => {
-    const doc = new jsPDF();
-    const title = "Subscription Package Report";
-    const subtitle = "Comprehensive overview of current subscription packages";
-    const date = new Date().toLocaleString(); // Get current date and time
+  // Title
+  doc.setFontSize(22);
+  doc.setFont("helvetica", "bold");
+  doc.text(title, 14, 22);
+  
+  // Subtitle
+  doc.setFontSize(16);
+  doc.setFont("helvetica", "normal");
+  doc.text(subtitle, 14, 30);
+  
+  // Date and Time
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "normal");
+  doc.text(`Date: ${date}`, 14, 38); // Adding date and time
 
-    // Title
-    doc.setFontSize(22);
-    doc.setFont("helvetica", "bold");
-    doc.text(title, 14, 22);
-    
-    // Subtitle
-    doc.setFontSize(16);
-    doc.setFont("helvetica", "normal");
-    doc.text(subtitle, 14, 30);
-    
-    // Date and Time
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    doc.text(`Date: ${date}`, 14, 38); // Adding date and time
+  // Add a horizontal line under the title
+  doc.setLineWidth(0.5);
+  doc.line(14, 41, 195, 41);
   
-    // Add a horizontal line under the title
-    doc.setLineWidth(0.5);
-    doc.line(14, 41, 195, 41);
+  // Add some spacing before the table
+  const marginTop = 50;
   
-    // Add some spacing before the table
-    const marginTop = 50;
+  // AutoTable for displaying package details
+  doc.autoTable({
+    startY: marginTop,
+    head: [['Package Name', 'Price', 'Features']],
+    body: filteredPackages.map((pkg) => [
+      pkg.packageName,
+      `$${pkg.packagePrice}`,
+      pkg.features.join(", "),
+    ]),
+    headStyles: {
+      fillColor: [41, 87, 141], // Dark blue
+      textColor: [255, 255, 255], // White
+      fontSize: 12,
+      fontStyle: 'bold',
+    },
+    bodyStyles: {
+      fontSize: 11,
+    },
+    alternateRowStyles: {
+      fillColor: [240, 240, 240], // Light gray for alternate rows
+    },
+    margin: { left: 14, right: 14 },
+    theme: 'grid', // Use grid theme for better visual separation
+  });
   
-    // AutoTable for displaying package details
-    doc.autoTable({
-      startY: marginTop,
-      head: [['Package Name', 'Price', 'Features']],
-      body: filteredPackages.map((pkg) => [
-        pkg.packageName,
-        `$${pkg.packagePrice}`,
-        pkg.features.join(", "),
-      ]),
-      headStyles: {
-        fillColor: [41, 87, 141], // Dark blue
-        textColor: [255, 255, 255], // White
-        fontSize: 12,
-        fontStyle: 'bold',
-      },
-      bodyStyles: {
-        fontSize: 11,
-      },
-      alternateRowStyles: {
-        fillColor: [240, 240, 240], // Light gray for alternate rows
-      },
-      margin: { left: 14, right: 14 },
-      theme: 'grid', // Use grid theme for better visual separation
-    });
+  // Add Signature Section
+  const signatureY = doc.lastAutoTable.finalY + 10;
+  doc.text("Signature: ____________________", 14, signatureY); // Add a line for signature
   
-    // Add Signature Section
-    const signatureY = doc.lastAutoTable.finalY + 10;
-    doc.text("Signature: ____________________", 14, signatureY); // Add a line for signature
-  
-    // Save the PDF
-    doc.save("Subscription_Package_Report.pdf");
-  };
+  // Save the PDF
+  doc.save("Subscription_Package_Report.pdf");
+};
+
 
   return (
     <div>
@@ -313,7 +322,7 @@ function PackageDashboard() {
       </div>
 
       {/* Generate PDF Button */}
-      <div className="mt-6 text-center">
+      <div className="mt-6 mb-6 text-center ">
         <button
           onClick={generateReport}
           className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700"

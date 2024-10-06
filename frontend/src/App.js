@@ -89,6 +89,8 @@ import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
 import ReportGeneration from "./Components/Account/RepotGeneration/ReportGeneration";
 
+import PaymentSlip from "./Components/PlanManegmentPayment/PaymmentSlip";
+
 function App() {
   //java scripts
   return (
@@ -192,7 +194,10 @@ function App() {
         <Route path="/CreditDebit" element={<CreditDebit />}/>
         <Route path="/ReportGeneration" element={<ReportGeneration />}/>
 
-       
+
+
+
+       <Route path="/PaymentSlip" element={<PaymentSlip />}/>
 
 
         </Routes>
