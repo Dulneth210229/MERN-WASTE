@@ -5,6 +5,7 @@ import Complain from "../Complain/Complain";
 import SearchIcon from '@mui/icons-material/Search';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import logo from "./img/LOGO.png"; 
 
 const URL = "http://localhost:5001/complain";
 
@@ -36,6 +37,9 @@ function ComplainDisplay_01() {
 
   const generateReport = () => {
     const doc = new jsPDF();
+
+    doc.addImage(logo, 'PNG', 9, 5, 20, 9);
+
     const title = "Complain Report";
     const subtitle = "Comprehensive overview of complain details";
 
@@ -51,6 +55,10 @@ function ComplainDisplay_01() {
     doc.line(14, 33, 195, 33);
 
     const marginTop = 40;
+
+    // Get the current date and time
+    const currentDate = new Date();
+    const dateStr = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
 
     doc.autoTable({
       startY: marginTop,
@@ -77,6 +85,15 @@ function ComplainDisplay_01() {
       margin: { left: 14, right: 14 },
       theme: 'grid',
     });
+
+    // Set date and time below the table
+    const dateY = doc.autoTable.previous.finalY + 10; // Positioning date below the table
+    doc.text(`Date & Time: ${dateStr}`, 14, dateY);
+
+    // Set signature line
+    const signatureY = dateY + 10; // Position for signature below the date
+    const signatureText = "Signature: ___________________________";
+    doc.text(signatureText, 14, signatureY);
 
     doc.save("Complain_Report.pdf");
   };
