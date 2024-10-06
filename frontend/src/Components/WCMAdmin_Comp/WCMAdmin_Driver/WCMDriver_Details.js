@@ -69,7 +69,7 @@ function WCMDriver_Details() {
           <table className="min-w-full bg-white shadow-md rounded-lg">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b text-left">ID</th>
+                
                 <th className="py-2 px-4 border-b text-left">Name</th>
                 <th className="py-2 px-4 border-b text-left">Email</th>
                 <th className="py-2 px-4 border-b text-left">NID</th>
@@ -82,7 +82,7 @@ function WCMDriver_Details() {
               {filteredDrivers.length > 0 ? (
                 filteredDrivers.map((driver, i) => (
                   <tr key={i} className="hover:bg-gray-100">
-                    <td className="py-2 px-4 border-b">{driver._id}</td>
+                    
                     <td className="py-2 px-4 border-b">{driver.name}</td>
                     <td className="py-2 px-4 border-b">{driver.email}</td>
                     <td className="py-2 px-4 border-b">{driver.NID}</td>

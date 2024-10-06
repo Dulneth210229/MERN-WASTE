@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import UserHomeHeader from "../FirstHome/UserHomeHeader"; // Import UserHomeHeader component
+import UserHomeHeader from "../FirstHome/UserHomeHeader";
 
 function WCMUser_Register() {
   const navigate = useNavigate();
+  
   const [user, setUser] = useState({
-    
+    name: "",
     email: "",
     password: "",
-    NID: "", // Add NID state
-    address: "", // Add address state
+    NID: "",
+    address: "",
   });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    NID: "",
+  });
+
+  // Regex patterns
+  const namePattern = /^[A-Za-z\s]+$/; // Only letters and spaces
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Valid email format
+  const NIDPattern = /^(\d{10,15}[A-Za-z]?|\d{10,15})$/; // 10-15 digits with an optional letter
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,21 +31,48 @@ function WCMUser_Register() {
       ...prevUser,
       [name]: value,
     }));
+
+    validateField(name, value);
   };
 
-  //test
+  const validateField = (field, value) => {
+    let error = "";
+    
+    if (field === "name") {
+      error = namePattern.test(value)
+        ? ""
+        : "Name must not contain digits or special characters.";
+    } else if (field === "email") {
+      error = emailPattern.test(value)
+        ? ""
+        : "Please enter a valid email.";
+    } else if (field === "NID") {
+      error = NIDPattern.test(value)
+        ? ""
+        : "NID must be 10-15 digits, optionally followed by a letter.";
+    }
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [field]: error,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    sendRequest()
-      .then(() => {
-        alert("Register Success");
-        navigate("/WCMUser_Home");
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+    
+    if (!errors.name && !errors.email && !errors.NID) {
+      sendRequest()
+        .then(() => {
+          alert("Register Success");
+          navigate("/WCMUser_Home");
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    } else {
+      alert("Please fix the errors before submitting.");
+    }
   };
 
   const sendRequest = async () => {
@@ -42,8 +81,8 @@ function WCMUser_Register() {
         name: String(user.name),
         email: String(user.email),
         password: String(user.password),
-        NID: String(user.NID), // Include NID in request
-        address: String(user.address), // Include address in request
+        NID: String(user.NID),
+        address: String(user.address),
       })
       .then((res) => res.data);
   };
@@ -70,10 +109,13 @@ function WCMUser_Register() {
               required
               value={user.name}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
+                errors.name ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+              }`}
             />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
           </div>
-          {/* Add NID and Address fields */}
+
           <div className="mb-4">
             <label
               htmlFor="NID"
@@ -88,8 +130,11 @@ function WCMUser_Register() {
               required
               value={user.NID}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
+                errors.NID ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+              }`}
             />
+            {errors.NID && <p className="text-red-500 text-sm">{errors.NID}</p>}
           </div>
 
           <div className="mb-4">
@@ -115,7 +160,7 @@ function WCMUser_Register() {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Gmail
+              Email
             </label>
             <input
               type="email"
@@ -124,8 +169,11 @@ function WCMUser_Register() {
               required
               value={user.email}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
+                errors.email ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+              }`}
             />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
           </div>
 
           <div className="mb-6">

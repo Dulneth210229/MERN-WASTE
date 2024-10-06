@@ -28,7 +28,7 @@ function WCMAdmin_Details() {
           <table className="min-w-full bg-white shadow-md rounded-lg">
             <thead>
               <tr className="bg-gray-800 text-white">
-                <th className="py-3 px-4 border-b text-left">ID</th>
+                
                 <th className="py-3 px-4 border-b text-left">Name</th>
                 <th className="py-3 px-4 border-b text-left">Email</th>
                 <th className="py-3 px-4 border-b text-left">Actions</th>
@@ -37,7 +37,7 @@ function WCMAdmin_Details() {
             <tbody>
               {admins && admins.map((admin, i) => (
                 <tr key={i} className="hover:bg-gray-100">
-                  <td className="py-3 px-4 border-b">{admin._id}</td> {/* Assuming _id is available */}
+                  
                   <td className="py-3 px-4 border-b">{admin.name}</td>
                   <td className="py-3 px-4 border-b">{admin.email}</td>
                   <td className="py-3 px-4 border-b">
