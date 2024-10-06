@@ -7,7 +7,7 @@ function WCMUser_Register() {
   const navigate = useNavigate();
   
   const [user, setUser] = useState({
-    name: "",
+    
     email: "",
     password: "",
     NID: "",
@@ -57,6 +57,8 @@ function WCMUser_Register() {
       [field]: error,
     }));
   };
+
+  //test
 
   const handleSubmit = (e) => {
     e.preventDefault();
