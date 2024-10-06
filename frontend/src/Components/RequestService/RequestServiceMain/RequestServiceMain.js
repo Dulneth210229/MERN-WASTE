@@ -31,10 +31,10 @@ function RequestServiceMain() {
       <div className="min-h-screen bg-gray-100 pt-1 pr-1">
         <header className="mb-10">
           <div className="flex justify-between items-center mt-2">
-            <h1 className="text-4xl font-bold text-gray-800 flex-grow text-center">
+            <h1 className="text-4xl font-bold text-gray-800 flex-grow text-center mr-14">
               Request a Special Service
             </h1>
-            <div className="pr-96">
+            <div className="pr-56">
               <RequestNav />
             </div>
             <Link to="/addrequest">
