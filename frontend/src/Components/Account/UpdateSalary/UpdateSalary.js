@@ -5,8 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AccountNav from '../AccountNav/AccountNav';
 
 function UpdateSalary() {
-  const EPF = 500;
-  const ETF = 500;
+  const EPF =  12000;//12%
+  const ETF = 8000;//3%
   const [inputs, setinputs] = useState({});
   const history = useNavigate();
   const {id } = useParams(); // Destructure the account ID from params
@@ -54,8 +54,7 @@ function UpdateSalary() {
 
   const totalSalary =(basic, allowance,Credit,Debit)=> {
     
-    return(EPF + ETF +Number(basic)  + Number(allowance) -Number(Credit) + Number(Debit))
-    
+    return ( Number(basic) + Number(allowance) + Number(Credit) - Number(Debit) - EPF - ETF);
   }
 // Function to handle form submission.
 
