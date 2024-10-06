@@ -31,13 +31,13 @@ const PrintableInventory = React.forwardRef((props, ref) => {
           <p className="text-lg font-semibold mr-2">{currentDateTime}</p>
         </div>
       </div>
-      <h1 className="text-center font-semibold m-5 text-5xl">
+      <h1 className="text-center font-semibold m-5 text-6xl">
         Inventory Details Report
       </h1>
       <hr className="border-2 border-slate-200 mt-3 n mb-7" />
       <div className="mt-3">
         <table className=" mx-auto w-auto m-1 p-2">
-          <tr className="bg-green-200 m-2 border-b-2 ">
+          <tr className="bg-blue-300 m-2 border-b-2 ">
             <th className=" p-1 w-56 px-5 ">Product Name</th>
             <th className=" p-1 w-48 px-2 0">Product Category</th>
             <th className=" p-1 w-48  ">Material Type</th>

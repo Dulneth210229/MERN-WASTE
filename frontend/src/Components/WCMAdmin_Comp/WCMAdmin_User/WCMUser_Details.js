@@ -56,7 +56,7 @@ function WCMUser_Details() {
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b text-left">ID</th>
+              
               <th className="py-2 px-4 border-b text-left">Name</th>
               <th className="py-2 px-4 border-b text-left">Email</th>
               <th className="py-2 px-4 border-b text-left">NID</th>
@@ -68,7 +68,7 @@ function WCMUser_Details() {
             {/* Map through the filtered users array and render each user as a row in the table */}
             {filteredUsers && filteredUsers.map((user, i) => (
               <tr key={i} className="hover:bg-gray-100">
-                <td className="py-2 px-4 border-b">{user._id}</td>
+                
                 <td className="py-2 px-4 border-b">{user.name}</td>
                 <td className="py-2 px-4 border-b">{user.email}</td>
                 <td className="py-2 px-4 border-b">{user.NID}</td>
