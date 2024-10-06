@@ -10,16 +10,39 @@ function WCMUser_Login() {
         password: "",
     });
 
+    // State for validation errors
+    const [emailError, setEmailError] = useState("");
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUser((prevUser) => ({
             ...prevUser,
             [name]: value  
         }));
+
+        // Real-time validation for email
+        if (name === 'email') {
+            validateEmail(value);
+        }
+    };
+
+    const validateEmail = (email) => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            setEmailError("Please enter a valid email address");
+        } else {
+            setEmailError(""); // Clear error if email is valid
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (emailError) {
+            alert("Please fix the errors before submitting");
+            return;
+        }
+
         try {
             const response = await sendRequest();
             if (response && response.message === "Login successful") {
@@ -59,6 +82,9 @@ function WCMUser_Login() {
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    {emailError && (
+                        <p className="text-red-500 text-sm mt-1">{emailError}</p> // Display error if email is invalid
+                    )}
                 </div>
 
                 <div className="mb-6">
