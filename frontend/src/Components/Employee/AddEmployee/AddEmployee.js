@@ -50,18 +50,30 @@ function AddEmployee() {
     if (!inputs.employeeNic) {
       tempErrors.employeeNic = "NIC is required.";
       isValid = false;
-    } else if (inputs.employeeNic.length !== 12 || !/^[A-Za-z0-9]+$/.test(inputs.employeeNic)) {
-      tempErrors.employeeNic = "NIC must be exactly 12 characters and contain no special characters.";
+    } else if (
+      inputs.employeeNic.length !== 12 ||
+      !/^[A-Za-z0-9]+$/.test(inputs.employeeNic)
+    ) {
+      tempErrors.employeeNic =
+        "NIC must be exactly 12 characters and contain no special characters.";
       isValid = false;
     }
 
     if (!inputs.employeeCatogory) {
       tempErrors.employeeCatogory = "Category is required.";
       isValid = false;
+    } else if (!/^[A-Za-z0-9 ]+$/.test(inputs.employeeCatogory)) {
+      tempErrors.employeeCatogory =
+        "Category must only contain letters and numbers.";
+      isValid = false;
     }
 
     if (!inputs.employeeAddress) {
       tempErrors.employeeAddress = "Address is required.";
+      isValid = false;
+    } else if (!/^[A-Za-z0-9 ,.-]+$/.test(inputs.employeeAddress)) {
+      tempErrors.employeeAddress =
+        "Address must only contain letters, numbers, spaces, and basic punctuation.";
       isValid = false;
     }
 
@@ -69,7 +81,7 @@ function AddEmployee() {
     if (!inputs.employeeEmail) {
       tempErrors.employeeEmail = "Email is required.";
       isValid = false;
-    } else if (!inputs.employeeEmail.includes('@')) {
+    } else if (!inputs.employeeEmail.includes("@")) {
       tempErrors.employeeEmail = "Email must contain '@' symbol.";
       isValid = false;
     }
@@ -85,8 +97,14 @@ function AddEmployee() {
     if (!inputs.employeeSalary) {
       tempErrors.employeeSalary = "Salary is required.";
       isValid = false;
-    } else if (isNaN(inputs.employeeSalary) || Number(inputs.employeeSalary) < 0) {
+    } else if (
+      isNaN(inputs.employeeSalary) ||
+      Number(inputs.employeeSalary) < 0
+    ) {
       tempErrors.employeeSalary = "Salary must be a valid positive number.";
+      isValid = false;
+    } else if (!/^\d+(\.\d+)?$/.test(inputs.employeeSalary)) {
+      tempErrors.employeeSalary = "Salary must be a valid number.";
       isValid = false;
     }
 
@@ -121,19 +139,17 @@ function AddEmployee() {
   return (
     <div>
       <EmployeeNav />
-      <div >
-      <h1 className="text-center mt-5 font-semibold text-slate-800 text-4xl mb-4">
+      <div>
+        <h1 className="text-center mt-5 font-semibold text-slate-800 text-4xl mb-4">
           Add New Employee
         </h1>
-          </div>
-          <hr className="border-2" />
+      </div>
+      <hr className="border-2" />
 
       <div className="my-10 p-6 mx-auto max-w-4xl bg-white shadow-lg rounded-lg border border-gray-300">
-        
-        
         <form onSubmit={handleSubmit}>
           <div className="flex w-3/5 mx-auto">
-            <div className="my-10 p-6 mx-auto max-w-4xl bg-white shadow-lg rounded-lg border border-gray-300 border-2">
+            <div className="my-10 p-6 mx-auto max-w-4xl bg-white shadow-lg rounded-lg  border-gray-300 border-2">
               <div className="flex flex-col w-auto mr-10 ml-10">
                 {/* Employee Id */}
                 <div className="flex flex-col w-96 g-0 al m-5">
@@ -144,132 +160,200 @@ function AddEmployee() {
                     onChange={handleChange}
                     value={inputs.employeeId}
                     placeholder="Employee Id"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeId ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeId ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeId && <span className="text-red-500 text-sm">{errors.employeeId}</span>}
+                  {errors.employeeId && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeId}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee First Name */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee First Name</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee First Name
+                  </label>
                   <input
                     type="text"
                     name="employeeFirstName"
                     onChange={handleChange}
                     value={inputs.employeeFirstName}
                     placeholder="Employee First Name"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeFirstName ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeFirstName ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeFirstName && <span className="text-red-500 text-sm">{errors.employeeFirstName}</span>}
+                  {errors.employeeFirstName && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeFirstName}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Last Name */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Last Name</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Last Name
+                  </label>
                   <input
                     type="text"
                     name="employeeLastName"
                     onChange={handleChange}
                     value={inputs.employeeLastName}
                     placeholder="Employee Last Name"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeLastName ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeLastName ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeLastName && <span className="text-red-500 text-sm">{errors.employeeLastName}</span>}
+                  {errors.employeeLastName && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeLastName}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee NIC */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee NIC</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee NIC
+                  </label>
                   <input
                     type="text"
                     name="employeeNic"
                     onChange={handleChange}
                     value={inputs.employeeNic}
                     placeholder="Employee NIC"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeNic ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeNic ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeNic && <span className="text-red-500 text-sm">{errors.employeeNic}</span>}
+                  {errors.employeeNic && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeNic}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Category */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Designation</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Designation
+                  </label>
                   <input
                     type="text"
                     name="employeeCatogory"
                     onChange={handleChange}
                     value={inputs.employeeCatogory}
                     placeholder="Employee Category"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeCatogory ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeCatogory ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeCatogory && <span className="text-red-500 text-sm">{errors.employeeCatogory}</span>}
+                  {errors.employeeCatogory && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeCatogory}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Address */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Address</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Address
+                  </label>
                   <input
                     type="text"
                     name="employeeAddress"
                     onChange={handleChange}
                     value={inputs.employeeAddress}
                     placeholder="Employee Address"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeAddress ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeAddress ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeAddress && <span className="text-red-500 text-sm">{errors.employeeAddress}</span>}
+                  {errors.employeeAddress && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeAddress}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Email */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Email</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Email
+                  </label>
                   <input
                     type="text"
                     name="employeeEmail"
                     onChange={handleChange}
                     value={inputs.employeeEmail}
                     placeholder="Employee Email"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeEmail ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeEmail ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeEmail && <span className="text-red-500 text-sm">{errors.employeeEmail}</span>}
+                  {errors.employeeEmail && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeEmail}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Phone */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Phone</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Phone
+                  </label>
                   <input
                     type="text"
                     name="employeePhone"
                     onChange={handleChange}
                     value={inputs.employeePhone}
                     placeholder="Employee Phone"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeePhone ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeePhone ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeePhone && <span className="text-red-500 text-sm">{errors.employeePhone}</span>}
+                  {errors.employeePhone && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeePhone}
+                    </span>
+                  )}
                 </div>
 
                 {/* Employee Salary */}
                 <div className="flex flex-col w-96 g-0 al m-5">
-                  <label className="text-2xl font-bold mb-4">Employee Basic Salary</label>
+                  <label className="text-2xl font-bold mb-4">
+                    Employee Salary
+                  </label>
                   <input
-                    type="text"
+                    type="number"
                     name="employeeSalary"
                     onChange={handleChange}
                     value={inputs.employeeSalary}
                     placeholder="Employee Salary"
-                    className={`w-full px-4 py-2 border rounded-lg ${errors.employeeSalary ? "border-red-500" : ""}`}
+                    className={`w-full px-4 py-2 border rounded-lg ${
+                      errors.employeeSalary ? "border-red-500" : ""
+                    }`}
                   />
-                  {errors.employeeSalary && <span className="text-red-500 text-sm">{errors.employeeSalary}</span>}
+                  {errors.employeeSalary && (
+                    <span className="text-red-500 text-sm">
+                      {errors.employeeSalary}
+                    </span>
+                  )}
                 </div>
               </div>
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                type="submit"
+              >
+                Add Employee
+              </button>
             </div>
-          </div>
-          <div className="text-center mt-16">
-            <button
-              type="submit"
-              className="bg-lime-700 text-white p-3 rounded-lg uppercase w-72 hover:opacity-95"
-            >
-              Submit
-            </button>
           </div>
         </form>
       </div>
@@ -277,4 +361,4 @@ function AddEmployee() {
   );
 }
 
-export default AddEmployee
+export default AddEmployee;
