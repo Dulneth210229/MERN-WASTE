@@ -13,13 +13,7 @@ function DriverHomeHeader() {
       <div className="bg-blue-600 text-white">
         <div className="container mx-auto flex justify-between items-center py-4 px-6">
           <nav className="flex space-x-8">
-            <Link
-              to="/WCMDriver_Profile"
-              className="flex items-center gap-2 bg-blue-700 px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-200"
-            >
-              <FaUserAlt className="text-xl" />
-              <span>Profile</span>
-            </Link>
+         
 
             <Link
               to="/WCMView_Assigned_Tasks"
