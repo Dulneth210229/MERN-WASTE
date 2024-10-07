@@ -18,6 +18,9 @@ function CategoryUpdateHza() {
   const history = useNavigate();
   const { id } = useParams();
 
+  // Get the current date and time in a compatible format for comparison
+  const currentDateTime = new Date().toISOString().slice(0, 16);
+
   useEffect(() => {
     const fetchHandler = async () => {
       await axios.get(`http://localhost:5001/hazardous/${id}`)
@@ -42,6 +45,13 @@ function CategoryUpdateHza() {
       newErrors.Quantity = "Quantity must be a positive number.";
     } else {
       delete newErrors.Quantity;
+    }
+
+    // Validate DateOfCollection (cannot be before current date and time)
+    if (name === "DateOfCollection" && value < currentDateTime) {
+      newErrors.DateOfCollection = "Date and time cannot be in the past.";
+    } else {
+      delete newErrors.DateOfCollection;
     }
 
     setErrors(newErrors);
@@ -134,8 +144,9 @@ function CategoryUpdateHza() {
                 onChange={handleChange}
                 value={inputs.DateOfCollection || ''}
                 required
-                className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
+                className={`w-full mt-2 p-2 border rounded-lg ${errors.DateOfCollection ? 'border-red-500' : 'border-gray-300'}`}
               />
+              {errors.DateOfCollection && <p className="text-red-500 text-sm">{errors.DateOfCollection}</p>}
             </div>
 
             <div>

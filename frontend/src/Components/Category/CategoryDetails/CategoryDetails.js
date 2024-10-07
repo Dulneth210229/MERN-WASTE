@@ -6,6 +6,8 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import logo from "./img/LOGO.png"; // Ensure the logo image is correctly placed in your project
 import UserFooter from '../../UserHomePage/UserFooter';  // Import the footer component
+import WhatsAppIcon from '@mui/icons-material/WhatsApp'; // Import WhatsApp Icon
+import Tooltip from '@mui/material/Tooltip'; // Import Tooltip component
 
 const URL = "http://localhost:5001/category";
 
@@ -155,12 +157,17 @@ function CategoryDetails() {
         >
           Download Organic Report (PDF)
         </button>
-        <button
-          onClick={handleSendReport}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-        >
-          Send Report via WhatsApp
-        </button>
+
+        {/* WhatsApp button with Tooltip and Icon */}
+        <Tooltip title="Send a message via WhatsApp">
+          <button
+            onClick={handleSendReport}
+            className="ml-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 flex items-center"
+          >
+            <WhatsAppIcon className="mr-2" />
+            Send WhatsApp Message
+          </button>
+        </Tooltip>
       </div>
 
       <div ref={ComponentsRef} className="w-full max-w-4xl mx-auto flex flex-col items-center">

@@ -18,6 +18,9 @@ function CategoryUpdate() {
   const history = useNavigate();
   const { id } = useParams();
 
+  // Get the current date and time in a compatible format for comparison
+  const currentDateTime = new Date().toISOString().slice(0, 16);
+
   useEffect(() => {
     const fetchHandler = async () => {
       await axios.get(`http://localhost:5001/category/${id}`)
@@ -30,16 +33,25 @@ function CategoryUpdate() {
   const validateInputs = (name, value) => {
     const newErrors = { ...errors };
 
+    // Validate WasteType
     if (name === "WasteType" && value.toLowerCase() !== "organic") {
       newErrors.WasteType = 'Waste type must be "Organic".';
     } else {
       delete newErrors.WasteType;
     }
 
+    // Validate Quantity (must be a positive number)
     if (name === "Quantity" && (!/^[1-9]\d*$/.test(value))) {
       newErrors.Quantity = "Quantity must be a positive number.";
     } else {
       delete newErrors.Quantity;
+    }
+
+    // Validate DateOfCollection (cannot be before current date and time)
+    if (name === "DateOfCollection" && value < currentDateTime) {
+      newErrors.DateOfCollection = "Date and time cannot be in the past.";
+    } else {
+      delete newErrors.DateOfCollection;
     }
 
     setErrors(newErrors);
@@ -48,9 +60,13 @@ function CategoryUpdate() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // Validate as the user types
     validateInputs(name, value);
 
+    // Prevent invalid typing in Quantity
     if (name === "Quantity" && !/^\d*$/.test(value)) return;
+
+    // Prevent invalid typing in WasteType (only allow "Organic")
     if (name === "WasteType") {
       const allowedValue = "organic".slice(0, value.length);
       if (value.toLowerCase() !== allowedValue) return;
@@ -65,6 +81,7 @@ function CategoryUpdate() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Prevent submission if there are validation errors
     if (Object.keys(errors).length > 0 || inputs.WasteType.toLowerCase() !== "organic") {
       alert("Please fix the errors before submitting.");
       return;
@@ -127,8 +144,9 @@ function CategoryUpdate() {
                 onChange={handleChange}
                 value={inputs.DateOfCollection || ''}
                 required
-                className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
+                className={`w-full mt-2 p-2 border rounded-lg ${errors.DateOfCollection ? 'border-red-500' : 'border-gray-300'}`}
               />
+              {errors.DateOfCollection && <p className="text-red-500 text-sm">{errors.DateOfCollection}</p>}
             </div>
 
             <div>
