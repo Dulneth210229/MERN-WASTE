@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function AddSalary() {
   const EPF = 12000; //12%
-  const ETF = 8000; //3%
+  const ETF = 8000; //8%
   const history = useNavigate();
 
   // Using location state to get autofill values passed from the first form
