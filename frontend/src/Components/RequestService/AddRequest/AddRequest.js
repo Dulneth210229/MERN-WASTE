@@ -112,6 +112,7 @@ function AddRequest() {
                 value={inputs.service}
                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
               >
+                <option value="">Select a sevice</option>
                 <option>Bulky pickup</option>
                 <option>Rent a container</option>
                 <option>Hire a cleaner</option>
