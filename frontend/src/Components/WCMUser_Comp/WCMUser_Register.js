@@ -7,6 +7,7 @@ function WCMUser_Register() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
+    name: "",
     email: "",
     password: "",
     NID: "",
@@ -17,12 +18,36 @@ function WCMUser_Register() {
     name: "",
     email: "",
     NID: "",
+    address: "",
   });
 
   // Regex patterns
-  const namePattern = /^[A-Za-z\s]+$/; // Only letters and spaces
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Valid email format
-  const NIDPattern = /^(\d{10,15}[A-Za-z]?|\d{10,15})$/; // 10-15 digits with an optional letter
+  const NIDPattern = /^\d{10,15}[A-Za-z]?$/; // 10-15 digits with optional one letter at the end
+  const namePattern = /^[A-Za-z\s]+$/; // Letters and spaces only
+
+  // Handle key press for name field to block digits and special characters
+  const handleNameKeyPress = (e) => {
+    if (!namePattern.test(e.key)) {
+      e.preventDefault(); // Prevent input if it's not a letter or space
+    }
+  };
+
+  // Handle key press for NID field to block invalid entries (only digits and one optional letter)
+  const handleNIDKeyPress = (e) => {
+    const currentValue = user.NID;
+    const regex = /^[0-9]*[A-Za-z]?$/;
+
+    // Prevent more than one letter or letters in the middle
+    if (
+      (!/[0-9]/.test(e.key) && currentValue.replace(/[^A-Za-z]/g, "").length > 0) ||
+      (/[A-Za-z]/.test(e.key) && currentValue.replace(/[0-9]/g, "").length >= 1)
+    ) {
+      e.preventDefault(); // Block invalid inputs
+    } else if (!regex.test(e.key)) {
+      e.preventDefault();
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +71,9 @@ function WCMUser_Register() {
     } else if (field === "NID") {
       error = NIDPattern.test(value)
         ? ""
-        : "NID must be 10-15 digits, optionally followed by a letter.";
+        : "NID must be 10-15 digits, optionally followed by only one letter.";
+    } else if (field === "address") {
+      error = value ? "" : "Address is required.";
     }
 
     setErrors((prevErrors) => ({
@@ -54,8 +81,6 @@ function WCMUser_Register() {
       [field]: error,
     }));
   };
-
-  //test
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -90,11 +115,11 @@ function WCMUser_Register() {
     <div className="min-h-screen flex flex-col">
       <UserHomeHeader />
       <div className="bg-gray-100 p-1">
-        <div className="max-w-lg mx-auto bg-white p-8 shadow-lg rounded-lg mt-2 ">
+        <div className="max-w-lg mx-auto bg-white p-8 shadow-lg rounded-lg mt-2">
           <h1 className="text-2xl font-semibold text-slate-800 mb-6 text-center">
             User Registration
           </h1>
-          <form onSubmit={handleSubmit} className="">
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -109,6 +134,7 @@ function WCMUser_Register() {
                 required
                 value={user.name}
                 onChange={handleInputChange}
+                onKeyPress={handleNameKeyPress}
                 className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
                   errors.name
                     ? "border-red-500 focus:ring-red-500"
@@ -134,6 +160,7 @@ function WCMUser_Register() {
                 required
                 value={user.NID}
                 onChange={handleInputChange}
+                onKeyPress={handleNIDKeyPress}
                 className={`w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 ${
                   errors.NID
                     ? "border-red-500 focus:ring-red-500"

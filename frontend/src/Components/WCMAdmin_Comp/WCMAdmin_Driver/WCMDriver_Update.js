@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function WCMUser_Update() {
+function WCMDriver_Update() {
   // State to store form inputs
   const [inputs, setInputs] = useState({});
   
@@ -16,7 +16,7 @@ function WCMUser_Update() {
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
-        .get(`http://localhost:5001/users/${id}`)
+        .get(`http://localhost:5001/drivers/${id}`)
         .then((res) => res.data)
         .then((data) => setInputs(data.user));
     };
@@ -26,11 +26,12 @@ function WCMUser_Update() {
   // Function to send the update request
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:5001/users/${id}`, {
+      .put(`http://localhost:5001/drivers/${id}`, {
         name: String(inputs.name),
         email: String(inputs.email),
         NID: String(inputs.NID),
-        address: String(inputs.address),
+        Dlicense: String(inputs.NID),
+       
       })
       .then((res) => res.data);
   };
@@ -47,7 +48,7 @@ function WCMUser_Update() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await sendRequest();
-    navigate("/WCMUser_Details"); // Redirect to WCMUser_Details page after update
+    navigate("/WCMDriver_Details"); // Redirect to WCMDriver_Details page after update
   };
 
   return (
@@ -97,8 +98,8 @@ function WCMUser_Update() {
             <label className="block text-gray-700 mb-2">Address</label>
             <input
               type="text"
-              name="address"
-              value={inputs.address || ''}
+              name="Dlicense"
+              value={inputs.Dlicense || ''}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
@@ -119,4 +120,4 @@ function WCMUser_Update() {
   );
 }
 
-export default WCMUser_Update;
+export default WCMDriver_Update;
