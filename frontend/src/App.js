@@ -90,6 +90,8 @@ import WCMAdmin_Task from "./Components/WCMAdmin_Comp/WCMAdmin_Task";
 
 
 
+import PaymentSlip from "./Components/PlanManegmentPayment/PaymmentSlip";
+
 function App() {
   //java scripts
   return (
@@ -195,7 +197,10 @@ function App() {
         <Route path="/CreditDebit" element={<CreditDebit />}/>
         <Route path="/ReportGeneration" element={<ReportGeneration />}/>
 
-       
+
+
+
+       <Route path="/PaymentSlip" element={<PaymentSlip />}/>
 
 
         </Routes>

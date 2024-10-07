@@ -10,20 +10,6 @@ import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
 // import { useEffect, useState } from 'react'
 
 function RequestServiceMain() {
-  // const [requests, setRequests] = useState([]);
-
-  // useEffect(() => {
-  //   // Fetch request details from the backend
-  //   const fetchRequests = async () => {
-  //     try {
-  //       const response = await axios.get('/api/requests'); // Adjust API path as per your backend setup
-  //       setRequests(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching requests:', error);
-  //     }
-  //   };
-  //   fetchRequests();
-  // }, []);
 
   return (
     <div>
@@ -31,10 +17,10 @@ function RequestServiceMain() {
       <div className="min-h-screen bg-gray-100 pt-1 pr-1">
         <header className="mb-10">
           <div className="flex justify-between items-center mt-2">
-            <h1 className="text-4xl font-bold text-gray-800 flex-grow text-center">
+            <h1 className="text-4xl font-bold text-gray-800 flex-grow text-center mr-14">
               Request a Special Service
             </h1>
-            <div className="pr-96">
+            <div className="pr-56">
               <RequestNav />
             </div>
             <Link to="/addrequest">
@@ -129,26 +115,6 @@ function RequestServiceMain() {
             </Link>
           </div>
         </header>
-
-        {/* <section className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {requests.length > 0 ? (
-          requests.map((request) => (
-            <div key={request._id} className="bg-white p-4 rounded-lg shadow-md">
-              <img
-                src={request.photoUrl || 'https://via.placeholder.com/150'} // Use placeholder if no photo
-                alt={request.title}
-                className="w-full h-48 object-cover rounded-md"
-              />
-              <div className="mt-4">
-                <h2 className="text-xl font-semibold text-gray-800">{request.title}</h2>
-                <p className="mt-2 text-gray-600">{request.description}</p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500">No special requests available.</p>
-        )}
-      </section> */}
       </div>
       <UserFooter />
     </div>
