@@ -14,6 +14,10 @@ const employeeSchema = new Schema({
         type:String,
         required:true,
     },
+    employeeNic:{
+        type:String,
+        required:true,
+    },
     employeeCatogory:{
         type:String,
         required:true,
@@ -30,7 +34,12 @@ const employeeSchema = new Schema({
     employeePhone:{
         type:Number,
         required:true,
-    }
+    },
+    employeeSalary:{
+        type:Number,
+        required:true,
+    },
+    
     
 
 
