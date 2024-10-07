@@ -108,6 +108,19 @@ function UpdateEmployee() {
                     className="w-full px-4 py-2 border rounded-lg"
                   />
                 </div>
+                <div className="flex flex-col w-96  g-0 al  m-5">
+                  <lable className="text-2xl font-bold mb-4">
+                    Employee NIC
+                  </lable>
+                  <input
+                    type="text"
+                    name="employeeNic"
+                    onChange={handleChange}
+                    value={inputs.employeeNic}
+                    placeholder="Employee Nic"
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
                 <div className="flex flex-col w-96 g-0 al  m-5">
                   <lable className="text-2xl font-bold mb-4">
                     Employee Catogory
@@ -157,6 +170,19 @@ function UpdateEmployee() {
                     onChange={handleChange}
                     value={inputs.employeePhone}
                     placeholder="Employee Phone"
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-col w-96  g-0 al  m-5">
+                  <lable className="text-2xl font-bold mb-4">
+                    Employee Salary
+                  </lable>
+                  <input
+                    type="text"
+                    name="employeeSalary"
+                    onChange={handleChange}
+                    value={inputs.employeeSalary}
+                    placeholder="Employee Salary"
                     className="w-full px-4 py-2 border rounded-lg"
                   />
                 </div>
