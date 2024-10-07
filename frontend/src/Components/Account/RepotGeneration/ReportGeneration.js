@@ -114,11 +114,14 @@ export const generateReport = (account) => {
   const currentDate = new Date().toLocaleDateString();
   doc.setFontSize(12);
   doc.setFont("helvetica", "italic");
+  const currentTime = new Date().toLocaleTimeString(); // Get the current time
 
   // Adjust date to the right-hand side (pageWidth - margin)
   const pageWidth = doc.internal.pageSize.getWidth();
   const dateX = pageWidth - 50; // 50 units from the right edge
   doc.text(`Date: ${currentDate}`, dateX, signatureY);
+  doc.text(`Time: ${currentTime}`, dateX, signatureY + 6); // Place the time below the date
+
 
   // Save the PDF
   doc.save("salary_Report.pdf");

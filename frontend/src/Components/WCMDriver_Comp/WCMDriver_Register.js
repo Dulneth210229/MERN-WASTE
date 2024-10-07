@@ -12,12 +12,38 @@ function WCMDriver_Register() {
     Dlicense: ""     // Driver's license field
   });
 
-  // Handle input changes in the form
+  // Validation functions for restricting unwanted characters
+  const validateNID = (value) => {
+    const nidRegex = /^[0-9]{10}[A-Za-z]?$|^[0-9]{10}$/;  // Accepts 10 digits followed by a letter or just 10 digits
+    return nidRegex.test(value) ? value : driver.NID;     // Keep current value if invalid
+  };
+
+  const validateDlicense = (value) => {
+    const dlicenseRegex = /^[0-9A-Za-z]+$/;  // Accepts alphanumeric characters only
+    return dlicenseRegex.test(value) ? value : driver.Dlicense;
+  };
+
+  const validateName = (value) => {
+    const nameRegex = /^[A-Za-z\s]+$/;  // Only letters and spaces are allowed
+    return nameRegex.test(value) ? value : driver.name;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    let validatedValue = value;
+
+    if (name === "NID") {
+      validatedValue = validateNID(value); // Validate NID field
+    } else if (name === "Dlicense") {
+      validatedValue = validateDlicense(value); // Validate Dlicense field
+    } else if (name === "name") {
+      validatedValue = validateName(value); // Validate Name field
+    }
+
     setDriver((prevDriver) => ({
       ...prevDriver,
-      [name]: value
+      [name]: validatedValue
     }));
   };
 
@@ -57,7 +83,7 @@ function WCMDriver_Register() {
             name="name"
             id="name"
             required
-            value={driver.name} // Correct the state to use 'driver'
+            value={driver.name} // Correct state to use 'driver'
             onChange={handleInputChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

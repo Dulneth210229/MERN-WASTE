@@ -89,7 +89,7 @@ function CategoryUpdate() {
       <CategoryNav />  {/* Add the navigation bar */}
       <div className="flex-grow flex justify-center items-center">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-          <h1 className="text-2xl font-bold text-center text-green-600 mb-6">Update Category</h1>
+          <h1 className="text-2xl font-bold text-center text-green-600 mb-6">Update Organic Category</h1>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -107,7 +107,7 @@ function CategoryUpdate() {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-medium">Quantity</label>
+              <label className="block text-gray-700 font-medium">Quantity (KG)</label>
               <input
                 type="text"
                 name="Quantity"

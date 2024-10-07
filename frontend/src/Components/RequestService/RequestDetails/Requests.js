@@ -4,6 +4,9 @@ import axios from "axios";
 import Request from "../Request/Request";
 import UserFooter from "../../UserHomePage/UserFooter";
 import UserHomeHeader from "../../UserHomePage/UserHomeHeader";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import logo from "./img/LOGO.png";
 
 const URL = "http://Localhost:5001/request";
 
@@ -15,6 +18,8 @@ function Requests() {
   useEffect(() => {
     fetchHandler().then((data) => setRequests(data.requests));
   }, []);
+
+  // const formattedDate = date.slice(0, 10);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
@@ -30,13 +35,98 @@ function Requests() {
       setNoResults(filteredRequests.length === 0);
     });
   };
+
+  const generateReport = () => {
+    const doc = new jsPDF();
+
+    // Add logo
+    const imgWidth = 50;
+    const imgHeight = 20;
+    const pageWidth = doc.internal.pageSize.width;
+    const imgX = pageWidth - imgWidth - 10;
+    const imgY = 10;
+
+    doc.addImage(logo, "PNG", imgX, imgY, imgWidth, imgHeight);
+
+    // Add title and subtitle
+    const title = "Request Report";
+    const subtitle = "Comprehensive overview of request details";
+
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.text(title, 14, 22);
+
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "normal");
+    doc.text(subtitle, 14, 30);
+
+    doc.setLineWidth(0.5);
+    doc.line(14, 33, 195, 33);
+
+    const marginTop = 40;
+
+    // Add the table of requests
+    doc.autoTable({
+      startY: marginTop,
+      head: [["Service", "Name", "Address", "Phone", "Date", "Time"]],
+      body: requests.map((requestItem) => [
+        requestItem.service,
+        requestItem.name,
+        requestItem.address,
+        requestItem.phoneNumber,
+        requestItem.date.slice(0, 10),
+        requestItem.time,
+      ]),
+      headStyles: {
+        fillColor: [41, 87, 141],
+        textColor: [255, 255, 255],
+        fontSize: 12,
+        fontStyle: "bold",
+      },
+      bodyStyles: {
+        fontSize: 11,
+      },
+      alternateRowStyles: {
+        fillColor: [240, 240, 240],
+      },
+      margin: { left: 14, right: 14 },
+      theme: "grid",
+    });
+
+    // Add current date and time
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().slice(0, 10); // YYYY-MM-DD
+    const formattedTime = currentDate.toTimeString().split(" ")[0]; // HH:MM:SS
+
+    doc.setFontSize(12);
+    doc.text(`Date: ${formattedDate}`, 14, doc.internal.pageSize.height - 30);
+    doc.text(`Time: ${formattedTime}`, 14, doc.internal.pageSize.height - 25);
+
+    // Add space for signature
+    doc.text(
+      "Signature: ............................................",
+      14,
+      doc.internal.pageSize.height - 15
+    );
+
+    // Save the PDF
+    doc.save("Request_Report.pdf");
+  };
+
   return (
     <div>
       <UserHomeHeader />
       {/* <div className="bg-gray-100 p-1">
       </div> */}
-      <div className="flex space-x-4 justify-end py-4 pl-96 bg-gray-100">
+      <div className="flex justify-end py-3 pl-12 bg-gray-100">
+        <button
+          onClick={generateReport}
+          className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+        >
+          Download Requests Report
+        </button>
         <RequestNav />
+
         <input
           onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
@@ -63,23 +153,8 @@ function Requests() {
           </div>
         </div>
       )}
-      <UserFooter />
-      {/* <div className="mt-10">
-        <table className="border-2 mx-auto">
-          <tr className="bg-green-200 ">
-            <th className="border-2 p-2 w-25 border-green-500">Service</th>
-            <th className="border-2 p-2 w-46  border-green-500">Name</th>
-            <th className="border-2 p-2 w-51 border-green-500">Address</th>
-            <th className="border-2 p-2 w-24 border-green-500">Phone Number</th>
-            <th className="border-2 p-2 w-20 border-green-500">Date</th>
-            <th className="border-2 p-2 w-20 border-green-500">Time</th>
-            <th className="border-2 p-2 w-55 border-green-500">Actions</th>
-          </tr>
-          {requests &&
-            requests.map((request, i) => <Request request={request} />)}
-        </table>
-      </div> */}
 
+      <UserFooter />
       <div></div>
     </div>
   );

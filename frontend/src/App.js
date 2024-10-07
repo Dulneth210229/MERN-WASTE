@@ -87,8 +87,12 @@ import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
 import WCMDriver_Task from './Components/WCMDriver_Comp/WCMDriver_Task';
 import WCMAdmin_Task from "./Components/WCMAdmin_Comp/WCMAdmin_Task";
+import WCMUser_Update from "./Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Update";
+import WCMDriver_Update from "./Components/WCMAdmin_Comp/WCMAdmin_Driver/WCMDriver_Update";
 
 
+
+import PaymentSlip from "./Components/PlanManegmentPayment/PaymmentSlip";
 
 function App() {
   //java scripts
@@ -190,12 +194,17 @@ function App() {
         <Route path="/WCMAssign_Work" element={<WCMAssign_Work/>}/>
         <Route path="/WCMDriver_Task" element={<WCMDriver_Task/>}/>
         <Route path="/WCMAdmin_Task" element={<WCMAdmin_Task/>}/>
+        <Route path="/WCMUser_Update/:id" element={<WCMUser_Update/>} />
+        <Route path="/WCMDriver_Update/:id" element={<WCMDriver_Update/>} />
 
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>
         <Route path="/ReportGeneration" element={<ReportGeneration />}/>
 
-       
+
+
+
+       <Route path="/PaymentSlip" element={<PaymentSlip />}/>
 
 
         </Routes>
