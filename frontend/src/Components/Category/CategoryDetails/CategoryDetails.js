@@ -7,14 +7,14 @@ import 'jspdf-autotable';
 import logo from "./img/LOGO.png"; // Ensure the logo image is correctly placed in your project
 import UserFooter from '../../UserHomePage/UserFooter';  // Import the footer component
 
-const URL = "http://Localhost:5001/category";
+const URL = "http://localhost:5001/category";
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
 };
 
 function CategoryDetails() {
-  const [category, setCategoryDetails] = useState();
+  const [category, setCategoryDetails] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -114,6 +114,16 @@ function CategoryDetails() {
     doc.save(`Organic_Category_Report_${dateStr}.pdf`);
   };
 
+  const handleSendReport = () => {
+    // Create the WhatsApp chat message
+    const phoneNumber = "+94763405524";
+    const message = `Selected Waste Category Reports`;
+    const whatsAppUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Open the WhatsApp chat in a new window
+    window.open(whatsAppUrl, "_blank");
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="w-full">
@@ -144,6 +154,12 @@ function CategoryDetails() {
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
         >
           Download Organic Report (PDF)
+        </button>
+        <button
+          onClick={handleSendReport}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+        >
+          Send Report via WhatsApp
         </button>
       </div>
 

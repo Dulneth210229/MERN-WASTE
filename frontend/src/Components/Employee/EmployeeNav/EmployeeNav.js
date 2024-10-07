@@ -26,10 +26,8 @@ function EmployeeNav() {
                   Employee Details
                 </li>
               </Link>
-              <Link to="/employeeschedules">
-                <li className="hover:underline text-2xl gap-6">
-                  Employee Schedules
-                </li>
+              <Link to="/employeereports">
+                <li className="hover:underline text-2xl gap-6">Employee Reports</li>
               </Link>
             </ul>
           </div>

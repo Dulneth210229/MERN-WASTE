@@ -114,6 +114,16 @@ function CategoryDetailsHza() {
     doc.save(`Hazardous_Category_Report_${dateStr}.pdf`);
   };
 
+  // Function to send report via WhatsApp
+  const handleSendReport = () => {
+    const phoneNumber = "+94763405524"; // Add the desired WhatsApp phone number here
+    const message = `Hazardous Waste Category Report is available. Please check the details.`;
+    const whatsAppUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp chat in a new window
+    window.open(whatsAppUrl, "_blank");
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="w-full">
@@ -143,6 +153,12 @@ function CategoryDetailsHza() {
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
         >
           Download Hazardous Report (PDF)
+        </button>
+        <button
+          onClick={handleSendReport}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+        >
+          Send Report via WhatsApp
         </button>
       </div>
 

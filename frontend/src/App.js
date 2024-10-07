@@ -87,6 +87,8 @@ import WCMAssign_Work from "./Components/WCMAdmin_Comp/WCMAssign_Work";
 import CreditDebit from "./Components/Account/CreditDebit/CreditDebit";
 import WCMDriver_Task from './Components/WCMDriver_Comp/WCMDriver_Task';
 import WCMAdmin_Task from "./Components/WCMAdmin_Comp/WCMAdmin_Task";
+import WCMUser_Update from "./Components/WCMAdmin_Comp/WCMAdmin_User/WCMUser_Update";
+import WCMDriver_Update from "./Components/WCMAdmin_Comp/WCMAdmin_Driver/WCMDriver_Update";
 
 
 
@@ -106,6 +108,7 @@ function App() {
           <Route path="/addemployee" element={<AddEmployee />} />
           <Route path="/employeedetails" element={<Employees />} />
           <Route path="/employeedetails/:id" element={<UpdateEmployee />} />
+          <Route path="/employeereports" element={<EmployeeSchedules/>}/>
           <Route path="/addrequest" element={<AddRequest />} />
           <Route path="/viewrequests" element={<ViewRequests />} />
           <Route path="/inventoryHome" element={<InventoryHome />} />
@@ -192,6 +195,8 @@ function App() {
         <Route path="/WCMAssign_Work" element={<WCMAssign_Work/>}/>
         <Route path="/WCMDriver_Task" element={<WCMDriver_Task/>}/>
         <Route path="/WCMAdmin_Task" element={<WCMAdmin_Task/>}/>
+        <Route path="/WCMUser_Update/:id" element={<WCMUser_Update/>} />
+        <Route path="/WCMDriver_Update/:id" element={<WCMDriver_Update/>} />
 
 
         <Route path="/CreditDebit" element={<CreditDebit />}/>

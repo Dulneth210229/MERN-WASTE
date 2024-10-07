@@ -6,7 +6,7 @@ import AccountNav from '../AccountNav/AccountNav';
 
 function UpdateSalary() {
   const EPF =  12000;//12%
-  const ETF = 8000;//3%
+  const ETF = 8000;//8%
   const [inputs, setinputs] = useState({});
   const history = useNavigate();
   const {id } = useParams(); // Destructure the account ID from params
