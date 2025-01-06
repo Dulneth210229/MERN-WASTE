@@ -103,7 +103,7 @@ function CrmReport() {
     doc.text(`Time: ${timeStr}`, 14, timeY);
     
     // Set signature line
-    const signatureText = "Signature: ___________________________";
+    const signatureText = "Signature: _______________________";
     doc.text(signatureText, 14, signatureY);
     
     doc.save(`${filename}.pdf`);
